@@ -1,3 +1,5 @@
+---
+
 # acharts [![spm version](http://spmjs.io/badge/acharts)](http://spmjs.io/package/acharts)
 
 ---
@@ -18,3 +20,9 @@ $ spm install acharts --save
 var acharts = require('acharts');
 // use acharts
 ```
+=======
+acharts
+=======
+
+Acharts is a javascript charts,using svg and vml,Using Raphael as a foundation.
+
