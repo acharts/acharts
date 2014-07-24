@@ -1,0 +1,30 @@
+{
+  "name": "acharts",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": ["charts","javascript charts","acharts"],
+  "homepage": "https://github.com/acharts/acharts",
+  "author": "dxq613@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/acharts/acharts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/acharts/acharts/issues"
+  },
+  "licenses": "MIT",
+  "spm": {
+    "main": "index.js",
+    "dependencies": {
+    },
+    "devDependencies": {
+      "expect.js": "0.3.1",
+      "sinon" : "1.6.0",
+      "jquery" : "1.9.1"
+    },
+    "engines": {
+      "seajs": "2.2.1"
+    },
+    "tests": "tests/*.js"
+  }
+}
