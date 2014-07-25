@@ -55,7 +55,7 @@ Util.augment(Area,{
       canvas = _self.get('canvas'),
       markersGroup = _self.get('markersGroup');
     if(markersGroup && _self.isStacked()){
-      $(markersGroup.get('node')).appendTo(canvas.get('node'));
+      canvas.get('node').appendChild(markersGroup.get('node'));  
     }
   },
   //覆盖隐藏方法，同时隐藏markers

@@ -109,6 +109,11 @@ function deepMix(dst,src,level){
         }else{
           dst[k] = src[k];
         }
+      }else if(Util.isArray(value)){
+        if(!Util.isArray(dst[k])){
+          dst[k] = [];
+        }
+        dst[k] = dst[k].concat(value);
       }else if(value !== undefined){
         dst[k] = src[k];
       }
@@ -326,13 +331,16 @@ var Util = {
       if(c && mixins){
         c._mixins = mixins;
         c.ATTRS = c.ATTRS || {};
+        var temp = {};
         Util.each(mixins,function(mixin){
           Util.augment(c,mixin);
           var attrs = mixin.ATTRS;
           if(attrs){
-            Util.mix(c.ATTRS,attrs);
+            Util.mix(temp,attrs);
           }
         });
+
+        c.ATTRS = Util.mix(temp,c.ATTRS);
       }
     },
     /**

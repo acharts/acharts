@@ -46,8 +46,7 @@ Markers.ATTRS = {
 	/**
 	 * @private
 	 */
-	xCache : []
-
+	xCache : null
 };
 
 Util.augment(Markers,{
@@ -55,6 +54,7 @@ Util.augment(Markers,{
 	//渲染控件
 	renderUI : function(){
 		var _self = this;
+		_self.set('xCache',[]);
 		Markers.superclass.renderUI.call(_self);
 		_self._drawMarkers();
 	},

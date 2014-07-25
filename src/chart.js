@@ -255,7 +255,7 @@ Util.augment(Chart,{
   //渲染画板
   _renderCanvas : function(){
     var _self = this,
-      id = _self.get('id'),
+      id = _self.get('id') || _self.get('render'),
       el = document.getElementById(id),
       width = _self.get('width') || getWidth(el),
       height = _self.get('height') || getHeight(el),
@@ -386,6 +386,11 @@ Util.augment(Chart,{
     }
     group.changeData(data);
   },
+  /**
+   * 附加事件
+   * @param  {String}   eventType 事件类型
+   * @param  {Function} fn  事件处理函数
+   */
   on : function(eventType,fn){
     var _self = this,
       events = this.events,
@@ -397,16 +402,25 @@ Util.augment(Chart,{
     callbacks.push(fn);
     return this;
   },
+  /**
+   * 触发事件
+   * @param  {String} eventType 事件类型
+   */
   fire : function(eventType){
     var _self = this,
       events = _self.events,
-      callbacks = events[events];
+      callbacks = events[eventType];
     if(callbacks){
       Util.each(callbacks,function(m){
         m();
       });
     }
   },
+  /**
+   * 移除事件
+   * @param  {String}   eventType 事件类型
+   * @param  {Function} fn  事件处理函数
+   */
   off : function(eventType,fn){
     var _self = this,
       node = _self.get('node'),
