@@ -193,7 +193,7 @@ describe('测试数字中轴坐标系',function(){
       y2 : end.y
     });
     path1 = line.getPath();
-    console && console.log(Raphael._path2curve(path1));
+    window.console && console.log(Raphael._path2curve(path1));
     expect(line.get('el')).not.to.be(undefined);
   });
 
@@ -217,7 +217,6 @@ describe('测试数字中轴坐标系',function(){
     });
     path2 = line.getPath();
 
-    console && console.log(Raphael.pathIntersection(path1,path2));
   });
 
   it('remove',function(done){

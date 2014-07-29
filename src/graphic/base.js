@@ -3,10 +3,25 @@ var
  
   Util = require('../util');
 
+var ARR_EV = ['srcElement','toElement','clientX','clientY','keyCode'];
+function getEventObj(ev){
+  var  rst = {};
+  rst.target = ev.srcElement;
+  rst.pageX = ev.screenX;
+  rst.pageY = ev.screenY;
+  Util.each(ARR_EV,function(key){
+    rst[key] = ev[key];
+  });
+  return rst;
+}
+
 function addEvent( obj, type, fn ) {
     if ( obj.attachEvent ) {
         obj['e'+type+fn] = fn;
-        obj[type+fn] = function(){obj['e'+type+fn]( window.event );}
+        obj[type+fn] = function(){
+          window.event.target = window.event.srcElement;
+          obj['e'+type+fn]( getEventObj(window.event) );
+        }
         obj.attachEvent( 'on'+type, obj[type+fn] );
     } else
         obj.addEventListener( type, fn, false );
@@ -262,6 +277,7 @@ Util.augment(Base,{
           _self.bindUI();
     }
   },
+
   /**
    * @protected
    * 渲染控件

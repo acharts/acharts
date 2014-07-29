@@ -21,7 +21,7 @@ Group.ATTRS = {
    * 子项的配置信息
    * @type {Object}
    */
-  item : null,
+  item : undefined,
   /**
    * 存放子项的容器
    * @type {Canvas.Group}

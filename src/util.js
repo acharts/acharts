@@ -261,13 +261,24 @@ var Util = {
             subclass =  function(){};
         }
 
-        var create = function (proto, c) {
-          return Object.create(proto, {
-              constructor: {
-                  value: c
+        var create = Object.create ?
+          function (proto, c) {
+              return Object.create(proto, {
+                  constructor: {
+                      value: c
+                  }
+              });
+          } :
+          function (proto, c) {
+              function F() {
               }
-          });
-        };
+
+              F.prototype = proto;
+
+              var o = new F();
+              o.constructor = c;
+              return o;
+          };
             
         var superObj = create(superclass.prototype,subclass);//new superclass(),//实例化父类作为子类的prototype
         subclass.prototype = Util.mix(superObj,subclass.prototype);     //指定子类的prototype
@@ -298,7 +309,19 @@ var Util = {
      * @return {Array}  数组
      */
     toArray: function (value) { 
-      return Array.prototype.slice.call(value); 
+      if(!value || !value.length){
+        return [];
+      }
+      if(Util.vml){
+        var rst = [];
+        for(var i = 0; i < value.length; i++){
+          rst.push(value[i]);
+        }
+        return rst;
+      }else{
+        return Array.prototype.slice.call(value); 
+      }
+      
     },
     /**
      * 合并数据
@@ -317,7 +340,7 @@ var Util = {
         for(var i = 1;i < args.length; i++){
           var source = args[i];
           for(var k in source){
-            if(source.hasOwnProperty(k)){
+            if(source.hasOwnProperty(k) && k != 'constructor'){
               obj[k] = source[k];
             }
           }
@@ -538,9 +561,9 @@ Util.mix(Util,{
       top = 0;
     while (o!=null && o!=document.body){
     
-        left += o.offsetLeft;
-        top += o.offsetTop;
-        o = o.offsetParent;
+        left += (o.offsetLeft || 0);
+        top += (o.offsetTop || 0);
+        o = (o.offsetParent || o.parentNode);
     };
     rst.top = top;
     rst.left = left;

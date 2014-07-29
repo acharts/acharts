@@ -4,8 +4,12 @@ var expect = require('expect.js'),
 
 var Chart = require('../src/chart');
 
+$('<div id="r1"></div>').prependTo('body');
+
+
 describe('测试雷达图', function() {
   var chart = new Chart({
+    id : 'r1',
     width : 1000,
     height : 500,
     plotCfg : {
@@ -75,6 +79,7 @@ describe('测试雷达图', function() {
 
 describe('测试图表生成', function() {
   var chart = new Chart({
+    id : 'r1',
     width : 500,
     height : 500,
     plotCfg : {
@@ -135,6 +140,7 @@ describe('测试图表生成', function() {
 
 describe('测试图表生成2', function() {
   var chart = new Chart({
+    id : 'r1',
     width : 1000,
     height : 500,
     plotCfg : {
@@ -197,6 +203,7 @@ describe('测试图表生成2', function() {
 
 describe('测试图表生成3', function() {
   var chart = new Chart({
+    id : 'r1',
     width : 1000,
     height : 500,
     plotCfg : {
@@ -259,6 +266,7 @@ describe('测试图表生成3', function() {
 
 describe('测试图表生成4', function() {
   var chart = new Chart({
+    id : 'r1',
     width : 1000,
     height : 500,
     plotCfg : {
@@ -322,6 +330,7 @@ describe('测试图表生成4', function() {
 
 describe('测试图表生成5', function() {
   var chart = new Chart({
+    id : 'r1',
     width : 1000,
     height : 500,
     plotCfg : {
@@ -385,6 +394,7 @@ describe('测试图表生成5', function() {
 
 describe('测试图表生成6', function() {
   var chart = new Chart({
+    id : 'r1',
     width : 1000,
     height : 500,
     plotCfg : {
@@ -441,5 +451,6 @@ describe('测试图表生成6', function() {
   });
 
   chart.render();
+
   
 });

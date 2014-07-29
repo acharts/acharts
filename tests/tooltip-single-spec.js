@@ -12,7 +12,7 @@ var Canvas = require('../src/canvas'),
 
   $('<div id="t2"></div>').prependTo('body');
 
-
+/*
 describe('测试Tooltip',function(){
 	var canvas = new Canvas({
 		id : 't2',
@@ -182,7 +182,7 @@ describe('测试Tooltip',function(){
 	});
 });
 
-/**/
+*/
 describe('测试Tooltip',function(){
 
 	var canvas = new Canvas({
@@ -359,7 +359,7 @@ describe('测试Tooltip',function(){
 			},300);
 		});
 
-		it('移除',function(done){
+		xit('移除',function(done){
 			setTimeout(function(){
 				$('#t2').remove();
 				done();

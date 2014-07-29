@@ -82,4 +82,11 @@ describe('test labels',function () {
     labels.changeLabel(label,{x : 100,y : 20,text : "变化"});
     expect(label.attr('x')).to.be(110);
   });
+
+  it('移除',function(done){
+      setTimeout(function(){
+        $('#s2').remove();
+        done();
+      },800);
+    });
 });

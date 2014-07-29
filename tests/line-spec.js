@@ -74,7 +74,7 @@ describe('测试序列生成',function(){
     line : {
       'stroke-width': 2,
       'stroke-linejoin': 'round',
-      'stroke-linecap': 'round',
+      'stroke-linecap': 'round'
     },
     lineActived : {
       'stroke-width': 3
@@ -100,7 +100,7 @@ describe('测试序列生成',function(){
       stroke: '#910000',
       'stroke-width': 2,
       'stroke-linejoin': 'round',
-      'stroke-linecap': 'round',
+      'stroke-linecap': 'round'
     },
     smooth : true,
     markers : {
@@ -121,7 +121,7 @@ describe('测试序列生成',function(){
       stroke: '#8bbc21',
       'stroke-width': 2,
       'stroke-linejoin': 'round',
-      'stroke-linecap': 'round',
+      'stroke-linecap': 'round'
     },
     labels : {
       label : {
@@ -221,7 +221,7 @@ describe('测试序列生成',function(){
     });
 
 
-    xit('移除',function(done){
+    it('移除',function(done){
       setTimeout(function(){
         $('#11').remove();
         done();

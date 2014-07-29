@@ -269,7 +269,6 @@ describe('test basic util',function(){
         expect(obj.a2).to.be('2');
         expect(obj.a1).to.be('a1');
         expect(obj.a.b.c.d).to.be('d');
-        console.log(obj);
     });
 
     it('equalsArray',function(){

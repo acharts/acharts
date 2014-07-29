@@ -44,7 +44,11 @@ Util.augment(Shape,{
     }
     node = el.node;
     node.shape = this;
+
     _self.set('node',node);
+    if(this.get('visible') == false){
+      el.hide();
+    }
   },
   /**
    * @private

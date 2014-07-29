@@ -112,7 +112,7 @@ describe('测试生成', function() {
   });
 
 });
-
+/*
 describe('测试柱状图宽度', function() {
   var chart = new Chart({
     width : 1000,
@@ -202,4 +202,4 @@ describe('测试柱状图宽度', function() {
 });
 
 
-/**/
+*/

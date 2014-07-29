@@ -177,7 +177,7 @@ Util.augment(Container,{
 	sort : function(){
 		var _self = this,
 			node = _self.get('node'),
-			children = Util.toArray(node.children);
+			children = Util.toArray(node.childNodes);
 		if(Util.svg){
 			children.sort(function(obj1,obj2){
 				var zIndex1 = obj1.getAttribute('zIndex') || 0,

@@ -678,17 +678,17 @@ describe('测试事件',function(){
 
       circle.on('click', function(){
         callback();
-        console.log('circle click');
+        window.console && console.log('circle click');
 
       });
       circle.on('mouseover',function(ev){
         circle.attr('stroke','red');
-        console.log('over');
+        window.console &&console.log('over');
       });
 
       circle.on('mouseout',function(ev){
         circle.attr('stroke','black');
-        console.log('out');
+        window.console &&console.log('out');
       });
 
       simulate.simulate(circle.get('node'),'click');
@@ -707,7 +707,7 @@ describe('测试事件',function(){
 
       circle.on('click',function(){
         callback();
-        console && console.log('click');
+        window.console && console.log('click');
       });
       circle.off();
       simulate.simulate(circle.get('node'),'click');
@@ -739,7 +739,7 @@ describe('测试事件',function(){
         callback();
         var shape = ev.target.shape;
         expect(shape).to.be(rect);
-        console &&  console.log('group click');
+        window.console &&  console.log('group click');
       });
        simulate.simulate(rect.get('node'),'click');
       //$(rect.get('node')).trigger('click');

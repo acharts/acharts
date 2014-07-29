@@ -6,7 +6,7 @@ var expect = require('expect.js'),
 var Chart = require('../src/chart');
 $('<div id="b1"></div>').prependTo('body');
 
-
+/*
 describe('测试气泡图',function(){
   var chart = new Chart({
     id : 'b1',
@@ -145,3 +145,5 @@ describe('测试气泡图',function(){
    
   });
 });
+
+*/

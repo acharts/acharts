@@ -348,7 +348,12 @@ describe('测试饼图',function(){
   chart.render();
   var group = chart.get('seriesGroup');
   describe('测试饼图',function(){
-    
+    it('移除',function(done){
+      setTimeout(function(){
+        $('#p1').remove();
+        done();
+      },800);
+    });
   });
 });
 

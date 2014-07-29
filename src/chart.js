@@ -351,7 +351,7 @@ Util.augment(Chart,{
         yAxis : attrs.yAxis
       });
     }else if(Util.isArray(attrs.yAxis)){
-      attrs.yAxis[0] = BUI.merge(true,theme.yAxis,attrs.yAxis[0]);
+      attrs.yAxis[0] = Util.mix(true,{},theme.yAxis,attrs.yAxis[0]);
       cfg.yAxis = attrs.yAxis;
     }
 

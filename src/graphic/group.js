@@ -55,6 +55,9 @@ Util.augment(Group,{
     node = el.node;
     node.group = _self;
     _self.set('node',node);
+    /*if(this.get('visible') == false){
+      el.hide();
+    }*/
     _self._initTranslate();
   },
   //初始化平移
