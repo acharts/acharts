@@ -79,6 +79,7 @@
     acharts.Util = require("acharts/1.0.0/src/util-debug");
     acharts.Canvas = require("acharts/1.0.0/src/canvas-debug");
     acharts.Date = require("acharts/1.0.0/src/date-debug");
+    acharts.Theme = require("acharts/1.0.0/src/chart/theme-debug");
     window.Chart = acharts;
     module.exports = acharts;
   });
@@ -138,7 +139,7 @@
        * <code>
        *  var canvas =  chart.get('canvas');
        * </code>
-       * @type {CanvasCanvas}
+       * @type {Chart.Canvas}
        */
       canvas: undefined,
       /**
@@ -604,7 +605,7 @@
       }
     }
     /**
-     * @class Acharts.Util
+     * @class Chart.Util
      * @singleton
      * 绘图的工具类
      */
@@ -9702,9 +9703,9 @@
       Raphael = require("acharts/1.0.0/src/raphael/index-debug"),
       Container = require("acharts/1.0.0/src/graphic/container-debug");
     /**
-     * @class Graphic.Canvas
+     * @class Chart.Canvas
      * 图形的画板，支持SVG和VML
-     * @extends Graphic.Container
+     * @extends Chart.Canvas.Container
      */
     var Canvas = function(cfg) {
       Canvas.superclass.constructor.call(this, cfg);
@@ -9832,7 +9833,7 @@
       Shape = require("acharts/1.0.0/src/graphic/shape-debug");
     require("acharts/1.0.0/src/raphael/group-debug");
     /**
-     * @class Graphic.Group
+     * @class Chart.Canvas.Group
      * 图形分组
      */
     var Group = function(cfg) {
@@ -10009,9 +10010,9 @@
       Base = require("acharts/1.0.0/src/graphic/base-debug"),
       Util = require("acharts/1.0.0/src/util-debug");
     /**
-     * @class Graphic.Container
+     * @class Chart.Canvas.Container
      * 图形容器
-     * @extends Graphic.Base
+     * @extends Chart.Canvas.Base
      * @abstract
      */
     var Container = function(cfg) {
@@ -10050,7 +10051,7 @@
        * 添加图形
        * @param {String | Object} type 类型或者配置项
        * @param {String} attrs 属性
-       * @return {Graphic.Shape} 图形
+       * @return {Chart.Canvas.Shape} 图形
        */
       addShape: function(type, attrs) {
         var _self = this,
@@ -10076,8 +10077,8 @@
       },
       /**
        * 添加分组
-       * @param {Function} C 构造函数,可以为空，默认为Graphic.Group
-       * @return {Graphic.Group} 分组
+       * @param {Function} C 构造函数,可以为空，默认为Chart.Canvas.Group
+       * @return {Chart.Canvas.Group} 分组
        */
       addGroup: function(C, cfg) {
         if (Util.isObject(C)) {
@@ -10120,7 +10121,7 @@
       /**
        * @protected
        * 添加图形或者分组
-       * @param {Graphic.Base} item 图形或者分组
+       * @param {Chart.Canvas.Base} item 图形或者分组
        */
       addChild: function(item) {
         var _self = this,
@@ -10131,7 +10132,7 @@
       /**
        * 获取子控件根据索引
        * @param  {Number} index 索引值
-       * @return {Graphic.Base} 图形或者分组
+       * @return {Chart.Canvas.Base} 图形或者分组
        */
       getChildAt: function(index) {
         return this.get('children')[index];
@@ -10145,14 +10146,14 @@
       },
       /**
        * 获取最后一个控件
-       * @return {Graphic.Base} 图形或者分组
+       * @return {Chart.Canvas.Base} 图形或者分组
        */
       getLast: function() {
         return this.getChildAt(this.getCount() - 1);
       },
       /**
        * 获取第一个控件
-       * @return {Graphic.Base} 图形或者分组
+       * @return {Chart.Canvas.Base} 图形或者分组
        */
       getFirst: function() {
         return this.getChildAt(0);
@@ -10160,7 +10161,7 @@
       /**
        * 根据id查找分组或者图形
        * @param  {String} id id
-       * @return {Graphic.Base} 分组或者图形
+       * @return {Chart.Canvas.Base} 分组或者图形
        */
       find: function(id) {
         var _self = this;
@@ -10196,7 +10197,7 @@
       /**
        * 根据查找函数查找分组或者图形
        * @param  {Function} fn 匹配函数
-       * @return {Graphic.Base} 分组或者图形
+       * @return {Chart.Canvas.Base} 分组或者图形
        */
       findBy: function(fn) {
         var _self = this,
@@ -10217,7 +10218,7 @@
       /**
        * 根据dom查找
        * @param  {HTMLElement} node 节点
-       * @return {Graphic.Base} 返回分组或者图形
+       * @return {Chart.Canvas.Base} 返回分组或者图形
        */
       findByNode: function(node) {
         return this.findBy(function(item) {
@@ -10262,9 +10263,9 @@
       Item = require("acharts/1.0.0/src/graphic/canvasitem-debug"),
       Util = require("acharts/1.0.0/src/util-debug");
     /**
-     * @class Graphic.Shape
+     * @class Chart.Canvas.Shape
      * 图形的基类
-     * @extends Graphic.Base
+     * @extends Chart.Canvas.Base
      */
     var Shape = function(cfg) {
       Shape.superclass.constructor.call(this, cfg);
@@ -10442,8 +10443,8 @@
     });
     /**
      * 圆
-     * @class Graphic.Shape.Circle
-     * @extends Graphic.Shape
+     * @class Chart.Canvas.Shape.Circle
+     * @extends Chart.Canvas.Shape
      */
     var Circle = function(cfg) {
       Circle.superclass.constructor.call(this, cfg);
@@ -10469,8 +10470,8 @@
     Shape.Circle = Circle;
     /**
      * 矩形
-     * @class Graphic.Shape.Rect
-     * @extends Graphic.Shape
+     * @class Chart.Canvas.Shape.Rect
+     * @extends Chart.Canvas.Shape
      */
     var Rect = function(cfg) {
       Rect.superclass.constructor.call(this, cfg);
@@ -10508,8 +10509,8 @@
     Shape.Rect = Rect;
     /**
      * 矩形
-     * @class Graphic.Shape.Ellipse
-     * @extends Graphic.Shape
+     * @class Chart.Canvas.Shape.Ellipse
+     * @extends Chart.Canvas.Shape
      */
     var Ellipse = function(cfg) {
       Ellipse.superclass.constructor.call(this, cfg);
@@ -10540,8 +10541,8 @@
     Shape.Ellipse = Ellipse;
     /**
      * 路径
-     * @class Graphic.Shape.Path
-     * @extends Graphic.Shape
+     * @class Chart.Canvas.Shape.Path
+     * @extends Chart.Canvas.Shape
      */
     var Path = function(cfg) {
       Path.superclass.constructor.call(this, cfg);
@@ -10557,8 +10558,8 @@
     Shape.Path = Path;
     /**
      * 直线
-     * @class Graphic.Shape.Line
-     * @extends Graphic.Shape.Path
+     * @class Chart.Canvas.Shape.Line
+     * @extends Chart.Canvas.Shape.Path
      */
     var Line = function(cfg) {
       Line.superclass.constructor.call(this, cfg);
@@ -10647,8 +10648,8 @@
     }
     /**
      * 折线，polyLine
-     * @class Graphic.Shape.PolyLine
-     * @extends Graphic.Shape.Path
+     * @class Chart.Canvas.Shape.PolyLine
+     * @extends Chart.Canvas.Shape.Path
      */
     var PolyLine = function(cfg) {
       PolyLine.superclass.constructor.call(this, cfg);
@@ -10686,8 +10687,8 @@
     Shape.PolyLine = PolyLine;
     /**
      * 多边形
-     * @class Graphic.Shape.Polygon
-     * @extends Graphic.Shape.Path
+     * @class Chart.Canvas.Shape.Polygon
+     * @extends Chart.Canvas.Shape.Path
      */
     var Polygon = function(cfg) {
       PolyLine.superclass.constructor.call(this, cfg);
@@ -10725,8 +10726,8 @@
     Shape.Polygon = Polygon;
     /**
      * 文本
-     * @class Graphic.Shape.Text
-     * @extends Graphic.Shape
+     * @class Chart.Canvas.Shape.Text
+     * @extends Chart.Canvas.Shape
      */
     var Text = function(cfg) {
       Text.superclass.constructor.call(this, cfg);
@@ -10761,9 +10762,9 @@
     Util.extend(Text, Shape);
     Shape.Text = Text;
     /**
-     * @class Graphic.Shape.Label
+     * @class Chart.Canvas.Shape.Label
      * 文本标签，继承自文本，但是提供了rotate属性
-     * @extends Graphic.Shape.Text
+     * @extends Chart.Canvas.Shape.Text
      */
     var Label = function(cfg) {
       Label.superclass.constructor.call(this, cfg);
@@ -10791,9 +10792,9 @@
     });
     Shape.Label = Label;
     /**
-     * @class Graphic.Shape.Marker
+     * @class Chart.Canvas.Shape.Marker
      * 用于标示节点的图形
-     * @extends Graphic.Shape
+     * @extends Chart.Canvas.Shape
      */
     var Marker = function(cfg) {
       Marker.superclass.constructor.call(this, cfg);
@@ -11004,9 +11005,9 @@
     });
     Shape.Marker = Marker;
     /**
-     * @class Graphic.Shape.Image
+     * @class Chart.Canvas.Shape.Image
      * 图片
-     * @extends Graphic.Shape
+     * @extends Chart.Canvas.Shape
      */
     var Image = function(cfg) {
       Image.superclass.constructor.call(this, cfg);
@@ -11045,7 +11046,7 @@
   define("acharts/1.0.0/src/graphic/base-debug", [], function(require, exports, module) {
     var Util = require("acharts/1.0.0/src/util-debug");
     /**
-     * @class Graphic.Base
+     * @class Chart.Canvas.Base
      * 图形控件或者分组的基类
      */
     var Base = function(cfg) {
@@ -11079,7 +11080,7 @@
       node: null,
       /**
        * 画布
-       * @type {Graphic.Canvas}
+       * @type {Chart.Canvas}
        */
       canvas: null,
       /**
@@ -11326,7 +11327,7 @@
      */
     var Util = require("acharts/1.0.0/src/util-debug");
     /**
-     * @class Graphic.CanvasItem
+     * @class Chart.Canvas.CanvasItem
      * 画布内部元素的一些公用方法的扩展，仅作为接口使用
      */
     var Item = function() {};
@@ -11673,7 +11674,7 @@
     /**
      * @class Chart.PlotItem
      * 图表内部元素的基类
-     * @extends Canvas.Group
+     * @extends Chart.Canvas.Group
      *
      */
     function Item(cfg) {
@@ -15148,6 +15149,9 @@
         var ticks = [],
           count = (max - min) / tickInterval,
           cur;
+        if (!max > min) {
+          return [];
+        }
         ticks.push(min);
         for (var i = 1; i <= count; i++) {
           cur = tickInterval * i + min;
@@ -15900,7 +15904,8 @@
     }();
     /**
      * 日期的工具方法
-     * @class Date
+     * @class Chart.Date
+     * @singleton
      */
     var DateUtil = {
       /**
@@ -17055,7 +17060,7 @@
       },
       /**
        * 获取逼近的marker
-       * @return {Canvas.Shape} marker
+       * @return {Chart.Canvas.Shape} marker
        */
       getSnapMarker: function(point, tolerance) {
         var _self = this,
@@ -17381,7 +17386,7 @@
       },
       /**
        * 获取逼近的marker
-       * @return {Canvas.Shape} 逼近的marker
+       * @return {Chart.Canvas.Shape} 逼近的marker
        */
       getSnapMarker: function(point) {
         var _self = this,
@@ -18366,7 +18371,7 @@
       item: undefined,
       /**
        * 存放子项的容器
-       * @type {Canvas.Group}
+       * @type {Chart.Canvas.Group}
        */
       group: null,
       /**
@@ -19052,6 +19057,11 @@
        */
       radius: null,
       /**
+       * 如果设置了内部size，通过计算得出
+       * @type {Number}
+       */
+      innerRadius: null,
+      /**
        * 开始的角度，-180-180
        * @type {Number}
        */
@@ -19240,10 +19250,17 @@
       getActiveItems: function() {
         return this.getItems();
       },
+      isPlaceHolder: function(item) {
+        var point = item.get('point');
+        return point && point.obj && point.obj.placeHolder;
+      },
       //设置激活状态
       setItemActived: function(item, actived) {
         var _self = this,
           color = item.getCfgAttr('attrs').fill;
+        if (_self.isPlaceHolder(item)) {
+          return;
+        }
         if (actived) {
           item.attr({
             fill: Util.highlight(color, .1)
