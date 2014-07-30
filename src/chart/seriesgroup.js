@@ -135,15 +135,16 @@ Util.augment(Group,{
 
     if (triggerEvent == 'click') {
       function __documentClick(ev){
-        if(!$.contains(canvas.get('node'), ev.target)&&canvas.get('node') != ev.target){
+        if(!Util.contains(canvas.get('node'), ev.target)&&canvas.get('node') != ev.target){
           _self.onTriggerOut(ev);
-          $(document).off('click', __documentClick);
+          Util.removeEvent(document,'click', __documentClick);
         }
       }
       canvas.on('click',function(ev){
         _self.onCanvasMove(ev);
         setTimeout(function(){
-          $(document).off('click', __documentClick).on('click', __documentClick);
+          Util.removeEvent(document,'click', __documentClick)
+            .addEvent(document,'click', __documentClick);
         })
       });
 

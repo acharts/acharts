@@ -255,8 +255,9 @@ Util.augment(Chart,{
   //渲染画板
   _renderCanvas : function(){
     var _self = this,
-      id = _self.get('id') || _self.get('render'),
-      el = document.getElementById(id),
+      id = _self.get('id') || _self.get('render') || '';
+    id = id.replace('#','');
+    var  el = document.getElementById(id),
       width = _self.get('width') || getWidth(el),
       height = _self.get('height') || getHeight(el),
       canvas = new Canvas({

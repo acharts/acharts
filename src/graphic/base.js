@@ -3,37 +3,6 @@ var
  
   Util = require('../util');
 
-var ARR_EV = ['srcElement','toElement','clientX','clientY','keyCode'];
-function getEventObj(ev){
-  var  rst = {};
-  rst.target = ev.srcElement;
-  rst.pageX = ev.screenX;
-  rst.pageY = ev.screenY;
-  Util.each(ARR_EV,function(key){
-    rst[key] = ev[key];
-  });
-  return rst;
-}
-
-function addEvent( obj, type, fn ) {
-    if ( obj.attachEvent ) {
-        obj['e'+type+fn] = fn;
-        obj[type+fn] = function(){
-          window.event.target = window.event.srcElement;
-          obj['e'+type+fn]( getEventObj(window.event) );
-        }
-        obj.attachEvent( 'on'+type, obj[type+fn] );
-    } else
-        obj.addEventListener( type, fn, false );
-}
-function removeEvent( obj, type, fn ) {
-    if ( obj.detachEvent ) {
-        obj.detachEvent( 'on'+type, obj[type+fn] );
-        obj[type+fn] = null;
-    } else
-        obj.removeEventListener( type, fn, false );
-}
-
 /**
  * @class Graphic.Base
  * 图形控件或者分组的基类
@@ -163,7 +132,7 @@ Util.augment(Base,{
       events = this.events,
       callbacks = events[eventType];
 
-    addEvent(node,eventType,fn);
+    Util.addEvent(node,eventType,fn);
     if(!callbacks){
       callbacks = events[eventType] = [];
     }
@@ -183,13 +152,13 @@ Util.augment(Base,{
     if(!eventType){
       Util.each(events,function(callbacks,type){
           Util.each(callbacks,function(m){
-            removeEvent(node,type,m);
+            Util.removeEvent(node,type,m);
           });
       });
       this.events = {};
       return this;
     }
-    removeEvent(node,eventType,fn);
+    Util.removeEvent(node,eventType,fn);
     
     if(callbacks){
       Util.remove(callbacks,fn);

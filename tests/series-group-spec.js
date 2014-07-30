@@ -3,7 +3,8 @@ var
     sinon = require('sinon'),
     $ = require('jquery');
 
-var Canvas = require('../src/canvas'),
+var Util = require('../src/util'),
+  Canvas = require('../src/canvas'),
   Group = require('../src/chart/seriesgroup'),
   NAxis = require('../src/chart/axis/number'),
   CAxis = require('../src/chart/axis/category'),
@@ -20,6 +21,8 @@ describe('测试折线分组',function(){
     width : 900,
     height : 500
   });
+
+
 
   var plotRange = new PlotRange({x : 50,y : 400},{x : 850, y : 50});
 
@@ -106,7 +109,12 @@ describe('测试折线分组',function(){
 
   canvas.sort();
   describe('测试生成',function(){
-
+    it('test offset',function(){
+      var offset1 = Util.getOffset(canvas.get('node')),
+        offset2 = $(canvas.get('node')).offset();
+      expect(offset1.top).to.be(offset2.top);
+      expect(offset1.left).to.be(offset2.left);
+    });
     it('测试分组生成',function(){
       expect(group.get('el')).not.to.be(undefined);
 

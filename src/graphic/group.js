@@ -126,7 +126,7 @@ Util.augment(Group,{
   containsElement : function(element){
     var _self = this,
       node = _self.get('node');
-    return node == element || $.contains(node,element);
+    return node == element || Util.contains(node,element);
   },
   /**
    * 执行动画,对于分组来说，animate仅支持平移动画

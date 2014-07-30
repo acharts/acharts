@@ -202,7 +202,7 @@ describe('测试饼图生成2', function() {
   chart.render();
 
   describe('移除',function(){
-    it('移除',function(done){
+    xit('移除',function(done){
       setTimeout(function(){
         $('#p2').remove();
         done();

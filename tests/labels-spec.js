@@ -83,7 +83,7 @@ describe('test labels',function () {
     expect(label.attr('x')).to.be(110);
   });
 
-  it('移除',function(done){
+  xit('移除',function(done){
       setTimeout(function(){
         $('#s2').remove();
         done();

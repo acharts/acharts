@@ -447,5 +447,13 @@ describe('test util with raphael',function(){
     });
 });
 
+describe('dom',function(){
+    it('getOffset',function(){
+        
+    });
 
+    it('contains',function(){
+
+    });
+});
 

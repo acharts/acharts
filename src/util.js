@@ -541,6 +541,21 @@ var Util = {
 };
 
 
+var ARR_EV = ['srcElement','toElement','clientX','clientY','keyCode'];
+
+function getEventObj(ev){
+  var  rst = {};
+  rst.target = ev.srcElement;
+  rst.pageX = ev.clientX + document.body.scrollLeft - document.body.clientLeft;
+  rst.pageY = ev.ev.clientY + document.body.scrollTop - document.body.clientTop;
+  Util.each(ARR_EV,function(key){
+    rst[key] = ev[key];
+  });
+  return rst;
+}
+
+
+
 Util.mix(Util,{
 
 
@@ -563,13 +578,51 @@ Util.mix(Util,{
     
         left += (o.offsetLeft || 0);
         top += (o.offsetTop || 0);
-        o = (o.offsetParent || o.parentNode);
+        o = o.offsetParent;
     };
     rst.top = top;
     rst.left = left;
     return rst;
   },
+  /**
+   * 是否包含指定节点
+   * @param  {HTMLElement} node    节点
+   * @param  {HTMLElement} subNode 子节点
+   * @return {HTMLElement} 是否包含在节点中
+   */
+  contains : function(node,subNode){
+      if(!node || !subNode){
+        return false;
+      }
+      var rst = false,
+        parent = subNode.parentNode;
+      while(parent!=null && o!=document.body){
+        if(parent == node){
+          rst = true;
+          break;
+        }
+      }
 
+      return rst;
+  },
+  addEvent : function( obj, type, fn ) {
+    if ( obj.attachEvent ) {
+        obj['e'+type+fn] = fn;
+        obj[type+fn] = function(){
+          window.event.target = window.event.srcElement;
+          obj['e'+type+fn]( getEventObj(window.event) );
+        }
+        obj.attachEvent( 'on'+type, obj[type+fn] );
+    } else
+        obj.addEventListener( type, fn, false );
+  },
+  removeEvent : function( obj, type, fn ) {
+      if ( obj.detachEvent ) {
+          obj.detachEvent( 'on'+type, obj[type+fn] );
+          obj[type+fn] = null;
+      } else
+          obj.removeEventListener( type, fn, false );
+  },
   angle : function(x1, y1, x2, y2){
     return Raphael.angle(x1, y1, x2, y2);
   },

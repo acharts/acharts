@@ -5,6 +5,9 @@ var Auto = require('../src/chart/axis/auto'),
 
 $('<div id="s1"></div>').appendTo('body');
 function log(data,rst){
+  if(!window.JSON){
+    return;
+  }
   var el = $('<div class="well"></div>').appendTo('#s1');
 
   var s1 = '<p>数据 ： ' + JSON.stringify(data) + '</p>';

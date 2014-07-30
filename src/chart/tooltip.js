@@ -104,7 +104,9 @@ Tooltip.ATTRS = {
 	items : [
 
 	],
-	crossLine: "#C0C0C0"
+	crossLine: {
+		stroke : "#C0C0C0"
+	}
 };
 
 Util.extend(Tooltip,PlotItem);

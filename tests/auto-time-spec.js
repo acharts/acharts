@@ -9,6 +9,9 @@ var Auto = require('../src/chart/axis/auto'),
   $('<div id="s2"></div>').appendTo('body');
 
   function log(data,rst,title){
+    if(!window.JSON){
+      return;
+    }
 
   $('<h3>'+title+'</h3>').appendTo('#s2');
   var el = $('<div class="well"></div>').appendTo('#s2');

@@ -74,7 +74,7 @@
       return mod.exports
     }
   })(this);
-  define("acharts/1.0.0/index-debug", [], function(require, exports, module) {
+  define("acharts/1.0.0/acharts-debug", [], function(require, exports, module) {
     var acharts = require("acharts/1.0.0/src/chart-debug");
     acharts.Util = require("acharts/1.0.0/src/util-debug");
     acharts.Canvas = require("acharts/1.0.0/src/canvas-debug");
@@ -317,8 +317,9 @@
       //渲染画板
       _renderCanvas: function() {
         var _self = this,
-          id = _self.get('id') || _self.get('render'),
-          el = document.getElementById(id),
+          id = _self.get('id') || _self.get('render') || '';
+        id = id.replace('#', '');
+        var el = document.getElementById(id),
           width = _self.get('width') || getWidth(el),
           height = _self.get('height') || getHeight(el),
           canvas = new Canvas({
@@ -805,7 +806,7 @@
           for (var i = 1; i < args.length; i++) {
             var source = args[i];
             for (var k in source) {
-              if (source.hasOwnProperty(k)) {
+              if (source.hasOwnProperty(k) && k != 'constructor') {
                 obj[k] = source[k];
               }
             }
@@ -993,6 +994,18 @@
         return self['_wrap_' + action];
       }
     };
+    var ARR_EV = ['srcElement', 'toElement', 'clientX', 'clientY', 'keyCode'];
+
+    function getEventObj(ev) {
+      var rst = {};
+      rst.target = ev.srcElement;
+      rst.pageX = ev.clientX + document.body.scrollLeft - document.body.clientLeft;
+      rst.pageY = ev.ev.clientY + document.body.scrollTop - document.body.clientTop;
+      Util.each(ARR_EV, function(key) {
+        rst[key] = ev[key];
+      });
+      return rst;
+    }
     Util.mix(Util, {
       /**
        * 是否是vml
@@ -1009,13 +1022,49 @@
           left = 0,
           top = 0;
         while (o != null && o != document.body) {
-          left += o.offsetLeft;
-          top += o.offsetTop;
+          left += (o.offsetLeft || 0);
+          top += (o.offsetTop || 0);
           o = o.offsetParent;
         };
         rst.top = top;
         rst.left = left;
         return rst;
+      },
+      /**
+       * 是否包含指定节点
+       * @param  {HTMLElement} node    节点
+       * @param  {HTMLElement} subNode 子节点
+       * @return {HTMLElement} 是否包含在节点中
+       */
+      contains: function(node, subNode) {
+        if (!node || !subNode) {
+          return false;
+        }
+        var rst = false,
+          parent = subNode.parentNode;
+        while (parent != null && o != document.body) {
+          if (parent == node) {
+            rst = true;
+            break;
+          }
+        }
+        return rst;
+      },
+      addEvent: function(obj, type, fn) {
+        if (obj.attachEvent) {
+          obj['e' + type + fn] = fn;
+          obj[type + fn] = function() {
+            window.event.target = window.event.srcElement;
+            obj['e' + type + fn](getEventObj(window.event));
+          }
+          obj.attachEvent('on' + type, obj[type + fn]);
+        } else obj.addEventListener(type, fn, false);
+      },
+      removeEvent: function(obj, type, fn) {
+        if (obj.detachEvent) {
+          obj.detachEvent('on' + type, obj[type + fn]);
+          obj[type + fn] = null;
+        } else obj.removeEventListener(type, fn, false);
       },
       angle: function(x1, y1, x2, y2) {
         return Raphael.angle(x1, y1, x2, y2);
@@ -9822,6 +9871,9 @@
         node = el.node;
         node.group = _self;
         _self.set('node', node);
+        /*if(this.get('visible') == false){
+      el.hide();
+    }*/
         _self._initTranslate();
       },
       //初始化平移
@@ -9885,7 +9937,7 @@
       containsElement: function(element) {
         var _self = this,
           node = _self.get('node');
-        return node == element || $.contains(node, element);
+        return node == element || Util.contains(node, element);
       },
       /**
        * 执行动画,对于分组来说，animate仅支持平移动画
@@ -10122,7 +10174,7 @@
       sort: function() {
         var _self = this,
           node = _self.get('node'),
-          children = Util.toArray(node.children);
+          children = Util.toArray(node.childNodes);
         if (Util.svg) {
           children.sort(function(obj1, obj2) {
             var zIndex1 = obj1.getAttribute('zIndex') || 0,
@@ -10245,6 +10297,9 @@
         node = el.node;
         node.shape = this;
         _self.set('node', node);
+        if (this.get('visible') == false) {
+          el.hide();
+        }
       },
       /**
        * @private
@@ -10989,24 +11044,6 @@
   });
   define("acharts/1.0.0/src/graphic/base-debug", [], function(require, exports, module) {
     var Util = require("acharts/1.0.0/src/util-debug");
-
-    function addEvent(obj, type, fn) {
-      if (obj.attachEvent) {
-        obj['e' + type + fn] = fn;
-        obj[type + fn] = function() {
-          window.event.target = window.event.srcElement;
-          obj['e' + type + fn](window.event);
-        }
-        obj.attachEvent('on' + type, obj[type + fn]);
-      } else obj.addEventListener(type, fn, false);
-    }
-
-    function removeEvent(obj, type, fn) {
-      if (obj.detachEvent) {
-        obj.detachEvent('on' + type, obj[type + fn]);
-        obj[type + fn] = null;
-      } else obj.removeEventListener(type, fn, false);
-    }
     /**
      * @class Graphic.Base
      * 图形控件或者分组的基类
@@ -11130,7 +11167,7 @@
           node = _self.get('node'),
           events = this.events,
           callbacks = events[eventType];
-        addEvent(node, eventType, fn);
+        Util.addEvent(node, eventType, fn);
         if (!callbacks) {
           callbacks = events[eventType] = [];
         }
@@ -11150,13 +11187,13 @@
         if (!eventType) {
           Util.each(events, function(callbacks, type) {
             Util.each(callbacks, function(m) {
-              removeEvent(node, type, m);
+              Util.removeEvent(node, type, m);
             });
           });
           this.events = {};
           return this;
         }
-        removeEvent(node, eventType, fn);
+        Util.removeEvent(node, eventType, fn);
         if (callbacks) {
           Util.remove(callbacks, fn);
         }
@@ -11941,15 +11978,15 @@
           canvas = _self.get('canvas');
         if (triggerEvent == 'click') {
           function __documentClick(ev) {
-            if (!$.contains(canvas.get('node'), ev.target) && canvas.get('node') != ev.target) {
+            if (!Util.contains(canvas.get('node'), ev.target) && canvas.get('node') != ev.target) {
               _self.onTriggerOut(ev);
-              $(document).off('click', __documentClick);
+              Util.removeEvent(document, 'click', __documentClick);
             }
           }
           canvas.on('click', function(ev) {
             _self.onCanvasMove(ev);
             setTimeout(function() {
-              $(document).off('click', __documentClick).on('click', __documentClick);
+              Util.removeEvent(document, 'click', __documentClick).addEvent(document, 'click', __documentClick);
             })
           });
         } else {
@@ -12773,7 +12810,8 @@
         Legend.superclass.bindUI.call(_self);
         var _self = this;
         _self.on('mousemove', function(ev) {
-          ev.stopPropagation();
+          //ev.stopPropagation();
+          return false;
         });
       },
       _renderItems: function() {
@@ -13225,7 +13263,9 @@
       valueSuffix: '',
       visible: false,
       items: [],
-      crossLine: "#C0C0C0"
+      crossLine: {
+        stroke: "#C0C0C0"
+      }
     };
     Util.extend(Tooltip, PlotItem);
     Util.augment(Tooltip, {
@@ -18323,7 +18363,7 @@
        * 子项的配置信息
        * @type {Object}
        */
-      item: null,
+      item: undefined,
       /**
        * 存放子项的容器
        * @type {Canvas.Group}
@@ -19779,5 +19819,5 @@
     })
     module.exports = Theme;
   });
-  require("acharts/1.0.0/index-debug");
+  require("acharts/1.0.0/acharts-debug");
 })();
