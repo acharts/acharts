@@ -4,9 +4,9 @@ var Base = require('./base'),
   
 
 /**
- * @class Graphic.Shape
+ * @class Chart.Canvas.Shape
  * 图形的基类
- * @extends Graphic.Base
+ * @extends Chart.Canvas.Base
  */
 var Shape = function(cfg){
   Shape.superclass.constructor.call(this,cfg);
@@ -190,8 +190,8 @@ Util.augment(Shape,{
 
 /**
  * 圆
- * @class Graphic.Shape.Circle
- * @extends Graphic.Shape
+ * @class Chart.Canvas.Shape.Circle
+ * @extends Chart.Canvas.Shape
  */
 var Circle = function(cfg){
   Circle.superclass.constructor.call(this,cfg);
@@ -221,8 +221,8 @@ Shape.Circle = Circle;
 
 /**
  * 矩形
- * @class Graphic.Shape.Rect
- * @extends Graphic.Shape
+ * @class Chart.Canvas.Shape.Rect
+ * @extends Chart.Canvas.Shape
  */
 var Rect = function(cfg){
   Rect.superclass.constructor.call(this,cfg);
@@ -263,8 +263,8 @@ Shape.Rect = Rect;
 
 /**
  * 矩形
- * @class Graphic.Shape.Ellipse
- * @extends Graphic.Shape
+ * @class Chart.Canvas.Shape.Ellipse
+ * @extends Chart.Canvas.Shape
  */
 var Ellipse = function(cfg){
   Ellipse.superclass.constructor.call(this,cfg);
@@ -298,8 +298,8 @@ Shape.Ellipse = Ellipse;
 
 /**
  * 路径
- * @class Graphic.Shape.Path
- * @extends Graphic.Shape
+ * @class Chart.Canvas.Shape.Path
+ * @extends Chart.Canvas.Shape
  */
 var Path = function(cfg){
   Path.superclass.constructor.call(this,cfg);
@@ -320,8 +320,8 @@ Shape.Path = Path;
 
 /**
  * 直线
- * @class Graphic.Shape.Line
- * @extends Graphic.Shape.Path
+ * @class Chart.Canvas.Shape.Line
+ * @extends Chart.Canvas.Shape.Path
  */
 var Line = function(cfg){
   Line.superclass.constructor.call(this,cfg);
@@ -416,8 +416,8 @@ function points2path(points,z){
 
 /**
  * 折线，polyLine
- * @class Graphic.Shape.PolyLine
- * @extends Graphic.Shape.Path
+ * @class Chart.Canvas.Shape.PolyLine
+ * @extends Chart.Canvas.Shape.Path
  */
 var PolyLine = function(cfg){
   PolyLine.superclass.constructor.call(this,cfg);
@@ -461,8 +461,8 @@ Shape.PolyLine = PolyLine;
 
 /**
  * 多边形
- * @class Graphic.Shape.Polygon
- * @extends Graphic.Shape.Path
+ * @class Chart.Canvas.Shape.Polygon
+ * @extends Chart.Canvas.Shape.Path
  */
 var Polygon = function(cfg){
   PolyLine.superclass.constructor.call(this,cfg);
@@ -506,8 +506,8 @@ Shape.Polygon = Polygon;
 
 /**
  * 文本
- * @class Graphic.Shape.Text
- * @extends Graphic.Shape
+ * @class Chart.Canvas.Shape.Text
+ * @extends Chart.Canvas.Shape
  */
 var Text = function(cfg){
   Text.superclass.constructor.call(this,cfg);
@@ -546,9 +546,9 @@ Util.extend(Text,Shape);
 Shape.Text = Text;
 
 /**
- * @class Graphic.Shape.Label
+ * @class Chart.Canvas.Shape.Label
  * 文本标签，继承自文本，但是提供了rotate属性
- * @extends Graphic.Shape.Text
+ * @extends Chart.Canvas.Shape.Text
  */
 var Label = function(cfg){
   Label.superclass.constructor.call(this,cfg);
@@ -582,9 +582,9 @@ Util.augment(Label,{
 Shape.Label = Label;
 
 /**
- * @class Graphic.Shape.Marker
+ * @class Chart.Canvas.Shape.Marker
  * 用于标示节点的图形
- * @extends Graphic.Shape
+ * @extends Chart.Canvas.Shape
  */
 var Marker = function(cfg){
   Marker.superclass.constructor.call(this,cfg);
@@ -791,9 +791,9 @@ Shape.Marker = Marker;
 
 
 /**
- * @class Graphic.Shape.Image
+ * @class Chart.Canvas.Shape.Image
  * 图片
- * @extends Graphic.Shape
+ * @extends Chart.Canvas.Shape
  */
 var Image = function(cfg){
   Image.superclass.constructor.call(this,cfg);

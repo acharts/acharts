@@ -25,7 +25,7 @@ function initClassAttrs(c){
 /**
  * @class Chart.PlotItem
  * 图表内部元素的基类
- * @extends Canvas.Group
+ * @extends Chart.Canvas.Group
  * 
  */
 function Item(cfg){

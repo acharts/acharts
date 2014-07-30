@@ -122,7 +122,7 @@ function deepMix(dst,src,level){
 }
 
 /**
- * @class Acharts.Util
+ * @class Chart.Util
  * @singleton
  * 绘图的工具类
  */

@@ -4,7 +4,7 @@ var
   Util = require('../util');
 
 /**
- * @class Graphic.Base
+ * @class Chart.Canvas.Base
  * 图形控件或者分组的基类
  */
 var Base = function(cfg){
@@ -40,7 +40,7 @@ Base.ATTRS = {
   node : null,
   /**
    * 画布
-   * @type {Graphic.Canvas}
+   * @type {Chart.Canvas}
    */
   canvas : null,
   /**

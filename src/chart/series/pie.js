@@ -169,6 +169,11 @@ Pie.ATTRS = {
    */
   radius : null,
   /**
+   * 如果设置了内部size，通过计算得出
+   * @type {Number}
+   */
+  innerRadius : null,
+  /**
    * 开始的角度，-180-180
    * @type {Number}
    */
@@ -378,10 +383,18 @@ Util.augment(Pie,{
   getActiveItems : function(){
     return this.getItems();
   },
+  isPlaceHolder : function(item){
+    var point = item.get('point');
+    return point && point.obj && point.obj.placeHolder;
+  },
   //设置激活状态
   setItemActived : function(item,actived){
+    
     var _self = this,
       color = item.getCfgAttr('attrs').fill;
+    if(_self.isPlaceHolder(item)){
+      return;
+    }
     if(actived){
       item.attr({fill : Util.highlight(color,.1)});
       item.set('actived',true);

@@ -62,7 +62,7 @@ Chart.ATTRS = {
      * <code>
      *  var canvas =  chart.get('canvas');
      * </code>
-     * @type {CanvasCanvas}
+     * @type {Chart.Canvas}
      */
     canvas : undefined,
     /**

@@ -165,7 +165,7 @@ Util.augment(Markers,{
 	},
 	/**
 	 * 获取逼近的marker
-	 * @return {Canvas.Shape} marker
+	 * @return {Chart.Canvas.Shape} marker
 	 */
 	getSnapMarker : function(point,tolerance){
 		var _self = this,

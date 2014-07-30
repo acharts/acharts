@@ -6,7 +6,7 @@ var Container = require('./container'),
   require('../raphael/group');
 
 /**
- * @class Graphic.Group
+ * @class Chart.Canvas.Group
  * 图形分组
  */
 var Group = function(cfg){

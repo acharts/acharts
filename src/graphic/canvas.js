@@ -6,9 +6,9 @@ var
   Container = require('./container');
 
 /**
- * @class Graphic.Canvas
+ * @class Chart.Canvas
  * 图形的画板，支持SVG和VML
- * @extends Graphic.Container
+ * @extends Chart.Canvas.Container
  */
 var Canvas = function(cfg){
   Canvas.superclass.constructor.call(this,cfg);

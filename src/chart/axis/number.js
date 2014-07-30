@@ -96,6 +96,9 @@ Util.augment(NumberAxis,{
       count = (max - min)/tickInterval,
       cur;
 
+      if(! max > min){
+        return [];
+      }
       ticks.push(min);
       for(var i = 1 ; i <= count ;i++){
         cur = tickInterval * i + min;

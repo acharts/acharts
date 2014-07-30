@@ -24,7 +24,7 @@ Group.ATTRS = {
   item : undefined,
   /**
    * 存放子项的容器
-   * @type {Canvas.Group}
+   * @type {Chart.Canvas.Group}
    */
   group : null,
   /**

@@ -6,7 +6,7 @@
 var Util = require('../util');
 
 /**
- * @class Graphic.CanvasItem
+ * @class Chart.Canvas.CanvasItem
  * 画布内部元素的一些公用方法的扩展，仅作为接口使用
  */
 var Item = function(){

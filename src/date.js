@@ -164,7 +164,8 @@ var dateFormat = function() {
 
 /**
  * 日期的工具方法
- * @class Date
+ * @class Chart.Date
+ * @singleton
  */
 var DateUtil = {
   /**

@@ -334,7 +334,7 @@ Util.augment(Line,{
   
   /**
    * 获取逼近的marker
-   * @return {Canvas.Shape} 逼近的marker
+   * @return {Chart.Canvas.Shape} 逼近的marker
    */
   getSnapMarker : function(point){
     var _self = this,

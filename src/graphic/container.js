@@ -4,9 +4,9 @@ var
 	Util = require('../util');
 
 /**
- * @class Graphic.Container
+ * @class Chart.Canvas.Container
  * 图形容器
- * @extends Graphic.Base
+ * @extends Chart.Canvas.Base
  * @abstract
  */
 var Container = function(cfg){
@@ -52,7 +52,7 @@ Util.augment(Container,{
 	 * 添加图形
 	 * @param {String | Object} type 类型或者配置项
 	 * @param {String} attrs 属性
-	 * @return {Graphic.Shape} 图形
+	 * @return {Chart.Canvas.Shape} 图形
 	 */
 	addShape : function(type,attrs){
 		var _self = this,
@@ -78,8 +78,8 @@ Util.augment(Container,{
 	},
 	/**
 	 * 添加分组
-	 * @param {Function} C 构造函数,可以为空，默认为Graphic.Group
-	 * @return {Graphic.Group} 分组
+	 * @param {Function} C 构造函数,可以为空，默认为Chart.Canvas.Group
+	 * @return {Chart.Canvas.Group} 分组
 	 */
 	addGroup : function(C,cfg){
 		if(Util.isObject(C)){
@@ -123,7 +123,7 @@ Util.augment(Container,{
 	/**
 	 * @protected
 	 * 添加图形或者分组
-	 * @param {Graphic.Base} item 图形或者分组
+	 * @param {Chart.Canvas.Base} item 图形或者分组
 	 */
 	addChild : function(item){
 		var _self = this,
@@ -134,7 +134,7 @@ Util.augment(Container,{
 	/**
 	 * 获取子控件根据索引
 	 * @param  {Number} index 索引值
-	 * @return {Graphic.Base} 图形或者分组
+	 * @return {Chart.Canvas.Base} 图形或者分组
 	 */
 	getChildAt : function(index){
 		return this.get('children')[index];
@@ -148,14 +148,14 @@ Util.augment(Container,{
 	},
 	/**
 	 * 获取最后一个控件
-	 * @return {Graphic.Base} 图形或者分组
+	 * @return {Chart.Canvas.Base} 图形或者分组
 	 */
 	getLast : function(){
 		return this.getChildAt(this.getCount() - 1);
 	},
 	/**
 	 * 获取第一个控件
-	 * @return {Graphic.Base} 图形或者分组
+	 * @return {Chart.Canvas.Base} 图形或者分组
 	 */
 	getFirst : function(){
 		return this.getChildAt(0);
@@ -163,7 +163,7 @@ Util.augment(Container,{
 	/**
 	 * 根据id查找分组或者图形
 	 * @param  {String} id id
-	 * @return {Graphic.Base} 分组或者图形
+	 * @return {Chart.Canvas.Base} 分组或者图形
 	 */
 	find : function(id){
 		var _self = this;
@@ -202,7 +202,7 @@ Util.augment(Container,{
 	/**
 	 * 根据查找函数查找分组或者图形
 	 * @param  {Function} fn 匹配函数
-	 * @return {Graphic.Base} 分组或者图形
+	 * @return {Chart.Canvas.Base} 分组或者图形
 	 */
 	findBy : function(fn){
 		var _self = this,
@@ -224,7 +224,7 @@ Util.augment(Container,{
 	/**
 	 * 根据dom查找
 	 * @param  {HTMLElement} node 节点
-	 * @return {Graphic.Base} 返回分组或者图形
+	 * @return {Chart.Canvas.Base} 返回分组或者图形
 	 */
 	findByNode : function(node){
 		return this.findBy(function(item){
