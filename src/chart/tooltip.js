@@ -28,6 +28,8 @@ var Tooltip = function(cfg){
 Tooltip.ATTRS = {
 	zIndex : 10,
 	elCls : 'x-chart-tootip',
+
+	itemName : 'tootip',
 	/**
 	 * 是否贯穿整个坐标轴
 	 * @type {Boolean}
@@ -48,7 +50,6 @@ Tooltip.ATTRS = {
 	 * @type {Number}
 	 */
 	offset : 0,
-	shadow : null,
 	/**
 	 * 标题的配置信息
 	 * @type {Object}
@@ -101,6 +102,21 @@ Tooltip.ATTRS = {
 	valueSuffix : '',
 	
 	visible : false,
+
+	/**
+	 * 是否自定义tooltip，此时不使用svg,使用一个absolute的div
+	 * @type {Boolean}
+	 */
+	custom : false,
+
+	/**
+	 * 自定义的tooltip是否跟随显示隐藏、移动
+	 * @type {Boolean}
+	 */
+	customFollow : true,
+
+	html : '<div style="position:absolute;visibility: hidden;"></div>',
+
 	items : [
 
 	],
@@ -115,12 +131,17 @@ Util.extend(Tooltip,PlotItem);
 Util.augment(Tooltip,{
 
 	renderUI : function(){
-		var _self = this;
+		var _self = this,
+			custom = _self.get('custom');
 
 		Tooltip.superclass.renderUI.call(_self);
-		_self._renderBorer();
-		_self._renderText();
-		_self._renderItemGroup();
+		if(!custom){
+			_self._renderBorer();
+			_self._renderText();
+			_self._renderItemGroup();
+		}else{
+			_self._renderCustom();
+		}
 		_self._renderCrossLine();
 
 	},
@@ -138,6 +159,21 @@ Util.augment(Tooltip,{
 
 		_self.setTitle(title.text);
 
+	},
+	_renderCustom : function(){
+		var _self = this,
+			html = _self.get('html'),
+			customDiv
+		if(/^\#/.test(html)){
+			var id = html.replace('#','');
+			customDiv = document.getElementById(id);
+		}else{
+			customDiv = Util.createDom(html);
+		}
+		if(_self.get('customFollow')){
+			document.body.appendChild(customDiv);
+		}
+		_self.set('customDiv',customDiv);
 	},
 	//渲染文本集合
 	_renderItemGroup : function(){
@@ -183,9 +219,17 @@ Util.augment(Tooltip,{
 	 */
 	setTitle : function(text){
 		var _self = this,
-			titleShape = _self.get('titleShape'),
+			titleShape,
 			title = _self.get('title'),
+			custom = _self.get('custom'),
 			cfg;
+
+		_self.set('titleText',text);
+		if(custom){
+			return;
+		}
+
+		titleShape = _self.get('titleShape');
 		if(!titleShape){
 			title.text = text || '';
 			titleShape = _self.addShape('text',title);
@@ -193,13 +237,14 @@ Util.augment(Tooltip,{
 		}
 		titleShape.attr('text',text);
 	},
-
 	getInnerBox : function(){
 		var _self = this,
-			textGroup = _self.get('textGroup'),
+			rst = {};
+		
+		var	textGroup = _self.get('textGroup'),
 			titleShape = _self.get('titleShape'),
 			bbx = textGroup.getBBox(),
-			rst = {},
+			
 			width = bbx.width;
 		if(titleShape){
 			var tbox = titleShape.getBBox();
@@ -207,7 +252,7 @@ Util.augment(Tooltip,{
 		}
 		rst.width = bbx.x + width + 8;
 		rst.height = bbx.height + bbx.y + 10;
-
+		
 		return rst;
 	},
 	/**
@@ -225,11 +270,17 @@ Util.augment(Tooltip,{
 	show : function(){
 		var _self = this,
 			crossShape = _self.get('crossShape'),
+			customDiv = _self.get('customDiv'),
 			hideHandler = _self.get('hideHandler');
 		if(hideHandler){
 			clearTimeout(hideHandler);
 		}
+		
 		Tooltip.superclass.show.call(_self);
+		if(customDiv && _self.get('customFollow')){
+			customDiv.style.visibility = 'visible';
+		}
+		_self.fireUp('tooltipshow',_self.getEventObj());
 		crossShape && crossShape.show();
 	},
 	/**
@@ -237,9 +288,14 @@ Util.augment(Tooltip,{
 	 */
 	hide : function(){
 		var _self = this,
+			customDiv = _self.get('customDiv'),
 			crossShape = _self.get('crossShape');
 
 		var hideHandler = setTimeout(function(){
+			_self.fireUp('tooltiphide',_self.getEventObj());
+			if(customDiv && _self.get('customFollow')){
+				customDiv.style.visibility = 'hidden';
+			}
 			Tooltip.superclass.hide.call(_self);
 			_self.set('hideHandler',null);
 		},_self.get('duration'));
@@ -263,6 +319,7 @@ Util.augment(Tooltip,{
 			offset = _self.get('offset'),
 			crossShape = _self.get('crossShape'),
 			bbox = _self.getBBox(),
+			customDiv = _self.get('customDiv'),
 			after = true,
 			animate = _self.get('animate'); //移动点落到tooltip的后面
 
@@ -271,7 +328,9 @@ Util.augment(Tooltip,{
 
 		x = x - bbox.width - offset;
 		y = y - bbox.height;
-
+		if(customDiv && _self.get('customFollow')){
+			x = x - Util.getOuterWidth(customDiv);
+		}
 		if(plotRange){
 
 			if(!plotRange.isInRange(x,y)){
@@ -296,6 +355,7 @@ Util.augment(Tooltip,{
 			}
 
 			_self.move(x,y);/**/
+			_self.moveCustom(x,y);
 
 			if(crossShape){
 				if(after){
@@ -305,8 +365,6 @@ Util.augment(Tooltip,{
 				}
 			}
 		}
-
-
 	},
 	//重置边框大小
 	resetBorder : function(){
@@ -314,11 +372,24 @@ Util.augment(Tooltip,{
 			bbox = _self.getInnerBox(),
 			borderShape = _self.get('borderShape');
 
-
 		borderShape.attr({
 			width : bbox.width,
 			height : bbox.height
 		});
+	},
+	moveCustom : function(x,y){
+		var _self = this,
+			customDiv = _self.get('customDiv');
+		if(customDiv && _self.get('customFollow')){
+
+			var 
+				pTop = parseFloat(Util.getStyle(customDiv,'paddingTop')),
+				bTop = parseFloat(Util.getStyle(customDiv,'borderTopWidth')) || 0,
+				pLeft = parseFloat(Util.getStyle(customDiv,'paddingLeft')),
+				bLeft = parseFloat(Util.getStyle(customDiv,'borderLeftWidth')) || 0;
+			customDiv.style.left = (x - bLeft - pLeft ) + 'px';
+			customDiv.style.top = (y - bTop - pTop) + 'px';
+		}
 	},
 	/**
 	 * @private
@@ -367,8 +438,6 @@ Util.augment(Tooltip,{
 			},params);
 		  return group.addShape('text',cfg);
 	  }
-
-
 	},
 	/**
 	 * 设置显示的信息项
@@ -380,18 +449,37 @@ Util.augment(Tooltip,{
 	 * @param {Array} items 信息列表
 	 */
 	setItems : function(items){
-		var _self = this;
+		var _self = this,
+			custom = _self.get('custom');
 
-		_self.clearItems();
-		Util.each(items,function(item,index){
-			_self.addItem(item,index);
-		});
+		if(!custom){
+			_self.clearItems();
+			Util.each(items,function(item,index){
+				_self.addItem(item,index);
+			});
 
-		if(items[0]){
-			_self.setColor(items[0].color);
+			if(items[0]){
+				_self.setColor(items[0].color);
+			}
+			_self.resetBorder();
 		}
-		_self.resetBorder();
-		//_self.set('items',items);
+		if(_self.get('items') != items){
+			_self.set('items',items);
+			_self.onChange();
+		}
+	},
+
+	onChange : function(){
+		this.fireUp('tooltipchange',this.getEventObj());
+	},
+	getEventObj :function(){
+		var _self = this;
+		return {
+			title : _self.get('titleText'),
+			items : _self.get('items'),
+			dom : _self.get('customDiv'),
+			tooltip : _self
+		};
 	},
 	/**
 	 * 清除所有的信息

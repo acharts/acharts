@@ -72,7 +72,7 @@ describe('测试序列生成',function(){
     line : {
       'stroke-width': 2,
       'stroke-linejoin': 'round',
-      'stroke-linecap': 'round',
+      'stroke-linecap': 'round'
     },
     lineActived : {
       'stroke-width': 3
@@ -98,7 +98,7 @@ describe('测试序列生成',function(){
     line : {
       'stroke-width': 2,
       'stroke-linejoin': 'round',
-      'stroke-linecap': 'round',
+      'stroke-linecap': 'round'
     },
     smooth : true,
     markers : {
@@ -120,7 +120,7 @@ describe('测试序列生成',function(){
       
       'stroke-width': 2,
       'stroke-linejoin': 'round',
-      'stroke-linecap': 'round',
+      'stroke-linecap': 'round'
     },
     labels : {
       label : {

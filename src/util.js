@@ -547,7 +547,7 @@ function getEventObj(ev){
   var  rst = {};
   rst.target = ev.srcElement;
   rst.pageX = ev.clientX + document.body.scrollLeft - document.body.clientLeft;
-  rst.pageY = ev.ev.clientY + document.body.scrollTop - document.body.clientTop;
+  rst.pageY = ev.clientY + document.body.scrollTop - document.body.clientTop;
   Util.each(ARR_EV,function(key){
     rst[key] = ev[key];
   });
@@ -569,7 +569,17 @@ Util.mix(Util,{
    * @type {Boolean}
    */
   svg : Raphael.svg,
-
+  /**
+   * 创建DOM 节点
+   * @param  {String} str Dom 字符串
+   * @return {HTMLElement}  DOM 节点
+   */
+  createDom : function(str){
+    var div = document.createElement('div');
+    str = str.replace(/(^\s*)|(\s*$)/g, "");//trim
+    div.innerHTML = str;
+    return div.childNodes[0];
+  },
   getOffset : function(o){
     var rst = {},
       left = 0,
@@ -604,6 +614,60 @@ Util.mix(Util,{
       }
 
       return rst;
+  },
+  /**
+   * 获取宽度
+   * @param  {HTMLElement} el  dom节点
+   * @return {Number} 宽度
+   */
+  getWidth : function(el){
+    var width = Util.getStyle(el,'width');
+    if(width == 'auto'){
+      width = el.offsetWidth;
+    }
+    return parseFloat(width);
+  },
+   /**
+   * 获取高度
+   * @param  {HTMLElement} el  dom节点
+   * @return {Number} 高度
+   */
+  getHeight : function(el){
+    var height = Util.getStyle(el,'height');
+    if(height == 'auto'){
+      height = el.offsetHeight;
+    }
+    return parseFloat(height);
+  },
+  getOuterWidth : function(el){
+    var width = Util.getWidth(el),
+      bLeft = parseFloat(Util.getStyle(el,'borderLeftWidth')) || 0,
+      pLeft = parseFloat(Util.getStyle(el,'paddingLeft')),
+      pRight = parseFloat(Util.getStyle(el,'paddingRight')),
+      bRight = parseFloat(Util.getStyle(el,'borderRightWidth')) || 0;
+
+    return width + bLeft + bRight + pLeft + pRight;
+  },
+  getOuterHeight : function(el){
+     var height = Util.getHeight(el),
+      bTop = parseFloat(Util.getStyle(el,'borderTopWidth')) || 0,
+      pTop = parseFloat(Util.getStyle(el,'paddingTop')),
+      pBottom = parseFloat(Util.getStyle(el,'paddingBottom')),
+      bBottom = parseFloat(Util.getStyle(el,'borderBottomWidth')) || 0;
+
+    return height + bTop + bBottom + pTop + pBottom;
+  },
+  /**
+   * 获取样式
+   * @param  {HTMLElement} el  dom节点
+   * @param  {String} name 样式名
+   * @return {String} 属性值
+   */
+  getStyle : function(el,name){
+    if(window.getComputedStyle){
+      return window.getComputedStyle(el,null)[name];
+    }
+    return el.currentStyle[name];
   },
   addEvent : function( obj, type, fn ) {
     if ( obj.attachEvent ) {

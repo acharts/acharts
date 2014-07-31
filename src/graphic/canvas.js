@@ -91,25 +91,25 @@ Util.augment(Canvas,{
   },
   /**
    * 将页面上的坐标转换成画布上的坐标
-   * @param  {Number} pageX 页面上的x坐标
-   * @param  {Number} pageY 页面上的y坐标
+   * @param  {Number} clientX 窗口的x坐标
+   * @param  {Number} clientY 窗口上的y坐标
    * @return {Object} 坐标对象包含x,y
    */
-  getPoint : function(pageX,pageY){
+  getPoint : function(clientX,clientY){
     var _self = this,
       node = _self.get('node'),
       viewbox = _self.get('viewbox'),
-      offset = Util.getOffset(node),
+      offset = node.getBoundingClientRect(),
       point = {};
 
     if(!viewbox){ //如果不存在viewbox
-      point.x = pageX - offset.left;
-      point.y = pageY - offset.top;
+      point.x = clientX - offset.left;
+      point.y = clientY - offset.top;
     }else{
       var xfactor = viewbox.width / _self.get('width'), //计算 宽度比例
         yfactor = viewbox.height / _self.get('height'); //高度比例
-      point.x = (pageX - offset.left)  * xfactor + viewbox.x;
-      point.y = (pageY - offset.top) * yfactor + viewbox.y;
+      point.x = (clientX - offset.left)  * xfactor + viewbox.x;
+      point.y = (clientY - offset.top) * yfactor + viewbox.y;
     }
 
     return point;

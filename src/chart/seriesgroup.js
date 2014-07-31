@@ -130,7 +130,8 @@ Util.augment(Group,{
   //绑定鼠标在画板上移动事件
   bindCanvasEvent : function(){
     var _self = this,
-      triggerEvent = _self.get('tipGroup').get('triggerEvent'),
+      tipGroup = _self.get('tipGroup'),
+      triggerEvent = tipGroup ? tipGroup.get('triggerEvent') : '',
       canvas = _self.get('canvas');
 
     if (triggerEvent == 'click') {
@@ -164,7 +165,7 @@ Util.augment(Group,{
     if(!tipGroup){
       return;
     }
-    point = canvas.getPoint(ev.pageX,ev.pageY);
+    point = canvas.getPoint(ev.clientX,ev.clientY);
     if(_self._isInAxis(point)){
       _self._processTracking(point,tipGroup);
     }else{

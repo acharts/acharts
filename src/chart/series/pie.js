@@ -391,7 +391,7 @@ Util.augment(Pie,{
   setItemActived : function(item,actived){
     
     var _self = this,
-      color = item.getCfgAttr('attrs').fill;
+      color = item.getCfgAttr('attrs').fill || item.getCfgAttr('attrs').color;
     if(_self.isPlaceHolder(item)){
       return;
     }

@@ -18,7 +18,7 @@ var labels = canvas.addGroup(Labels,{
     {x : 10,y : 40,text : "2"},
     {x : 10,y : 60,text : "3"},
     {x : 10,y : 80,text : "4"},
-    {x : 10,y : 100,text : "5",font : "10px",stroke : "red"},
+    {x : 10,y : 100,text : "5",font : "10px Arial",stroke : "red"},
     {x : 10,y : 120,text : "6"},
     {x : 10,y : 140,text : "7"},
     {x : 10,y : 160,text : "8"}
@@ -67,7 +67,7 @@ describe('test labels',function () {
           {x : 10,y : 40,text : "二"},
           {x : 10,y : 60,text : "三"},
           {x : 10,y : 80,text : "四"},
-          {x : 10,y : 100,text : "五",font : "10px",stroke : "red"},
+          {x : 10,y : 100,text : "五",font : "10px Arial",stroke : "red"},
           {x : 10,y : 120,text : "六"},
           {x : 10,y : 140,text : "七"}];
 

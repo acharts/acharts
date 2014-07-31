@@ -169,13 +169,13 @@ Util.augment(Base,{
    * 触发事件
    * @param  {String} eventType 事件类型
    */
-  fire : function(eventType){
+  fire : function(eventType,eventObj){
     var _self = this,
       events = _self.events,
       callbacks = events[events];
     if(callbacks){
       Util.each(callbacks,function(m){
-        m();
+        m(eventObj);
       });
     }
   },

@@ -32,7 +32,7 @@ var tooltip = canvas.addGroup(Tooltip,{
 		{color : 'yellow',name : 'name3',value : 'swww - afas'}
 	]
 });
-/*
+
 describe('测试生成',function(){
 
 	it('测试tooltip',function(){
@@ -119,4 +119,4 @@ describe('测试操作',function(){
 
 });
 
-*/
+/**/

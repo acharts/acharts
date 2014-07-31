@@ -80,8 +80,11 @@ Util.augment(Legend,{
     Legend.superclass.bindUI.call(_self);
     var _self = this;
     _self.on('mousemove',function(ev){
-      //ev.stopPropagation();
-      return false;
+      if(ev.stopPropagation){
+        ev.stopPropagation();
+      }else{
+        window.event.cancelBubble = true;  
+      }
     });
   },
   _renderItems : function(){

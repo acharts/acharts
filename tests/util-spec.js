@@ -1,7 +1,8 @@
 
 var  expect = require('expect.js'),
     sinon = require('sinon'),
-    Util = require('../src/util');
+    Util = require('../src/util'),
+    $ = require('jquery');
 
 describe('test basic util',function(){
 
@@ -448,6 +449,21 @@ describe('test util with raphael',function(){
 });
 
 describe('dom',function(){
+
+    it('create dom',function(){
+        var str = '<div id="t1"></div>',
+            dom = Util.createDom(str);
+        document.body.appendChild(dom);
+        expect(dom).not.to.be('undefined');
+        expect(document.getElementById('t1')).to.be(dom);
+
+        expect($(dom).width()).to.be(Util.getWidth(dom));
+    });
+
+    it('addevent,removeEvnet',function(){
+
+    });
+
     it('getOffset',function(){
         
     });

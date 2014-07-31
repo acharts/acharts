@@ -9,41 +9,6 @@ var Util = require('./util'),
   SeriesGroup = require('./chart/seriesgroup'),
   Theme = require('./chart/theme');
 
-function getWidth(el){
-  return parseFloat(getStyle(el,'width'));
-}
-
-function getHeight(el){
-
-  return parseFloat(getStyle(el,'height'));
-}
-
-function getStyle(el,name){
-  if(window.getComputedStyle){
-    return window.getComputedStyle(el,null).style[name];
-  }
-  return el.currentStyle[name];
-}
-
-function mixIf(obj1,obj2){
-  var rst = {},
-    isMerge = false;
-  Util.each(obj1,function(v,k){
-    rst[k] = obj2[k];
-    if(Util.isObject(rst[k])){
-      Util.mix(true,rst[k],obj1[k]);
-    }else{
-      rst[k] = obj1[k];
-    }
-    
-  });
-  if(!isMerge){
-    rst['lineCfg'] = obj2['lineCfg'];
-  }
-  return rst;
-
-}
-
 /**
  * @class Chart
  * 图，里面包括坐标轴、图例等图形
@@ -210,6 +175,33 @@ Chart.ATTRS = {
      * @param {Chart.Series} ev.series 数据序列对象
      */
     
+    /**
+     * @event tooltipchange
+     * tooltip信息改变
+     * @param {Object} ev 事件对象
+     * @param {Chart.Series} ev.title tooltip 标题
+     * @param {Chart.Series} ev.items 显示tooltip的项
+     * @param {HTMLElement} ev.dom 自定义tooltip时，tooltip的DOM 节点
+     */
+    
+    /**
+     * @event tooltipshow
+     * tooltip显示
+     * @param {Object} ev 事件对象
+     * @param {Chart.Series} ev.title tooltip 标题
+     * @param {Chart.Series} ev.items 显示tooltip的项
+     * @param {HTMLElement} ev.dom 自定义tooltip时，tooltip的DOM 节点
+     */
+    
+    /**
+     * @event tooltiphide
+     * tooltip隐藏
+     * @param {Object} ev 事件对象
+     * @param {Chart.Series} ev.title tooltip 标题
+     * @param {Chart.Series} ev.items 显示tooltip的项
+     * @param {HTMLElement} ev.dom 自定义tooltip时，tooltip的DOM 节点
+     */
+    
   }
 
 
@@ -258,8 +250,8 @@ Util.augment(Chart,{
       id = _self.get('id') || _self.get('render') || '';
     id = id.replace('#','');
     var  el = document.getElementById(id),
-      width = _self.get('width') || getWidth(el),
-      height = _self.get('height') || getHeight(el),
+      width = _self.get('width') || Util.getWidth(el),
+      height = _self.get('height') || Util.getHeight(el),
       canvas = new Canvas({
         width : width,
         height :height,
@@ -407,13 +399,13 @@ Util.augment(Chart,{
    * 触发事件
    * @param  {String} eventType 事件类型
    */
-  fire : function(eventType){
+  fire : function(eventType,eventObj){
     var _self = this,
       events = _self.events,
       callbacks = events[eventType];
     if(callbacks){
       Util.each(callbacks,function(m){
-        m();
+        m(eventObj);
       });
     }
   },

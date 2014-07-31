@@ -96,7 +96,7 @@ Util.augment(NumberAxis,{
       count = (max - min)/tickInterval,
       cur;
 
-      if(! max > min){
+      if(! (max > min) || isNaN(max) || max == null){
         return [];
       }
       ticks.push(min);
