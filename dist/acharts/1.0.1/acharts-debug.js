@@ -586,9 +586,9 @@
               dst[k] = src[k];
             }
           } else if (Util.isArray(value)) {
-            if (!Util.isArray(dst[k])) {
-              dst[k] = [];
-            }
+            //if(!Util.isArray(dst[k])){
+            dst[k] = [];
+            //}
             dst[k] = dst[k].concat(value);
           } else if (value !== undefined) {
             dst[k] = src[k];
