@@ -269,6 +269,30 @@
        * @param {Chart.Series} ev.items 显示tooltip的项
        * @param {HTMLElement} ev.dom 自定义tooltip时，tooltip的DOM 节点
        */
+      /**
+       * @event plotclick
+       * 点击图表内部
+       * @param {Object} ev 事件对象
+       * @param {Number} x 点击的x的坐标
+       * @param {Number} y 点击的y的坐标
+       * @param {Chart.Canvas.Shape} Shape 点击到的图形
+       */
+      /**
+       * @event plotmove
+       * 在图表内部移动
+       * @param {Object} ev 事件对象
+       * @param {Number} x 移动到x的坐标
+       * @param {Number} y 移动到y的坐标
+       * @param {Chart.Canvas.Shape} Shape 移动到的图形
+       */
+      /**
+       * @event plotover
+       * 移入图表内部
+       */
+      /**
+       * @event plotout
+       * 移出图表内部
+       */
     }
     Util.augment(Chart, {
       get: function(name) {
@@ -11770,6 +11794,7 @@
         var _self = this,
           canvas = _self.get('canvas'),
           chart = canvas.chart;
+        ev = ev || {};
         if (chart) {
           ev.target = ev.target || chart;
           chart.fire(name, ev);
@@ -12058,22 +12083,41 @@
         var _self = this,
           canvas = _self.get('canvas');
 
-        function fireChartEvent(name, clientX, clientY) {
-          var point = canvas.getPoint(clientX, clientY),
-            info = _self.getPointInfo(point);
+        function fireChartEvent(name, ev) {
+          var point = canvas.getPoint(ev.clientX, ev.clientY),
+            info = _self.getPointInfo(point, ev);
           _self.fireUp(name, info);
         }
         canvas.on('click', function(ev) {
-          fireChartEvent('chartclick', ev.clientX, ev.clientY);
+          var point = canvas.getPoint(ev.clientX, ev.clientY);
+          if (_self._isInAxis(point)) {
+            var info = _self.getPointInfo(point, ev);
+            _self.fireUp('plotclick', info);
+          }
         });
         canvas.on('mousemove', function(ev) {
-          fireChartEvent('chartmove', ev.clientX, ev.clientY);
+          var point = canvas.getPoint(ev.clientX, ev.clientY),
+            isOver = _self.get('isOver');
+          if (_self._isInAxis(point)) {
+            var info = _self.getPointInfo(point, ev);
+            _self.fireUp('plotmove', info);
+            if (!isOver) {
+              _self.fireUp('plotover');
+              _self.set('isOver', true);
+            }
+          } else if (isOver) {
+            _self.fireUp('plotout');
+            _self.set('isOver', false);
+          }
         });
       },
       //获取图标上对应位置的信息，待扩充
-      getPointInfo: function(point) {
-        var _self = this;
-        return Util.mix({}, point);
+      getPointInfo: function(point, ev) {
+        var _self = this,
+          shape = ev.target.shape;
+        return Util.mix({
+          shape: shape
+        }, point);
       },
       //处理鼠标在画板上移动
       onCanvasMove: function(ev) {

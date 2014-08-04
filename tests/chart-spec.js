@@ -65,7 +65,19 @@ describe('测试图形的基础内容', function() {
   });
 
   chart.render();
+  /*
+  chart.on('plotclick',function(ev){
+    console.log(ev);
+  });
 
+  chart.on('plotout',function(ev){
+    console.log('out');
+  });
+
+  chart.on('plotover',function(ev){
+    console.log('over');
+  });
+*/
   describe('测试图形的基础内容',function(){
     it('测试控件生成',function(){
       expect(chart.get('el')).not.to.be(null);

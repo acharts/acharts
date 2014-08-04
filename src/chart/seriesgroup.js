@@ -160,24 +160,41 @@ Util.augment(Group,{
     var _self = this,
       canvas = _self.get('canvas');
 
-    function fireChartEvent(name,clientX,clientY){
-      var point = canvas.getPoint(clientX,clientY),
-        info = _self.getPointInfo(point);
+    function fireChartEvent(name,ev){
+      var point = canvas.getPoint(ev.clientX,ev.clientY),
+        info = _self.getPointInfo(point,ev);
       _self.fireUp(name,info);
     }
 
     canvas.on('click',function(ev){
-      fireChartEvent('chartclick',ev.clientX,ev.clientY);
+      var point = canvas.getPoint(ev.clientX,ev.clientY);
+      if(_self._isInAxis(point)){
+        var info = _self.getPointInfo(point,ev);
+        _self.fireUp('plotclick',info);
+      }
     });
 
     canvas.on('mousemove',function(ev){
-      fireChartEvent('chartmove',ev.clientX,ev.clientY);
+      var point = canvas.getPoint(ev.clientX,ev.clientY),
+        isOver = _self.get('isOver');
+      if(_self._isInAxis(point)){
+        var info = _self.getPointInfo(point,ev);
+        _self.fireUp('plotmove',info);
+        if(!isOver){
+          _self.fireUp('plotover');
+          _self.set('isOver',true);
+        }
+      }else if(isOver){
+        _self.fireUp('plotout');
+        _self.set('isOver',false);
+      }
     });
   },
   //获取图标上对应位置的信息，待扩充
-  getPointInfo : function(point){
-    var _self = this;
-    return Util.mix({},point);
+  getPointInfo : function(point,ev){
+    var _self = this,
+      shape = ev.target.shape;
+    return Util.mix({shape : shape},point);
   },
   //处理鼠标在画板上移动
   onCanvasMove : function(ev){

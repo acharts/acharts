@@ -202,6 +202,35 @@ Chart.ATTRS = {
      * @param {HTMLElement} ev.dom 自定义tooltip时，tooltip的DOM 节点
      */
     
+    
+    /**
+     * @event plotclick
+     * 点击图表内部
+     * @param {Object} ev 事件对象
+     * @param {Number} x 点击的x的坐标
+     * @param {Number} y 点击的y的坐标
+     * @param {Chart.Canvas.Shape} Shape 点击到的图形
+     */
+    
+    /**
+     * @event plotmove
+     * 在图表内部移动
+     * @param {Object} ev 事件对象
+     * @param {Number} x 移动到x的坐标
+     * @param {Number} y 移动到y的坐标
+     * @param {Chart.Canvas.Shape} Shape 移动到的图形
+     */
+    
+    /**
+     * @event plotover
+     * 移入图表内部
+     */
+    
+    /**
+     * @event plotout
+     * 移出图表内部
+     */
+    
   }
 
 

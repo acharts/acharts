@@ -68,6 +68,7 @@ Util.augment(Item,{
     var _self = this,
       canvas = _self.get('canvas'),
       chart = canvas.chart;
+    ev = ev || {};
     if(chart){
       ev.target = ev.target || chart;
       chart.fire(name,ev);
