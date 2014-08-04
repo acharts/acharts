@@ -39,6 +39,12 @@ Labels.ATTRS = {
 	 */
 	renderer : null,
 
+	custom : false,
+
+	html : '<div class="ac-labels" style="position:absolute;top:0;left:0;"></div>',
+
+	itemTpl : '<div clss="ac-label" style="position:absolute;">{text}</div>',
+
 	animate : true,
 	
 	duration : 400
@@ -64,9 +70,7 @@ Util.augment(Labels,{
 			items = _self.get('items'),
 			count = items.length;
 		items.push(item);
-
 		return _self._addLabel(item,count);
-
 	},
 	/**
 	 * 设置文本
@@ -78,6 +82,15 @@ Util.augment(Labels,{
 		_self.clear();
 		_self.set('items',items);
 		_self._drawLabels();
+	},
+	clear : function(){
+		var _self = this,
+			customDiv = _self.get('customDiv');
+		if(customDiv){
+			customDiv.innerHTML = '';
+		}
+
+		Labels.superclass.clear.call(_self);
 	},
 	//绘制文本
 	_drawLabels : function(){
@@ -121,38 +134,113 @@ Util.augment(Labels,{
 
 		return cfg;
 	},
+	/**
+	 * 获取内部labels
+	 * @return {Array} 内部的label集合
+	 */
+	getLabels : function(){
+		var _self = this,
+			customDiv = _self.get('customDiv');
+		if(customDiv){
+			return Util.makArray(customDiv.childNodes);
+		}else{
+			return _self.get('children');
+		}
+	},
+	//更改label
 	changeLabel : function(label,item){
 		var _self = this,
-			index = Util.indexOf(_self.get('children'),label),
-			cfg = _self._getLabelCfg(item,index);
+			custom = _self.get('custom'),
+			index,
+			cfg;
+
+			index = Util.indexOf(_self.get('children'),label);
+		cfg = _self._getLabelCfg(item,index);
 		if(label){
-			label.attr('text',cfg.text);
-			if(label.attr('x') != cfg.x || label.attr('y') != cfg.y){
-				if(Util.svg && _self.get('animate') && !cfg.rotate){
-					if(cfg.rotate){
-						label.attr('transform','');
-					}
-					
-					label.animate({
-						x : cfg.x,
-						y : cfg.y
-					},_self.get('duration'));
-				}else{
-					label.attr(cfg);
-					if(cfg.rotate){
-						label.attr('transform',Util.substitute('r{rotate} {x} {y}',cfg));
+			if(custom){
+				var node = _self._createDom(cfg);
+				label.innerHTML = node.innerHTML;
+				_self._setCustomPosition(cfg,label);
+			}else{
+				label.attr('text',cfg.text);
+				if(label.attr('x') != cfg.x || label.attr('y') != cfg.y){
+					if(Util.svg && _self.get('animate') && !cfg.rotate){
+						if(cfg.rotate){
+							label.attr('transform','');
+						}
+						
+						label.animate({
+							x : cfg.x,
+							y : cfg.y
+						},_self.get('duration'));
+					}else{
+						label.attr(cfg);
+						if(cfg.rotate){
+							label.attr('transform',Util.substitute('r{rotate} {x} {y}',cfg));
+						}
 					}
 				}
 			}
 			
 		}
 	},
+	//设置自定义label的位置
+	_setCustomPosition : function(cfg,labelDom){
+		var _self = this,
+			anchor = cfg['text-anchor'] || 'middle',
+			top = cfg.y,
+			left = cfg.x,
+			width = Util.getWidth(labelDom),
+			height = Util.getHeight(labelDom);
+
+		top = top - height/2;
+		if(anchor == 'middle'){
+			left = left - width/2;
+		}else if(anchor == 'end'){
+			left = left - width;
+		}
+		labelDom.style.top = parseInt(top) + 'px';
+		labelDom.style.left = parseInt(left) + 'px';
+	},
 	/**
 	 * 创建按文本
 	 * @private
 	 */
 	_createText : function(cfg){
-		return this.addShape('label',cfg);
+		var _self = this,
+			custom = _self.get('custom'),
+			customDiv = _self.get('customDiv');
+		if(custom){
+			if(!customDiv){
+				var tmp = _self.get('html'),
+					wraper = _self.get('canvas').get('node').parentNode;
+				customDiv = Util.createDom(tmp);
+				wraper.style.position = 'relative';
+				wraper.appendChild(customDiv);
+				_self.set('customDiv',customDiv);
+			}
+			var node = _self._createDom(cfg);
+			customDiv.appendChild(node);
+			_self._setCustomPosition(cfg,node);
+		}else{
+			return this.addShape('label',cfg);
+		}
+	},
+	_createDom : function(cfg){
+		var _self = this,
+			itemTpl = _self.get('itemTpl'),
+			str = Util.substitute(itemTpl,cfg),
+			node = Util.createDom(str);
+		return node;
+	},
+	//覆写删除
+	remove : function(){
+		var _self = this,
+			customDiv = _self.get('customDiv');
+		Labels.superclass.remove(this);
+		if(customDiv){
+			customDiv.parentNode.removeChild(customDiv);
+		}
 	}
 
 });

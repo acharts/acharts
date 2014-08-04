@@ -54,8 +54,8 @@ function resetItem(item,h,endAngle,r,center){
       item.y = center.y + (r + 5) * Math.sin(item.angle * RAD);
 }
 
-function alignLables(center,r,arr,endAngle,factor){
-  var count = parseInt(r * 2 / LINE_HEIGHT,10),//理论上，最大显示的条数
+function alignLables(center,r,arr,endAngle,factor,lineHeight){
+  var count = parseInt(r * 2 / lineHeight,10),//理论上，最大显示的条数
     maxY = center.y + r,
     minY = center.y - r;
   if(count < arr.length){ //忽略掉不能显示的条数
@@ -77,7 +77,7 @@ function alignLables(center,r,arr,endAngle,factor){
     leftAvg = factor > 0 ? (maxY - y) / leftCount : (y - minY) / leftCount;
     conflictIndex = i;
     
-    if(leftAvg < LINE_HEIGHT){
+    if(leftAvg < lineHeight){
       conflictIndex = i + 1;
       break;
     }
@@ -93,8 +93,8 @@ function alignLables(center,r,arr,endAngle,factor){
 
     leftCount = length - start - 1;
     leftAvg = Math.abs(endY - y) / leftCount;
-    if(leftAvg < LINE_HEIGHT){
-      leftAvg = LINE_HEIGHT;
+    if(leftAvg < lineHeight){
+      leftAvg = lineHeight;
     }
     //调整后面的文本
     for (var i = length - 1; i >= start; i--) {
@@ -108,11 +108,11 @@ function alignLables(center,r,arr,endAngle,factor){
     //调整前面的文本
     for(var i = start -1; i > 0 ;i--){
       var item = arr[i];
-      if(!adjust && Math.abs(startY - item.y) / (i + 1) < LINE_HEIGHT){
+      if(!adjust && Math.abs(startY - item.y) / (i + 1) < lineHeight){
         adjust = true;
       }
       if(adjust){
-        var h = Math.abs(arr[i + 1].y - endY) + LINE_HEIGHT;
+        var h = Math.abs(arr[i + 1].y - endY) + lineHeight;
         resetItem(arr[i],h,endAngle,r,center);
       }
     }
@@ -123,8 +123,7 @@ function alignLables(center,r,arr,endAngle,factor){
 
 
 var RAD = Math.PI / 180,
-  MARGIN = 5,
-  LINE_HEIGHT = 16; //最小行高
+  MARGIN = 5; //最小行高
 
 /**
  * @class Chart.Series.Pie
@@ -183,6 +182,13 @@ Pie.ATTRS = {
    * @type {Number}
    */
   endAngle : 270,
+  /**
+   * 代表饼图文本的高度，用于排布文本，防止文本重叠
+   * @type {Number}
+   */
+  labelHeight : 16,
+
+  labelLine : true,
   
   xField : 'name',
   stickyTracking : false,
@@ -248,6 +254,8 @@ Util.augment(Pie,{
       rAppend = r + distance,
       startAngle = _self.get('startAngle'),
       endAngle = _self.get('endAngle'),
+      lineHeight = _self.get('labelHeight'),
+      labelLine = _self.get('labelLine'),
       rightArray = [];
 
     Util.each(points,function(point){
@@ -269,18 +277,18 @@ Util.augment(Pie,{
       }else{
         end = -90;
       }
-      alignLables(center,rAppend,leftArray,end,-1);
+      alignLables(center,rAppend,leftArray,end,-1,lineHeight);
       Util.each(leftArray,function(label){
         labelsGroup.addLabel(label);
-        _self.lineToLabel(label,r,distance);
+        labelLine && _self.lineToLabel(label,r,distance);
       });
     }
     if(rightArray.length){
 
-      alignLables(center,rAppend,rightArray,90,1);
+      alignLables(center,rAppend,rightArray,90,1,lineHeight);
       Util.each(rightArray,function(label){
         labelsGroup.addLabel(label);
-        _self.lineToLabel(label,r,distance);
+        labelLine && _self.lineToLabel(label,r,distance);
       });
     }
     
@@ -317,7 +325,9 @@ Util.augment(Pie,{
     }
 
     if(!lineGroup){
-      lineGroup = _self.addGroup();
+      lineGroup = _self.addGroup({
+        elCls : 'x-line-group'
+      });
       _self.set('lineGroup',lineGroup);
     }
     lineGroup.addShape('path',{
@@ -325,7 +335,6 @@ Util.augment(Pie,{
       fill : null,
       stroke : label.color
     });
-
 
   },
   bindUI : function(){

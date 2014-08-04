@@ -244,6 +244,7 @@ Util.augment(Chart,{
       _self.get('canvas').sort();
     }
   },
+  
   //渲染画板
   _renderCanvas : function(){
     var _self = this,
@@ -258,6 +259,7 @@ Util.augment(Chart,{
         id : id
       });
     canvas.chart = _self;
+    _self.set('el',el);
     _self.set('canvas',canvas);
   },
   //渲染背景、边框等

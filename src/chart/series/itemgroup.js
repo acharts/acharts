@@ -8,6 +8,14 @@ var
   Base = require('./base'),
    Util = require('../../util');
 
+function removeLabel(label){
+  if(label.remove){
+    label.remove();
+  }else if(label.parentNode){
+    label.parentNode.removeChild(label);
+  }
+}
+
 /**
  * @class Chart.Series.ItemGroup
  * 包含数据序列子项的数据序列类,作为一个扩展可以用于柱状图、饼图
@@ -284,7 +292,7 @@ Util.augment(Group,{
    */
   removeLabel : function(item){
     var label = item.get('label');
-    label && label.remove();
+    label && removeLabel(label);;
   },
   /**
    * @protected

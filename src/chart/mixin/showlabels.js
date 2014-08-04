@@ -6,6 +6,14 @@
 var Util = require('../../util'),
 	Labels = require('../labels');
 
+function removeLabel(label){
+  if(label.remove){
+    label.remove();
+  }else if(label.parentNode){
+    label.parentNode.removeChild(label);
+  }
+}
+
 /**
  * @class Chart.ShowLabels
  * 内部显示文本集合
@@ -59,7 +67,7 @@ Util.augment(ShowLabels,{
 		}
 		
 		var labelsGroup = _self.get('labelsGroup'),
-			children = labelsGroup.get('children'),
+			children = labelsGroup.getLabels(),
 			count = children.length;
 		items = items || labels.items;
 		Util.each(items,function(item,index){
@@ -72,7 +80,7 @@ Util.augment(ShowLabels,{
 		});
 
 		for(var i = count - 1; i >= items.length ; i--){
-			children[i].remove();
+			removeLabel(children[i]);
 		}
 	},
 	/**

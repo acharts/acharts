@@ -126,6 +126,7 @@ Util.augment(Group,{
     var _self = this;
     Group.superclass.bindUI.call(_self);
     _self.bindCanvasEvent();
+    _self.bindChartEvent();
   },
   //绑定鼠标在画板上移动事件
   bindCanvasEvent : function(){
@@ -153,6 +154,30 @@ Util.augment(Group,{
       canvas.on('mousemove',Util.wrapBehavior(_self,'onCanvasMove'));
       canvas.on('mouseout',Util.wrapBehavior(_self,'onMouseOut'));
     }
+  },
+  //绑定图表事件
+  bindChartEvent : function(){
+    var _self = this,
+      canvas = _self.get('canvas');
+
+    function fireChartEvent(name,clientX,clientY){
+      var point = canvas.getPoint(clientX,clientY),
+        info = _self.getPointInfo(point);
+      _self.fireUp(name,info);
+    }
+
+    canvas.on('click',function(ev){
+      fireChartEvent('chartclick',ev.clientX,ev.clientY);
+    });
+
+    canvas.on('mousemove',function(ev){
+      fireChartEvent('chartmove',ev.clientX,ev.clientY);
+    });
+  },
+  //获取图标上对应位置的信息，待扩充
+  getPointInfo : function(point){
+    var _self = this;
+    return Util.mix({},point);
   },
   //处理鼠标在画板上移动
   onCanvasMove : function(ev){

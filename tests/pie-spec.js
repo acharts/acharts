@@ -184,6 +184,7 @@ describe('测试饼图',function(){
     });
   });
 });
+
 describe('测试饼图',function(){
   var chart = new Chart({
     id : 'p1',

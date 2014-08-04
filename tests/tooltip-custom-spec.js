@@ -37,7 +37,6 @@ describe('测试自定义 Tooltip',function(){
       valueSuffix : '°C',
       custom : true,
       shared : true,
-      html : '<div style="position:absolute;visibility:hidden;" class="tooltip"><h3 class="title"></h3><ul class="list"></ul></div>',
       crosshairs : true
     },
     legend : {
@@ -63,7 +62,7 @@ describe('测试自定义 Tooltip',function(){
 
   chart.render();
 
-  chart.on('tooltipchange',function(ev){
+ /* chart.on('tooltipchange',function(ev){
     var node = $(ev.dom),
       title = ev.title,
       items = ev.items,
@@ -75,7 +74,7 @@ describe('测试自定义 Tooltip',function(){
       $(str).appendTo(listEl);
     });
     
-  });
+  });*/
 
   var tooltip = chart.get('seriesGroup').get('tipGroup'),
     customDiv = tooltip.get('customDiv')
@@ -111,8 +110,8 @@ describe('测试自定义 Tooltip',function(){
     it('设置items',function(){
       tooltip.setTitle('test');
       tooltip.setItems([{name : 'test',value:122,color : 'red'}]);
-      expect($(customDiv).find('.title').text()).to.be('test');
-      expect($(customDiv).find('.list').children().length).to.be(1);
+      expect($(customDiv).find('.ac-title').text()).to.be('test');
+      expect($(customDiv).find('.ac-list').children().length).to.be(1);
     });
 
     it('修改items',function(){

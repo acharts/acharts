@@ -321,6 +321,7 @@
             id: id
           });
         canvas.chart = _self;
+        _self.set('el', el);
         _self.set('canvas', canvas);
       },
       //渲染背景、边框等
@@ -12026,6 +12027,7 @@
         var _self = this;
         Group.superclass.bindUI.call(_self);
         _self.bindCanvasEvent();
+        _self.bindChartEvent();
       },
       //绑定鼠标在画板上移动事件
       bindCanvasEvent: function() {
@@ -12050,6 +12052,28 @@
           canvas.on('mousemove', Util.wrapBehavior(_self, 'onCanvasMove'));
           canvas.on('mouseout', Util.wrapBehavior(_self, 'onMouseOut'));
         }
+      },
+      //绑定图表事件
+      bindChartEvent: function() {
+        var _self = this,
+          canvas = _self.get('canvas');
+
+        function fireChartEvent(name, clientX, clientY) {
+          var point = canvas.getPoint(clientX, clientY),
+            info = _self.getPointInfo(point);
+          _self.fireUp(name, info);
+        }
+        canvas.on('click', function(ev) {
+          fireChartEvent('chartclick', ev.clientX, ev.clientY);
+        });
+        canvas.on('mousemove', function(ev) {
+          fireChartEvent('chartmove', ev.clientX, ev.clientY);
+        });
+      },
+      //获取图标上对应位置的信息，待扩充
+      getPointInfo: function(point) {
+        var _self = this;
+        return Util.mix({}, point);
       },
       //处理鼠标在画板上移动
       onCanvasMove: function(ev) {
@@ -13230,7 +13254,9 @@
      * @ignore
      */
     var PlotItem = require("acharts/1.0.1/src/chart/plotitem-debug"),
-      Util = require("acharts/1.0.1/src/util-debug");
+      Util = require("acharts/1.0.1/src/util-debug"),
+      CLS_TITLE = 'ac-title',
+      CLS_LIST = 'ac-list';
 
     function min(x, y) {
       return x > y ? y : x;
@@ -13238,6 +13264,10 @@
 
     function max(x, y) {
       return x > y ? x : y;
+    }
+
+    function find(dom, cls) {
+      return dom.getElementsByClassName(cls)[0];
     }
     /**
      * @class Chart.Tooltip
@@ -13332,7 +13362,10 @@
        * @type {Boolean}
        */
       customFollow: true,
-      html: '<div style="position:absolute;visibility: hidden;"></div>',
+      html: '<div class="ac-tooltip" style="position:absolute;visibility: hidden;"><h4 class="' + CLS_TITLE + '"></h4><ul class="' + CLS_LIST + '"></ul></div>',
+      formatter: function(item, index) {
+        return Util.substitute('<li><span style="color:{color}">{name}</span> : {value}</li>', item);
+      },
       items: [],
       crossLine: {
         stroke: "#C0C0C0"
@@ -13369,6 +13402,7 @@
       _renderCustom: function() {
         var _self = this,
           html = _self.get('html'),
+          outterNode = _self.get('canvas').get('node').parentNode,
           customDiv
         if (/^\#/.test(html)) {
           var id = html.replace('#', '');
@@ -13377,7 +13411,8 @@
           customDiv = Util.createDom(html);
         }
         if (_self.get('customFollow')) {
-          document.body.appendChild(customDiv);
+          outterNode.appendChild(customDiv);
+          outterNode.style.position = 'relative';
         }
         _self.set('customDiv', customDiv);
       },
@@ -13428,6 +13463,11 @@
           cfg;
         _self.set('titleText', text);
         if (custom) {
+          var customDiv = _self.get('customDiv'),
+            titleDom = find(customDiv, CLS_TITLE);
+          if (titleDom) {
+            titleDom.innerHTML = text;
+          }
           return;
         }
         titleShape = _self.get('titleShape');
@@ -13459,8 +13499,12 @@
        */
       setColor: function(color) {
         var _self = this,
-          borderShape = _self.get('borderShape');
-        borderShape.attr('stroke', color);
+          borderShape = _self.get('borderShape'),
+          customDiv = _self.get('customDiv');
+        borderShape && borderShape.attr('stroke', color);
+        if (customDiv) {
+          customDiv.style.borderColor = color;
+        }
       },
       /**
        * 显示
@@ -13576,6 +13620,15 @@
           customDiv.style.top = (y - bTop - pTop) + 'px';
         }
       },
+      //添加自定义项
+      addCustomItem: function(item, index) {
+        var _self = this,
+          customDiv = _self.get('customDiv'),
+          listDom = find(customDiv, CLS_LIST),
+          formatter = _self.get('formatter'),
+          str = formatter(item, index);
+        listDom.appendChild(Util.createDom(str));
+      },
       /**
        * @private
        * 添加一条信息
@@ -13634,14 +13687,18 @@
       setItems: function(items) {
         var _self = this,
           custom = _self.get('custom');
-        if (!custom) {
-          _self.clearItems();
-          Util.each(items, function(item, index) {
+        _self.clearItems();
+        Util.each(items, function(item, index) {
+          if (custom) {
+            _self.addCustomItem(item, index);
+          } else {
             _self.addItem(item, index);
-          });
-          if (items[0]) {
-            _self.setColor(items[0].color);
           }
+        });
+        if (items[0]) {
+          _self.setColor(items[0].color);
+        }
+        if (!custom) {
           _self.resetBorder();
         }
         if (_self.get('items') != items) {
@@ -13666,14 +13723,23 @@
        */
       clearItems: function() {
         var _self = this,
-          group = _self.get('textGroup');
-        group.clear();
+          group = _self.get('textGroup'),
+          customDiv = _self.get('customDiv');
+        group && group.clear();
+        if (customDiv) {
+          var listDom = find(customDiv, CLS_LIST);
+          listDom.innerHTML = '';
+        }
       },
       remove: function() {
         var _self = this,
-          crossShape = _self.get('crossShape');
+          crossShape = _self.get('crossShape'),
+          customDiv = _self.get('customDiv');
         crossShape && crossShape.remove();
         Tooltip.superclass.remove(this);
+        if (customDiv) {
+          customDiv.parentNode.removeChild(customDiv);
+        }
       }
     });
     module.exports = Tooltip;
@@ -14859,6 +14925,14 @@
      */
     var Util = require("acharts/1.0.1/src/util-debug"),
       Labels = require("acharts/1.0.1/src/chart/labels-debug");
+
+    function removeLabel(label) {
+      if (label.remove) {
+        label.remove();
+      } else if (label.parentNode) {
+        label.parentNode.removeChild(label);
+      }
+    }
     /**
      * @class Chart.ShowLabels
      * 内部显示文本集合
@@ -14902,7 +14976,7 @@
           return;
         }
         var labelsGroup = _self.get('labelsGroup'),
-          children = labelsGroup.get('children'),
+          children = labelsGroup.getLabels(),
           count = children.length;
         items = items || labels.items;
         Util.each(items, function(item, index) {
@@ -14914,7 +14988,7 @@
           }
         });
         for (var i = count - 1; i >= items.length; i--) {
-          children[i].remove();
+          removeLabel(children[i]);
         }
       },
       /**
@@ -14983,6 +15057,9 @@
        * @type {Function}
        */
       renderer: null,
+      custom: false,
+      html: '<div class="ac-labels" style="position:absolute;top:0;left:0;"></div>',
+      itemTpl: '<div clss="ac-label" style="position:absolute;">{text}</div>',
       animate: true,
       duration: 400
     };
@@ -15014,6 +15091,14 @@
         _self.clear();
         _self.set('items', items);
         _self._drawLabels();
+      },
+      clear: function() {
+        var _self = this,
+          customDiv = _self.get('customDiv');
+        if (customDiv) {
+          customDiv.innerHTML = '';
+        }
+        Labels.superclass.clear.call(_self);
       },
       //绘制文本
       _drawLabels: function() {
@@ -15050,36 +15135,109 @@
         cfg = Util.mix({}, label, item);
         return cfg;
       },
+      /**
+       * 获取内部labels
+       * @return {Array} 内部的label集合
+       */
+      getLabels: function() {
+        var _self = this,
+          customDiv = _self.get('customDiv');
+        if (customDiv) {
+          return Util.makArray(customDiv.childNodes);
+        } else {
+          return _self.get('children');
+        }
+      },
+      //更改label
       changeLabel: function(label, item) {
         var _self = this,
-          index = Util.indexOf(_self.get('children'), label),
-          cfg = _self._getLabelCfg(item, index);
+          custom = _self.get('custom'),
+          index,
+          cfg;
+        index = Util.indexOf(_self.get('children'), label);
+        cfg = _self._getLabelCfg(item, index);
         if (label) {
-          label.attr('text', cfg.text);
-          if (label.attr('x') != cfg.x || label.attr('y') != cfg.y) {
-            if (Util.svg && _self.get('animate') && !cfg.rotate) {
-              if (cfg.rotate) {
-                label.attr('transform', '');
-              }
-              label.animate({
-                x: cfg.x,
-                y: cfg.y
-              }, _self.get('duration'));
-            } else {
-              label.attr(cfg);
-              if (cfg.rotate) {
-                label.attr('transform', Util.substitute('r{rotate} {x} {y}', cfg));
+          if (custom) {
+            var node = _self._createDom(cfg);
+            label.innerHTML = node.innerHTML;
+            _self._setCustomPosition(cfg, label);
+          } else {
+            label.attr('text', cfg.text);
+            if (label.attr('x') != cfg.x || label.attr('y') != cfg.y) {
+              if (Util.svg && _self.get('animate') && !cfg.rotate) {
+                if (cfg.rotate) {
+                  label.attr('transform', '');
+                }
+                label.animate({
+                  x: cfg.x,
+                  y: cfg.y
+                }, _self.get('duration'));
+              } else {
+                label.attr(cfg);
+                if (cfg.rotate) {
+                  label.attr('transform', Util.substitute('r{rotate} {x} {y}', cfg));
+                }
               }
             }
           }
         }
+      },
+      //设置自定义label的位置
+      _setCustomPosition: function(cfg, labelDom) {
+        var _self = this,
+          anchor = cfg['text-anchor'] || 'middle',
+          top = cfg.y,
+          left = cfg.x,
+          width = Util.getWidth(labelDom),
+          height = Util.getHeight(labelDom);
+        top = top - height / 2;
+        if (anchor == 'middle') {
+          left = left - width / 2;
+        } else if (anchor == 'end') {
+          left = left - width;
+        }
+        labelDom.style.top = parseInt(top) + 'px';
+        labelDom.style.left = parseInt(left) + 'px';
       },
       /**
        * 创建按文本
        * @private
        */
       _createText: function(cfg) {
-        return this.addShape('label', cfg);
+        var _self = this,
+          custom = _self.get('custom'),
+          customDiv = _self.get('customDiv');
+        if (custom) {
+          if (!customDiv) {
+            var tmp = _self.get('html'),
+              wraper = _self.get('canvas').get('node').parentNode;
+            customDiv = Util.createDom(tmp);
+            wraper.style.position = 'relative';
+            wraper.appendChild(customDiv);
+            _self.set('customDiv', customDiv);
+          }
+          var node = _self._createDom(cfg);
+          customDiv.appendChild(node);
+          _self._setCustomPosition(cfg, node);
+        } else {
+          return this.addShape('label', cfg);
+        }
+      },
+      _createDom: function(cfg) {
+        var _self = this,
+          itemTpl = _self.get('itemTpl'),
+          str = Util.substitute(itemTpl, cfg),
+          node = Util.createDom(str);
+        return node;
+      },
+      //覆写删除
+      remove: function() {
+        var _self = this,
+          customDiv = _self.get('customDiv');
+        Labels.superclass.remove(this);
+        if (customDiv) {
+          customDiv.parentNode.removeChild(customDiv);
+        }
       }
     });
     module.exports = Labels;
@@ -18499,6 +18657,14 @@
      */
     var Base = require("acharts/1.0.1/src/chart/series/base-debug"),
       Util = require("acharts/1.0.1/src/util-debug");
+
+    function removeLabel(label) {
+      if (label.remove) {
+        label.remove();
+      } else if (label.parentNode) {
+        label.parentNode.removeChild(label);
+      }
+    }
     /**
      * @class Chart.Series.ItemGroup
      * 包含数据序列子项的数据序列类,作为一个扩展可以用于柱状图、饼图
@@ -18749,7 +18915,7 @@
        */
       removeLabel: function(item) {
         var label = item.get('label');
-        label && label.remove();
+        label && removeLabel(label);;
       },
       /**
        * @protected
@@ -19099,8 +19265,8 @@
       item.y = center.y + (r + 5) * Math.sin(item.angle * RAD);
     }
 
-    function alignLables(center, r, arr, endAngle, factor) {
-      var count = parseInt(r * 2 / LINE_HEIGHT, 10), //理论上，最大显示的条数
+    function alignLables(center, r, arr, endAngle, factor, lineHeight) {
+      var count = parseInt(r * 2 / lineHeight, 10), //理论上，最大显示的条数
         maxY = center.y + r,
         minY = center.y - r;
       if (count < arr.length) { //忽略掉不能显示的条数
@@ -19119,7 +19285,7 @@
         leftCount = length - i;
         leftAvg = factor > 0 ? (maxY - y) / leftCount : (y - minY) / leftCount;
         conflictIndex = i;
-        if (leftAvg < LINE_HEIGHT) {
+        if (leftAvg < lineHeight) {
           conflictIndex = i + 1;
           break;
         }
@@ -19131,8 +19297,8 @@
           endY = factor > 0 ? maxY : minY;
         leftCount = length - start - 1;
         leftAvg = Math.abs(endY - y) / leftCount;
-        if (leftAvg < LINE_HEIGHT) {
-          leftAvg = LINE_HEIGHT;
+        if (leftAvg < lineHeight) {
+          leftAvg = lineHeight;
         }
         //调整后面的文本
         for (var i = length - 1; i >= start; i--) {
@@ -19144,19 +19310,18 @@
         //调整前面的文本
         for (var i = start - 1; i > 0; i--) {
           var item = arr[i];
-          if (!adjust && Math.abs(startY - item.y) / (i + 1) < LINE_HEIGHT) {
+          if (!adjust && Math.abs(startY - item.y) / (i + 1) < lineHeight) {
             adjust = true;
           }
           if (adjust) {
-            var h = Math.abs(arr[i + 1].y - endY) + LINE_HEIGHT;
+            var h = Math.abs(arr[i + 1].y - endY) + lineHeight;
             resetItem(arr[i], h, endAngle, r, center);
           }
         }
       }
     }
     var RAD = Math.PI / 180,
-      MARGIN = 5,
-      LINE_HEIGHT = 16; //最小行高
+      MARGIN = 5; //最小行高
     /**
      * @class Chart.Series.Pie
      * 饼图数据序列
@@ -19212,6 +19377,12 @@
        * @type {Number}
        */
       endAngle: 270,
+      /**
+       * 代表饼图文本的高度，用于排布文本，防止文本重叠
+       * @type {Number}
+       */
+      labelHeight: 16,
+      labelLine: true,
       xField: 'name',
       stickyTracking: false,
       animate: true,
@@ -19268,6 +19439,8 @@
           rAppend = r + distance,
           startAngle = _self.get('startAngle'),
           endAngle = _self.get('endAngle'),
+          lineHeight = _self.get('labelHeight'),
+          labelLine = _self.get('labelLine'),
           rightArray = [];
         Util.each(points, function(point) {
           var cfg = _self._getLabelCfg(point, distance, rAppend);
@@ -19288,17 +19461,17 @@
           } else {
             end = -90;
           }
-          alignLables(center, rAppend, leftArray, end, -1);
+          alignLables(center, rAppend, leftArray, end, -1, lineHeight);
           Util.each(leftArray, function(label) {
             labelsGroup.addLabel(label);
-            _self.lineToLabel(label, r, distance);
+            labelLine && _self.lineToLabel(label, r, distance);
           });
         }
         if (rightArray.length) {
-          alignLables(center, rAppend, rightArray, 90, 1);
+          alignLables(center, rAppend, rightArray, 90, 1, lineHeight);
           Util.each(rightArray, function(label) {
             labelsGroup.addLabel(label);
-            _self.lineToLabel(label, r, distance);
+            labelLine && _self.lineToLabel(label, r, distance);
           });
         }
       },
@@ -19332,7 +19505,9 @@
           path.push(['L', label.x, label.y]);
         }
         if (!lineGroup) {
-          lineGroup = _self.addGroup();
+          lineGroup = _self.addGroup({
+            elCls: 'x-line-group'
+          });
           _self.set('lineGroup', lineGroup);
         }
         lineGroup.addShape('path', {

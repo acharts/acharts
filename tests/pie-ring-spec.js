@@ -60,9 +60,6 @@ describe('测试饼图生成', function() {
 
 });
 
-
-
-
 describe('测试饼图生成2', function() {
   var colors = [ '#ff6600','#b01111','#ac5724','#572d8a','#333333','#7bab12','#c25e5e','#a6c96a','#133960','#2586e7'],
   categories = ['MSIE', 'Firefox', 'Chrome', 'Safari', 'Opera'],

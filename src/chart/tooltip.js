@@ -6,13 +6,19 @@
 
 var 
 	PlotItem = require('./plotitem'),
-	Util = require('../util');
+	Util = require('../util'),
+	CLS_TITLE = 'ac-title',
+	CLS_LIST = 'ac-list';
 
 function min(x,y){
 	return x > y ? y : x;
 }
 function max(x,y){
 	return x > y ? x : y;
+}
+
+function find(dom,cls){
+	return dom.getElementsByClassName(cls)[0];
 }
 
 
@@ -115,8 +121,11 @@ Tooltip.ATTRS = {
 	 */
 	customFollow : true,
 
-	html : '<div style="position:absolute;visibility: hidden;"></div>',
-
+	html : '<div class="ac-tooltip" style="position:absolute;visibility: hidden;"><h4 class="' + CLS_TITLE + '"></h4><ul class="' + CLS_LIST + '"></ul></div>',
+	
+	formatter : function(item,index){
+		return Util.substitute('<li><span style="color:{color}">{name}</span> : {value}</li>',item);
+	},
 	items : [
 
 	],
@@ -163,6 +172,7 @@ Util.augment(Tooltip,{
 	_renderCustom : function(){
 		var _self = this,
 			html = _self.get('html'),
+			outterNode = _self.get('canvas').get('node').parentNode,
 			customDiv
 		if(/^\#/.test(html)){
 			var id = html.replace('#','');
@@ -171,7 +181,8 @@ Util.augment(Tooltip,{
 			customDiv = Util.createDom(html);
 		}
 		if(_self.get('customFollow')){
-			document.body.appendChild(customDiv);
+			outterNode.appendChild(customDiv);
+			outterNode.style.position = 'relative';
 		}
 		_self.set('customDiv',customDiv);
 	},
@@ -226,6 +237,11 @@ Util.augment(Tooltip,{
 
 		_self.set('titleText',text);
 		if(custom){
+			var customDiv = _self.get('customDiv'),
+				titleDom = find(customDiv,CLS_TITLE);
+			if(titleDom){
+				titleDom.innerHTML = text;
+			}
 			return;
 		}
 
@@ -261,8 +277,12 @@ Util.augment(Tooltip,{
 	 */
 	setColor : function(color){
 		var _self = this,
-			borderShape = _self.get('borderShape');
-		borderShape.attr('stroke',color);
+			borderShape = _self.get('borderShape'),
+			customDiv = _self.get('customDiv');
+		borderShape && borderShape.attr('stroke',color);
+		if(customDiv){
+			customDiv.style.borderColor = color;
+		} 
 	},
 	/**
 	 * 显示
@@ -381,7 +401,6 @@ Util.augment(Tooltip,{
 		var _self = this,
 			customDiv = _self.get('customDiv');
 		if(customDiv && _self.get('customFollow')){
-
 			var 
 				pTop = parseFloat(Util.getStyle(customDiv,'paddingTop')),
 				bTop = parseFloat(Util.getStyle(customDiv,'borderTopWidth')) || 0,
@@ -390,6 +409,15 @@ Util.augment(Tooltip,{
 			customDiv.style.left = (x - bLeft - pLeft ) + 'px';
 			customDiv.style.top = (y - bTop - pTop) + 'px';
 		}
+	},
+	//添加自定义项
+	addCustomItem : function(item,index){
+		var _self = this,
+			customDiv = _self.get('customDiv'),
+			listDom = find(customDiv,CLS_LIST),
+			formatter = _self.get('formatter'),
+			str = formatter(item,index);
+		listDom.appendChild(Util.createDom(str));
 	},
 	/**
 	 * @private
@@ -452,21 +480,24 @@ Util.augment(Tooltip,{
 		var _self = this,
 			custom = _self.get('custom');
 
-		if(!custom){
 			_self.clearItems();
 			Util.each(items,function(item,index){
-				_self.addItem(item,index);
+				if(custom){
+					_self.addCustomItem(item,index);
+				}else{
+					_self.addItem(item,index);
+				}
 			});
-
 			if(items[0]){
 				_self.setColor(items[0].color);
 			}
-			_self.resetBorder();
-		}
-		if(_self.get('items') != items){
-			_self.set('items',items);
-			_self.onChange();
-		}
+			if(!custom){
+				_self.resetBorder();
+			}
+			if(_self.get('items') != items){
+				_self.set('items',items);
+				_self.onChange();
+			}
 	},
 
 	onChange : function(){
@@ -486,15 +517,23 @@ Util.augment(Tooltip,{
 	 */
 	clearItems : function(){
 		var _self = this,
-			group = _self.get('textGroup');
-		group.clear();
+			group = _self.get('textGroup'),
+			customDiv = _self.get('customDiv');
+		group && group.clear();
+		if(customDiv){
+			var listDom = find(customDiv,CLS_LIST);
+			listDom.innerHTML = '';
+		}
 	},
 	remove : function(){
-
 		var _self = this,
-			crossShape = _self.get('crossShape');
+			crossShape = _self.get('crossShape'),
+			customDiv = _self.get('customDiv');
 		crossShape && crossShape.remove();
 		Tooltip.superclass.remove(this);
+		if(customDiv){
+			customDiv.parentNode.removeChild(customDiv);
+		}
 	}
 
 });
