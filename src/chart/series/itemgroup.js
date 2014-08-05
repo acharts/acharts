@@ -140,7 +140,6 @@ Util.augment(Group,{
         }else{
           _self.animateItem(item,prePoint);
         }
-        
       }
     });
 
@@ -151,7 +150,7 @@ Util.augment(Group,{
     for (var i = length; i < count; i++) {
       var shape = _self.addItem(points[i],i);
 
-      animate && _self.animateItem(shape,items[length - 1].get('prePoint'));
+      length > 1 && animate && _self.animateItem(shape,items[length - 1].get('prePoint'));
     }
 
     //小于现有的点

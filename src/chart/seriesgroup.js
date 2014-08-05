@@ -145,8 +145,8 @@ Util.augment(Group,{
       canvas.on('click',function(ev){
         _self.onCanvasMove(ev);
         setTimeout(function(){
-          Util.removeEvent(document,'click', __documentClick)
-            .addEvent(document,'click', __documentClick);
+          Util.removeEvent(document,'click', __documentClick);
+          Util.addEvent(document,'click', __documentClick);
         })
       });
 

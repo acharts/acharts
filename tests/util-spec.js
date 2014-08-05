@@ -460,6 +460,13 @@ describe('dom',function(){
         expect($(dom).width()).to.be(Util.getWidth(dom));
     });
 
+    it('create tr',function(){
+        var str = '<tr id="t2"></tr>',
+            dom = Util.createDom(str);
+        expect(dom).not.to.be('undefined');
+        expect(Util.isString(dom)).not.to.be(true);
+    });
+
     it('addevent,removeEvnet',function(){
 
     });

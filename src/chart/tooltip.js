@@ -17,8 +17,31 @@ function max(x,y){
 	return x > y ? x : y;
 }
 
+function getElementsByClassName(dom,cls){
+	var els = dom.getElementsByTagName('*');
+  var ell = els.length;
+  var elements=[];
+  for(var n=0;n<ell;n++){
+    var oCls=els[n].className||'';
+    if(oCls.indexOf(cls)<0)        
+    	continue;
+    oCls=oCls.split(/\s+/);
+    var oCll=oCls.length;
+    for(var j=0;j<oCll;j++){
+      if(cls==oCls[j]){
+        elements.push(els[n]);
+        break;
+      }
+    }
+  }
+  return elements;
+}
+
 function find(dom,cls){
-	return dom.getElementsByClassName(cls)[0];
+	if(dom.getElementsByClassName){
+		return dom.getElementsByClassName(cls)[0];
+	}
+	return getElementsByClassName(dom,cls)[0];
 }
 
 
@@ -175,7 +198,7 @@ Util.augment(Tooltip,{
 			outterNode = _self.get('canvas').get('node').parentNode,
 			customDiv
 		if(/^\#/.test(html)){
-			var id = html.replace('#','');
+			var id = html.replace('\#','');
 			customDiv = document.getElementById(id);
 		}else{
 			customDiv = Util.createDom(html);
@@ -416,8 +439,9 @@ Util.augment(Tooltip,{
 			customDiv = _self.get('customDiv'),
 			listDom = find(customDiv,CLS_LIST),
 			formatter = _self.get('formatter'),
-			str = formatter(item,index);
-		listDom.appendChild(Util.createDom(str));
+			str = formatter(item,index),
+			node = Util.createDom(str);
+		listDom.appendChild(node);
 	},
 	/**
 	 * @private
@@ -522,7 +546,10 @@ Util.augment(Tooltip,{
 		group && group.clear();
 		if(customDiv){
 			var listDom = find(customDiv,CLS_LIST);
-			listDom.innerHTML = '';
+			if(listDom){
+				listDom.innerHTML = '';
+			}
+			
 		}
 	},
 	remove : function(){

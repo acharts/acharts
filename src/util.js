@@ -554,7 +554,15 @@ function getEventObj(ev){
   return rst;
 }
 
-
+var fragmentRE = /^\s*<(\w+|!)[^>]*>/,
+  table = document.createElement('table'),
+  tableRow = document.createElement('tr'),
+  containers = {
+      'tr': document.createElement('tbody'),
+      'tbody': table, 'thead': table, 'tfoot': table,
+      'td': tableRow, 'th': tableRow,
+      '*': document.createElement('div')
+  };
 
 Util.mix(Util,{
 
@@ -575,10 +583,15 @@ Util.mix(Util,{
    * @return {HTMLElement}  DOM 节点
    */
   createDom : function(str){
-    var div = document.createElement('div');
-    str = str.replace(/(^\s*)|(\s*$)/g, "");//trim
-    div.innerHTML = str;
-    return div.childNodes[0];
+    var name = fragmentRE.test(str) && RegExp.$1;
+
+    if (!(name in containers)){
+      name = '*'
+    }
+    container = containers[name];
+    str = str.replace(/(^\s*)|(\s*$)/g, "");
+    container.innerHTML = '' + str;
+    return container.childNodes[0];
   },
   getOffset : function(o){
     var rst = {},
@@ -606,11 +619,12 @@ Util.mix(Util,{
       }
       var rst = false,
         parent = subNode.parentNode;
-      while(parent!=null && o!=document.body){
+      while(parent!=null && parent!=document.body){
         if(parent == node){
           rst = true;
           break;
         }
+        parent = parent.parentNode;
       }
 
       return rst;
