@@ -181,7 +181,7 @@ Util.augment(Group,{
         var info = _self.getPointInfo(point,ev);
         _self.fireUp('plotmove',info);
         if(!isOver){
-          _self.fireUp('plotover');
+          _self.fireUp('plotover',info);
           _self.set('isOver',true);
         }
       }else if(isOver){

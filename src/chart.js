@@ -224,6 +224,10 @@ Chart.ATTRS = {
     /**
      * @event plotover
      * 移入图表内部
+     * @param {Object} ev 事件对象
+     * @param {Number} x 移动到x的坐标
+     * @param {Number} y 移动到y的坐标
+     * @param {Chart.Canvas.Shape} Shape 移动到的图形
      */
     
     /**
