@@ -1,4 +1,3 @@
----
 
 # acharts [![spm version](http://spmjs.io/badge/acharts)](http://spmjs.io/package/acharts)
 
