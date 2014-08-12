@@ -90,6 +90,23 @@ Theme.Origin = Theme({
   seriesOptions : {
     lineCfg : lineCfg,
     areaCfg : lineCfg,
+    flagCfg: {
+      line: {
+          'stroke': '#000000',
+          'stroke-width': 1
+      },
+      flag: {
+          'fill' : '#ffffff',
+          'stroke': '#000000',
+          'stroke-width': 1,
+          'r': 5
+      },
+      distance: -5,
+      duration : 1000,
+      animate: true,
+      custom: false,
+      onSeries: 'xaxis'
+    },
     bubbleCfg : {
       circle : {
           'stroke-width' : 1,
