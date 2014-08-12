@@ -58,6 +58,16 @@ Util.augment(PlotRange,{
   		cc.y = (br.y - tl.y)/2 + tl.y;
   	
 	},
+  /**
+   * 重置
+   * @param  {Object} start 开始点
+   * @param  {Object} end   结束点
+   */
+  reset : function(start,end){
+    this.start = start;
+    this.end = end;
+    this.init();
+  },
 	/**
 	 * 是否在范围内
 	 * @param {Number} x x坐标

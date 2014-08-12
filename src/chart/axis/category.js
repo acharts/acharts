@@ -43,18 +43,26 @@ Util.augment(Category,{
 		  var categories = _self.get('categories'),
 		  	ticks = [];
 		  ticks = ticks.concat(categories);
-		  ticks.push(' ');
+          if(ticks[ticks.length - 1] != ' '){
+            ticks.push(' ');
+          }
           _self.set('ticks',ticks);
 		}
 	},
     //ticks 获取
     changeInfo : function(info){
         var _self = this,
-            ticks = [];
-        ticks = ticks.concat(info.categories);
-        if(ticks.length){
-           ticks.push(' '); 
+            ticks = info.ticks;
+        if(!ticks){
+            ticks = ticks.concat(info.categories);
+            if(ticks.length && ticks[ticks.length - 1] != ' '){
+               ticks.push(' '); 
+            }
+        }else{
+            info.categories = [].concat(info.ticks);
+            Util.remove(info.categories,' ');
         }
+        
         
         _self.set('categories',info.categories);
         _self.set('ticks',ticks);

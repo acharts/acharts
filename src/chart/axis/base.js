@@ -105,6 +105,21 @@ Util.augment(Axis,{
         plotRange = _self.get('plotRange');
 
         if(plotRange){
+            var info = _self.getRangeInfo();
+            _self.set('start',info.start);
+            _self.set('end',info.end);
+        }
+        _self.set('orthoEnd',_self._getOrthoEnd());
+
+        _self.set('indexCache',{});
+        _self.set('pointCache',[]);
+
+    },
+    getRangeInfo : function(){
+        var _self = this,
+            plotRange = _self.get('plotRange'),
+            rst = {};
+        if(plotRange){
             var start = plotRange.start,
                 position = _self.get('position'),
                 end = {};
@@ -124,13 +139,11 @@ Util.augment(Axis,{
                 end.x = plotRange.end.x;
                 end.y = start.y;
             }
-            _self.set('start',start);
-            _self.set('end',end);
+
+            rst.start = start;
+            rst.end = end;
         }
-
-        _self.set('indexCache',{});
-        _self.set('pointCache',[]);
-
+        return rst;
     },
      /**
      * 改变坐标轴
@@ -138,13 +151,37 @@ Util.augment(Axis,{
     change : function(info){
         var _self = this;
         if(_self.isChange(info.ticks)){
+            _self._resetRange();
             _self._clearTicksInfo();
             _self.changeInfo(info);
             _self._processTicks(null,true);
+            _self._changeLine();
             _self._changeTicks();
             _self._changeGrid();
             _self.resetLabels();
         }
+    },
+    _resetRange : function(){
+        var _self = this,
+            range = _self.getRangeInfo();
+
+        _self.set('start',range.start);
+        _self.set('end',range.end);
+        _self.set('orthoEnd',_self._getOrthoEnd());
+
+    },
+    isRangeChange : function(){
+        var _self = this,
+          info = _self.getRangeInfo(),
+          start = _self.get('start'),
+          end = _self.get('end');
+      if(info.start.x != start.x || info.start.y != start.y || info.end.x != end.x || info.end.y != end.y){
+        return true;
+      }
+      if(_self.get('orthoEnd') !== _self._getOrthoEnd()){
+        return true;
+      }
+      return false;
     },
     /**
      * 坐标轴是否将要发生改变
@@ -154,8 +191,8 @@ Util.augment(Axis,{
     isChange : function(ticks){
       var _self = this,
           preTicks = _self.get('ticks');
-
-      return  !Util.equalsArray(ticks,preTicks);
+      
+      return _self.isRangeChange() || !Util.equalsArray(ticks,preTicks);
     },
     /**
      * @protected
@@ -193,6 +230,17 @@ Util.augment(Axis,{
         _self._drawLines();
         _self._renderTicks();
         _self._renderGrid(); 
+    },
+
+    _changeLine : function(){
+        var _self = this,
+            lineShape = _self.get('lineShape'),
+            path;
+
+        if(lineShape){
+            path = _self.getLinePath();
+            lineShape.attr('path',path);
+        }
     },
     /**
      * 是否是纵坐标
@@ -384,6 +432,17 @@ Util.augment(Axis,{
         }else{
             return end.x;
         }
+    },
+    _getOrthoEnd : function(){
+        var _self = this,
+            plotRange = _self.get('plotRange'),
+            rst;
+        if(_self.isVertical()){
+            rst = plotRange.end.x;
+        }else{
+            rst = plotRange.end.y;
+        }
+        return rst;
     },
     //获取中间点的位置
     _getMiddleCoord : function(){

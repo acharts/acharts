@@ -66,7 +66,6 @@ describe('环形图', function() {
   });
 
   chart.render();
-/*
   describe('测试labels生成',function(){
     it('测试生成',function(done){
       setTimeout(function(){
@@ -98,5 +97,6 @@ describe('环形图', function() {
       expect($('.ac-labels').children().length).to.be(data.length);
     });
   });
+/*
 */
 });

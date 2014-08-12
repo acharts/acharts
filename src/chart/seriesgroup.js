@@ -647,6 +647,11 @@ Util.augment(Group,{
   _resetAxis : function(axis,type){
 
     if(!axis.get('autoTicks')){
+      if(axis.isRangeChange()){
+        axis.change({
+          ticks : axis.get('ticks')
+        });
+      }
       return;
     }
     type = type || 'yAxis';
@@ -675,6 +680,7 @@ Util.augment(Group,{
    */
   repaint : function(){
     var _self = this,
+      legendGroup = _self.get('legendGroup'),
       xAxis = _self.get('xAxis'),
       yAxis = _self.get('yAxis');
     xAxis && _self._resetAxis(xAxis,'xAxis');
@@ -688,6 +694,9 @@ Util.augment(Group,{
       }
     }
     _self._resetSeries();
+    if(legendGroup){
+      legendGroup.resetPosition();
+    }
   },
   /**
    * 改变数据

@@ -121,6 +121,16 @@
        */
       data: undefined,
       /**
+       * 宽度
+       * @type {Number}
+       */
+      width: null,
+      /**
+       * 高度
+       * @type {Number}
+       */
+      height: null,
+      /**
        * 标示每个图例颜色的配置项
        * @type {Object}
        */
@@ -171,6 +181,16 @@
        * @type {Object|Array}
        */
       yAxis: undefined,
+      /**
+       * 是否自动适应宽度
+       * @type {Boolean}
+       */
+      forceFit: false,
+      /**
+       * 自适应宽度时的，宽高比，默认为0，不进行自适应
+       * @type {Number}
+       */
+      fitRatio: 0,
       /**
        * 数据中使用的字段，用于转换数据使用例如：
        *  - fields : ['intelli','force','political','commander']
@@ -333,7 +353,37 @@
           _self._renderTitle();
           _self._renderSeries();
           _self.get('canvas').sort();
+          _self.bindFitEvent();
         }
+      },
+      //获取自适应的宽度和高度
+      _getFitInfo: function() {
+        var _self = this,
+          el = _self.get('el'),
+          fitRatio = _self.get('fitRatio'),
+          width = Util.getWidth(el),
+          height = _self.get('height') || Util.getHeight(el);
+        if (fitRatio) {
+          height = width * fitRatio;
+        }
+        return {
+          width: width,
+          height: height
+        };
+      },
+      /**
+       * 自适应宽度
+       */
+      forceFit: function() {
+        var _self = this,
+          plotBack = _self.get('plotBack'),
+          canvas = _self.get('canvas'),
+          fitInfo = _self._getFitInfo(),
+          seriesGroup = _self.get('seriesGroup');
+        canvas.setSize(fitInfo.width, fitInfo.height);
+        plotBack.repaint();
+        _self._renderTitle();
+        seriesGroup.repaint();
       },
       //渲染画板
       _renderCanvas: function() {
@@ -341,15 +391,24 @@
           id = _self.get('id') || _self.get('render') || '';
         id = id.replace('#', '');
         var el = document.getElementById(id),
-          width = _self.get('width') || Util.getWidth(el),
-          height = _self.get('height') || Util.getHeight(el),
-          canvas = new Canvas({
-            width: width,
-            height: height,
-            id: id
-          });
-        canvas.chart = _self;
+          width,
+          height,
+          canvas;
         _self.set('el', el);
+        if (_self.get('forceFit')) {
+          var info = _self._getFitInfo();
+          width = info.width;
+          height = info.height;
+        } else {
+          width = _self.get('width') || Util.getWidth(el);
+          height = _self.get('height') || Util.getHeight(el);
+        }
+        canvas = new Canvas({
+          width: width,
+          height: height,
+          id: id
+        });
+        canvas.chart = _self;
         _self.set('canvas', canvas);
       },
       //渲染背景、边框等
@@ -363,6 +422,7 @@
         plotCfg = Util.mix({}, theme.plotCfg, plotCfg);
         plotBack = canvas.addGroup(PlotBack, plotCfg),
         plotRange = plotBack.get('plotRange');
+        _self.set('plotBack', plotBack);
         _self.set('plotRange', plotRange);
       },
       //渲染title
@@ -373,20 +433,32 @@
           theme = _self.get('theme'),
           canvas = _self.get('canvas');
         if (title) {
+          var titleShape = _self.get('titleShape');
           if (title.x == null) {
             title.x = canvas.get('width') / 2;
             title.y = title.y || 15;
           }
-          title = Util.mix({}, theme.title, title);
-          canvas.addShape('label', title);
+          if (!titleShape) {
+            title = Util.mix({}, theme.title, title);
+            titleShape = canvas.addShape('label', title);
+            _self.set('titleShape', titleShape);
+          } else {
+            titleShape.attr(title);
+          }
         }
         if (subTitle) {
+          var subTitleShape = _self.get('subTitleShape');
           if (subTitle.x == null) {
             subTitle.x = canvas.get('width') / 2;
             subTitle.y = subTitle.y || 35;
           }
-          subTitle = Util.mix({}, theme.subTitle, subTitle);
-          canvas.addShape('label', subTitle);
+          if (!subTitleShape) {
+            subTitle = Util.mix({}, theme.subTitle, subTitle);
+            subTitleShape = canvas.addShape('label', subTitle);
+            _self.set('subTitleShape', subTitleShape);
+          } else {
+            subTitleShape.attr(subTitle);
+          }
         }
       },
       _getDefaultType: function() {
@@ -435,6 +507,18 @@
         }
         seriesGroup = _self.get('canvas').addGroup(SeriesGroup, cfg);
         _self.set('seriesGroup', seriesGroup);
+      },
+      bindFitEvent: function() {
+        var _self = this,
+          delay = null;
+
+        function resize() {
+          clearTimeout(delay);
+          delay = setTimeout(function() {
+            _self.forceFit();
+          }, 200);
+        }
+        Util.addEvent(window, 'resize', resize);
       },
       /**
        * 重绘整个图
@@ -11678,18 +11762,34 @@
         this._renderBorder();
         this._renderBackground();
       },
+      repaint: function() {
+        this._calculateRange();
+        this._renderBorder();
+        this._renderBackground();
+      },
       //渲染边框
       _renderBorder: function() {
         var _self = this,
           border = _self.get('border'),
           canvas = _self.get('canvas'),
+          rect = _self.get('borderShape'),
           cfg;
         if (border) {
-          cfg = Util.mix({
-            width: canvas.get('width'),
-            height: canvas.get('height')
-          }, border);
-          this.addShape('rect', cfg);
+          var width = canvas.get('width'),
+            height = canvas.get('height');
+          if (!rect) {
+            cfg = Util.mix({
+              width: width,
+              height: height
+            }, border);
+            rect = this.addShape('rect', cfg);
+            this.set('borderShape', rect);
+          } else {
+            rect.attr({
+              width: width,
+              height: height
+            });
+          }
         }
       },
       //渲染背景
@@ -11697,6 +11797,7 @@
         var _self = this,
           background = _self.get('background'),
           plotRange = _self.get('plotRange'),
+          backShape = _self.get('backShape'),
           width,
           height,
           tl,
@@ -11711,13 +11812,18 @@
             width: width,
             height: height
           };
-          //图片
-          if (background.image) {
-            cfg.src = background.image;
-            _self.addShape('image', cfg);
-          } else { //矩形
-            Util.mix(cfg, background);
-            _self.addShape('rect', cfg);
+          if (!backShape) {
+            //图片
+            if (background.image) {
+              cfg.src = background.image;
+              backShape = _self.addShape('image', cfg);
+            } else { //矩形
+              Util.mix(cfg, background);
+              backShape = _self.addShape('rect', cfg);
+            }
+            _self.set('backShape', backShape);
+          } else {
+            backShape.attr(cfg);
           }
         }
       },
@@ -11728,7 +11834,7 @@
           canvas = _self.get('canvas'),
           width = canvas.get('width'),
           height = canvas.get('height'),
-          plotRange,
+          plotRange = _self.get('plotRange'),
           top = 0, //上方的边距
           left = 0, //左边 边距
           right = 0,
@@ -11746,8 +11852,12 @@
         }
         start = canvas.getRelativePoint(left, height - bottom);
         end = canvas.getRelativePoint(width - right, top);
-        plotRange = new PlotRange(start, end);
-        _self.set('plotRange', plotRange);
+        if (!plotRange) {
+          plotRange = new PlotRange(start, end);
+          _self.set('plotRange', plotRange);
+        } else {
+          plotRange.reset(start, end);
+        }
       }
     });
     module.exports = PlotBack;
@@ -11891,6 +12001,16 @@
         var cc = plotRange.cc = {};
         cc.x = (br.x - tl.x) / 2 + tl.x;
         cc.y = (br.y - tl.y) / 2 + tl.y;
+      },
+      /**
+       * 重置
+       * @param  {Object} start 开始点
+       * @param  {Object} end   结束点
+       */
+      reset: function(start, end) {
+        this.start = start;
+        this.end = end;
+        this.init();
       },
       /**
        * 是否在范围内
@@ -12556,6 +12676,11 @@
       //数据变化或者序列显示隐藏引起的坐标轴变化
       _resetAxis: function(axis, type) {
         if (!axis.get('autoTicks')) {
+          if (axis.isRangeChange()) {
+            axis.change({
+              ticks: axis.get('ticks')
+            });
+          }
           return;
         }
         type = type || 'yAxis';
@@ -12580,6 +12705,7 @@
        */
       repaint: function() {
         var _self = this,
+          legendGroup = _self.get('legendGroup'),
           xAxis = _self.get('xAxis'),
           yAxis = _self.get('yAxis');
         xAxis && _self._resetAxis(xAxis, 'xAxis');
@@ -12593,6 +12719,9 @@
           }
         }
         _self._resetSeries();
+        if (legendGroup) {
+          legendGroup.resetPosition();
+        }
       },
       /**
        * 改变数据
@@ -13943,6 +14072,19 @@
         Axis.superclass.beforeRenderUI.call(_self);
         plotRange = _self.get('plotRange');
         if (plotRange) {
+          var info = _self.getRangeInfo();
+          _self.set('start', info.start);
+          _self.set('end', info.end);
+        }
+        _self.set('orthoEnd', _self._getOrthoEnd());
+        _self.set('indexCache', {});
+        _self.set('pointCache', []);
+      },
+      getRangeInfo: function() {
+        var _self = this,
+          plotRange = _self.get('plotRange'),
+          rst = {};
+        if (plotRange) {
           var start = plotRange.start,
             position = _self.get('position'),
             end = {};
@@ -13960,11 +14102,10 @@
             end.x = plotRange.end.x;
             end.y = start.y;
           }
-          _self.set('start', start);
-          _self.set('end', end);
+          rst.start = start;
+          rst.end = end;
         }
-        _self.set('indexCache', {});
-        _self.set('pointCache', []);
+        return rst;
       },
       /**
        * 改变坐标轴
@@ -13972,13 +14113,35 @@
       change: function(info) {
         var _self = this;
         if (_self.isChange(info.ticks)) {
+          _self._resetRange();
           _self._clearTicksInfo();
           _self.changeInfo(info);
           _self._processTicks(null, true);
+          _self._changeLine();
           _self._changeTicks();
           _self._changeGrid();
           _self.resetLabels();
         }
+      },
+      _resetRange: function() {
+        var _self = this,
+          range = _self.getRangeInfo();
+        _self.set('start', range.start);
+        _self.set('end', range.end);
+        _self.set('orthoEnd', _self._getOrthoEnd());
+      },
+      isRangeChange: function() {
+        var _self = this,
+          info = _self.getRangeInfo(),
+          start = _self.get('start'),
+          end = _self.get('end');
+        if (info.start.x != start.x || info.start.y != start.y || info.end.x != end.x || info.end.y != end.y) {
+          return true;
+        }
+        if (_self.get('orthoEnd') !== _self._getOrthoEnd()) {
+          return true;
+        }
+        return false;
       },
       /**
        * 坐标轴是否将要发生改变
@@ -13988,7 +14151,7 @@
       isChange: function(ticks) {
         var _self = this,
           preTicks = _self.get('ticks');
-        return !Util.equalsArray(ticks, preTicks);
+        return _self.isRangeChange() || !Util.equalsArray(ticks, preTicks);
       },
       /**
        * @protected
@@ -14020,6 +14183,15 @@
         _self._drawLines();
         _self._renderTicks();
         _self._renderGrid();
+      },
+      _changeLine: function() {
+        var _self = this,
+          lineShape = _self.get('lineShape'),
+          path;
+        if (lineShape) {
+          path = _self.getLinePath();
+          lineShape.attr('path', path);
+        }
       },
       /**
        * 是否是纵坐标
@@ -14195,6 +14367,17 @@
         } else {
           return end.x;
         }
+      },
+      _getOrthoEnd: function() {
+        var _self = this,
+          plotRange = _self.get('plotRange'),
+          rst;
+        if (_self.isVertical()) {
+          rst = plotRange.end.x;
+        } else {
+          rst = plotRange.end.y;
+        }
+        return rst;
       },
       //获取中间点的位置
       _getMiddleCoord: function() {
@@ -15371,17 +15554,24 @@
           var categories = _self.get('categories'),
             ticks = [];
           ticks = ticks.concat(categories);
-          ticks.push(' ');
+          if (ticks[ticks.length - 1] != ' ') {
+            ticks.push(' ');
+          }
           _self.set('ticks', ticks);
         }
       },
       //ticks 获取
       changeInfo: function(info) {
         var _self = this,
-          ticks = [];
-        ticks = ticks.concat(info.categories);
-        if (ticks.length) {
-          ticks.push(' ');
+          ticks = info.ticks;
+        if (!ticks) {
+          ticks = ticks.concat(info.categories);
+          if (ticks.length && ticks[ticks.length - 1] != ' ') {
+            ticks.push(' ');
+          }
+        } else {
+          info.categories = [].concat(info.ticks);
+          Util.remove(info.categories, ' ');
         }
         _self.set('categories', info.categories);
         _self.set('ticks', ticks);
@@ -20105,6 +20295,23 @@
       seriesOptions: {
         lineCfg: lineCfg,
         areaCfg: lineCfg,
+        flagCfg: {
+          line: {
+            'stroke': '#000000',
+            'stroke-width': 1
+          },
+          flag: {
+            'fill': '#ffffff',
+            'stroke': '#000000',
+            'stroke-width': 1,
+            'r': 5
+          },
+          distance: -5,
+          duration: 1000,
+          animate: true,
+          custom: false,
+          onSeries: 'xaxis'
+        },
         bubbleCfg: {
           circle: {
             'stroke-width': 1,

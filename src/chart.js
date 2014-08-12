@@ -40,6 +40,19 @@ Chart.ATTRS = {
      * @type {Array}
      */
     data : undefined,
+
+    /**
+     * 宽度
+     * @type {Number}
+     */
+    width : null,
+
+    /**
+     * 高度
+     * @type {Number}
+     */
+    height : null,
+
     /**
      * 标示每个图例颜色的配置项
      * @type {Object}
@@ -93,6 +106,19 @@ Chart.ATTRS = {
      * @type {Object|Array}
      */
     yAxis : undefined,
+
+    /**
+     * 是否自动适应宽度
+     * @type {Boolean}
+     */
+    forceFit : false,
+
+    /**
+     * 自适应宽度时的，宽高比，默认为0，不进行自适应
+     * @type {Number}
+     */
+    fitRatio: 0,
+
     /**
      * 数据中使用的字段，用于转换数据使用例如： 
      *  - fields : ['intelli','force','political','commander']
@@ -275,24 +301,67 @@ Util.augment(Chart,{
       _self._renderTitle();
       _self._renderSeries();
       _self.get('canvas').sort();
+      _self.bindFitEvent();
     }
   },
-  
+  //获取自适应的宽度和高度
+  _getFitInfo : function(){
+    var _self = this,
+      el = _self.get('el'),
+      fitRatio = _self.get('fitRatio'),
+      width = Util.getWidth(el),
+      height = _self.get('height') || Util.getHeight(el);
+      
+    if(fitRatio){
+      height = width * fitRatio;
+    }
+    return {
+      width : width,
+      height : height
+    };
+  },
+  /**
+   * 自适应宽度
+   */
+  forceFit : function(){
+    var _self = this,
+      plotBack = _self.get('plotBack'),
+      canvas = _self.get('canvas'),
+      fitInfo = _self._getFitInfo(),
+      seriesGroup = _self.get('seriesGroup');
+
+    canvas.setSize(fitInfo.width,fitInfo.height);
+    plotBack.repaint();
+    _self._renderTitle();
+    seriesGroup.repaint();
+
+  },
   //渲染画板
   _renderCanvas : function(){
     var _self = this,
       id = _self.get('id') || _self.get('render') || '';
     id = id.replace('#','');
     var  el = document.getElementById(id),
-      width = _self.get('width') || Util.getWidth(el),
-      height = _self.get('height') || Util.getHeight(el),
-      canvas = new Canvas({
-        width : width,
-        height :height,
-        id : id
-      });
+      width,
+      height,
+      canvas;
+
+     _self.set('el',el);
+    if(_self.get('forceFit')){
+      var info = _self._getFitInfo();
+      width = info.width;
+      height = info.height;
+    }else{
+      width = _self.get('width') || Util.getWidth(el);
+      height = _self.get('height') || Util.getHeight(el);
+    }
+    canvas = new Canvas({
+      width : width,
+      height :height,
+      id : id
+    });
     canvas.chart = _self;
-    _self.set('el',el);
+   
     _self.set('canvas',canvas);
   },
   //渲染背景、边框等
@@ -308,6 +377,7 @@ Util.augment(Chart,{
     plotBack = canvas.addGroup(PlotBack,plotCfg),
     plotRange = plotBack.get('plotRange');
 
+    _self.set('plotBack',plotBack);
     _self.set('plotRange',plotRange);
 
   },
@@ -319,20 +389,32 @@ Util.augment(Chart,{
       theme = _self.get('theme'),
       canvas = _self.get('canvas');
     if(title){
+      var titleShape = _self.get('titleShape');
       if(title.x == null){
         title.x = canvas.get('width')/2;
         title.y = title.y || 15;
       }
-      title = Util.mix({},theme.title,title);
-      canvas.addShape('label',title);
+      if(!titleShape){
+        title = Util.mix({},theme.title,title);
+        titleShape = canvas.addShape('label',title);
+        _self.set('titleShape',titleShape);
+      }else{
+        titleShape.attr(title);
+      }
     }
     if(subTitle){
+      var subTitleShape = _self.get('subTitleShape');
       if(subTitle.x == null){
         subTitle.x = canvas.get('width')/2;
         subTitle.y = subTitle.y || 35;
       }
-      subTitle = Util.mix({},theme.subTitle,subTitle);
-      canvas.addShape('label',subTitle);
+      if(!subTitleShape){
+        subTitle = Util.mix({},theme.subTitle,subTitle);
+        subTitleShape = canvas.addShape('label',subTitle);
+        _self.set('subTitleShape',subTitleShape);
+      }else{
+        subTitleShape.attr(subTitle);
+      }
     }
   },
   _getDefaultType : function(){
@@ -387,6 +469,19 @@ Util.augment(Chart,{
     seriesGroup = _self.get('canvas').addGroup(SeriesGroup,cfg);
     _self.set('seriesGroup',seriesGroup);
 
+  },
+  bindFitEvent : function(){
+    var _self = this,
+      delay = null;
+
+    function resize (){
+      clearTimeout(delay);
+
+      delay = setTimeout(function(){
+        _self.forceFit();
+      },200);
+    }
+    Util.addEvent(window,'resize',resize);
   },
   /**
    * 重绘整个图

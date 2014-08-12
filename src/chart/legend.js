@@ -131,7 +131,7 @@ Util.augment(Legend,{
       cfg,
       shape;
 
-    if(border){
+    if(border){      
       width = _self._getTotalWidth();
       height = _self._getTotalHeight();
 

@@ -8,8 +8,9 @@ $('<div id="c1"></div>').prependTo('body');
 describe('测试图形的基础内容', function() {
   
   var chart = new Chart({
-    width : 1000,
-    height : 500,
+    forceFit : true,
+    //height: 300,
+    fitRatio : .4,
     id : 'c1',
     plotCfg : {
       margin : [50,50,50]
@@ -86,9 +87,9 @@ describe('测试图形的基础内容', function() {
     it('测试plotRange',function(){
       var plotRange = chart.get('plotRange');
       expect(plotRange).not.to.be(undefined);
-      expect(plotRange.getWidth()).to.be(chart.get('width') - 100);
+      expect(plotRange.getWidth()).to.be(chart.get('canvas').get('width') - 100);
     });
-
+    /**/
     it('测试边框',function(){
 
     });

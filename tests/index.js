@@ -4,7 +4,7 @@ var expect = require('expect.js'),
 
   require('./index.css');
 
-var files = ['util','canvas','labels','axis','auto','tooltip','line','area','column','pie','radar','series-group','dynamic','bubble','flag'];
+var files = ['util','canvas','labels','chart','axis','auto','tooltip','line','area','column','pie','radar','series-group','dynamic','bubble','flag'];
 
 var node = $('<div class="content"><ul class="menu"></ul></div>').appendTo('body'),
   iframe = $('<iframe class="doc-frame" frameborder="0"></iframe>').appendTo(node);
