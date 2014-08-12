@@ -25,7 +25,6 @@ describe('环形图', function() {
         pieCfg : {
           allowPointSelect : false,
           labelHeight : 60,
-          labelLine : false,
           labels : {
             custom : true,
             distance : 40,
@@ -38,8 +37,20 @@ describe('环形图', function() {
     series: [{
         type: 'pie',
         name: 'Browser share',
+        animate : false,
         data: [
-          ['Firefox',   45.0],
+          ['Others',   0.7],
+          ['Safari',    0.8],['Others',   0.7],
+          ['Safari',    0.8],['Others',   0.7],
+          ['Safari',    0.8],
+          ['Opera',     6.2],
+          {
+              name: 'Chrome',
+              y: 12.8,
+              sliced: true,
+              selected: true
+          }
+          /*['Firefox',   45.0],
           ['IE',       26.8],
           {
               name: 'Chrome',
@@ -49,13 +60,13 @@ describe('环形图', function() {
           },
           ['Safari',    8.5],
           ['Opera',     6.2],
-          ['Others',   0.7]
+          ['Others',   0.7]*/
         ]
     }]
   });
 
   chart.render();
-
+/*
   describe('测试labels生成',function(){
     it('测试生成',function(done){
       setTimeout(function(){
@@ -70,20 +81,22 @@ describe('环形图', function() {
     });
 
     it('change data',function(){
-      var data = [{
+      var data = [
+          ['Others',   0.7],
+          ['Safari',    0.8],
+          ['Opera',     6.2],
+          {
               name: 'Chrome',
               y: 12.8,
               sliced: true,
               selected: true
-          },
-          ['Safari',    8.5],
-          ['Opera',     6.2],
-          ['Others',   0.7]
+          }
+          
         ];
 
       chart.getSeries()[0].changeData(data,true);
       expect($('.ac-labels').children().length).to.be(data.length);
     });
   });
-
+*/
 });

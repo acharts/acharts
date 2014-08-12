@@ -582,7 +582,7 @@
           callback && callback();
           return;
         }
-        var factor = Math.pow(durTime / duration, .48);
+        var factor = Math.pow(durTime / duration, 1.7);
         fn(factor, num);
         HANDLERS[uid] = Util.requestAnimationFrame(function() {
           next(num + 1, fn, duration, callback);
@@ -15150,7 +15150,7 @@
       renderer: null,
       custom: false,
       html: '<div class="ac-labels" style="position:absolute;top:0;left:0;"></div>',
-      itemTpl: '<div clss="ac-label" style="position:absolute;">{text}</div>',
+      itemTpl: '<div class="ac-label" style="position:absolute;">{text}</div>',
       animate: true,
       duration: 400
     };
@@ -18875,7 +18875,7 @@
         //大于现有的点
         for (var i = length; i < count; i++) {
           var shape = _self.addItem(points[i], i);
-          animate && _self.animateItem(shape, items[length - 1].get('prePoint'));
+          length > 1 && animate && _self.animateItem(shape, items[length - 1].get('prePoint'));
         }
         //小于现有的点
         for (var i = length - 1; i >= count; i--) {
@@ -19345,8 +19345,9 @@
       return self.get('parent').get('plotRange');
     }
 
-    function resetItem(item, h, endAngle, r, center) {
-      var angle = endAngle - (Math.acos((r - h) / r) / Math.PI * 180);
+    function resetItem(item, h, endAngle, r, center, isStart, lineHeight) {
+      var innerAngle = (Math.acos((r - h) / r) / Math.PI * 180),
+        angle = isStart ? (endAngle - 180) + innerAngle : (endAngle - innerAngle);
       item.orignAngle = item.angle;
       item.angle = angle;
       item.orignX = item.x;
@@ -19354,12 +19355,17 @@
       //增加5像素，用于连接线
       item.x = center.x + (r + 5) * Math.cos(item.angle * RAD);
       item.y = center.y + (r + 5) * Math.sin(item.angle * RAD);
+      if (innerAngle == 0) {
+        //item.y = item.y - lineHeight;
+        item["text-anchor"] = "middle";
+      }
     }
 
     function alignLables(center, r, arr, endAngle, factor, lineHeight) {
       var count = parseInt(r * 2 / lineHeight, 10), //理论上，最大显示的条数
         maxY = center.y + r,
-        minY = center.y - r;
+        minY = center.y - r,
+        startAngle = endAngle - 180;
       if (count < arr.length) { //忽略掉不能显示的条数
         //arr = arr.slice(0,count - 1);
         arr.splice(count, arr.length - count);
@@ -19367,7 +19373,9 @@
       var conflictIndex = 0, //从该点开始存在冲突，需要调整位置
         length = arr.length,
         leftAvg,
-        leftCount;
+        leftCount,
+        preAvg = 0,
+        preConflictIndex;
       //查找第一个容放不下后面节点的位置
       for (var i = 0; i < length; i++) {
         var label = arr[i],
@@ -19375,10 +19383,22 @@
           y = label.y;
         leftCount = length - i;
         leftAvg = factor > 0 ? (maxY - y) / leftCount : (y - minY) / leftCount;
+        if (i > 0) {
+          preAvg = factor > 0 ? (y - minY) / i : (maxY - y) / i;
+        }
         conflictIndex = i;
         if (leftAvg < lineHeight) {
           conflictIndex = i + 1;
           break;
+        }
+        if (preAvg > 0 && preAvg < lineHeight) {
+          preConflictIndex = i;
+        }
+      }
+      if (preConflictIndex) {
+        for (var i = 0; i <= preConflictIndex; i++) {
+          var h = i * lineHeight;
+          resetItem(arr[i], h, endAngle, r, center, true, lineHeight);
         }
       }
       if (conflictIndex && conflictIndex < length - 1) { //说明存在冲突，因为已经调整过，所以conflictIndex > 0
@@ -19586,12 +19606,17 @@
           center = _self.getCenter(),
           start = _self._getOffset(angle, r + MARGIN / 2),
           inner,
+          lineHeight = _self.get('labelHeight'),
           lineGroup = _self.get('lineGroup'),
           path = [];
+        if (label.angle == -90) {
+          distance = distance - lineHeight / 2;
+        }
         path.push(['M', center.x + start.x, center.y + start.y]);
         if (label.orignX != null) {
           inner = _self._getOffset(angle, r + distance / 2);
-          path.push(['R', center.x + inner.x, center.y + inner.y, label.x, label.y]);
+          var toy = label.angle == -90 ? (label.y + lineHeight / 2) : label.y;
+          path.push(['R', center.x + inner.x, center.y + inner.y, label.x, toy]);
         } else {
           path.push(['L', label.x, label.y]);
         }

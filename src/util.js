@@ -76,7 +76,7 @@ function animTime(duration,fn,callback){
         return ;
       }
 
-      var factor = Math.pow(durTime/duration, .48);
+      var factor = Math.pow(durTime/duration, 1.7);
       fn(factor,num);
       HANDLERS[uid] =  Util.requestAnimationFrame(function(){
         next(num+1,fn,duration,callback);

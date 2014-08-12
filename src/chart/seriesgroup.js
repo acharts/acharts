@@ -507,7 +507,6 @@ Util.augment(Group,{
       };
     }
 
-
     return rst;
 
   },

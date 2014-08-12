@@ -43,7 +43,7 @@ Labels.ATTRS = {
 
 	html : '<div class="ac-labels" style="position:absolute;top:0;left:0;"></div>',
 
-	itemTpl : '<div clss="ac-label" style="position:absolute;">{text}</div>',
+	itemTpl : '<div class="ac-label" style="position:absolute;">{text}</div>',
 
 	animate : true,
 	
