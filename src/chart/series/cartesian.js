@@ -51,6 +51,8 @@ Cartesian.ATTRS = {
    * @type {Chart.Axis}
    */
   yAxis : null,
+
+  invert : false,
   
   pointsCache : {}
 
@@ -60,6 +62,26 @@ Util.extend(Cartesian,BaseSeries);
 
 Util.augment(Cartesian,{
 
+  //获取代表x的坐标
+  getXName : function(){
+    var _self = this,
+      xName = _self.get('xName');
+    if(!xName){
+      xName = _self.get('invert') ? 'y' : 'x';
+      _self.set('xName',xName);
+    }
+    return xName;
+  },
+  //获取代表y的坐标
+  getYName : function(){
+    var _self = this,
+      yName = _self.get('yName');
+    if(!yName){
+      yName = _self.get('invert') ? 'x' : 'y';
+      _self.set('yName',yName);
+    }
+    return yName;
+  },
   /**
    * 获取坐标点
    * @param  {*} x x坐标系上的值
@@ -71,6 +93,8 @@ Util.augment(Cartesian,{
       xAxis = _self.get('xAxis'),
       yAxis = _self.get('yAxis'),
       yValue = _self.parseYValue(y),
+      xName = _self.getXName(),
+      yName = _self.getYName(),
       point = {};
 
     if(xAxis.get('type') == 'time'){
@@ -78,11 +102,10 @@ Util.augment(Cartesian,{
     }
     //圆形坐标轴，一般用于雷达图
     if(_self.isInCircle()){
-      
       point = yAxis.getPointByAngle(x,yValue);
     }else{
-      point.x = xAxis.getOffset(x);
-      point.y = yAxis.getOffset(yValue);
+      point[xName] = xAxis.getOffset(x);
+      point[yName] = yAxis.getOffset(yValue);
     }
 
     Util.mix(point,{
@@ -228,11 +251,14 @@ Util.augment(Cartesian,{
     var _self = this,
       xAxis = _self.get('xAxis'),
       yAxis = _self.get('yAxis'),
+      xName = _self.getXName(),
+      yName = _self.getYName(),
       x,
       yValue = _self.parseYValue(value),
       y = yAxis.getOffset(yValue),
       originValue,
-      xValue;
+      xValue,
+      point = {};
 
     if(xAxis.get('type') == 'number' || xAxis.get('type') == 'time'){
 
@@ -251,13 +277,15 @@ Util.augment(Cartesian,{
     if(pointInterval){
       originValue = Util.tryFixed(originValue,pointInterval);
     }
-    return {
-      x : x,
-      y : y,
+
+    point[xName] = x;
+    point[yName] = y;
+
+    return Util.mix(point,{
       xValue : originValue,
       yValue : yValue,
       value : value
-    };
+    });
   },
   /**
    * 获取鼠标移动与该series的焦点
@@ -265,6 +293,7 @@ Util.augment(Cartesian,{
   getTrackingInfo : function(point){
     var _self = this,
       xAxis = _self.get('xAxis'),
+      xName = _self.getXName(),
       xValue;
 
     if(_self.isInCircle()){
@@ -272,7 +301,7 @@ Util.augment(Cartesian,{
 
       xValue = xAxis.getValue(angle);
     }else{
-      xValue = xAxis.getValue(point.x);
+      xValue = xAxis.getValue(point[xName]);
     }
     return _self.findPointByValue(xValue);
   },

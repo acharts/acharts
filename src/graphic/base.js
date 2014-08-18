@@ -273,7 +273,8 @@ Util.augment(Base,{
     if(_self.get('parent')){
       _self.get('parent').removeChild(_self,destroy);
           _self.set('parent',null);
-    }else if(destroy){
+    }
+    if(destroy){
       _self.destroy();
     }
   },

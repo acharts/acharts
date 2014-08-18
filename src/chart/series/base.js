@@ -453,10 +453,9 @@ Util.augment(Series,{
       markers = _self.get('markers'),
       markersGroup;
     if(markers){
-      if(!markers){
-        markers.items = [];
-      }
-      markersGroup = _self.addGroup(Markers,markers);
+      var cfg = Util.mix({},markers);
+      cfg.invert = _self.get('invert');
+      markersGroup = _self.addGroup(Markers,cfg);
       _self.set('markersGroup',markersGroup);
     }
   },

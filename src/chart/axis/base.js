@@ -108,8 +108,9 @@ Util.augment(Axis,{
             var info = _self.getRangeInfo();
             _self.set('start',info.start);
             _self.set('end',info.end);
+            _self.set('orthoEnd',_self._getOrthoEnd());
         }
-        _self.set('orthoEnd',_self._getOrthoEnd());
+        
 
         _self.set('indexCache',{});
         _self.set('pointCache',[]);
@@ -327,7 +328,8 @@ Util.augment(Axis,{
     getSnapIndex : function(offset){
         var _self = this,
             pointCache = _self.get('pointCache'),
-            snap = Util.snapTo(pointCache,offset);;
+            temp = [].concat(pointCache).sort(function(v1,v2){return v1-v2}),
+            snap = Util.snapTo(temp,offset);
         return Util.indexOf(pointCache,snap);
     },
     _appendEndOffset : function(offset){

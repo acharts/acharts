@@ -15,6 +15,22 @@ function trySet(obj,name,value){
     obj[name] = value;
   }
 }
+
+function pathStr(CMD,x,y,invert){
+  if(invert){
+    return CMD + y + ' ' + x;
+  }
+  return CMD + x + ' ' + y;
+}
+
+function pathArray(arr,invert){
+  if(invert){
+    var tmp = arr[1];
+    arr[1] = arr[2];
+    arr[2] = tmp;
+  }
+  return arr;
+}
 /**
  * @class Chart.Series.Area
  * 区域图的数据序列
@@ -143,6 +159,9 @@ Util.augment(Area,{
       linePath,
       isInCircle = _self.isInCircle(),
       path = '',
+      invert = _self.get('invert'), //是否坐标轴旋转
+      xName = _self.getXName(),
+      yName = _self.getYName(),
       pre;
 
     if(length){
@@ -163,8 +182,8 @@ Util.augment(Area,{
         }
       }else{
         if(!isInCircle){
-          path = 'M ' + first.x + ' '+ value0 + linePath.replace('M','L');
-          path = path + 'L '+ last.x + ' '+value0+'';
+          path = pathStr('M ',first[xName], value0,invert)  + linePath.replace('M','L');
+          path = path + pathStr('L ',last[xName],value0,invert) +'';
         }
 
       }
@@ -183,6 +202,9 @@ Util.augment(Area,{
       last = points[length - 1],
       isInCircle = _self.isInCircle(),
       linePath,
+      invert = _self.get('invert'), //是否坐标轴旋转
+      xName = _self.getXName(),
+      yName = _self.getYName(),
       path = '';
    
     if(length){ 
@@ -193,7 +215,8 @@ Util.augment(Area,{
         path = linePath;
 
       }else{
-        path = 'M ' + first.x + ' '+ value0;
+        path = pathStr('M',first[xName],value0,invert);
+
         path = path + linePath.replace('M','L');
         if(REGEX_MOVE.test(path)){
           path = Util.parsePathString(path);
@@ -224,22 +247,22 @@ Util.augment(Area,{
               }else{
                 item[0] = 'L';
               }
-              temp.push(n1);
-              temp.push(n0);
-              temp.push(n2);
+              temp.push(pathArray(n1,invert));
+              temp.push(pathArray(n0,invert));
+              temp.push(pathArray(n2,invert));
               preBreak = item;
             }
-            temp.push(item);
+            temp.push(pathArray(item));
             
           });
           path = temp;
-          path.push(['L',last.x,value0]);
+          path.push(pathArray(['L',last.x,value0],invert));
           if(Util.svg){
             path.push(['Z'])
           }
 
         }else{
-          path = path + 'L '+ last.x + ' '+value0+'z';
+          path = path + pathStr('L',last[xName],value0,invert) + 'z';
         }
         
       }

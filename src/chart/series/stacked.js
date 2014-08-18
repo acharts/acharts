@@ -30,13 +30,15 @@ Util.augment(Stacked,{
 
   processStackedPoint : function(point,index){
     var _self = this,   
-      pre = _self.getVisiblePrev();
+      pre = _self.getVisiblePrev(),
+      xName = _self.getXName(),
+      yName = _self.getYName();
 
     if(pre){
       var prePoint = pre.getPoints()[index],
         baseValue = _self.getBaseValue();
       if(!_self.isInCircle()){ //非雷达图中
-        point.y = point.y + prePoint.y - baseValue;
+        point[yName] = point[yName] + prePoint[yName] - baseValue;
       }else{ //雷达图中
         var xAxis = _self.get('xAxis'),
           r = xAxis.getDistance(point.x,point.y),
@@ -51,8 +53,8 @@ Util.augment(Stacked,{
         point.ir = ir;
       }
       
-      point.lowY = prePoint.y;
-      point.lowX = prePoint.x;
+      point.lowY = prePoint[yName];
+      point.lowX = prePoint[xName];
     }
   },
   /**

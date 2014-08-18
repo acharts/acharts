@@ -76,6 +76,11 @@ Chart.ATTRS = {
      */
     series : undefined,
     /**
+     * 坐标轴是否翻转
+     * @type {Boolean}
+     */
+    invert : false,
+    /**
      * 数据图序列默认的配置项
      * @type {Object}
      */
@@ -301,7 +306,9 @@ Util.augment(Chart,{
       _self._renderTitle();
       _self._renderSeries();
       _self.get('canvas').sort();
-      _self.bindFitEvent();
+      if(_self.get('forceFit')){
+        _self.bindFitEvent();
+      }
     }
   },
   //获取自适应的宽度和高度
@@ -382,38 +389,40 @@ Util.augment(Chart,{
 
   },
   //渲染title
-  _renderTitle : function(){
+  _renderTitle : function(force){
     var _self = this,
       title = _self.get('title'),
       subTitle = _self.get('subTitle'),
       theme = _self.get('theme'),
-      canvas = _self.get('canvas');
+      canvas = _self.get('canvas'),
+      tcfg = {},
+      scfg = {};
     if(title){
       var titleShape = _self.get('titleShape');
       if(title.x == null){
-        title.x = canvas.get('width')/2;
-        title.y = title.y || 15;
+        tcfg.x = canvas.get('width')/2;
+        tcfg.y = title.y || 15;
       }
       if(!titleShape){
-        title = Util.mix({},theme.title,title);
-        titleShape = canvas.addShape('label',title);
+        tcfg = Util.mix(tcfg,theme.title,title);
+        titleShape = canvas.addShape('label',tcfg);
         _self.set('titleShape',titleShape);
       }else{
-        titleShape.attr(title);
+        titleShape.attr(tcfg);
       }
     }
     if(subTitle){
       var subTitleShape = _self.get('subTitleShape');
       if(subTitle.x == null){
-        subTitle.x = canvas.get('width')/2;
-        subTitle.y = subTitle.y || 35;
+        scfg.x = canvas.get('width')/2;
+        scfg.y = subTitle.y || 35;
       }
       if(!subTitleShape){
-        subTitle = Util.mix({},theme.subTitle,subTitle);
-        subTitleShape = canvas.addShape('label',subTitle);
+        scfg = Util.mix(scfg,theme.subTitle,subTitle);
+        subTitleShape = canvas.addShape('label',scfg);
         _self.set('subTitleShape',subTitleShape);
       }else{
-        subTitleShape.attr(subTitle);
+        subTitleShape.attr(scfg);
       }
     }
   },
@@ -444,6 +453,7 @@ Util.augment(Chart,{
     Util.mix(true,cfg,theme,{
       colors :  attrs.colors,
       data : attrs.data,
+      invert : _self.get('invert'),
       fields : attrs.fields,
       series : attrs.series,
       seriesOptions : attrs.seriesOptions,

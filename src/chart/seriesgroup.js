@@ -285,7 +285,10 @@ Util.augment(Group,{
     Util.each(sArray,function(series,index){
       var info = series.getTrackingInfo(point),
           item = {},
-          title;
+          title,
+          invert = series.get('invert'),
+          xName = invert ? 'y' : 'x',
+          yName = invert ? 'x' : 'y';
 
       if(info){
         if(series.get('visible')){
@@ -310,16 +313,16 @@ Util.augment(Group,{
         }
         if(count == 1){
           rst.title =  title;
-          if(info.x){
-            rst.point.x = info.x;
+          if(info[xName]){
+            rst.point[xName] = info[xName];
             if(sArray.length == 1){
-              rst.point.y = info.y;
+              rst.point[yName] = info[yName];
             }else{
-              rst.point.y = point.y;
+              rst.point[yName]  = point[yName] ;
             }
           }else{
-            rst.point.x = point.x;
-            rst.point.y = point.y;
+            rst.point[xName] = point[xName];
+            rst.point[yName] = point[yName] ;
           }
 
         }
@@ -584,7 +587,7 @@ Util.augment(Group,{
     }else{
       data = _self.getSeriesData(axis,name);
       first = data[0],
-      min = null;
+      min = Math.min.apply(null,first);
 
       Util.each(first,function(value,index){
         var temp = value;
@@ -619,7 +622,6 @@ Util.augment(Group,{
         if(item.get('autoTicks')){
           var info = _self._caculateAxisInfo(item,name);
           item.changeInfo(info);
-
         }
 
         item.paint();
@@ -859,6 +861,8 @@ Util.augment(Group,{
 
     item = Util.mix(true,{},seriesCfg[type + 'Cfg'],item);
 
+    item.invert = _self.get('invert');
+    
     //颜色
     if(!item.color && colors.length){
       item.color = colors[index % (colors.length)];

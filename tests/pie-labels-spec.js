@@ -25,6 +25,7 @@ describe('环形图', function() {
         pieCfg : {
           allowPointSelect : false,
           labelHeight : 60,
+          labelLine : false,
           labels : {
             custom : true,
             distance : 40,
@@ -69,7 +70,7 @@ describe('环形图', function() {
   describe('测试labels生成',function(){
     it('测试生成',function(done){
       setTimeout(function(){
-        expect($('.ac-labels').children().length).to.be(6);
+        expect($('.ac-labels').children().length).to.be(7);
         done();
       },1000);
       

@@ -339,13 +339,14 @@ Util.augment(Line,{
   getSnapMarker : function(point){
     var _self = this,
       markersGroup = _self.get('markersGroup'),
+      xName = _self.getXName(),
       rst = null;
     if(markersGroup){
       if(_self.isInCircle()){
         var info = _self.getTrackingInfo(point);
         rst = markersGroup.getSnapMarker(info);
       }else{
-        rst = markersGroup.getSnapMarker(point.x);
+        rst = markersGroup.getSnapMarker(point[xName]);
       }
     }
     return rst;

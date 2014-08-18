@@ -99,6 +99,7 @@ Util.augment(Markers,{
 	change : function(items){
 		var _self = this,
 			children = _self.get('children'),
+			invert = _self.get('invert'),
 			xCache = [];
 		
 		// 假如是single模式,就不change
@@ -118,7 +119,12 @@ Util.augment(Markers,{
 				}else{
 					marker.attr(item);
 				}
-				xCache.push(item.x);
+				if(invert){
+					xCache.push(item.y);
+				}else{
+					xCache.push(item.x);
+				}
+				
 			}else{
 				_self._addMarker(item);
 			}
@@ -158,10 +164,13 @@ Util.augment(Markers,{
 			xCache = _self.get('xCache'),
 			marker = _self.get('marker'),
 			cfg = Util.mix({},marker,item);
-
-		xCache.push(parseInt(item.x));
+		if(_self.get('invert')){
+			xCache.push(parseInt(item.y));
+		}else{
+			xCache.push(parseInt(item.x));
+		}
+		
 		return _self.addShape('marker',cfg);
-			
 	},
 	/**
 	 * 获取逼近的marker
@@ -185,7 +194,9 @@ Util.augment(Markers,{
 				}
 			});
 		}else{
-			var	snap = Util.snapTo(xCache,point,tolerance),
+
+			var	tmp = [].concat(xCache).sort(function(v1,v2){return v1-v2;}),
+				snap = Util.snapTo(tmp,point,tolerance),
 			index = Util.indexOf(xCache,snap);
 			rst =  _self.getChildAt(index);
 		}

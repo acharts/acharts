@@ -17,3 +17,8 @@
 2. custom labels
 3. plot events
 
+## 1.0.4
+
+1. axis revert,support line,area,column
+2. auto fit width
+

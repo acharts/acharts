@@ -307,6 +307,11 @@ Util.augment(Column,{
       item = _self.get('item'),
       width = _self.get('columnWidth'), //宽度,雷达图中表示角度
       offset = _self.get('columnOffset'),
+      xName = _self.getXName(),
+      yName = _self.getYName(),
+      invert = _self.get('invert'), //坐标轴是否旋转
+      V = invert ? 'h' : 'v',
+      H = invert ? 'v' : 'h',
       height,
       value0,
       stackPadding = 0,
@@ -334,12 +339,17 @@ Util.augment(Column,{
         value0 = baseValue;
       }
       value0 = value0 - stackPadding;
-
-      height = point.y - value0;
-      path.push(['M',point.x + offset - width/2,baseValue + (value0 - baseValue) * factor]);
-      path.push(['v',height * factor]);
-      path.push(['h',width]);
-      path.push(['v',-1 * height * factor]);
+      height = point[yName] - value0;
+      var xValue = point[xName] + offset - width/2,
+        yValue = baseValue + (value0 - baseValue) * factor;
+      if(invert){
+        path.push(['M',yValue,xValue]);
+      }else{
+        path.push(['M',xValue,yValue]);
+      }
+      path.push([V,height * factor]);
+      path.push([H,width]);
+      path.push([V,-1 * height * factor]);
       path.push(['z']);
     }
     

@@ -237,7 +237,7 @@ Util.augment(Labels,{
 	remove : function(){
 		var _self = this,
 			customDiv = _self.get('customDiv');
-		Labels.superclass.remove(this);
+		Labels.superclass.remove.call(this);
 		if(customDiv){
 			customDiv.parentNode.removeChild(customDiv);
 		}

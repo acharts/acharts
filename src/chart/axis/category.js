@@ -54,7 +54,7 @@ Util.augment(Category,{
         var _self = this,
             ticks = info.ticks;
         if(!ticks){
-            ticks = ticks.concat(info.categories);
+            ticks = [].concat(info.categories);
             if(ticks.length && ticks[ticks.length - 1] != ' '){
                ticks.push(' '); 
             }
@@ -75,11 +75,11 @@ Util.augment(Category,{
     	var _self = this,
     		avg = _self._getAvgLength(),
     		offset =  avg * index;
-    	if(offset >= 0){
-    		offset += avg/2;
-    	}else{
+    	//if(avg >= 0){
+    	offset += avg/2;
+    	/*}else{
     		offset -= avg/2;
-    	}
+    	}*/
     	return _self._appendEndOffset(offset) + _self._getStartCoord();
     },
     /**
@@ -122,11 +122,12 @@ Util.augment(Category,{
     		avg = _self._getAvgLength(),
     		current = _self.getOffsetByIndex(index);
     	
-    	if(current >= 0){
+    	/*if(avg >= 0){
     		current -= avg/2;
     	}else{
     		current += avg/2;
-    	}
+    	}*/
+      current -= avg/2;
     	if(_self.isVertical()){
     		return {
     			x : ortho,
