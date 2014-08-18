@@ -9,8 +9,8 @@ An awesome spm package!
 
 ## links
 
-[API](http://acharts.github.io/acharts-api/api/index.html)
-[demo](http://builive.com/chart/index.php)
+* [API](http://acharts.github.io/acharts-api/api/index.html)
+* [demo](http://builive.com/chart/index.php)
 
 ## 答疑
 

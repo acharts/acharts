@@ -81,6 +81,7 @@
     acharts.Date = require("acharts/1.0.4/src/date-debug");
     acharts.Theme = require("acharts/1.0.4/src/chart/theme-debug");
     window.Chart = acharts;
+    window.AChart = acharts;
     module.exports = acharts;
   });
   define("acharts/1.0.4/src/chart-debug", [], function(require, exports, module) {
