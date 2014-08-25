@@ -853,7 +853,7 @@ Util.augment(Group,{
     legendGroup && legendGroup.addItem({
       color : series.get('color'),
       name : series.get('name'),
-      type : series.get('type'),
+      type : series.get('legendType'),
       symbol : symbol,
       item : series
     });
