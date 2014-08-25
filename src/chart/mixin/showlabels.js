@@ -48,9 +48,6 @@ Util.augment(ShowLabels,{
     	labels.items = [];
     }
 
-    /*labels.x = _self.get('x');
-    labels.y = _self.get('y');*/
-
     labelsGroup = _self.addGroup(Labels,labels);
     _self.set('labelsGroup',labelsGroup);
 	},
@@ -111,6 +108,7 @@ Util.augment(ShowLabels,{
   	var _self = this,
   		labelsGroup = _self.get('labelsGroup');
   	labelsGroup && labelsGroup.remove();
+    
   }
 })
 
