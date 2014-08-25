@@ -3,13 +3,14 @@ var
     sinon = require('sinon'),
     $ = require('jquery');
 
-var Util = require('../src/util'),
-  Canvas = require('../src/canvas'),
-  Group = require('../src/chart/seriesgroup'),
-  NAxis = require('../src/chart/axis/number'),
-  CAxis = require('../src/chart/axis/category'),
-  PlotRange = require('../src/chart/plotrange'),
-  Simulate = require('../lib/event');
+var Util = require('achart-util'),
+  Canvas = require('achart-canvas'),
+  Group = require('../src/seriesgroup'),
+  Axis = require('achart-axis'),
+  NAxis = Axis.Number,
+  CAxis = Axis.Category,
+  PlotRange = require('achart-plot').Range,
+  Simulate = require('event-simulate');
 
   $('<div id="se1"></div>').prependTo('body');
 
@@ -266,7 +267,7 @@ describe('测试折线分组',function(){
 
     it('测试图例，文本',function(){
       var item = legendGroup.getLast();
-      expect(item.get('label').attr('text')).to.be(group.getLast().get('name'));
+      expect(item.get('labelShape').attr('text')).to.be(group.getLast().get('name'));
     });
 
     it('hover',function(){
@@ -274,7 +275,7 @@ describe('测试折线分组',function(){
       var item = legendGroup.getFirst();
       Simulate.simulate(item.get('node'),'mouseover');
 
-      expect(item.get('series').isActived()).to.be(true);
+      expect(item.get('item').isActived()).to.be(true);
 
     });
 
@@ -282,7 +283,7 @@ describe('测试折线分组',function(){
       var item = legendGroup.getFirst();
       Simulate.simulate(item.get('node'),'mouseout');
 
-      expect(item.get('series').isActived()).to.be(false);
+      expect(item.get('item').isActived()).to.be(false);
     });
 
     it('选中',function(done){
@@ -290,7 +291,7 @@ describe('测试折线分组',function(){
       Simulate.simulate(item.get('node'),'click');
 
       setTimeout(function(){
-        expect(item.get('series').get('visible')).to.be(false);
+        expect(item.get('item').get('visible')).to.be(false);
         done();
       },800);
     });
@@ -301,7 +302,7 @@ describe('测试折线分组',function(){
       Simulate.simulate(item.get('node'),'click');
 
       setTimeout(function(){
-        expect(item.get('series').get('visible')).to.be(true);
+        expect(item.get('item').get('visible')).to.be(true);
         done();
       },800);
     });

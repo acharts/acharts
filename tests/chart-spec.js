@@ -1,7 +1,7 @@
 var expect = require('expect.js'),
     sinon = require('sinon'),
     $ = require('jquery'),
-    Chart = require('../src/chart');
+    Chart = require('../acharts');
 
 $('<div id="c1"></div>').prependTo('body');
 
@@ -9,7 +9,6 @@ describe('测试图形的基础内容', function() {
   
   var chart = new Chart({
     forceFit : true,
-    //height: 300,
     fitRatio : .4,
     id : 'c1',
     plotCfg : {
@@ -66,19 +65,7 @@ describe('测试图形的基础内容', function() {
   });
 
   chart.render();
-  /*
-  chart.on('plotclick',function(ev){
-    console.log(ev);
-  });
-
-  chart.on('plotout',function(ev){
-    console.log('out');
-  });
-
-  chart.on('plotover',function(ev){
-    console.log('over');
-  });
-*/
+ 
   describe('测试图形的基础内容',function(){
     it('测试控件生成',function(){
       expect(chart.get('el')).not.to.be(null);

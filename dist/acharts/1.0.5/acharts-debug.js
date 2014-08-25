@@ -74,26 +74,29 @@
       return mod.exports
     }
   })(this);
-  define("acharts/1.0.4/acharts-debug", [], function(require, exports, module) {
-    var acharts = require("acharts/1.0.4/src/chart-debug");
-    acharts.Util = require("acharts/1.0.4/src/util-debug");
-    acharts.Canvas = require("acharts/1.0.4/src/canvas-debug");
-    acharts.Date = require("acharts/1.0.4/src/date-debug");
-    acharts.Theme = require("acharts/1.0.4/src/chart/theme-debug");
+  define("acharts/1.0.5/acharts-debug", [], function(require, exports, module) {
+    var acharts = require("acharts/1.0.5/src/chart-debug");
+    acharts.Util = require("achart-util/1.0.0/index-debug");
+    acharts.Canvas = require("achart-canvas/1.0.0/index-debug");
+    acharts.Date = require("achart-date/1.0.0/index-debug");
+    acharts.Theme = require("achart-theme/1.0.0/index-debug");
+    acharts.Series = require("achart-series/1.0.0/index-debug");
+    acharts.Axis = require("achart-axis/1.0.0/index-debug");
+    require("achart-series-other/1.0.0/index-debug");
     window.Chart = acharts;
     window.AChart = acharts;
     module.exports = acharts;
   });
-  define("acharts/1.0.4/src/chart-debug", [], function(require, exports, module) {
+  define("acharts/1.0.5/src/chart-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 图表控件
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      Canvas = require("acharts/1.0.4/src/canvas-debug"),
-      PlotBack = require("acharts/1.0.4/src/chart/plotback-debug"),
-      SeriesGroup = require("acharts/1.0.4/src/chart/seriesgroup-debug"),
-      Theme = require("acharts/1.0.4/src/chart/theme-debug");
+    var Util = require("achart-util/1.0.0/index-debug"),
+      Canvas = require("achart-canvas/1.0.0/index-debug"),
+      PlotBack = require("achart-plot/1.0.0/index-debug").Back,
+      SeriesGroup = require("acharts/1.0.5/src/seriesgroup-debug"),
+      Theme = require("achart-theme/1.0.0/index-debug");
     /**
      * @class Chart
      * 图，里面包括坐标轴、图例等图形
@@ -608,8 +611,12 @@
     });
     module.exports = Chart;
   });
-  define("acharts/1.0.4/src/util-debug", [], function(require, exports, module) {
-    var Raphael = require("acharts/1.0.4/src/raphael/index-debug"),
+  define("achart-util/1.0.0/index-debug", [], function(require, exports, module) {
+    var achartUtil = require("achart-util/1.0.0/src/util-debug");
+    module.exports = achartUtil;
+  });
+  define("achart-util/1.0.0/src/util-debug", [], function(require, exports, module) {
+    var Raphael = require("achart-raphael/1.0.0/index-debug"),
       STEP_MS = 16, //16毫秒一个step
       HANDLERS = {},
       TIMES = {}, //动画的事件校验
@@ -1468,13 +1475,17 @@
     });
     module.exports = Util;
   });
-  define("acharts/1.0.4/src/raphael/index-debug", [], function(require, exports, module) {
-    var Raphael = require("acharts/1.0.4/src/raphael/core-debug");
-    require("acharts/1.0.4/src/raphael/svg-debug");
-    require("acharts/1.0.4/src/raphael/vml-debug");
+  define("achart-raphael/1.0.0/index-debug", [], function(require, exports, module) {
+    var achartRaphael = require("achart-raphael/1.0.0/src/index-debug");
+    module.exports = achartRaphael;
+  });
+  define("achart-raphael/1.0.0/src/index-debug", [], function(require, exports, module) {
+    var Raphael = require("achart-raphael/1.0.0/src/core-debug");
+    require("achart-raphael/1.0.0/src/svg-debug");
+    require("achart-raphael/1.0.0/src/vml-debug");
     module.exports = Raphael;
   });
-  define("acharts/1.0.4/src/raphael/core-debug", [], function(require, exports, module) {
+  define("achart-raphael/1.0.0/src/core-debug", [], function(require, exports, module) {
     // ┌─────────────────────────────────────────────────────────────────────┐ \\
     // │ "Raphaël 2.1.2" - JavaScript Vector Library                         │ \\
     // ├─────────────────────────────────────────────────────────────────────┤ \\
@@ -1482,7 +1493,7 @@
     // │ Copyright (c) 2008-2011 Sencha Labs (http://sencha.com)             │ \\
     // │ Licensed under the MIT (http://raphaeljs.com/license.html) license. │ \\
     // └─────────────────────────────────────────────────────────────────────┘ \\
-    require("acharts/1.0.4/src/raphael/eve-debug");
+    require("achart-raphael/1.0.0/src/eve-debug");
     (function(glob, factory) {
       // AMD support
       if (typeof define === "function" && define.amd) {
@@ -7027,7 +7038,7 @@
     }));
     module.exports = Raphael;
   });
-  define("acharts/1.0.4/src/raphael/eve-debug", [], function(require, exports, module) {
+  define("achart-raphael/1.0.0/src/eve-debug", [], function(require, exports, module) {
     // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
     // 
     // Licensed under the Apache License, Version 2.0 (the "License");
@@ -7410,7 +7421,7 @@
       glob.eve = eve;
     })(this);
   });
-  define("acharts/1.0.4/src/raphael/svg-debug", [], function(require, exports, module) {
+  define("achart-raphael/1.0.0/src/svg-debug", [], function(require, exports, module) {
     // ┌─────────────────────────────────────────────────────────────────────┐ \\
     // │ Raphaël - JavaScript Vector Library                                 │ \\
     // ├─────────────────────────────────────────────────────────────────────┤ \\
@@ -8896,7 +8907,7 @@
         }
     }(window.Raphael);
   });
-  define("acharts/1.0.4/src/raphael/vml-debug", [], function(require, exports, module) {
+  define("achart-raphael/1.0.0/src/vml-debug", [], function(require, exports, module) {
     // ┌─────────────────────────────────────────────────────────────────────┐ \\
     // │ Raphaël - JavaScript Vector Library                                 │ \\
     // ├─────────────────────────────────────────────────────────────────────┤ \\
@@ -9887,17 +9898,17 @@
         }
     }(window.Raphael);
   });
-  define("acharts/1.0.4/src/canvas-debug", [], function(require, exports, module) {
-    var Canvas = require("acharts/1.0.4/src/graphic/canvas-debug");
-    Canvas.Group = require("acharts/1.0.4/src/graphic/group-debug");
-    Canvas.Shape = require("acharts/1.0.4/src/graphic/shape-debug");
+  define("achart-canvas/1.0.0/index-debug", [], function(require, exports, module) {
+    var Canvas = require("achart-canvas/1.0.0/src/canvas-debug");
+    Canvas.Group = require("achart-canvas/1.0.0/src/Group-debug");
+    Canvas.Shape = require("achart-canvas/1.0.0/src/Shape-debug");
     module.exports = Canvas;
   });
-  define("acharts/1.0.4/src/graphic/canvas-debug", [], function(require, exports, module) {
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      Group = require("acharts/1.0.4/src/graphic/group-debug"),
-      Raphael = require("acharts/1.0.4/src/raphael/index-debug"),
-      Container = require("acharts/1.0.4/src/graphic/container-debug");
+  define("achart-canvas/1.0.0/src/canvas-debug", [], function(require, exports, module) {
+    var Util = require("achart-util/1.0.0/index-debug"),
+      Group = require("achart-canvas/1.0.0/src/group-debug"),
+      Raphael = require("achart-raphael/1.0.0/index-debug"),
+      Container = require("achart-canvas/1.0.0/src/container-debug");
     /**
      * @class Chart.Canvas
      * 图形的画板，支持SVG和VML
@@ -10022,12 +10033,12 @@
     });
     module.exports = Canvas;
   });
-  define("acharts/1.0.4/src/graphic/group-debug", [], function(require, exports, module) {
-    var Container = require("acharts/1.0.4/src/graphic/container-debug"),
-      Item = require("acharts/1.0.4/src/graphic/canvasitem-debug"),
-      Util = require("acharts/1.0.4/src/util-debug"),
-      Shape = require("acharts/1.0.4/src/graphic/shape-debug");
-    require("acharts/1.0.4/src/raphael/group-debug");
+  define("achart-canvas/1.0.0/src/group-debug", [], function(require, exports, module) {
+    var Container = require("achart-canvas/1.0.0/src/container-debug"),
+      Item = require("achart-canvas/1.0.0/src/canvasitem-debug"),
+      Util = require("achart-util/1.0.0/index-debug"),
+      Shape = require("achart-canvas/1.0.0/src/shape-debug");
+    require("achart-canvas/1.0.0/src/raphealgroup-debug");
     /**
      * @class Chart.Canvas.Group
      * 图形分组
@@ -10068,9 +10079,6 @@
         node = el.node;
         node.group = _self;
         _self.set('node', node);
-        /*if(this.get('visible') == false){
-      el.hide();
-    }*/
         _self._initTranslate();
       },
       //初始化平移
@@ -10163,7 +10171,6 @@
         }
         _self.set('x', params.x);
         _self.set('y', params.y);
-        //_self._vmlAnimate(params,ms,callback);
       },
       /**
        * 移动的到位置
@@ -10201,10 +10208,10 @@
     });
     module.exports = Group;
   });
-  define("acharts/1.0.4/src/graphic/container-debug", [], function(require, exports, module) {
-    var Shape = require("acharts/1.0.4/src/graphic/shape-debug"),
-      Base = require("acharts/1.0.4/src/graphic/base-debug"),
-      Util = require("acharts/1.0.4/src/util-debug");
+  define("achart-canvas/1.0.0/src/container-debug", [], function(require, exports, module) {
+    var Shape = require("achart-canvas/1.0.0/src/shape-debug"),
+      Base = require("achart-canvas/1.0.0/src/base-debug"),
+      Util = require("achart-util/1.0.0/index-debug");
     /**
      * @class Chart.Canvas.Container
      * 图形容器
@@ -10454,10 +10461,10 @@
     });
     module.exports = Container;
   });
-  define("acharts/1.0.4/src/graphic/shape-debug", [], function(require, exports, module) {
-    var Base = require("acharts/1.0.4/src/graphic/base-debug"),
-      Item = require("acharts/1.0.4/src/graphic/canvasitem-debug"),
-      Util = require("acharts/1.0.4/src/util-debug");
+  define("achart-canvas/1.0.0/src/shape-debug", [], function(require, exports, module) {
+    var Base = require("achart-canvas/1.0.0/src/base-debug"),
+      Item = require("achart-canvas/1.0.0/src/canvasitem-debug"),
+      Util = require("achart-util/1.0.0/index-debug");
     /**
      * @class Chart.Canvas.Shape
      * 图形的基类
@@ -11239,8 +11246,8 @@
     Shape.Image = Image;
     module.exports = Shape;
   });
-  define("acharts/1.0.4/src/graphic/base-debug", [], function(require, exports, module) {
-    var Util = require("acharts/1.0.4/src/util-debug");
+  define("achart-canvas/1.0.0/src/base-debug", [], function(require, exports, module) {
+    var Util = require("achart-util/1.0.0/index-debug");
     /**
      * @class Chart.Canvas.Base
      * 图形控件或者分组的基类
@@ -11403,7 +11410,7 @@
       fire: function(eventType, eventObj) {
         var _self = this,
           events = _self.events,
-          callbacks = events[events];
+          callbacks = events[eventType];
         if (callbacks) {
           Util.each(callbacks, function(m) {
             m(eventObj);
@@ -11517,12 +11524,12 @@
     });
     module.exports = Base;
   });
-  define("acharts/1.0.4/src/graphic/canvasitem-debug", [], function(require, exports, module) {
+  define("achart-canvas/1.0.0/src/canvasitem-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 画布内部的元素扩展
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug");
+    var Util = require("achart-util/1.0.0/index-debug");
     /**
      * @class Chart.Canvas.CanvasItem
      * 画布内部元素的一些公用方法的扩展，仅作为接口使用
@@ -11584,152 +11591,1248 @@
     });
     module.exports = Item;
   });
-  define("acharts/1.0.4/src/raphael/group-debug", [], function(require, exports, module) {
-    var Util = require("acharts/1.0.4/src/util-debug");
-    window.Raphael && function(R) {
-      /*
-       * 创建分组
-       */
-      R.fn.group = function() {
-        var out = R._engine.group(this);
-        this.__set__ && this.__set__.push(out);
-        return out;
+  define("achart-canvas/1.0.0/src/raphealgroup-debug", [], function(require, exports, module) {
+    var Util = require("achart-util/1.0.0/index-debug"),
+      R = require("achart-raphael/1.0.0/index-debug");
+    /*
+     * 创建分组
+     */
+    R.fn.group = function() {
+      var out = R._engine.group(this);
+      this.__set__ && this.__set__.push(out);
+      return out;
+    };
+    //添加group的默认path
+    R._getPath.group = function(el) {
+      var bbox = el._getBBox();
+      return R._rectPath(0, 0, bbox.width, bbox.height);
+    }
+    /*
+     * 分组构造函数
+     */
+    var Group = function(node, svg) {
+        Group.superclass.constructor.call(this, node, svg);
+      },
+      groupproto;
+    Util.extend(Group, R.el.constructor);
+    groupproto = Group.prototype;
+    //级联添加分组
+    groupproto.group = function() {
+      var canvas = this.paper,
+        out = canvas.group();
+      this.node.appendChild(out.node);
+      return out;
+    };
+    //use svg
+    if (window.Raphael.svg) {
+      function createNode(tagName) {
+        return R._g.doc.createElementNS("http://www.w3.org/2000/svg", tagName)
+      }
+      R._engine.group = function(svg) {
+        var el = createNode("g");
+        svg.canvas && svg.canvas.appendChild(el);
+        var res = new Group(el, svg);
+        res.type = "group";
+        return res;
       };
-      //添加group的默认path
+      groupproto.add = function(json) {
+        var rest = this.paper.add(json),
+          el = this.node;
+        rest.forEach(function(element) {
+          el.appendChild(element.node);
+        });
+        return rest;
+      };
+    }
+    //use vml
+    if (window.Raphael.vml) {
+      var createNode = function(tagName) {
+        return R._g.doc.createElement('div');
+      };
+      //获取path
       R._getPath.group = function(el) {
-        var bbox = el._getBBox();
-        return R._rectPath(0, 0, bbox.width, bbox.height);
-      }
-      /*
-       * 分组构造函数
-       */
-      var Group = function(node, svg) {
-          Group.superclass.constructor.call(this, node, svg);
-        },
-        groupproto;
-      Util.extend(Group, R.el.constructor);
-      groupproto = Group.prototype;
-      //级联添加分组
-      groupproto.group = function() {
-        var canvas = this.paper,
-          out = canvas.group();
-        this.node.appendChild(out.node);
-        return out;
-      };
-      //use svg
-      if (window.Raphael.svg) {
-        function createNode(tagName) {
-          return R._g.doc.createElementNS("http://www.w3.org/2000/svg", tagName)
-        }
-        R._engine.group = function(svg) {
-          var el = createNode("g");
-          svg.canvas && svg.canvas.appendChild(el);
-          var res = new Group(el, svg);
-          res.type = "group";
-          return res;
-        };
-        groupproto.add = function(json) {
-          var rest = this.paper.add(json),
-            el = this.node;
-          rest.forEach(function(element) {
-            el.appendChild(element.node);
-          });
-          return rest;
-        };
-      }
-      //use vml
-      if (window.Raphael.vml) {
-        var createNode = function(tagName) {
-          return R._g.doc.createElement('div');
-        };
-        //获取path
-        R._getPath.group = function(el) {
-          var node = el.node,
-            set = el.__set,
-            width = 0,
-            height = 0;
-          if (set) {
-            set.forEach(function(element) {
-              var bbox = element.getBBox();
-              if (width < bbox.width) {
-                width = width;
-              }
-              if (height < bbox.height) {
-                height = bbox.height;
-              }
-            });
-          } /**/
-          return R._rectPath(0, 0, width, height);
-        }
-        //添加子节点
-        groupproto.add = function(json) {
-          var rest = this.paper.add(json),
-            el = this.node,
-            set = this.__set;
-          rest.forEach(function(element) {
-            el.appendChild(element.node);
-            if (set) {
-              set.push(element);
+        var node = el.node,
+          set = el.__set,
+          width = 0,
+          height = 0;
+        if (set) {
+          set.forEach(function(element) {
+            var bbox = element.getBBox();
+            if (width < bbox.width) {
+              width = width;
+            }
+            if (height < bbox.height) {
+              height = bbox.height;
             }
           });
-          if (!this.__set) {
-            this.__set = rest;
-          }
-          return rest;
-        };
-        groupproto.translate = function(dx, dy) {
-          var el = this.node,
-            top = parseFloat(el.style.top, 10) || 0,
-            left = parseFloat(el.style.left, 10) || 0;
-          el.style.top = top + dy + 'px';
-          el.style.left = left + dx + 'px';
-        };
-        groupproto.move = function(x, y) {
-          var el = this.node;
-          el.style.top = y + 'px';
-          el.style.left = x + 'px';
-        };
-        groupproto.animate = function(params, ms, easing, callback) {
-          var el = this.node,
-            top = parseFloat(el.style.top, 10) || 0,
-            left = parseFloat(el.style.left, 10) || 0;;
-          Util.animStep(ms, function(factor) {
-            el.style.top = (top + (params.y - top) * factor) + 'px';
-            el.style.left = (left + (params.x - left) * factor) + 'px';
-          }, callback);
-        };
-        /**/
-        //翻转
-        groupproto.transform = function(tstr) {
-          var set = this.__set;
+        } /**/
+        return R._rectPath(0, 0, width, height);
+      }
+      //添加子节点
+      groupproto.add = function(json) {
+        var rest = this.paper.add(json),
+          el = this.node,
+          set = this.__set;
+        rest.forEach(function(element) {
+          el.appendChild(element.node);
           if (set) {
-            set.forEach(function(element) {
-              element.transform(tstr);
-            });
+            set.push(element);
           }
-          Group.superclass.transform.call(this, tstr);
-        };
-        /**/
-        //创建分组
-        R._engine.group = function(vml) {
-          var el = createNode();
-          vml.canvas.appendChild(el);
-          var res = new Group(el, vml);
-          res.type = "group";
-          el.style.position = "relative";
-          return res;
+        });
+        if (!this.__set) {
+          this.__set = rest;
+        }
+        return rest;
+      };
+      groupproto.translate = function(dx, dy) {
+        var el = this.node,
+          top = parseFloat(el.style.top, 10) || 0,
+          left = parseFloat(el.style.left, 10) || 0;
+        el.style.top = top + dy + 'px';
+        el.style.left = left + dx + 'px';
+      };
+      groupproto.move = function(x, y) {
+        var el = this.node;
+        el.style.top = y + 'px';
+        el.style.left = x + 'px';
+      };
+      groupproto.animate = function(params, ms, easing, callback) {
+        var el = this.node,
+          top = parseFloat(el.style.top, 10) || 0,
+          left = parseFloat(el.style.left, 10) || 0;;
+        Util.animStep(ms, function(factor) {
+          el.style.top = (top + (params.y - top) * factor) + 'px';
+          el.style.left = (left + (params.x - left) * factor) + 'px';
+        }, callback);
+      };
+      /**/
+      //翻转
+      groupproto.transform = function(tstr) {
+        var set = this.__set;
+        if (set) {
+          set.forEach(function(element) {
+            element.transform(tstr);
+          });
+        }
+        Group.superclass.transform.call(this, tstr);
+      };
+      /**/
+      //创建分组
+      R._engine.group = function(vml) {
+        var el = createNode();
+        vml.canvas.appendChild(el);
+        var res = new Group(el, vml);
+        res.type = "group";
+        el.style.position = "relative";
+        return res;
+      }
+    }
+  });
+  define("achart-canvas/1.0.0/src/Group-debug", [], function(require, exports, module) {
+    var Container = require("achart-canvas/1.0.0/src/container-debug"),
+      Item = require("achart-canvas/1.0.0/src/canvasitem-debug"),
+      Util = require("achart-util/1.0.0/index-debug"),
+      Shape = require("achart-canvas/1.0.0/src/shape-debug");
+    require("achart-canvas/1.0.0/src/raphealgroup-debug");
+    /**
+     * @class Chart.Canvas.Group
+     * 图形分组
+     */
+    var Group = function(cfg) {
+      Group.superclass.constructor.call(this, cfg);
+    };
+    Group.ATTRS = {
+      /**
+       * 沿x轴的偏移量
+       * @type {Number}
+       */
+      x: {},
+      /**
+       * 沿y轴的偏移量
+       * @type {Number}
+       */
+      y: {}
+    };
+    Util.extend(Group, Container);
+    //获取画布内元素的一些共性方法
+    Util.mixin(Group, [Item]);
+    Util.augment(Group, {
+      /**
+       * 是否Group
+       * @type {Boolean}
+       */
+      isGroup: true,
+      renderUI: function() {
+        var _self = this,
+          el = _self.get('el'),
+          attrs = _self.get('attrs'),
+          node;
+        if (!el) {
+          el = _self.createElement(attrs);
+          _self.set('el', el);
+        }
+        node = el.node;
+        node.group = _self;
+        _self.set('node', node);
+        _self._initTranslate();
+      },
+      //初始化平移
+      _initTranslate: function() {
+        var _self = this,
+          x = _self.get('x'),
+          y = _self.get('y');
+        if (x || y) {
+          _self._translate((x || 0), (y || 0));
+        } else {
+          _self.set('x', x || 0);
+          _self.set('y', y || 0);
+        }
+      },
+      /**
+       * 移动
+       * @param  {Number} dx 沿x轴平移的距离
+       * @param  {Number} dy 沿y轴平移的距离
+       */
+      translate: function(dx, dy) {
+        var _self = this,
+          x = _self.get('x') || 0,
+          y = _self.get('y') || 0;
+        _self.set('x', x + dx);
+        _self.set('y', y + dy);
+        _self._translate(dx, dy);
+      },
+      getBBox: function() {
+        var _self = this,
+          children = _self.get('children'),
+          w = 0,
+          h = 0,
+          rst = {};
+        Util.each(children, function(item) {
+          var bbox = item.getBBox(),
+            w1 = bbox.width + bbox.x,
+            h1 = bbox.height + bbox.y;
+          if (w < w1) {
+            w = w1;
+          }
+          if (h < h1) {
+            h = h1;
+          }
+        });
+        rst.x = _self.get('x');
+        rst.y = _self.get('y');
+        rst.width = w;
+        rst.height = h;
+        return rst;
+      },
+      _translate: function(dx, dy) {
+        var _self = this,
+          el = _self.get('el');
+        el.translate(dx, dy);
+      },
+      /**
+       * 是否包含指定的DOM
+       * @param  {HTMLElement} element dom元素
+       * @return {Boolean}   是否包含
+       */
+      containsElement: function(element) {
+        var _self = this,
+          node = _self.get('node');
+        return node == element || Util.contains(node, element);
+      },
+      /**
+       * 执行动画,对于分组来说，animate仅支持平移动画
+       *
+       * <code>
+       *   group.animate({
+       *     x : 100,
+       *     y : 100
+       *   },400);
+       * </code>
+       *
+       * @param  {Object}   params   动画的参数
+       * @param  {Number}   ms       毫秒数
+       * @param  {String}   easing   路径函数
+       * @param  {Function} callback 回调函数
+       */
+      animate: function(params, ms, easing, callback) {
+        var _self = this,
+          el = _self.get('el');
+        if (Util.svg) {
+          el.animate({
+            transform: 't ' + params.x + ' ' + params.y
+          }, ms, easing, callback);
+        } else {
+          el.animate(params, ms, easing, callback);
+        }
+        _self.set('x', params.x);
+        _self.set('y', params.y);
+      },
+      /**
+       * 移动的到位置
+       * @param  {Number} x 移动到x
+       * @param  {Number} y 移动到y
+       */
+      move: function(x, y) {
+        var _self = this,
+          cx = _self.get('x') || 0, //当前的x
+          cy = _self.get('y') || 0; //当前的y
+        if (Util.svg) {
+          _self._translate(x - cx, y - cy);
+        } else {
+          _self.get('el').move(x, y);
+        }
+        _self.set('x', x);
+        _self.set('y', y);
+      },
+      /**
+       * @private
+       * @ignore
+       */
+      createElement: function() {
+        var _self = this,
+          el = _self.get('parent').get('el');
+        return el.group();
+      },
+      /**
+       * @protected
+       * @ignore
+       */
+      getGroupClass: function() {
+        return Group;
+      }
+    });
+    module.exports = Group;
+  });
+  define("achart-canvas/1.0.0/src/Shape-debug", [], function(require, exports, module) {
+    var Base = require("achart-canvas/1.0.0/src/base-debug"),
+      Item = require("achart-canvas/1.0.0/src/canvasitem-debug"),
+      Util = require("achart-util/1.0.0/index-debug");
+    /**
+     * @class Chart.Canvas.Shape
+     * 图形的基类
+     * @extends Chart.Canvas.Base
+     */
+    var Shape = function(cfg) {
+      Shape.superclass.constructor.call(this, cfg);
+    };
+    Shape.ATTRS = {
+      attrs: {}
+    }
+    Util.extend(Shape, Base);
+    //获取画布内元素的一些共性方法
+    Util.mixin(Shape, [Item]);
+    Util.augment(Shape, {
+      /**
+       * 是否图形
+       * @type {Boolean}
+       */
+      isShape: true,
+      //渲染shape
+      renderUI: function() {
+        var _self = this,
+          el = _self.get('el'),
+          node,
+          cfg,
+          attrs;
+        if (!el) {
+          cfg = _self.cfg;
+          attrs = _self.parseElCfg(cfg.attrs);
+          el = _self.createElement(attrs);
+          _self.set('el', el);
+        }
+        node = el.node;
+        node.shape = this;
+        _self.set('node', node);
+        if (this.get('visible') == false) {
+          el.hide();
+        }
+      },
+      /**
+       * @private
+       */
+      createElement: function(attrs) {
+        var _self = this,
+          parent = _self.get('parent'),
+          set = parent.get('el').add([attrs]),
+          element;
+        element = set [0];
+        return element;
+      },
+      /**
+       * @protected
+       * 格式化初始化配置项
+       */
+      parseElCfg: function(attrs) {
+        attrs.type = this.get('type');
+        return attrs;
+      },
+      /**
+       * 获取图形的整体长度
+       * @return {Number} 长度
+       */
+      getTotalLength: function() {
+        return this.get('el').getTotalLength();
+      },
+      /**
+       * 旋转
+       * @param  {Number} a 旋转的角度
+       * @param  {Number} x 旋转的中心点 x
+       * @param  {Number} y 旋转的中心点 y
+       */
+      rotate: function(a, x, y) {
+        var _self = this;
+        if (_self.isGroup) {
+          if (x == null && y == null) {
+            var tpoint = _self._getTranslatePoint();
+            x = tpoint.x;
+            y = tpoint.y;
+          }
+        }
+        this.get('el').rotate(a, x, y);
+      },
+      /**
+       * 放大
+       * @param  {Number} sx x轴方向的倍数
+       * @param  {Number} sy y轴方向的倍数
+       * @param  {Number} cx x轴方向扩展的中心
+       * @param  {Number} cy y轴方向扩展的中心
+       */
+      scale: function(sx, sy, cx, cy) {
+        var _self = this,
+          el = _self.get('el');
+        el.scale(sx, sy, cx, cy);
+      },
+      /**
+       * 直接使用transform方法 <br>
+       *  "t100,100r30,100,100s2,2,100,100r45s1.5"
+       *   -
+       * @param  {String} tstr 几何转换的字符串
+       */
+      transform: function(tstr) {
+        var _self = this,
+          el = _self.get('el');
+        el.transform(tstr);
+      },
+      getBBox: function() {
+        return this.get('el').getBBox();
+      },
+      /**
+       * 获取路径
+       * @return {Array} 路径的数组
+       */
+      getPath: function() {
+        var _self = this,
+          el = _self.get('el'),
+          path = el.getPath();
+        if (Util.isString(path)) {
+          path = Util.parsePathString(path);
+        }
+        return path;
+      },
+      /**
+       * 获取路径字符串
+       * @return {String} 路径的字符串
+       */
+      getPathString: function() {
+        var _self = this,
+          path = _self.getPath();
+        return Util.parsePathArray(path);
+      },
+      /**
+       * 获取使用平移后的path
+       * @return {Array} 路径的数组
+       */
+      getTransformPath: function() {
+        var _self = this,
+          path = _self.getPath(),
+          matrix = _self.get('el').matrix;
+        return Util.transformPath(path, matrix.toTransformString());
+      },
+      //获取到移动的位置
+      _getTranslatePoint: function() {
+        var _self = this,
+          tPath = _self.getTransformPath(),
+          rst = {
+            x: 0,
+            y: 0
+          };
+        Util.each(tPath, function(item) {
+          if (item[0] == 'M') {
+            rst.x = item[1];
+            rst.y = item[2];
+          }
+        });
+        return rst;
+      },
+      //获取转换的信息，返回一个数组，处理非数组的场景
+      __getTransform: function(value) {
+        if (Util.isString(value)) {
+          value = value.replace(/([t,s,r])/, ';$1 ').split(';');
+          var temp = [];
+          Util.each(value, function(str) {
+            if (str) {
+              var sub = str.split(' ');
+              sub = Util.map(sub, function(subStr) {
+                if (Util.isNumeric(subStr)) {
+                  return parseFloat(subStr);
+                }
+                return subStr;
+              });
+              temp.push(sub);
+            }
+          });
+          value = temp;
+        }
+        return value;
+      }
+    });
+    /**
+     * 圆
+     * @class Chart.Canvas.Shape.Circle
+     * @extends Chart.Canvas.Shape
+     */
+    var Circle = function(cfg) {
+      Circle.superclass.constructor.call(this, cfg);
+    };
+    Circle.ATTRS = {
+      /**
+       * 圆心的x坐标
+       * @type {Number}
+       */
+      cx: {},
+      /**
+       * 圆心的y坐标
+       * @type {Number}
+       */
+      cy: {},
+      /**
+       * 圆的半径
+       * @type {Number}
+       */
+      r: {}
+    };
+    Util.extend(Circle, Shape);
+    Shape.Circle = Circle;
+    /**
+     * 矩形
+     * @class Chart.Canvas.Shape.Rect
+     * @extends Chart.Canvas.Shape
+     */
+    var Rect = function(cfg) {
+      Rect.superclass.constructor.call(this, cfg);
+    };
+    Rect.ATTRS = {
+      /**
+       * 矩形的左定点x坐标
+       * @type {Number}
+       */
+      x: {},
+      /**
+       * 矩形的左定点y坐标
+       * @type {Number}
+       */
+      y: {},
+      /**
+       * 矩形的宽度
+       * @type {Number}
+       */
+      width: {},
+      /**
+       * 矩形的高度
+       * @type {Number}
+       */
+      height: {},
+      /**
+       * 圆角
+       * @type {Number}
+       */
+      r: {
+        value: 0
+      }
+    };
+    Util.extend(Rect, Shape);
+    Shape.Rect = Rect;
+    /**
+     * 矩形
+     * @class Chart.Canvas.Shape.Ellipse
+     * @extends Chart.Canvas.Shape
+     */
+    var Ellipse = function(cfg) {
+      Ellipse.superclass.constructor.call(this, cfg);
+    };
+    Ellipse.ATTRS = {
+      /**
+       * 矩形的左定点x坐标
+       * @type {Number}
+       */
+      cx: {},
+      /**
+       * 矩形的左定点y坐标
+       * @type {Number}
+       */
+      cy: {},
+      /**
+       * 矩形的宽度
+       * @type {Number}
+       */
+      rx: {},
+      /**
+       * 矩形的高度
+       * @type {Number}
+       */
+      ry: {}
+    };
+    Util.extend(Ellipse, Shape);
+    Shape.Ellipse = Ellipse;
+    /**
+     * 路径
+     * @class Chart.Canvas.Shape.Path
+     * @extends Chart.Canvas.Shape
+     */
+    var Path = function(cfg) {
+      Path.superclass.constructor.call(this, cfg);
+    };
+    Path.ATTRS = {
+      /**
+       * 路径
+       * @type {String}
+       */
+      path: {}
+    };
+    Util.extend(Path, Shape);
+    Shape.Path = Path;
+    /**
+     * 直线
+     * @class Chart.Canvas.Shape.Line
+     * @extends Chart.Canvas.Shape.Path
+     */
+    var Line = function(cfg) {
+      Line.superclass.constructor.call(this, cfg);
+    };
+    Line.ATTRS = {
+      /**
+       * 起始x坐标
+       * @type {Number}
+       */
+      x1: {},
+      /**
+       * 起始y坐标
+       * @type {Number}
+       */
+      y1: {},
+      /**
+       * 终止x坐标
+       * @type {Number}
+       */
+      x2: {},
+      /**
+       * 终止y坐标
+       * @type {Number}
+       */
+      y2: {}
+    };
+    Util.extend(Line, Path);
+    Util.augment(Line, {
+      /**
+       * @protected
+       * 格式化初始化配置项
+       */
+      parseElCfg: function(attrs) {
+        attrs.type = 'path'; //将线转换成path
+        attrs.path = Util.substitute('M {x1},{y1}L{x2},{y2}', attrs);
+        return attrs;
+      },
+      //获取线的坐标点
+      _getLinePoint: function(pointIndex, coordIndex) {
+        var path = this.getPath();
+        return path[pointIndex][coordIndex];
+      },
+      //设置线的坐标点
+      _setLinePoint: function(pointIndex, coordIndex, value) {
+        var _self = this,
+          path = this.getPath();
+        path[pointIndex][coordIndex] = value;
+        _self.attr('path', path);
+      },
+      //设置坐标x1
+      __setX1: function(value) {
+        this._setLinePoint(0, 1, value);
+      },
+      __getX1: function() {
+        return this._getLinePoint(0, 1);
+      },
+      //设置坐标x2
+      __setX2: function(value) {
+        this._setLinePoint(1, 1, value);
+      },
+      __getX2: function() {
+        return this._getLinePoint(1, 1);
+      },
+      //设置坐标y1
+      __setY1: function(value) {
+        this._setLinePoint(0, 2, value);
+      },
+      __getY1: function() {
+        return this._getLinePoint(0, 2);
+      },
+      //设置坐标y2
+      __setY2: function(value) {
+        this._setLinePoint(1, 2, value);
+      },
+      __getY2: function() {
+        return this._getLinePoint(1, 2);
+      }
+    });
+    Shape.Line = Line;
+
+    function points2path(points, z) {
+      if (Util.isArray(points)) {
+        points = points.join(' ');
+      }
+      return 'M' + points + z;
+    }
+    /**
+     * 折线，polyLine
+     * @class Chart.Canvas.Shape.PolyLine
+     * @extends Chart.Canvas.Shape.Path
+     */
+    var PolyLine = function(cfg) {
+      PolyLine.superclass.constructor.call(this, cfg);
+    };
+    PolyLine.ATTRS = {
+      /**
+       * 定点集合，可以是字符串、或者数组
+       *
+       *  - 字符串： '0,0 25,25 31,50'
+       *  - 数组 ： ['0,0','25,25','31,50']
+       *
+       * @type {Array|String}
+       */
+      points: {}
+    };
+    Util.extend(PolyLine, Path);
+    Util.augment(PolyLine, {
+      //设置顶点
+      __setPoints: function(value) {
+        var _self = this,
+          el = _self.get('el'),
+          path = points2path(value, '');
+        _self.attr('path', path);
+      },
+      /**
+       * @protected
+       * 格式化初始化配置项
+       */
+      parseElCfg: function(attrs) {
+        attrs.type = 'path'; //将线转换成path
+        attrs.path = points2path(attrs.points, '');
+        return attrs;
+      }
+    });
+    Shape.PolyLine = PolyLine;
+    /**
+     * 多边形
+     * @class Chart.Canvas.Shape.Polygon
+     * @extends Chart.Canvas.Shape.Path
+     */
+    var Polygon = function(cfg) {
+      PolyLine.superclass.constructor.call(this, cfg);
+    };
+    Polygon.ATTRS = {
+      /**
+       * 定点集合，可以是字符串、或者数组
+       *
+       *  - 字符串： '0,0 25,25 31,50'
+       *  - 数组 ： ['0,0','25,25','31,50']
+       *
+       * @type {Array|String}
+       */
+      points: {}
+    };
+    Util.extend(Polygon, Path);
+    Util.augment(Polygon, {
+      //设置顶点
+      __setPoints: function(value) {
+        var _self = this,
+          el = _self.get('el'),
+          path = points2path(value, 'z');
+        _self.attr('path', path);
+      },
+      /**
+       * @protected
+       * 格式化初始化配置项
+       */
+      parseElCfg: function(attrs) {
+        attrs.type = 'path'; //将线转换成path
+        attrs.path = points2path(attrs.points, 'z');
+        return attrs;
+      }
+    });
+    Shape.Polygon = Polygon;
+    /**
+     * 文本
+     * @class Chart.Canvas.Shape.Text
+     * @extends Chart.Canvas.Shape
+     */
+    var Text = function(cfg) {
+      Text.superclass.constructor.call(this, cfg);
+    };
+    Text.ATTRS = {
+      /**
+       * x轴坐标
+       * @type {Number}
+       */
+      x: {},
+      /**
+       * y轴坐标
+       * @type {Number}
+       */
+      y: {},
+      /**
+       * 显示的文本
+       * @type {String}
+       */
+      text: {},
+      /**
+       * 字体相关的属性，也可以单独设置其中的属性: font-family,font-weight....
+       * @type {String}
+       */
+      'font': {},
+      /**
+       * 文本的对齐方式：默认对齐方式: 'middle'
+       * @type {String}
+       */
+      'text-anchor': {}
+    };
+    Util.extend(Text, Shape);
+    Shape.Text = Text;
+    /**
+     * @class Chart.Canvas.Shape.Label
+     * 文本标签，继承自文本，但是提供了rotate属性
+     * @extends Chart.Canvas.Shape.Text
+     */
+    var Label = function(cfg) {
+      Label.superclass.constructor.call(this, cfg);
+    };
+    Util.extend(Label, Text);
+    Label.ATTRS = {
+      /**
+       * 旋转角度
+       * @type {Number}
+       */
+      rotate: {}
+    };
+    Util.augment(Label, {
+      /**
+       * @protected
+       * 格式化初始化配置项
+       */
+      parseElCfg: function(attrs) {
+        attrs.type = 'text';
+        if (attrs.rotate) {
+          attrs.transform = Util.substitute('r{rotate} {x} {y}', attrs);
+        }
+        return attrs;
+      }
+    });
+    Shape.Label = Label;
+    /**
+     * @class Chart.Canvas.Shape.Marker
+     * 用于标示节点的图形
+     * @extends Chart.Canvas.Shape
+     */
+    var Marker = function(cfg) {
+      Marker.superclass.constructor.call(this, cfg);
+    };
+    Marker.ATTRS = {
+      /**
+       * 类型 "circle", "square", "diamond", "triangle" and "triangle-down"；如果是 "url(xxx)"则是图片；custom则需要指定路径
+       * @type {String}
+       */
+      symbol: {
+        value: 'custom'
+      },
+      /**
+       * 半径
+       * @type {Number}
+       */
+      radius: {
+        value: 5
+      },
+      /**
+       * 如果类型为"custom"时指定路径
+       * @type {Object}
+       */
+      path: {},
+      /**
+       * 起始x轴位置
+       * @type {Number}
+       */
+      x: {},
+      /**
+       * 起始y轴位置
+       * @type {Number}
+       */
+      y: {}
+    };
+    Marker.Symbols = {
+      //圆
+      circle: function(x, y, r) {
+        return [
+          ['M', x, y - r],
+          ['a', r, r, 0, 1, 1, 0, 2 * r],
+          ['a', r, r, 0, 1, 1, 0, -2 * r],
+          ['z']
+        ];
+      },
+      //正方形
+      square: function(x, y, r) {
+        return [
+          ['M', x - r, y - r],
+          ['L', x + r, y - r],
+          ['L', x + r, y + r],
+          ['L', x - r, y + r],
+          ['z']
+        ];
+      },
+      //菱形
+      diamond: function(x, y, r) {
+        return [
+          ['M', x - r, y],
+          ['L', x, y - r],
+          ['L', x + r, y],
+          ['L', x, y + r],
+          ['z']
+        ];
+      },
+      //三角形
+      triangle: function(x, y, r) {
+        var diffX = r / 0.866,
+          diffY = r;
+        return [
+          ['M', x, y - r],
+          ['L', x + diffX, y + diffY],
+          ['L', x - diffX, y + diffY],
+          ['z']
+        ];
+      },
+      //倒三角形
+      'triangle-down': function(x, y, r) {
+        var diffX = r / 0.866,
+          diffY = r;
+        return [
+          ['M', x, y + r],
+          ['L', x + diffX, y - diffY],
+          ['L', x - diffX, y - diffY],
+          ['z']
+        ];
+      }
+    };
+    Util.extend(Marker, Shape);
+    Util.augment(Marker, {
+      //设置半径
+      __setRadius: function(v) {
+        var _self = this,
+          attrs = _self.get('attrs');
+        _self._setSize(attrs.x, attrs.y, v);
+      },
+      __getRadius: function() {
+        return this.get('attrs').radius;
+      },
+      //设置x
+      __setX: function(x) {
+        var _self = this,
+          attrs = _self.get('attrs');
+        _self._setSize(x, attrs.y, attrs.radius);
+      },
+      __getX: function() {
+        return this.get('attrs').x;
+      },
+      //设置y
+      __setY: function(y) {
+        var _self = this,
+          attrs = _self.get('attrs');
+        _self._setSize(attrs.x, y, attrs.radius);
+      },
+      __getY: function() {
+        return this.get('attrs').y;
+      },
+      __getSymbol: function() {
+        return this.get('attrs').symbol;
+      },
+      //设置大小，位置
+      _setSize: function(x, y, radius) {
+        var _self = this,
+          attrs = _self.get('attrs'),
+          el = _self.get('el');
+        if (el.type !== 'image') {
+          var cfg = {
+            x: x,
+            y: y,
+            radius: radius
+          };
+          Util.mix(attrs, cfg);
+          var path = _self._getPath(attrs);
+          el.attr('path', path);
+        } else {
+          Util.mix(attrs, {
+            width: radius * 2,
+            height: radius * 2,
+            x: x - (radius - attrs.radius),
+            y: y - (radius - attrs.radius),
+            radius: radius
+          });
+          el.attr(attrs);
+        }
+      },
+      animate: function(params, ms, easing, callback) {
+        var _self = this,
+          attrs = _self.get('attrs'),
+          path;
+        if (_self.get('el').type == 'image') {
+          var radius = params.radius || _self.attr('radius');
+          params.x = params.x - radius;
+          params.y = params.y - radius;
+          Util.mix(attrs, {
+            x: params.x,
+            y: params.y
+          });
+          _self.get('el').animate(params, ms, easing, callback);
+        } else {
+          Util.mix(attrs, {
+            x: params.x,
+            y: params.y
+          });
+          path = _self._getPath(attrs);
+          _self.get('el').animate({
+            path: path
+          }, ms, easing, callback);
+        }
+      },
+      /**
+       * @protected
+       * 格式化初始化配置项
+       */
+      parseElCfg: function(attrs) {
+        var _self = this,
+          symbol = attrs.symbol,
+          radius = attrs.radius || 5;
+        if (symbol && symbol.indexOf('url') != -1) { //图片
+          attrs.type = 'image';
+          attrs.src = symbol.replace(/url\((.*)\)/, '$1');
+          attrs.width = attrs.radius * 2;
+          attrs.height = attrs.radius * 2;
+          if (Util.vml) {
+            attrs.x -= radius - 1,
+            attrs.y -= radius - 1;
+          } else {
+            attrs.x -= radius,
+            attrs.y -= radius;
+          }
+        } else {
+          attrs.type = 'path';
+          attrs.path = _self._getPath(attrs);
+        }
+        return attrs;
+      },
+      //获取path
+      _getPath: function(attrs) {
+        if (!attrs.symbol && attrs.path) {
+          return Util.substitute(attrs.path, attrs);
+        }
+        var method = Marker.Symbols[attrs.symbol];
+        if (method) {
+          return method(attrs.x, attrs.y, attrs.radius)
+        } else {
+          throw 'not support this type ' + attrs.symbol;
         }
       }
-    }(window.Raphael);
+    });
+    Shape.Marker = Marker;
+    /**
+     * @class Chart.Canvas.Shape.Image
+     * 图片
+     * @extends Chart.Canvas.Shape
+     */
+    var Image = function(cfg) {
+      Image.superclass.constructor.call(this, cfg);
+    };
+    Image.ATTRS = {
+      /**
+       * 路径
+       * @type {String}
+       */
+      src: {},
+      /**
+       * x轴位置
+       * @type {Number}
+       */
+      x: {},
+      /**
+       * y轴位置
+       * @type {Number}
+       */
+      y: {},
+      /**
+       * 宽度
+       * @type {Number}
+       */
+      width: {},
+      /**
+       * 高度
+       * @type {Number}
+       */
+      height: {}
+    }
+    Util.extend(Image, Shape);
+    Shape.Image = Image;
+    module.exports = Shape;
   });
-  define("acharts/1.0.4/src/chart/plotback-debug", [], function(require, exports, module) {
+  define("achart-plot/1.0.0/index-debug", [], function(require, exports, module) {
+    var Plot = {};
+    Plot.Item = require("achart-plot/1.0.0/src/plotitem-debug");
+    Plot.Back = require("achart-plot/1.0.0/src/plotback-debug");
+    Plot.Range = require("achart-plot/1.0.0/src/plotrange-debug");
+    module.exports = Plot;
+  });
+  define("achart-plot/1.0.0/src/plotitem-debug", [], function(require, exports, module) {
+    /**
+     * @fileOverview 所有图表内部元素的基类，继承自group
+     * @ignore
+     */
+    var Util = require("achart-util/1.0.0/index-debug"),
+      Canvas = require("achart-canvas/1.0.0/index-debug");
+
+    function initClassAttrs(c) {
+      if (c._attrs || c == Canvas.Group) {
+        return;
+      }
+      var superCon = c.superclass.constructor;
+      if (superCon && !superCon._attrs) {
+        initClassAttrs(superCon);
+      }
+      c._attrs = {};
+      Util.mix(true, c._attrs, superCon._attrs);
+      Util.mix(true, c._attrs, c.ATTRS);
+    }
+    /**
+     * @class Chart.PlotItem
+     * 图表内部元素的基类
+     * @extends Chart.Canvas.Group
+     *
+     */
+    function Item(cfg) {
+      initClassAttrs(this.constructor);
+      Item.superclass.constructor.call(this, cfg);
+    };
+    Item.ATTRS = {
+      /**
+       * 活动子项的名称，用于组成 itemactived,itemunactived的事件
+       * @protected
+       * @type {String}
+       */
+      itemName: 'item',
+      /**
+       * 所属分组的名称,用于事件中标示父元素
+       * @protected
+       * @type {String}
+       */
+      groupName: 'group',
+      /**
+       * 事件回调，支持dom的所有事件和自定义事件
+       * @type {Object}
+       */
+      events: null
+    };
+    Util.extend(Item, Canvas.Group);
+    Util.augment(Item, {
+      //获取默认的属性
+      getDefaultCfg: function() {
+        var _self = this,
+          con = _self.constructor,
+          attrs = con._attrs,
+          rst = Util.mix(true, {}, attrs);
+        return rst;
+      },
+      //绑定事件
+      bindUI: function() {
+        var _self = this,
+          events = _self.get('events');
+        if (events) {
+          Util.each(events, function(v, k) {
+            _self.on(k, v);
+          });
+        }
+      },
+      /**
+       * 获取显示的子项
+       * @return {Array} 显示的子项
+       */
+      getVisibleChildren: function() {
+        var _self = this,
+          children = _self.get('children');
+        return Util.filter(children, function(item) {
+          return item.get('visible');
+        });
+      },
+      /**
+       * 显示子项
+       * @param  {Chart.Canvas.Base} child 子项
+       */
+      showChild: function(child) {
+        child && child.show();
+      },
+      /**
+       * 隐藏子项
+       * @param  {Chart.Canvas.Base} child 子项
+       */
+      hideChild: function(child) {
+        child && child.hide();
+      },
+      /**
+       * 在顶层图表控件上触发事件
+       * @param {String} name 事件名称
+       * @param  {Object} ev 事件对象
+       */
+      fireUp: function(name, ev) {
+        var _self = this,
+          canvas = _self.get('canvas'),
+          chart = canvas.chart;
+        ev = ev || {};
+        if (chart) {
+          ev.target = ev.target || chart;
+          chart.fire(name, ev);
+        }
+      },
+      /**
+       * @protected
+       * 在分组上触发事件
+       * @param  {String} name 事件名称
+       * @param  {Object} item 触发事件的子项
+       * @param  {Object} obj  事件对象
+       */
+      fireUpGroup: function(name, item, obj) {
+        var _self = this,
+          itemName = _self.get('itemName'),
+          groupName = _self.get('groupName');
+        obj = obj || {};
+        obj[itemName] = item;
+        if (groupName) {
+          obj[groupName] = _self.get('parent')
+        }
+        _self.fireUp(itemName.toLowerCase() + name, obj);
+      }
+    });
+    module.exports = Item;
+  });
+  define("achart-plot/1.0.0/src/plotback-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 坐标系内部区域,用于显示背景
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      PlotItem = require("acharts/1.0.4/src/chart/plotitem-debug"),
-      PlotRange = require("acharts/1.0.4/src/chart/plotrange-debug");
+    var Util = require("achart-util/1.0.0/index-debug"),
+      PlotItem = require("achart-plot/1.0.0/src/plotitem-debug"),
+      PlotRange = require("achart-plot/1.0.0/src/plotrange-debug");
     /**
      * @class Chart.PlotBack
      * @protected
@@ -11874,102 +12977,12 @@
     });
     module.exports = PlotBack;
   });
-  define("acharts/1.0.4/src/chart/plotitem-debug", [], function(require, exports, module) {
-    /**
-     * @fileOverview 所有图表内部元素的基类，继承自group
-     * @ignore
-     */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      Canvas = require("acharts/1.0.4/src/canvas-debug");
-
-    function initClassAttrs(c) {
-      if (c._attrs || c == Canvas.Group) {
-        return;
-      }
-      var superCon = c.superclass.constructor;
-      if (superCon && !superCon._attrs) {
-        initClassAttrs(superCon);
-      }
-      c._attrs = {};
-      Util.mix(true, c._attrs, superCon._attrs);
-      Util.mix(true, c._attrs, c.ATTRS);
-    }
-    /**
-     * @class Chart.PlotItem
-     * 图表内部元素的基类
-     * @extends Chart.Canvas.Group
-     *
-     */
-    function Item(cfg) {
-      initClassAttrs(this.constructor);
-      Item.superclass.constructor.call(this, cfg);
-    };
-    Item.ATTRS = {
-      /**
-       * 活动子项的名称，用于组成 itemactived,itemunactived的事件
-       * @protected
-       * @type {String}
-       */
-      itemName: 'item',
-      /**
-       * 所属分组的名称,用于事件中标示父元素
-       * @protected
-       * @type {String}
-       */
-      groupName: ''
-    };
-    Util.extend(Item, Canvas.Group);
-    Util.augment(Item, {
-      //获取默认的属性
-      getDefaultCfg: function() {
-        var _self = this,
-          con = _self.constructor,
-          attrs = con._attrs,
-          rst = Util.mix(true, {}, attrs);
-        return rst;
-      },
-      /**
-       * 在顶层图表控件上触发事件
-       * @param {String} name 事件名称
-       * @param  {Object} ev 事件对象
-       */
-      fireUp: function(name, ev) {
-        var _self = this,
-          canvas = _self.get('canvas'),
-          chart = canvas.chart;
-        ev = ev || {};
-        if (chart) {
-          ev.target = ev.target || chart;
-          chart.fire(name, ev);
-        }
-      },
-      /**
-       * @protected
-       * 在分组上触发事件
-       * @param  {String} name 事件名称
-       * @param  {Object} item 触发事件的子项
-       * @param  {Object} obj  事件对象
-       */
-      fireUpGroup: function(name, item, obj) {
-        var _self = this,
-          itemName = _self.get('itemName'),
-          groupName = _self.get('groupName');
-        obj = obj || {};
-        obj[itemName] = item;
-        if (groupName) {
-          obj[groupName] = _self.get('parent')
-        }
-        _self.fireUp(itemName.toLowerCase() + name, obj);
-      }
-    });
-    module.exports = Item;
-  });
-  define("acharts/1.0.4/src/chart/plotrange-debug", [], function(require, exports, module) {
+  define("achart-plot/1.0.0/src/plotrange-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 坐标轴区域
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug");
+    var Util = require("achart-util/1.0.0/index-debug");
 
     function min(x, y) {
       return x > y ? y : x;
@@ -12089,18 +13102,18 @@
     });
     module.exports = PlotRange;
   });
-  define("acharts/1.0.4/src/chart/seriesgroup-debug", [], function(require, exports, module) {
+  define("acharts/1.0.5/src/seriesgroup-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 所有数据图形序列的容器,管理这些序列的增删，active状态，事件处理等等
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      ActivedGroup = require("acharts/1.0.4/src/chart/mixin/activedgroup-debug"),
-      PlotItem = require("acharts/1.0.4/src/chart/plotitem-debug"),
-      Legend = require("acharts/1.0.4/src/chart/legend-debug"),
-      Tooltip = require("acharts/1.0.4/src/chart/tooltip-debug"),
-      Axis = require("acharts/1.0.4/src/chart/axis/index-debug"),
-      Series = require("acharts/1.0.4/src/chart/series/index-debug"),
+    var Util = require("achart-util/1.0.0/index-debug"),
+      ActivedGroup = require("achart-actived/1.0.0/index-debug").Group,
+      PlotItem = require("achart-plot/1.0.0/index-debug").Item,
+      Legend = require("achart-legend/1.0.0/index-debug"),
+      Tooltip = require("achart-tooltip/1.0.0/index-debug"),
+      Axis = require("achart-axis/1.0.0/index-debug"),
+      Series = require("achart-series/1.0.0/index-debug"),
       maxPixel = 120, //坐标轴上的最大间距
       minPixel = 80; //坐标轴上最小间距
     function min(x, y) {
@@ -12876,9 +13889,15 @@
       },
       _addLegendItem: function(series) {
         var _self = this,
-          legendGroup = _self.get('legendGroup');
+          legendGroup = _self.get('legendGroup'),
+          markers = series.get('markers');
+        var symbol = markers && markers.marker.symbol;
         legendGroup && legendGroup.addItem({
-          series: series
+          color: series.get('color'),
+          name: series.get('name'),
+          type: series.get('type'),
+          symbol: symbol,
+          item: series
         });
       },
       //获取序列的配置信息
@@ -12924,12 +13943,70 @@
     });
     module.exports = Group;
   });
-  define("acharts/1.0.4/src/chart/mixin/activedgroup-debug", [], function(require, exports, module) {
+  define("achart-actived/1.0.0/index-debug", [], function(require, exports, module) {
+    var Actived = require("achart-actived/1.0.0/src/actived-debug");
+    Actived.Group = require("achart-actived/1.0.0/src/activedgroup-debug");
+    module.exports = Actived;
+  });
+  define("achart-actived/1.0.0/src/actived-debug", [], function(require, exports, module) {
+    /**
+     * @fileOverview 图表中的激活的元素
+     * @ignore
+     */
+    var Util = require("achart-util/1.0.0/index-debug");
+    /**
+     * @protected
+     * @class Chart.Actived
+     * 控件可以被激活（active)的扩展
+     */
+    var Actived = function() {};
+    Actived.ATTRS = {
+      /**
+       * 是否激活
+       * @type {Boolean}
+       */
+      actived: false
+    };
+    Util.augment(Actived, {
+      /**
+       * 是否处于激活状态
+       * @return {Boolean} 激活状态
+       */
+      isActived: function() {
+        return this.get('actived');
+      },
+      /**
+       * 设置激活
+       */
+      setActived: function() {
+        this.setActiveStatus(true);
+        this.set('actived', true);
+      },
+      /**
+       * @protected
+       * 设置图形的激活状态
+       * @param {Boolean} actived 是否激活
+       */
+      setActiveStatus: function(actived) {},
+      /**
+       * 清除激活
+       */
+      clearActived: function() {
+        this.setActiveStatus(false);
+        this.set('actived', false);
+        if (this.clearActivedItem) {
+          this.clearActivedItem();
+        }
+      }
+    });
+    module.exports = Actived;
+  });
+  define("achart-actived/1.0.0/src/activedgroup-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 子元素可以被激活
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug");
+    var Util = require("achart-util/1.0.0/index-debug");
     /**
      * @class Chart.ActivedGroup
      * @protected
@@ -12974,7 +14051,7 @@
        * @param  {Object} item 可激活的子项
        */
       onActived: function(item) {
-        this.fireUpGroup('actived', item);
+        this.fireUpGroup && this.fireUpGroup('actived', item);
       },
       /**
        * @protected
@@ -12982,7 +14059,7 @@
        * @param  {Object} item 可激活的子项
        */
       onUnActived: function(item) {
-        this.fireUpGroup('unactived', item);
+        this.fireUpGroup && this.fireUpGroup('unactived', item);
       },
       /**
        * 设置激活的元素
@@ -13026,14 +14103,19 @@
     });
     module.exports = Group;
   });
-  define("acharts/1.0.4/src/chart/legend-debug", [], function(require, exports, module) {
+  define("achart-legend/1.0.0/index-debug", [], function(require, exports, module) {
+    var achartLegend = require("achart-legend/1.0.0/src/legend-debug");
+    achartLegend.Item = require("achart-legend/1.0.0/src/legenditem-debug");
+    module.exports = achartLegend;
+  });
+  define("achart-legend/1.0.0/src/legend-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 图例，用于标志具体的数据序列，并跟数据序列进行交互
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      PlotItem = require("acharts/1.0.4/src/chart/plotitem-debug"),
-      Item = require("acharts/1.0.4/src/chart/legenditem-debug"),
+    var Util = require("achart-util/1.0.0/index-debug"),
+      PlotItem = require("achart-plot/1.0.0/index-debug").Item,
+      Item = require("achart-legend/1.0.0/src/legenditem-debug"),
       LINE_HEIGHT = 15,
       PADDING = 5;
 
@@ -13057,10 +14139,15 @@
       zIndex: 8,
       elCls: 'x-chart-legend',
       /**
-       * 子项的配置项
+       * 子项的集合
        * @type {Array}
        */
       items: null,
+      /**
+       * 子项的配置信息
+       * @type {Object}
+       */
+      itemCfg: null,
       /**
        * 布局方式： horizontal，vertical
        * @type {String}
@@ -13099,7 +14186,7 @@
         _self._renderBorder();
       },
       bindUI: function() {
-        Legend.superclass.bindUI.call(_self);
+        Legend.superclass.bindUI.call(this);
         var _self = this;
         _self.on('mousemove', function(ev) {
           if (ev.stopPropagation) {
@@ -13117,6 +14204,9 @@
         Util.each(items, function(item, index) {
           _self._addItem(item, index);
         });
+        if (items && items.length) {
+          _self.resetPosition();
+        }
       },
       /**
        * 添加图例
@@ -13135,10 +14225,11 @@
           itemsGroup = _self.get('itemsGroup'),
           x = _self._getNextX(),
           y = _self._getNextY(),
+          itemCfg = _self.get('itemCfg'),
           cfg = Util.mix({
             x: x,
             y: y
-          }, item);
+          }, item, itemCfg);
         cfg.legend = _self;
         itemsGroup.addGroup(Item, cfg);
       },
@@ -13264,13 +14355,13 @@
     });
     module.exports = Legend;
   });
-  define("acharts/1.0.4/src/chart/legenditem-debug", [], function(require, exports, module) {
+  define("achart-legend/1.0.0/src/legenditem-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 图例项
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      PlotItem = require("acharts/1.0.4/src/chart/plotitem-debug"),
+    var Util = require("achart-util/1.0.0/index-debug"),
+      PlotItem = require("achart-plot/1.0.0/index-debug").Item,
       MARKER_WIDTH = 20;
     /**
      * @class Chart.LegendItem
@@ -13284,20 +14375,25 @@
     LegendItem.ATTRS = {
       elCls: 'x-chart-legend-item',
       /**
-       * 文本的配置信息，不包括文本内容，文本内容由series决定
+       * 文本的配置信息，不包括文本内容，文本内容由决定
        * @type {Object}
        */
-      label: null,
+      label: {
+        x: MARKER_WIDTH,
+        'text-anchor': 'start',
+        y: 7,
+        cursor: 'pointer',
+      },
       /**
        * 所属的图例
        * @type {Object}
        */
       legend: null,
       /**
-       * 标示的数据序列
-       * @type {Chart.Series}
+       * 标示的图表元素
+       * @type {Chart.Canvas.Group}
        */
-      series: null,
+      item: null,
       /**
        * x轴的位置
        * @type {Number}
@@ -13308,7 +14404,30 @@
        * @type {Number}
        */
       y: null,
-      hideColor: '#CCC'
+      name: null,
+      color: null,
+      symbol: null,
+      type: 'rect',
+      hideColor: '#CCC',
+      line: {
+        x1: 3,
+        y1: 7,
+        x2: 17,
+        y2: 7,
+        "stroke-width": 2
+      },
+      circle: {
+        cx: 10,
+        cy: 7,
+        r: 5,
+        'fill-opacity': .5
+      },
+      rect: {
+        x: 2,
+        y: 2,
+        width: 15,
+        height: 10
+      }
     }
     Util.extend(LegendItem, PlotItem);
     Util.augment(LegendItem, {
@@ -13328,22 +14447,23 @@
       //鼠标事件
       bindMouseEvent: function() {
         var _self = this,
-          series = _self.get('series');
+          item = _self.get('item');
         _self.on('mouseover', function(ev) {
-          series.setActived && series.setActived();
+          item.setActived && item.setActived();
         }).on('mouseout', function(ev) {
-          series.clearActived && series.clearActived();
+          item.clearActived && item.clearActived();
         });
       },
       //点击事件
       bindClick: function() {
         var _self = this,
-          series = _self.get('series');
+          item = _self.get('item');
         _self.on('click', function() {
-          var visible = series.get('visible');
+          var visible = item.get('visible');
           if (visible) { //防止最后一个隐藏
-            var seriesParent = series.get('parent'),
-              count = seriesParent.getVisibleSeries().length;
+            var itemParent = item.get('parent'),
+              children = itemParent.getVisibleChildren ? itemParent.getVisibleChildren() : itemParent.get('children'),
+              count = children.length;
             if (count == 1) {
               return;
             }
@@ -13354,14 +14474,15 @@
       //设置是否可见
       _setVisible: function(visible) {
         var _self = this,
-          series = _self.get('series'),
+          item = _self.get('item'),
           shape = _self.get('shape'),
           marker = _self.get('marker'),
-          color = visible ? series.get('color') : _self.get('hideColor');
+          color = visible ? _self.get('color') : _self.get('hideColor'),
+          itemParent = item.get('parent');
         if (visible) {
-          series.get('parent').showSeries(series);
+          itemParent.showChild && itemParent.showChild(item);
         } else {
-          series.get('parent').hideSeries(series);
+          itemParent.hideChild && itemParent.hideChild(item);
         }
         shape && shape.attr({
           stroke: color,
@@ -13372,83 +14493,51 @@
           fill: color
         });
       },
-      //通过数据序列获取属性信息
-      _getBySeries: function(name) {
-        var _self = this,
-          series = _self.get('series');
-        return series.get(name);
-      },
       /**
        * 获取legend item的宽度
        * @return {Number} 宽度
        */
       getWidth: function() {
         var _self = this,
-          label = _self.get('label');
-        return label.getBBox().width + MARKER_WIDTH;
+          labelShape = _self.get('labelShape');
+        return labelShape.getBBox().width + MARKER_WIDTH;
       },
       _createLabel: function() {
         var _self = this,
-          text = _self._getBySeries('name'),
-          labelShape = _self.addShape('label', {
-            x: MARKER_WIDTH,
-            'text-anchor': 'start',
-            y: 7,
-            cursor: 'pointer',
+          text = _self.get('name'),
+          label = _self.get('label'),
+          cfg = Util.mix({}, label, {
             text: text
-          });
-        _self.set('label', labelShape);
+          }),
+          labelShape = _self.addShape('label', cfg);
+        _self.set('labelShape', labelShape);
       },
       //创建跟序列相关的图形
       _createShape: function() {
         var _self = this,
-          type = _self._getBySeries('type'),
-          color = _self._getBySeries('color'),
+          type = _self.get('type'),
+          color = _self.get('color'),
+          cfg = Util.mix({
+            fill: color,
+            stroke: color
+          }, _self.get(type)),
           shape;
-        switch (type) {
-          case 'line':
-            shape = _self.addShape('line', {
-              x1: 3,
-              y1: 7,
-              x2: 17,
-              y2: 7,
-              stroke: color,
-              "stroke-width": 2
-            });
-            break;
-          case 'scatter':
-            shape = null;
-            break;
-          case 'bubble':
-            shape = _self.addShape('circle', {
-              cx: 10,
-              cy: 7,
-              r: 5,
-              fill: color,
-              stroke: color,
-              'fill-opacity': .5
-            });
-            break;
-          default:
-            shape = _self.addShape('rect', {
-              x: 2,
-              y: 2,
-              width: 15,
-              height: 10,
-              fill: color,
-              stroke: color
-            });
-            break;
+        if (cfg) {
+          shape = _self.addShape(type, cfg);
         }
         shape && shape.attr('cursor', 'pointer');
         _self.set('shape', shape);
       },
       _createMarker: function() {
         var _self = this,
-          markers = _self._getBySeries('markers'),
+          symbol = _self.get('symbol'),
           marker;
-        if (markers) {
-          marker = Util.mix({}, markers.marker);
+        if (symbol) {
+          marker = {
+            symbol: symbol,
+            fill: _self.get('color'),
+            "stroke": _self.get('color')
+          };
           marker.radius = 3;
           marker.x = 10;
           marker.y = 7;
@@ -13459,13 +14548,17 @@
     });
     module.exports = LegendItem;
   });
-  define("acharts/1.0.4/src/chart/tooltip-debug", [], function(require, exports, module) {
+  define("achart-tooltip/1.0.0/index-debug", [], function(require, exports, module) {
+    var achartTooltip = require("achart-tooltip/1.0.0/src/tooltip-debug");
+    module.exports = achartTooltip;
+  });
+  define("achart-tooltip/1.0.0/src/tooltip-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 提示信息
      * @ignore
      */
-    var PlotItem = require("acharts/1.0.4/src/chart/plotitem-debug"),
-      Util = require("acharts/1.0.4/src/util-debug"),
+    var PlotItem = require("achart-plot/1.0.0/index-debug").Item,
+      Util = require("achart-util/1.0.0/index-debug"),
       CLS_TITLE = 'ac-title',
       CLS_LIST = 'ac-list';
 
@@ -13980,27 +15073,23 @@
     });
     module.exports = Tooltip;
   });
-  define("acharts/1.0.4/src/chart/axis/index-debug", [], function(require, exports, module) {
-    /**
-     * @fileOverview 坐标轴的入口文件
-     * @ignore
-     */
-    var Axis = require("acharts/1.0.4/src/chart/axis/base-debug");
-    Axis.Category = require("acharts/1.0.4/src/chart/axis/category-debug");
-    Axis.Number = require("acharts/1.0.4/src/chart/axis/number-debug");
-    Axis.Time = require("acharts/1.0.4/src/chart/axis/time-debug");
-    Axis.Auto = require("acharts/1.0.4/src/chart/axis/auto-debug");
-    Axis.Circle = require("acharts/1.0.4/src/chart/axis/circle-debug");
-    Axis.Radius = require("acharts/1.0.4/src/chart/axis/radius-debug");
-    return Axis;
+  define("achart-axis/1.0.0/index-debug", [], function(require, exports, module) {
+    var Axis = require("achart-axis/1.0.0/src/base-debug");
+    Axis.Category = require("achart-axis/1.0.0/src/category-debug");
+    Axis.Number = require("achart-axis/1.0.0/src/number-debug");
+    Axis.Time = require("achart-axis/1.0.0/src/time-debug");
+    Axis.Auto = require("achart-axis/1.0.0/src/auto-debug");
+    Axis.Circle = require("achart-axis/1.0.0/src/circle-debug");
+    Axis.Radius = require("achart-axis/1.0.0/src/radius-debug");
+    module.exports = Axis;
   });
-  define("acharts/1.0.4/src/chart/axis/base-debug", [], function(require, exports, module) {
+  define("achart-axis/1.0.0/src/base-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 坐标轴的基类
      * @ignore
      */
-    var Abstract = require("acharts/1.0.4/src/chart/axis/abstract-debug"),
-      Util = require("acharts/1.0.4/src/util-debug"),
+    var Abstract = require("achart-axis/1.0.0/src/abstract-debug"),
+      Util = require("achart-util/1.0.0/index-debug"),
       CLS_AXIS = 'x-chart-axis';
     //是否在2个数之间
     function isBetween(x, x1, x2) {
@@ -14593,15 +15682,15 @@
     });
     module.exports = Axis;
   });
-  define("acharts/1.0.4/src/chart/axis/abstract-debug", [], function(require, exports, module) {
+  define("achart-axis/1.0.0/src/abstract-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 抽象的坐标轴
      * @ignore
      */
-    var Item = require("acharts/1.0.4/src/chart/plotitem-debug"),
-      Grid = require("acharts/1.0.4/src/chart/axis/grid-debug"),
-      Util = require("acharts/1.0.4/src/util-debug"),
-      ShowLabels = require("acharts/1.0.4/src/chart/mixin/showlabels-debug"),
+    var Item = require("achart-plot/1.0.0/index-debug").Item,
+      Grid = require("achart-axis/1.0.0/src/grid-debug"),
+      Util = require("achart-util/1.0.0/index-debug"),
+      ShowLabels = require("achart-labels/1.0.0/index-debug").ShowLabels,
       CLS_AXIS = 'x-chart-axis';
     /**
      * @class Chart.Axis.Abstract
@@ -14888,13 +15977,13 @@
     });
     module.exports = Abstract;
   });
-  define("acharts/1.0.4/src/chart/axis/grid-debug", [], function(require, exports, module) {
+  define("achart-axis/1.0.0/src/grid-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 表格的栅格背景
      * @ignore
      */
-    var Item = require("acharts/1.0.4/src/chart/plotitem-debug"),
-      Util = require("acharts/1.0.4/src/util-debug"),
+    var Item = require("achart-plot/1.0.0/index-debug").Item,
+      Util = require("achart-util/1.0.0/index-debug"),
       CLS_GRID = 'x-chart-grid';
 
     function ensure(attrName, self, defVal) {
@@ -15211,118 +16300,18 @@
     });
     module.exports = Grid;
   });
-  define("acharts/1.0.4/src/chart/mixin/showlabels-debug", [], function(require, exports, module) {
-    /**
-     * 内部显示Labels的控件扩展
-     * @ignore
-     */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      Labels = require("acharts/1.0.4/src/chart/labels-debug");
-
-    function removeLabel(label) {
-      if (label.remove) {
-        label.remove();
-      } else if (label.parentNode) {
-        label.parentNode.removeChild(label);
-      }
-    }
-    /**
-     * @class Chart.ShowLabels
-     * 内部显示文本集合
-     */
-    var ShowLabels = function() {};
-    ShowLabels.ATTRS = {
-      /**
-       * 多个文本的配置项
-       * @type {Object}
-       */
-      labels: null
-    };
-    Util.augment(ShowLabels, {
-      /**
-       * @protected
-       * 渲染文本
-       */
-      renderLabels: function() {
-        var _self = this,
-          labels = _self.get('labels'),
-          labelsGroup;
-        if (!labels) {
-          return;
-        }
-        if (!labels.items) {
-          labels.items = [];
-        }
-        /*labels.x = _self.get('x');
-    labels.y = _self.get('y');*/
-        labelsGroup = _self.addGroup(Labels, labels);
-        _self.set('labelsGroup', labelsGroup);
-      },
-      /**
-       * 设置labels
-       * @param  {Array} items items的配置信息
-       */
-      resetLabels: function(items) {
-        var _self = this,
-          labels = _self.get('labels');
-        if (!labels) {
-          return;
-        }
-        var labelsGroup = _self.get('labelsGroup'),
-          children = labelsGroup.getLabels(),
-          count = children.length;
-        items = items || labels.items;
-        Util.each(items, function(item, index) {
-          if (index < count) {
-            var label = children[index];
-            labelsGroup.changeLabel(label, item);
-          } else {
-            _self.addLabel(item.text, item);
-          }
-        });
-        for (var i = count - 1; i >= items.length; i--) {
-          removeLabel(children[i]);
-        }
-      },
-      /**
-       * @protected
-       * 添加文本项
-       * @param {String|Number} value  显示的文本
-       * @param {Object} offsetPoint 显示的位置
-       */
-      addLabel: function(value, offsetPoint) {
-        var _self = this,
-          labelsGroup = _self.get('labelsGroup'),
-          label = {},
-          rst;
-        if (labelsGroup) {
-          label.text = value;
-          label.x = offsetPoint.x;
-          label.y = offsetPoint.y;
-          label.point = offsetPoint;
-          rst = labelsGroup.addLabel(label);
-        }
-        return rst;
-      },
-      /**
-       * @protected
-       * 移除文本
-       */
-      removeLabels: function() {
-        var _self = this,
-          labelsGroup = _self.get('labelsGroup');
-        labelsGroup && labelsGroup.remove();
-      }
-    })
-    module.exports = ShowLabels;
+  define("achart-labels/1.0.0/index-debug", [], function(require, exports, module) {
+    var achartLabels = require("achart-labels/1.0.0/src/labels-debug");
+    achartLabels.ShowLabels = require("achart-labels/1.0.0/src/showlabels-debug");
+    module.exports = achartLabels;
   });
-  define("acharts/1.0.4/src/chart/labels-debug", [], function(require, exports, module) {
+  define("achart-labels/1.0.0/src/labels-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 图表中的文本信息
      * @ignore
      */
-    var Item = require("acharts/1.0.4/src/chart/plotitem-debug"),
-      Util = require("acharts/1.0.4/src/util-debug"),
+    var Item = require("achart-plot/1.0.0/index-debug").Item,
+      Util = require("achart-util/1.0.0/index-debug"),
       CLS_LABELS = 'x-chart-labels';
     /**
      * @class Chart.Labels
@@ -15535,13 +16524,117 @@
     });
     module.exports = Labels;
   });
-  define("acharts/1.0.4/src/chart/axis/category-debug", [], function(require, exports, module) {
+  define("achart-labels/1.0.0/src/showlabels-debug", [], function(require, exports, module) {
+    /**
+     * 内部显示Labels的控件扩展
+     * @ignore
+     */
+    var Util = require("achart-util/1.0.0/index-debug"),
+      Labels = require("achart-labels/1.0.0/src/labels-debug");
+
+    function removeLabel(label) {
+      if (label.remove) {
+        label.remove();
+      } else if (label.parentNode) {
+        label.parentNode.removeChild(label);
+      }
+    }
+    /**
+     * @class Chart.ShowLabels
+     * 内部显示文本集合
+     */
+    var ShowLabels = function() {};
+    ShowLabels.ATTRS = {
+      /**
+       * 多个文本的配置项
+       * @type {Object}
+       */
+      labels: null
+    };
+    Util.augment(ShowLabels, {
+      /**
+       * @protected
+       * 渲染文本
+       */
+      renderLabels: function() {
+        var _self = this,
+          labels = _self.get('labels'),
+          labelsGroup;
+        if (!labels) {
+          return;
+        }
+        if (!labels.items) {
+          labels.items = [];
+        }
+        labelsGroup = _self.addGroup(Labels, labels);
+        _self.set('labelsGroup', labelsGroup);
+      },
+      /**
+       * 设置labels
+       * @param  {Array} items items的配置信息
+       */
+      resetLabels: function(items) {
+        var _self = this,
+          labels = _self.get('labels');
+        if (!labels) {
+          return;
+        }
+        var labelsGroup = _self.get('labelsGroup'),
+          children = labelsGroup.getLabels(),
+          count = children.length;
+        items = items || labels.items;
+        Util.each(items, function(item, index) {
+          if (index < count) {
+            var label = children[index];
+            labelsGroup.changeLabel(label, item);
+          } else {
+            _self.addLabel(item.text, item);
+          }
+        });
+        for (var i = count - 1; i >= items.length; i--) {
+          removeLabel(children[i]);
+        }
+      },
+      /**
+       * @protected
+       * 添加文本项
+       * @param {String|Number} value  显示的文本
+       * @param {Object} offsetPoint 显示的位置
+       */
+      addLabel: function(value, offsetPoint) {
+        var _self = this,
+          labelsGroup = _self.get('labelsGroup'),
+          label = {},
+          rst;
+        if (labelsGroup) {
+          label.text = value;
+          label.x = offsetPoint.x;
+          label.y = offsetPoint.y;
+          label.point = offsetPoint;
+          rst = labelsGroup.addLabel(label);
+        }
+        return rst;
+      },
+      /**
+       * @protected
+       * 移除文本
+       */
+      removeLabels: function() {
+        var _self = this,
+          labelsGroup = _self.get('labelsGroup');
+        labelsGroup && labelsGroup.remove();
+        _self.set('labelsGroup', null);
+      }
+    })
+    module.exports = ShowLabels;
+  });
+  define("achart-axis/1.0.0/src/category-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 分类坐标轴
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      Axis = require("acharts/1.0.4/src/chart/axis/base-debug");
+    var Util = require("achart-util/1.0.0/index-debug"),
+      Axis = require("achart-axis/1.0.0/src/base-debug");
     /**
      * @class Chart.Axis.Category
      * 分组坐标轴
@@ -15667,13 +16760,13 @@
     });
     module.exports = Category;
   });
-  define("acharts/1.0.4/src/chart/axis/number-debug", [], function(require, exports, module) {
+  define("achart-axis/1.0.0/src/number-debug", [], function(require, exports, module) {
     /**
      * @fileOverview  数字类型的坐标轴
      * @ignore
      */
-    var Axis = require("acharts/1.0.4/src/chart/axis/base-debug"),
-      Util = require("acharts/1.0.4/src/util-debug"),
+    var Axis = require("achart-axis/1.0.0/src/base-debug"),
+      Util = require("achart-util/1.0.0/index-debug"),
       abbrs = ['k', 'm', 'g', 't'],
       NAN = NaN;
     //取小于当前值的
@@ -15865,13 +16958,13 @@
     });
     module.exports = NumberAxis;
   });
-  define("acharts/1.0.4/src/chart/axis/time-debug", [], function(require, exports, module) {
+  define("achart-axis/1.0.0/src/time-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 时间坐标轴
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      NAixs = require("acharts/1.0.4/src/chart/axis/number-debug");
+    var Util = require("achart-util/1.0.0/index-debug"),
+      NAixs = require("achart-axis/1.0.0/src/number-debug");
 
     function parseTime(d) {
       if (d instanceof Date) {
@@ -15925,13 +17018,13 @@
     });
     module.exports = Time;
   });
-  define("acharts/1.0.4/src/chart/axis/auto-debug", [], function(require, exports, module) {
+  define("achart-axis/1.0.0/src/auto-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 自动计算坐标轴的坐标点、起始点，间距等信息
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      DateUtil = require("acharts/1.0.4/src/date-debug"),
+    var Util = require("achart-util/1.0.0/index-debug"),
+      DateUtil = require("achart-date/1.0.0/index-debug"),
       snapArray = [0, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10],
       intervalArray = [0, 1, 2.5, 5, 10],
       MIN_COUNT = 5, //最小6个坐标点
@@ -16357,7 +17450,7 @@
     }
     module.exports = Auto;
   });
-  define("acharts/1.0.4/src/date-debug", [], function(require, exports, module) {
+  define("achart-date/1.0.0/index-debug", [], function(require, exports, module) {
     var dateRegex = /^(?:(?!0000)[0-9]{4}([-/.]+)(?:(?:0?[1-9]|1[0-2])\1(?:0?[1-9]|1[0-9]|2[0-8])|(?:0?[13-9]|1[0-2])\1(?:29|30)|(?:0?[13578]|1[02])\1(?:31))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)([-/.]?)0?2\2(?:29))(\s+([01]|([01][0-9]|2[0-3])):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9]))?$/;
 
     function dateParse(val) {
@@ -16647,13 +17740,13 @@
     };
     module.exports = DateUtil;
   });
-  define("acharts/1.0.4/src/chart/axis/circle-debug", [], function(require, exports, module) {
+  define("achart-axis/1.0.0/src/circle-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 圆形的坐标，用于雷达图或者圆形仪表盘
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      Abstract = require("acharts/1.0.4/src/chart/axis/abstract-debug");
+    var Util = require("achart-util/1.0.0/index-debug"),
+      Abstract = require("achart-axis/1.0.0/src/abstract-debug");
     var RAD = Math.PI / 180;
     //获取圆上的点
     function getPoint(self, r, angle) {
@@ -16916,13 +18009,13 @@
     });
     module.exports = Circle;
   });
-  define("acharts/1.0.4/src/chart/axis/radius-debug", [], function(require, exports, module) {
+  define("achart-axis/1.0.0/src/radius-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 作为圆的半径的坐标轴使用
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      NumberAxis = require("acharts/1.0.4/src/chart/axis/number-debug");
+    var Util = require("achart-util/1.0.0/index-debug"),
+      NumberAxis = require("achart-axis/1.0.0/src/number-debug");
     /**
      * @class Chart.Axis.Radius
      * 圆的半径坐标轴
@@ -16991,30 +18084,26 @@
     });
     module.exports = Radius;
   });
-  define("acharts/1.0.4/src/chart/series/index-debug", [], function(require, exports, module) {
-    /**
-     * @fileOverview 数据序列的入口文件
-     * @ignore
-     */
-    var Series = require("acharts/1.0.4/src/chart/series/base-debug");
-    Series.Line = require("acharts/1.0.4/src/chart/series/line-debug");
-    Series.Area = require("acharts/1.0.4/src/chart/series/area-debug");
-    Series.Column = require("acharts/1.0.4/src/chart/series/column-debug");
-    Series.Scatter = require("acharts/1.0.4/src/chart/series/scatter-debug");
-    Series.Bubble = require("acharts/1.0.4/src/chart/series/bubble-debug");
-    Series.Pie = require("acharts/1.0.4/src/chart/series/pie-debug");
-    return Series;
+  define("achart-series/1.0.0/index-debug", [], function(require, exports, module) {
+    var Series = require("achart-series/1.0.0/src/base-debug");
+    Series.Cartesian = require("achart-series/1.0.0/src/cartesian-debug");
+    Series.Line = require("achart-series/1.0.0/src/line-debug");
+    Series.Column = require("achart-series/1.0.0/src/column-debug");
+    Series.Pie = require("achart-series/1.0.0/src/pie-debug");
+    Series.Stacked = require("achart-series/1.0.0/src/stacked-debug");
+    Series.ItemGroup = require("achart-series/1.0.0/src/itemgroup-debug");
+    module.exports = Series;
   });
-  define("acharts/1.0.4/src/chart/series/base-debug", [], function(require, exports, module) {
+  define("achart-series/1.0.0/src/base-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 所有数据序列的基类
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      Item = require("acharts/1.0.4/src/chart/plotitem-debug"),
-      ShowLabels = require("acharts/1.0.4/src/chart/mixin/showlabels-debug"),
-      Actived = require("acharts/1.0.4/src/chart/mixin/actived-debug"),
-      Markers = require("acharts/1.0.4/src/chart/markers-debug");
+    var Util = require("achart-util/1.0.0/index-debug"),
+      Item = require("achart-plot/1.0.0/index-debug").Item,
+      ShowLabels = require("achart-labels/1.0.0/index-debug").ShowLabels,
+      Actived = require("achart-actived/1.0.0/index-debug"),
+      Markers = require("achart-markers/1.0.0/index-debug");
     /**
      * @class Chart.Series
      * 数据序列的基类，是一个抽象类，不能直接实例化
@@ -17455,67 +18544,18 @@
     });
     module.exports = Series;
   });
-  define("acharts/1.0.4/src/chart/mixin/actived-debug", [], function(require, exports, module) {
-    /**
-     * @fileOverview 图表中的激活的元素
-     * @ignore
-     */
-    var Util = require("acharts/1.0.4/src/util-debug");
-    /**
-     * @protected
-     * @class Chart.Actived
-     * 控件可以被激活（active)的扩展
-     */
-    var Actived = function() {};
-    Actived.ATTRS = {
-      /**
-       * 是否激活
-       * @type {Boolean}
-       */
-      actived: false
-    };
-    Util.augment(Actived, {
-      /**
-       * 是否处于激活状态
-       * @return {Boolean} 激活状态
-       */
-      isActived: function() {
-        return this.get('actived');
-      },
-      /**
-       * 设置激活
-       */
-      setActived: function() {
-        this.setActiveStatus(true);
-        this.set('actived', true);
-      },
-      /**
-       * @protected
-       * 设置图形的激活状态
-       * @param {Boolean} actived 是否激活
-       */
-      setActiveStatus: function(actived) {},
-      /**
-       * 清除激活
-       */
-      clearActived: function() {
-        this.setActiveStatus(false);
-        this.set('actived', false);
-        if (this.clearActivedItem) {
-          this.clearActivedItem();
-        }
-      }
-    });
-    module.exports = Actived;
+  define("achart-markers/1.0.0/index-debug", [], function(require, exports, module) {
+    var achartMarkers = require("achart-markers/1.0.0/src/markers-debug");
+    module.exports = achartMarkers;
   });
-  define("acharts/1.0.4/src/chart/markers-debug", [], function(require, exports, module) {
+  define("achart-markers/1.0.0/src/markers-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 显示点的标记
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      Group = require("acharts/1.0.4/src/chart/mixin/activedgroup-debug"),
-      PlotItem = require("acharts/1.0.4/src/chart/plotitem-debug");
+    var Util = require("achart-util/1.0.0/index-debug"),
+      Group = require("achart-actived/1.0.0/index-debug").Group,
+      PlotItem = require("achart-plot/1.0.0/index-debug").Item;
     /**
      * @class Chart.Markers
      * 显示点的标记集合
@@ -17636,15 +18676,16 @@
           single = _self.get('single'),
           items = _self.get('items');
         if (single) {
-          items = [{
+          var marker = _self._addMarker({
             x: 0,
-            y: 0,
-            visible: false
-          }];
+            y: 0
+          });
+          marker.hide();
+        } else {
+          Util.each(items, function(item) {
+            _self._addMarker(item)
+          });
         }
-        Util.each(items, function(item) {
-          _self._addMarker(item)
-        });
       },
       /**
        * 添加marker
@@ -17699,13 +18740,302 @@
     });
     module.exports = Markers;
   });
-  define("acharts/1.0.4/src/chart/series/line-debug", [], function(require, exports, module) {
+  define("achart-series/1.0.0/src/cartesian-debug", [], function(require, exports, module) {
+    /**
+     * @fileOverview 在x,y坐标轴中渲染的数据序列
+     * @ignore
+     */
+    var BaseSeries = require("achart-series/1.0.0/src/base-debug"),
+      Util = require("achart-util/1.0.0/index-debug");
+
+    function date2number(value) {
+      if (Util.isNumber(value)) {
+        return value;
+      }
+      if (Util.isString(value)) {
+        value = value.replace(/'-'/ig, '/');
+        value = new Date(value).getTime();
+      } else if (Util.isDate(value)) {
+        value = value.getTime();
+      }
+      return value;
+    }
+    /**
+     * @class Chart.Series.Cartesian
+     * 使用坐标轴的数据序列，此类是一个抽象类，不要直接初始化
+     * @extends Chart.Series
+     */
+    function Cartesian(cfg) {
+      Cartesian.superclass.constructor.call(this, cfg);
+    }
+    Cartesian.ATTRS = {
+      /**
+       * 如果横坐标是数字类型，则通过点的间距来决定点
+       * @type {Number}
+       */
+      pointInterval: null,
+      /**
+       * 如果横坐标是数字类型,点的起始值
+       * @type {Number}
+       */
+      pointStart: 0,
+      /**
+       * x坐标轴
+       * @type {Chart.Axis}
+       */
+      xAxis: null,
+      /**
+       * y坐标轴
+       * @type {Chart.Axis}
+       */
+      yAxis: null,
+      invert: false,
+      pointsCache: {}
+    };
+    Util.extend(Cartesian, BaseSeries);
+    Util.augment(Cartesian, {
+      //获取代表x的坐标
+      getXName: function() {
+        var _self = this,
+          xName = _self.get('xName');
+        if (!xName) {
+          xName = _self.get('invert') ? 'y' : 'x';
+          _self.set('xName', xName);
+        }
+        return xName;
+      },
+      //获取代表y的坐标
+      getYName: function() {
+        var _self = this,
+          yName = _self.get('yName');
+        if (!yName) {
+          yName = _self.get('invert') ? 'x' : 'y';
+          _self.set('yName', yName);
+        }
+        return yName;
+      },
+      /**
+       * 获取坐标点
+       * @param  {*} x x坐标系上的值
+       * @param  {*} y y坐标系上的值
+       * @return {Object}  坐标点
+       */
+      getPoint: function(x, y) {
+        var _self = this,
+          xAxis = _self.get('xAxis'),
+          yAxis = _self.get('yAxis'),
+          yValue = _self.parseYValue(y),
+          xName = _self.getXName(),
+          yName = _self.getYName(),
+          point = {};
+        if (xAxis.get('type') == 'time') {
+          x = date2number(x);
+        }
+        //圆形坐标轴，一般用于雷达图
+        if (_self.isInCircle()) {
+          point = yAxis.getPointByAngle(x, yValue);
+        } else {
+          point[xName] = xAxis.getOffset(x);
+          point[yName] = yAxis.getOffset(yValue);
+        }
+        Util.mix(point, {
+          yValue: yValue,
+          xValue: x,
+          value: y
+        });
+        return point;
+      },
+      //覆写父类方法，改变数据
+      changeData: function(data, redraw) {
+        this.set('pointsCache', {});
+        Cartesian.superclass.changeData.call(this, data, redraw);
+      },
+      /**
+       *
+       * @protected
+       * @return {Object} 点的集合
+       */
+      getPointByObject: function(item, index) {
+        var _self = this,
+          xField = _self.get('xField'),
+          yField = _self.get('yField'),
+          point = _self.getPoint(item[xField], item[yField]);
+        point.value = item[yField];
+        point.xValue = item[xField];
+        point.yValue = _self.parseYValue(item[yField]);
+        point.obj = item; //如果是记录
+        return point;
+      },
+      /**
+       * @protected
+       * 根据指定的值获取点的信息
+       * @param  {Number} value 在x轴上的值
+       * @return {Object} 点的信息
+       */
+      getPointByValue: function(xValue, value) {
+        return this.getPoint(xValue, value);
+      },
+      /**
+       * @protected
+       * 转换显示的值，一般用于层叠的数据序列中
+       */
+      parseYValue: function(value) {
+        return value;
+      },
+      /**
+       * @protected
+       * 判断是否近似相等
+       */
+      snapEqual: function(value1, value2) {
+        var _self = this;
+        if (Util.isString(value1)) {
+          return value1 == value2;
+        }
+        var pointInterval = _self.get('pointInterval');
+        if (pointInterval) {
+          return Math.abs(value1 - value2) < pointInterval / 2;
+        }
+        return value1 == value2;
+      },
+      /**
+       * 是否使用圆形坐标轴作为x轴
+       * @return {Boolean}
+       */
+      isInCircle: function() {
+        return this.get('xAxis').get('type') == 'circle';
+      },
+      /**
+       * @protected
+       * 如果使用圆形坐标轴，则返回中心节点
+       */
+      getCircleCenter: function() {
+        var _self = this,
+          xAxis = _self.get('xAxis'),
+          rst = null;
+        if (xAxis.get('type') == 'circle') {
+          rst = xAxis.getCenter();
+        }
+        return rst;
+      },
+      getCircle: function() {
+        return this.isInCircle() ? this.get('xAxis') : null;
+      },
+      /**
+       * 获取对应坐标轴上的数据，一般用于计算坐标轴
+       * @return {Array}
+       */
+      getData: function(type) {
+        var _self = this,
+          data = _self.get('data'),
+          pointsCache = _self.get('pointsCache'),
+          xAxis = _self.get('xAxis'),
+          first = data[0],
+          rst = [],
+          pointStart = _self.get('pointStart');
+        type = type || 'yAxis';
+        if (pointsCache[type]) {
+          return pointsCache[type];
+        }
+        //如果是x轴，并且指定了开始节点
+        if (type == 'xAxis' && (pointStart != null && !(xAxis.get('type') == 'time' && pointStart == 0)) && _self.get('pointInterval') /*&& !(xAxis.get('type') == 'time') && pointStart == 0*/ ) {
+          var pointInterval = _self.get('pointInterval');
+          rst.push(pointStart);
+          rst.push(pointStart + (data.length - 1) * pointInterval);
+        } else {
+          var xField = _self.get('xField'),
+            yField = _self.get('yField');
+          //遍历所有节点
+          Util.each(data, function(item) {
+            //数字和字符串直接填入
+            if (Util.isNumber(item) || Util.isString(item)) {
+              rst.push(item);
+            } else if (Util.isArray(item)) { //数组，0标示x,1标示y
+              var value = type == 'yAxis' ? item[1] : item[0];
+              rst.push(value);
+            } else if (item) { //根据xField,yField取值
+              var value = type == 'yAxis' ? item[yField] : item[xField];
+              rst.push(value);
+            }
+          });
+        }
+        pointsCache[type] = rst;
+        return rst;
+      },
+      /**
+       * 根据索引获取值
+       * @protected
+       * @return {Object} 点的集合
+       */
+      getPointByIndex: function(value, index) {
+        var _self = this,
+          xAxis = _self.get('xAxis'),
+          yAxis = _self.get('yAxis'),
+          xName = _self.getXName(),
+          yName = _self.getYName(),
+          x,
+          yValue = _self.parseYValue(value),
+          y = yAxis.getOffset(yValue),
+          originValue,
+          xValue,
+          point = {};
+        if (xAxis.get('type') == 'number' || xAxis.get('type') == 'time') {
+          var pointStart = _self.get('pointStart'),
+            pointInterval = _self.get('pointInterval');
+          x = xAxis.getOffset(pointStart + pointInterval * index);
+        } else {
+          x = xAxis.getOffsetByIndex(index);
+        }
+        if (_self.isInCircle()) {
+          return _self.getPoint(x, value);
+        }
+        originValue = xAxis.getValue(x);
+        if (pointInterval) {
+          originValue = Util.tryFixed(originValue, pointInterval);
+        }
+        point[xName] = x;
+        point[yName] = y;
+        return Util.mix(point, {
+          xValue: originValue,
+          yValue: yValue,
+          value: value
+        });
+      },
+      /**
+       * 获取鼠标移动与该series的焦点
+       */
+      getTrackingInfo: function(point) {
+        var _self = this,
+          xAxis = _self.get('xAxis'),
+          xName = _self.getXName(),
+          xValue;
+        if (_self.isInCircle()) {
+          var angle = xAxis.getCircleAngle(point.x, point.y);
+          xValue = xAxis.getValue(angle);
+        } else {
+          xValue = xAxis.getValue(point[xName]);
+        }
+        return _self.findPointByValue(xValue);
+      },
+      /**
+       * 获取最底层的点的值
+       * @return {Number} 最底层点的值
+       */
+      getBaseValue: function() {
+        var _self = this,
+          yAxis = _self.get('yAxis'),
+          value0 = yAxis.getOffset(0) || yAxis.getStartOffset();
+        return value0;
+      }
+    });
+    module.exports = Cartesian;
+  });
+  define("achart-series/1.0.0/src/line-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 线形式的数据图序列
      * @ignore
      */
-    var Cartesian = require("acharts/1.0.4/src/chart/series/cartesian-debug"),
-      Util = require("acharts/1.0.4/src/util-debug");
+    var Cartesian = require("achart-series/1.0.0/src/cartesian-debug"),
+      Util = require("achart-util/1.0.0/index-debug");
 
     function trySet(obj, name, value) {
       if (obj && !obj[name]) {
@@ -18017,677 +19347,16 @@
     });
     module.exports = Line;
   });
-  define("acharts/1.0.4/src/chart/series/cartesian-debug", [], function(require, exports, module) {
-    /**
-     * @fileOverview 在x,y坐标轴中渲染的数据序列
-     * @ignore
-     */
-    var BaseSeries = require("acharts/1.0.4/src/chart/series/base-debug"),
-      Util = require("acharts/1.0.4/src/util-debug");
-
-    function date2number(value) {
-      if (Util.isNumber(value)) {
-        return value;
-      }
-      if (Util.isString(value)) {
-        value = value.replace(/'-'/ig, '/');
-        value = new Date(value).getTime();
-      } else if (Util.isDate(value)) {
-        value = value.getTime();
-      }
-      return value;
-    }
-    /**
-     * @class Chart.Series.Cartesian
-     * 使用坐标轴的数据序列，此类是一个抽象类，不要直接初始化
-     * @extends Chart.Series
-     */
-    function Cartesian(cfg) {
-      Cartesian.superclass.constructor.call(this, cfg);
-    }
-    Cartesian.ATTRS = {
-      /**
-       * 如果横坐标是数字类型，则通过点的间距来决定点
-       * @type {Number}
-       */
-      pointInterval: null,
-      /**
-       * 如果横坐标是数字类型,点的起始值
-       * @type {Number}
-       */
-      pointStart: 0,
-      /**
-       * x坐标轴
-       * @type {Chart.Axis}
-       */
-      xAxis: null,
-      /**
-       * y坐标轴
-       * @type {Chart.Axis}
-       */
-      yAxis: null,
-      invert: false,
-      pointsCache: {}
-    };
-    Util.extend(Cartesian, BaseSeries);
-    Util.augment(Cartesian, {
-      //获取代表x的坐标
-      getXName: function() {
-        var _self = this,
-          xName = _self.get('xName');
-        if (!xName) {
-          xName = _self.get('invert') ? 'y' : 'x';
-          _self.set('xName', xName);
-        }
-        return xName;
-      },
-      //获取代表y的坐标
-      getYName: function() {
-        var _self = this,
-          yName = _self.get('yName');
-        if (!yName) {
-          yName = _self.get('invert') ? 'x' : 'y';
-          _self.set('yName', yName);
-        }
-        return yName;
-      },
-      /**
-       * 获取坐标点
-       * @param  {*} x x坐标系上的值
-       * @param  {*} y y坐标系上的值
-       * @return {Object}  坐标点
-       */
-      getPoint: function(x, y) {
-        var _self = this,
-          xAxis = _self.get('xAxis'),
-          yAxis = _self.get('yAxis'),
-          yValue = _self.parseYValue(y),
-          xName = _self.getXName(),
-          yName = _self.getYName(),
-          point = {};
-        if (xAxis.get('type') == 'time') {
-          x = date2number(x);
-        }
-        //圆形坐标轴，一般用于雷达图
-        if (_self.isInCircle()) {
-          point = yAxis.getPointByAngle(x, yValue);
-        } else {
-          point[xName] = xAxis.getOffset(x);
-          point[yName] = yAxis.getOffset(yValue);
-        }
-        Util.mix(point, {
-          yValue: yValue,
-          xValue: x,
-          value: y
-        });
-        return point;
-      },
-      //覆写父类方法，改变数据
-      changeData: function(data, redraw) {
-        this.set('pointsCache', {});
-        Cartesian.superclass.changeData.call(this, data, redraw);
-      },
-      /**
-       *
-       * @protected
-       * @return {Object} 点的集合
-       */
-      getPointByObject: function(item, index) {
-        var _self = this,
-          xField = _self.get('xField'),
-          yField = _self.get('yField'),
-          point = _self.getPoint(item[xField], item[yField]);
-        point.value = item[yField];
-        point.xValue = item[xField];
-        point.yValue = _self.parseYValue(item[yField]);
-        point.obj = item; //如果是记录
-        return point;
-      },
-      /**
-       * @protected
-       * 根据指定的值获取点的信息
-       * @param  {Number} value 在x轴上的值
-       * @return {Object} 点的信息
-       */
-      getPointByValue: function(xValue, value) {
-        return this.getPoint(xValue, value);
-      },
-      /**
-       * @protected
-       * 转换显示的值，一般用于层叠的数据序列中
-       */
-      parseYValue: function(value) {
-        return value;
-      },
-      /**
-       * @protected
-       * 判断是否近似相等
-       */
-      snapEqual: function(value1, value2) {
-        var _self = this;
-        if (Util.isString(value1)) {
-          return value1 == value2;
-        }
-        var pointInterval = _self.get('pointInterval');
-        if (pointInterval) {
-          return Math.abs(value1 - value2) < pointInterval / 2;
-        }
-        return value1 == value2;
-      },
-      /**
-       * 是否使用圆形坐标轴作为x轴
-       * @return {Boolean}
-       */
-      isInCircle: function() {
-        return this.get('xAxis').get('type') == 'circle';
-      },
-      /**
-       * @protected
-       * 如果使用圆形坐标轴，则返回中心节点
-       */
-      getCircleCenter: function() {
-        var _self = this,
-          xAxis = _self.get('xAxis'),
-          rst = null;
-        if (xAxis.get('type') == 'circle') {
-          rst = xAxis.getCenter();
-        }
-        return rst;
-      },
-      getCircle: function() {
-        return this.isInCircle() ? this.get('xAxis') : null;
-      },
-      /**
-       * 获取对应坐标轴上的数据，一般用于计算坐标轴
-       * @return {Array}
-       */
-      getData: function(type) {
-        var _self = this,
-          data = _self.get('data'),
-          pointsCache = _self.get('pointsCache'),
-          xAxis = _self.get('xAxis'),
-          first = data[0],
-          rst = [],
-          pointStart = _self.get('pointStart');
-        type = type || 'yAxis';
-        if (pointsCache[type]) {
-          return pointsCache[type];
-        }
-        //如果是x轴，并且指定了开始节点
-        if (type == 'xAxis' && (pointStart != null && !(xAxis.get('type') == 'time' && pointStart == 0)) && _self.get('pointInterval') /*&& !(xAxis.get('type') == 'time') && pointStart == 0*/ ) {
-          var pointInterval = _self.get('pointInterval');
-          rst.push(pointStart);
-          rst.push(pointStart + (data.length - 1) * pointInterval);
-        } else {
-          var xField = _self.get('xField'),
-            yField = _self.get('yField');
-          //遍历所有节点
-          Util.each(data, function(item) {
-            //数字和字符串直接填入
-            if (Util.isNumber(item) || Util.isString(item)) {
-              rst.push(item);
-            } else if (Util.isArray(item)) { //数组，0标示x,1标示y
-              var value = type == 'yAxis' ? item[1] : item[0];
-              rst.push(value);
-            } else if (item) { //根据xField,yField取值
-              var value = type == 'yAxis' ? item[yField] : item[xField];
-              rst.push(value);
-            }
-          });
-        }
-        pointsCache[type] = rst;
-        return rst;
-      },
-      /**
-       * 根据索引获取值
-       * @protected
-       * @return {Object} 点的集合
-       */
-      getPointByIndex: function(value, index) {
-        var _self = this,
-          xAxis = _self.get('xAxis'),
-          yAxis = _self.get('yAxis'),
-          xName = _self.getXName(),
-          yName = _self.getYName(),
-          x,
-          yValue = _self.parseYValue(value),
-          y = yAxis.getOffset(yValue),
-          originValue,
-          xValue,
-          point = {};
-        if (xAxis.get('type') == 'number' || xAxis.get('type') == 'time') {
-          var pointStart = _self.get('pointStart'),
-            pointInterval = _self.get('pointInterval');
-          x = xAxis.getOffset(pointStart + pointInterval * index);
-        } else {
-          x = xAxis.getOffsetByIndex(index);
-        }
-        if (_self.isInCircle()) {
-          return _self.getPoint(x, value);
-        }
-        originValue = xAxis.getValue(x);
-        if (pointInterval) {
-          originValue = Util.tryFixed(originValue, pointInterval);
-        }
-        point[xName] = x;
-        point[yName] = y;
-        return Util.mix(point, {
-          xValue: originValue,
-          yValue: yValue,
-          value: value
-        });
-      },
-      /**
-       * 获取鼠标移动与该series的焦点
-       */
-      getTrackingInfo: function(point) {
-        var _self = this,
-          xAxis = _self.get('xAxis'),
-          xName = _self.getXName(),
-          xValue;
-        if (_self.isInCircle()) {
-          var angle = xAxis.getCircleAngle(point.x, point.y);
-          xValue = xAxis.getValue(angle);
-        } else {
-          xValue = xAxis.getValue(point[xName]);
-        }
-        return _self.findPointByValue(xValue);
-      },
-      /**
-       * 获取最底层的点的值
-       * @return {Number} 最底层点的值
-       */
-      getBaseValue: function() {
-        var _self = this,
-          yAxis = _self.get('yAxis'),
-          value0 = yAxis.getOffset(0) || yAxis.getStartOffset();
-        return value0;
-      }
-    });
-    module.exports = Cartesian;
-  });
-  define("acharts/1.0.4/src/chart/series/area-debug", [], function(require, exports, module) {
-    /**
-     * @fileOverview 区域图序列
-     * @ignore
-     */
-    var Line = require("acharts/1.0.4/src/chart/series/line-debug"),
-      Util = require("acharts/1.0.4/src/util-debug"),
-      Stacked = require("acharts/1.0.4/src/chart/series/stacked-debug"),
-      REGEX_MOVE = /^M.*(M).*$/;
-
-    function trySet(obj, name, value) {
-      if (obj && !obj[name]) {
-        obj[name] = value;
-      }
-    }
-
-    function pathStr(CMD, x, y, invert) {
-      if (invert) {
-        return CMD + y + ' ' + x;
-      }
-      return CMD + x + ' ' + y;
-    }
-
-    function pathArray(arr, invert) {
-      if (invert) {
-        var tmp = arr[1];
-        arr[1] = arr[2];
-        arr[2] = tmp;
-      }
-      return arr;
-    }
-    /**
-     * @class Chart.Series.Area
-     * 区域图的数据序列
-     * @extends Chart.Series.Line
-     */
-    var Area = function(cfg) {
-      Area.superclass.constructor.call(this, cfg);
-    };
-    Area.ATTRS = {
-      /**
-       * 区域的配置信息
-       * @type {Object}
-       */
-      area: {
-        stroke: '',
-        'fill-opacity': '0.70'
-      }
-    };
-    Util.extend(Area, Line);
-    Util.mixin(Area, [Stacked]);
-    Util.augment(Area, {
-      processColor: function() {
-        Area.superclass.processColor.call(this);
-        var _self = this,
-          color = _self.get('color'),
-          area = _self.get('area');
-        trySet(area, 'fill', color);
-      },
-      renderUI: function() {
-        Area.superclass.renderUI.call(this);
-        var _self = this,
-          canvas = _self.get('canvas'),
-          markersGroup = _self.get('markersGroup');
-        if (markersGroup && _self.isStacked()) {
-          canvas.get('node').appendChild(markersGroup.get('node'));
-        }
-      },
-      //覆盖隐藏方法，同时隐藏markers
-      hide: function() {
-        Area.superclass.hide.call(this);
-        var _self = this,
-          markersGroup = _self.get('markersGroup');
-        markersGroup && markersGroup.hide();
-      },
-      //同时显示markers
-      show: function() {
-        Area.superclass.show.call(this);
-        var _self = this,
-          markersGroup = _self.get('markersGroup');
-        markersGroup && markersGroup.show();
-      },
-      /**
-       * @protected
-       * 绘制内部内容
-       */
-      drawInner: function(points) {
-        var _self = this,
-          areaShape = _self.get('areaShape');
-        if (!areaShape) {
-          _self.drawArea(points);
-        } else {
-          var path = _self._getAreaPath(points);
-          areaShape.attr('path', path);
-        }
-      },
-      _getAreaPath: function(points) {
-        var _self = this,
-          stackType = _self.get('stackType'),
-          path;
-        if (stackType && stackType != 'none') {
-          path = _self.points2StackArea(points);
-        } else {
-          path = _self.points2area(points);
-        }
-        return path;
-      },
-      //坐标轴变化引起的area变化
-      changeShapes: function() {
-        Area.superclass.changeShapes.call(this);
-        var _self = this,
-          areaShape = _self.get('areaShape'),
-          points = _self.getPoints(),
-          path = _self._getAreaPath(points);
-        Util.animPath(areaShape, path);
-      },
-      //绘制区域
-      drawArea: function(points) {
-        var _self = this,
-          area = _self.get('area'),
-          path = _self.isStacked() ? _self.points2StackArea(points) : _self.points2area(points),
-          cfg = Util.mix({
-            path: path
-          }, area),
-          areaShape;
-        areaShape = _self.addShape('path', cfg);
-        _self.set('areaShape', areaShape);
-      },
-      /**
-       * @protected
-       * 处理节点，并且添加附加信息
-       */
-      processPoint: function(point, index) {
-        var _self = this,
-          stackType = _self.get('stackType');
-        if (stackType && stackType != 'none') {
-          _self.processStackedPoint(point, index);
-        }
-      },
-      //获取层叠的区域图，忽略null值
-      points2StackArea: function(points) {
-        var _self = this,
-          length = points.length,
-          value0 = _self.getBaseValue(),
-          first = points[0],
-          last = points[length - 1],
-          linePath,
-          isInCircle = _self.isInCircle(),
-          path = '',
-          invert = _self.get('invert'), //是否坐标轴旋转
-          xName = _self.getXName(),
-          yName = _self.getYName(),
-          pre;
-        if (length) {
-          pre = _self.getVisiblePrev();
-          linePath = _self.points2path(points);
-          path = linePath;
-          if (pre) {
-            var prePoints = pre.getPoints().slice(0, points.length),
-              preFirst = prePoints[0],
-              prePath = _self.points2path(prePoints.reverse());
-            //if(!isInCircle){
-            prePath = prePath.replace('M', 'L');
-            //}
-            if (isInCircle) {
-              path = linePath + 'L' + preFirst.x + ' ' + preFirst.y + prePath;
-            } else {
-              path = linePath + prePath;
-            }
-          } else {
-            if (!isInCircle) {
-              path = pathStr('M ', first[xName], value0, invert) + linePath.replace('M', 'L');
-              path = path + pathStr('L ', last[xName], value0, invert) + '';
-            }
-          }
-          if (path && !isInCircle) {
-            path = path + 'z';
-          }
-        }
-        return path;
-      },
-      //点转换成区域的path
-      points2area: function(points) {
-        var _self = this,
-          length = points.length,
-          value0 = _self.getBaseValue(),
-          first = points[0],
-          last = points[length - 1],
-          isInCircle = _self.isInCircle(),
-          linePath,
-          invert = _self.get('invert'), //是否坐标轴旋转
-          xName = _self.getXName(),
-          yName = _self.getYName(),
-          path = '';
-        if (length) {
-          linePath = _self.points2path(points);
-          if (isInCircle) { //在雷达图中显示时不考虑缺少点
-            var center = _self.getCircleCenter();
-            path = linePath;
-          } else {
-            path = pathStr('M', first[xName], value0, invert);
-            path = path + linePath.replace('M', 'L');
-            if (REGEX_MOVE.test(path)) {
-              path = Util.parsePathString(path);
-              var temp = [],
-                preBreak = first;;
-              Util.each(path, function(item, index) {
-                if (index !== 0 && item[0] == 'M') { //如果遇到中断的点，附加2个点
-                  var n1 = [],
-                    n0 = [], //vml下 中间的'z'存在bug
-                    n2 = [],
-                    preItem = path[index - 1];
-                  n1[0] = 'L';
-                  n1[1] = preItem[1];
-                  n1[2] = value0;
-                  n0[0] = 'L';
-                  n0[1] = preBreak.x;
-                  n0[2] = value0;
-                  n2[0] = 'M';
-                  n2[1] = item[1];
-                  n2[2] = value0;
-                  if (preItem[0] == 'R') { //防止2个
-                    preItem[0] = 'L';
-                    item[0] = 'R';
-                  } else {
-                    item[0] = 'L';
-                  }
-                  temp.push(pathArray(n1, invert));
-                  temp.push(pathArray(n0, invert));
-                  temp.push(pathArray(n2, invert));
-                  preBreak = item;
-                }
-                temp.push(pathArray(item));
-              });
-              path = temp;
-              path.push(pathArray(['L', last.x, value0], invert));
-              if (Util.svg) {
-                path.push(['Z'])
-              }
-            } else {
-              path = path + pathStr('L', last[xName], value0, invert) + 'z';
-            }
-          }
-        }
-        return path;
-      }
-    });
-    module.exports = Area;
-  });
-  define("acharts/1.0.4/src/chart/series/stacked-debug", [], function(require, exports, module) {
-    /**
-     * @fileOverview 处理层叠的数据序列的扩展
-     * @ignore
-     */
-    var Util = require("acharts/1.0.4/src/util-debug");
-    /**
-     * @class Chart.Series.Stacked
-     * @protected
-     * 此类是一个扩展，不应该直接实例化,主要用于区域图，柱状图层叠的场景
-     */
-    var Stacked = function() {};
-    Stacked.ATTRS = {
-      /**
-       * 数据序列层叠的类型
-       *   - none : 不进行层叠
-       *   - normal : 一般的层叠方式，后面的数据序列的y值在前一个数据序列基础上显示
-       *   - percent : 按照百分比进行层叠展示
-       * @type {String}
-       */
-      stackType: 'none'
-    };
-    Util.augment(Stacked, {
-      processStackedPoint: function(point, index) {
-        var _self = this,
-          pre = _self.getVisiblePrev(),
-          xName = _self.getXName(),
-          yName = _self.getYName();
-        if (pre) {
-          var prePoint = pre.getPoints()[index],
-            baseValue = _self.getBaseValue();
-          if (!_self.isInCircle()) { //非雷达图中
-            point[yName] = point[yName] + prePoint[yName] - baseValue;
-          } else { //雷达图中
-            var xAxis = _self.get('xAxis'),
-              r = xAxis.getDistance(point.x, point.y),
-              ir = prePoint.r || xAxis.getDistance(prePoint.x, prePoint.y),
-              curPoint;
-            r = ir + r;
-            curPoint = xAxis.getCirclePoint(point.xValue, r)
-            point.x = curPoint.x;
-            point.y = curPoint.y;
-            point.r = r;
-            point.ir = ir;
-          }
-          point.lowY = prePoint[yName];
-          point.lowX = prePoint[xName];
-        }
-      },
-      /**
-       * @protected
-       * 获取数据中的比例
-       */
-      getStackedPercent: function(value, index) {
-        var _self = this,
-          data = _self.get('parent').getStackedData(_self.get('yAxis'), 'yAxis'),
-          total = data[index];
-        if (total) {
-          return value / total;
-        }
-        return NaN;
-      },
-      /**
-       * @protected
-       * 转换显示的值，一般用于层叠的数据序列中
-       */
-      parseYValue: function(value) {
-        var _self = this,
-          stackType = _self.get('stackType'),
-          data = _self.get('data'),
-          index = Util.indexOf(data, value),
-          percentValue;
-        if (stackType == 'percent') {
-          percentValue = _self.getStackedPercent(value, index);
-          value = percentValue * 100;
-        }
-        return value;
-      },
-      /**
-       * @protected
-       * 获取显示的前一个序列
-       */
-      getVisiblePrev: function() {
-        var _self = this,
-          parent = _self.get('parent'),
-          yAxis = _self.get('yAxis'),
-          children = parent.get('children'),
-          pre;
-        Util.each(children, function(series, i) {
-          if (series == _self) {
-            return false;
-          }
-          if (series.get('visible') && series.get('yAxis') == yAxis) { //获取前一个显示的数据序列
-            pre = series;
-          }
-        });
-        return pre;
-      },
-      /**
-       * 获取提示信息
-       * @return {*} 返回显示在上面的文本
-       */
-      getTipItem: function(point) {
-        var _self = this,
-          stackType = _self.get('stackType');
-        if (stackType == 'percent') {
-          var y = point.yValue || 0;
-          return [point.value, '（' + y.toFixed(2) + '%）'];
-        }
-        return point.value;
-      },
-      /**
-       * 是否是层叠的数据序列
-       * @return {Boolean}
-       */
-      isStacked: function() {
-        var _self = this,
-          stackType = _self.get('stackType');
-        return stackType && stackType !== 'none';
-      }
-    });
-    module.exports = Stacked;
-  });
-  define("acharts/1.0.4/src/chart/series/column-debug", [], function(require, exports, module) {
+  define("achart-series/1.0.0/src/column-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 柱状图
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      Cartesian = require("acharts/1.0.4/src/chart/series/cartesian-debug"),
-      ActiveGroup = require("acharts/1.0.4/src/chart/mixin/activedgroup-debug"),
-      Stacked = require("acharts/1.0.4/src/chart/series/stacked-debug"),
-      Group = require("acharts/1.0.4/src/chart/series/itemgroup-debug");
+    var Util = require("achart-util/1.0.0/index-debug"),
+      Cartesian = require("achart-series/1.0.0/src/cartesian-debug"),
+      ActiveGroup = require("achart-actived/1.0.0/index-debug").Group,
+      Stacked = require("achart-series/1.0.0/src/stacked-debug"),
+      Group = require("achart-series/1.0.0/src/itemgroup-debug");
 
     function highlight(c, percent) {
       var color = Raphael.color(c),
@@ -18753,7 +19422,7 @@
       animate: true,
       duration: 1000,
       item: {
-        'stroke': 'none',
+        'stroke': '#fff',
         'stroke-width': 1,
         'fill-opacity': .75
       }
@@ -18843,7 +19512,7 @@
       _getIndexInfo: function() {
         var _self = this,
           parent = _self.get('parent'),
-          series = parent.getSeries(),
+          series = parent.getSeries ? parent.getSeries() : parent.get('children'),
           curIndex,
           count,
           columns = [];
@@ -19025,13 +19694,136 @@
     });
     module.exports = Column;
   });
-  define("acharts/1.0.4/src/chart/series/itemgroup-debug", [], function(require, exports, module) {
+  define("achart-series/1.0.0/src/stacked-debug", [], function(require, exports, module) {
+    /**
+     * @fileOverview 处理层叠的数据序列的扩展
+     * @ignore
+     */
+    var Util = require("achart-util/1.0.0/index-debug");
+    /**
+     * @class Chart.Series.Stacked
+     * @protected
+     * 此类是一个扩展，不应该直接实例化,主要用于区域图，柱状图层叠的场景
+     */
+    var Stacked = function() {};
+    Stacked.ATTRS = {
+      /**
+       * 数据序列层叠的类型
+       *   - none : 不进行层叠
+       *   - normal : 一般的层叠方式，后面的数据序列的y值在前一个数据序列基础上显示
+       *   - percent : 按照百分比进行层叠展示
+       * @type {String}
+       */
+      stackType: 'none'
+    };
+    Util.augment(Stacked, {
+      processStackedPoint: function(point, index) {
+        var _self = this,
+          pre = _self.getVisiblePrev(),
+          xName = _self.getXName(),
+          yName = _self.getYName();
+        if (pre) {
+          var prePoint = pre.getPoints()[index],
+            baseValue = _self.getBaseValue();
+          if (!_self.isInCircle()) { //非雷达图中
+            point[yName] = point[yName] + prePoint[yName] - baseValue;
+          } else { //雷达图中
+            var xAxis = _self.get('xAxis'),
+              r = xAxis.getDistance(point.x, point.y),
+              ir = prePoint.r || xAxis.getDistance(prePoint.x, prePoint.y),
+              curPoint;
+            r = ir + r;
+            curPoint = xAxis.getCirclePoint(point.xValue, r)
+            point.x = curPoint.x;
+            point.y = curPoint.y;
+            point.r = r;
+            point.ir = ir;
+          }
+          point.lowY = prePoint[yName];
+          point.lowX = prePoint[xName];
+        }
+      },
+      /**
+       * @protected
+       * 获取数据中的比例
+       */
+      getStackedPercent: function(value, index) {
+        var _self = this,
+          data = _self.get('parent').getStackedData(_self.get('yAxis'), 'yAxis'),
+          total = data[index];
+        if (total) {
+          return value / total;
+        }
+        return NaN;
+      },
+      /**
+       * @protected
+       * 转换显示的值，一般用于层叠的数据序列中
+       */
+      parseYValue: function(value) {
+        var _self = this,
+          stackType = _self.get('stackType'),
+          data = _self.get('data'),
+          index = Util.indexOf(data, value),
+          percentValue;
+        if (stackType == 'percent') {
+          percentValue = _self.getStackedPercent(value, index);
+          value = percentValue * 100;
+        }
+        return value;
+      },
+      /**
+       * @protected
+       * 获取显示的前一个序列
+       */
+      getVisiblePrev: function() {
+        var _self = this,
+          parent = _self.get('parent'),
+          yAxis = _self.get('yAxis'),
+          children = parent.get('children'),
+          pre;
+        Util.each(children, function(series, i) {
+          if (series == _self) {
+            return false;
+          }
+          if (series.get('visible') && series.get('yAxis') == yAxis) { //获取前一个显示的数据序列
+            pre = series;
+          }
+        });
+        return pre;
+      },
+      /**
+       * 获取提示信息
+       * @return {*} 返回显示在上面的文本
+       */
+      getTipItem: function(point) {
+        var _self = this,
+          stackType = _self.get('stackType');
+        if (stackType == 'percent') {
+          var y = point.yValue || 0;
+          return [point.value, '（' + y.toFixed(2) + '%）'];
+        }
+        return point.value;
+      },
+      /**
+       * 是否是层叠的数据序列
+       * @return {Boolean}
+       */
+      isStacked: function() {
+        var _self = this,
+          stackType = _self.get('stackType');
+        return stackType && stackType !== 'none';
+      }
+    });
+    module.exports = Stacked;
+  });
+  define("achart-series/1.0.0/src/itemgroup-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 包含数据序列子项的数据序列类,作为一个扩展可以用于柱状图、饼图
      * @ignore
      */
-    var Base = require("acharts/1.0.4/src/chart/series/base-debug"),
-      Util = require("acharts/1.0.4/src/util-debug");
+    var Base = require("achart-series/1.0.0/src/base-debug"),
+      Util = require("achart-util/1.0.0/index-debug");
 
     function removeLabel(label) {
       if (label.remove) {
@@ -19312,294 +20104,15 @@
     });
     module.exports = Group;
   });
-  define("acharts/1.0.4/src/chart/series/scatter-debug", [], function(require, exports, module) {
-    /**
-     * @fileOverview 散列图,用于标示点的分步
-     * @ignore
-     */
-    var Util = require("acharts/1.0.4/src/util-debug"),
-      Cartesian = require("acharts/1.0.4/src/chart/series/cartesian-debug"),
-      ActiveGroup = require("acharts/1.0.4/src/chart/mixin/activedgroup-debug");
-
-    function trySet(obj, name, value) {
-      if (obj && !obj[name]) {
-        obj[name] = value;
-      }
-    }
-    /**
-     * @class Chart.Series.Scatter
-     * 散点图序列
-     * @extends Chart.Series.Cartesian
-     */
-    var Scatter = function(cfg) {
-      Scatter.superclass.constructor.call(this, cfg);
-    };
-    Scatter.ATTRS = {
-      elCls: 'x-chart-scatter',
-      stickyTracking: false,
-      /**
-       * 生成时不执行动画
-       * @type {Object}
-       */
-      animate: false
-    };
-    Util.extend(Scatter, Cartesian);
-    Util.augment(Scatter, {
-      /**
-       * @protected
-       * 处理颜色
-       */
-      processColor: function() {
-        var _self = this,
-          color = _self.get('color');
-        if (color) {
-          var markers = _self.get('markers');
-          if (markers) {
-            trySet(markers.marker, 'stroke', color);
-            trySet(markers.marker, 'fill', color);
-          }
-        }
-      },
-      //绘制点
-      draw: function(points) {
-        var _self = this
-        Util.each(points, function(point) {
-          _self.addMarker(point);
-        });
-      },
-      //鼠标hover
-      onMouseOver: function() {
-        var _self = this,
-          markersGroup = _self.get('markersGroup');
-        if (markersGroup) {
-          markersGroup.on('mouseover', function(ev) {
-            var target = ev.target,
-              shape = target.shape;
-            if (shape) {
-              markersGroup.setActivedItem(shape);
-            }
-          });
-        }
-      },
-      //获取当前定位的点
-      getTrackingInfo: function() {
-        var _self = this,
-          markersGroup = _self.get('markersGroup'),
-          activeMarker,
-          rst,
-          point;
-        if (markersGroup) {
-          activeMarker = markersGroup.getActived();
-          if (activeMarker) {
-            rst = activeMarker.get('point');
-          }
-        }
-        return rst;
-      },
-      //鼠标移出
-      onMouseOut: function() {
-        var _self = this,
-          markersGroup = _self.get('markersGroup');
-        if (markersGroup) {
-          markersGroup.on('mouseout', function(ev) {
-            var target = ev.target,
-              shape = target.shape;
-            if (shape) {
-              markersGroup.clearActivedItem(shape);
-            }
-          });
-        }
-      }
-    });
-    return Scatter;
-  });
-  define("acharts/1.0.4/src/chart/series/bubble-debug", [], function(require, exports, module) {
-    /**
-     * @fileOverview 气泡图
-     * @ignore
-     */
-    var Cartesian = require("acharts/1.0.4/src/chart/series/cartesian-debug"),
-      ActiveGroup = require("acharts/1.0.4/src/chart/mixin/activedgroup-debug"),
-      Util = require("acharts/1.0.4/src/util-debug");
-    /**
-     * @class Chart.Series.Bubble
-     * 冒泡图
-     */
-    var Bubble = function(cfg) {
-      Bubble.superclass.constructor.call(this, cfg);
-    };
-    Bubble.ATTRS = {
-      elCls: 'x-chart-bubble',
-      type: 'buble',
-      /**
-       * 气泡的配置信息
-       * @type {Object}
-       */
-      circle: {},
-      /**
-       * 激活气泡的状态
-       * @type {Object}
-       */
-      activeCircle: {},
-      animate: true,
-      stickyTracking: false
-    };
-    Util.extend(Bubble, Cartesian);
-    Util.mixin(Bubble, [ActiveGroup]);
-    Util.augment(Bubble, {
-      /**
-       * @protected
-       * 处理颜色
-       */
-      processColor: function() {
-        var _self = this,
-          color = _self.get('color');
-        if (color) {
-          var circle = _self.get('circle');
-          if (circle) {
-            Util.trySet(circle, 'stroke', color);
-            Util.trySet(circle, 'fill', color);
-          }
-        }
-      },
-      renderUI: function() {
-        Bubble.superclass.renderUI.call(this);
-        this._renderGroup();
-      },
-      //渲染圆
-      draw: function(points) {
-        var _self = this;
-        Util.each(points, function(point) {
-          _self.addBubble(point);
-        });
-      },
-      /**
-       * @protected
-       * 内部图形发生改变
-       */
-      changeShapes: function() {
-        var _self = this,
-          points = _self.getPoints(),
-          items = _self.getItems();
-        Util.each(items, function(item, index) {
-          var point = points[index];
-          item.animate({
-            cx: point.x,
-            cy: point.y
-          }, _self.get('changeDuration'));
-          item.set('point', point);
-        });
-      },
-      /**
-       * 获取内部的圆
-       * @return {Array} 图形圆的集合
-       */
-      getItems: function() {
-        return this.get('group').get('children');
-      },
-      /**
-       * @protected
-       * 获取可以被激活的元素
-       * @return {Chart.Actived[]} 可以被激活的元素集合
-       */
-      getActiveItems: function() {
-        return this.getItems();
-      },
-      _renderGroup: function() {
-        var _self = this,
-          group = _self.addGroup();
-        _self.set('group', group);
-      },
-      //设置激活状态
-      setItemActived: function(item, actived) {
-        var _self = this,
-          circle = _self.get('circle'),
-          activedCfg = _self.get('activeCircle');
-        if (actived) {
-          item.attr(activedCfg);
-          item.set('actived', true);
-        } else {
-          item.attr(circle);
-          item.set('actived', false);
-        }
-      },
-      //获取当前定位的点
-      getTrackingInfo: function() {
-        var _self = this,
-          activedCircle = _self.getActived();
-        return activedCircle && activedCircle.get('point');
-      },
-      /**
-       * @protected
-       * 是否激活
-       * @param {Chart.Actived} item 可以被激活的元素
-       * @return {Chart.Actived[]} 可以被激活的元素集合
-       */
-      isItemActived: function(item) {
-        return item.get('actived');
-      },
-      //添加冒泡
-      addBubble: function(point) {
-        var _self = this,
-          circle = _self.get('circle'),
-          r = 5, //默认5
-          radius,
-          cfg = Util.mix({}, circle),
-          shape;
-        if (point.obj) {
-          r = point.obj['r'];
-        }
-        if (point.arr) {
-          r = point.arr[2];
-        }
-        radius = _self._getRadius(r);
-        cfg.cx = point.x;
-        cfg.cy = point.y;
-        if (_self.get('animate') && Util.svg) {
-          cfg.r = 0;
-          shape = _self.get('group').addShape('circle', cfg);
-          shape.animate({
-            r: radius
-          }, _self.get('duration'));
-        } else {
-          cfg.r = radius;
-          shape = _self.get('group').addShape('circle', cfg);
-        }
-        shape.set('point', point);
-      },
-      _getRadius: function(r) {
-        return Math.pow(r, .75);
-      },
-      //鼠标hover
-      onMouseOver: function() {
-        var _self = this
-        _self.get('group').on('mouseover', function(ev) {
-          var target = ev.target,
-            shape = target.shape;
-          _self.setItemActived(shape, true);
-        });
-      },
-      //鼠标hover
-      onMouseOut: function() {
-        var _self = this
-        _self.get('group').on('mouseout', function(ev) {
-          var target = ev.target,
-            shape = target.shape;
-          _self.setItemActived(shape, false);
-        });
-      }
-    });
-    module.exports = Bubble;
-  });
-  define("acharts/1.0.4/src/chart/series/pie-debug", [], function(require, exports, module) {
+  define("achart-series/1.0.0/src/pie-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 饼图
      * @ignore
      */
-    var ItemGroup = require("acharts/1.0.4/src/chart/series/itemgroup-debug"),
-      ActiveGroup = require("acharts/1.0.4/src/chart/mixin/activedgroup-debug"),
-      Util = require("acharts/1.0.4/src/util-debug"),
-      Base = require("acharts/1.0.4/src/chart/series/base-debug");
+    var ItemGroup = require("achart-series/1.0.0/src/itemgroup-debug"),
+      ActiveGroup = require("achart-actived/1.0.0/index-debug").Group,
+      Util = require("achart-util/1.0.0/index-debug"),
+      Base = require("achart-series/1.0.0/src/base-debug");
     //决定x坐标
     function ensureX(self, x) {
       if (Util.isNumber(x)) {
@@ -19778,6 +20291,9 @@
        */
       labelHeight: 16,
       labelLine: true,
+      item: {
+        'stroke': '#fff'
+      },
       xField: 'name',
       stickyTracking: false,
       animate: true,
@@ -20303,12 +20819,12 @@
     });
     module.exports = Pie;
   });
-  define("acharts/1.0.4/src/chart/theme-debug", [], function(require, exports, module) {
+  define("achart-theme/1.0.0/index-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 图表的皮肤
      * @ignore
      */
-    var Util = require("acharts/1.0.4/src/util-debug");
+    var Util = require("achart-util/1.0.0/index-debug");
     /**
      * Chart.Theme
      * @param {Object} cfg  样式的配置项
@@ -20572,5 +21088,620 @@
     })
     module.exports = Theme;
   });
-  require("acharts/1.0.4/acharts-debug");
+  define("achart-series-other/1.0.0/index-debug", [], function(require, exports, module) {
+    var Series = require("achart-series/1.0.0/index-debug");
+    Series.Bubble = require("achart-series-other/1.0.0/src/bubble-debug");
+    Series.Scatter = require("achart-series-other/1.0.0/src/scatter-debug");
+    Series.Flag = require("achart-series-other/1.0.0/src/flag-debug");
+    module.exports = Series;
+  });
+  define("achart-series-other/1.0.0/src/bubble-debug", [], function(require, exports, module) {
+    /**
+     * @fileOverview 气泡图
+     * @ignore
+     */
+    var Cartesian = require("achart-series/1.0.0/index-debug").Cartesian,
+      ActiveGroup = require("achart-actived/1.0.0/index-debug").Group,
+      Util = require("achart-util/1.0.0/index-debug");
+    /**
+     * @class Chart.Series.Bubble
+     * 冒泡图
+     */
+    var Bubble = function(cfg) {
+      Bubble.superclass.constructor.call(this, cfg);
+    };
+    Bubble.ATTRS = {
+      elCls: 'x-chart-bubble',
+      type: 'bubble',
+      /**
+       * 气泡的配置信息
+       * @type {Object}
+       */
+      circle: {},
+      /**
+       * 激活气泡的状态
+       * @type {Object}
+       */
+      activeCircle: {},
+      animate: true,
+      autoPaint: false,
+      stickyTracking: false
+    };
+    Util.extend(Bubble, Cartesian);
+    Util.mixin(Bubble, [ActiveGroup]);
+    Util.augment(Bubble, {
+      /**
+       * @protected
+       * 处理颜色
+       */
+      processColor: function() {
+        var _self = this,
+          color = _self.get('color');
+        if (color) {
+          var circle = _self.get('circle');
+          if (circle) {
+            Util.trySet(circle, 'stroke', color);
+            Util.trySet(circle, 'fill', color);
+          }
+        }
+      },
+      renderUI: function() {
+        Bubble.superclass.renderUI.call(this);
+        this._renderGroup();
+      },
+      //渲染圆
+      draw: function(points) {
+        var _self = this;
+        Util.each(points, function(point) {
+          _self.addBubble(point);
+        });
+      },
+      /**
+       * @protected
+       * 内部图形发生改变
+       */
+      changeShapes: function() {
+        var _self = this,
+          points = _self.getPoints(),
+          items = _self.getItems();
+        Util.each(items, function(item, index) {
+          var point = points[index];
+          item.animate({
+            cx: point.x,
+            cy: point.y
+          }, _self.get('changeDuration'));
+          item.set('point', point);
+        });
+      },
+      /**
+       * 获取内部的圆
+       * @return {Array} 图形圆的集合
+       */
+      getItems: function() {
+        return this.get('group').get('children');
+      },
+      /**
+       * @protected
+       * 获取可以被激活的元素
+       * @return {Chart.Actived[]} 可以被激活的元素集合
+       */
+      getActiveItems: function() {
+        return this.getItems();
+      },
+      _renderGroup: function() {
+        var _self = this,
+          group = _self.addGroup();
+        _self.set('group', group);
+      },
+      //设置激活状态
+      setItemActived: function(item, actived) {
+        var _self = this,
+          circle = _self.get('circle'),
+          activedCfg = _self.get('activeCircle');
+        if (actived) {
+          item.attr(activedCfg);
+          item.set('actived', true);
+        } else {
+          item.attr(circle);
+          item.set('actived', false);
+        }
+      },
+      //获取当前定位的点
+      getTrackingInfo: function() {
+        var _self = this,
+          activedCircle = _self.getActived();
+        return activedCircle && activedCircle.get('point');
+      },
+      /**
+       * @protected
+       * 是否激活
+       * @param {Chart.Actived} item 可以被激活的元素
+       * @return {Chart.Actived[]} 可以被激活的元素集合
+       */
+      isItemActived: function(item) {
+        return item.get('actived');
+      },
+      //添加冒泡
+      addBubble: function(point) {
+        var _self = this,
+          circle = _self.get('circle'),
+          r = 5, //默认5
+          radius,
+          cfg = Util.mix({}, circle),
+          shape;
+        if (point.obj) {
+          r = point.obj['r'];
+        }
+        if (point.arr) {
+          r = point.arr[2];
+        }
+        radius = _self._getRadius(r);
+        cfg.cx = point.x;
+        cfg.cy = point.y;
+        if (_self.get('animate') && Util.svg) {
+          cfg.r = 0;
+          shape = _self.get('group').addShape('circle', cfg);
+          shape.animate({
+            r: radius
+          }, _self.get('duration'));
+        } else {
+          cfg.r = radius;
+          shape = _self.get('group').addShape('circle', cfg);
+        }
+        shape.set('point', point);
+      },
+      _getRadius: function(r) {
+        return Math.pow(r, .75);
+      },
+      //鼠标hover
+      onMouseOver: function() {
+        var _self = this
+        _self.get('group').on('mouseover', function(ev) {
+          var target = ev.target,
+            shape = target.shape;
+          _self.setItemActived(shape, true);
+        });
+      },
+      //鼠标hover
+      onMouseOut: function() {
+        var _self = this;
+        _self.get('group').on('mouseout', function(ev) {
+          var target = ev.target,
+            shape = target.shape;
+          _self.setItemActived(shape, false);
+        });
+      }
+    });
+    module.exports = Bubble;
+  });
+  define("achart-series-other/1.0.0/src/scatter-debug", [], function(require, exports, module) {
+    /**
+     * @fileOverview 散列图,用于标示点的分步
+     * @ignore
+     */
+    var Util = require("achart-util/1.0.0/index-debug"),
+      Cartesian = require("achart-series/1.0.0/index-debug").Cartesian,
+      ActiveGroup = require("achart-actived/1.0.0/index-debug").Group;
+
+    function trySet(obj, name, value) {
+      if (obj && !obj[name]) {
+        obj[name] = value;
+      }
+    }
+    /**
+     * @class Chart.Series.Scatter
+     * 散点图序列
+     * @extends Chart.Series.Cartesian
+     */
+    var Scatter = function(cfg) {
+      Scatter.superclass.constructor.call(this, cfg);
+    };
+    Scatter.ATTRS = {
+      elCls: 'x-chart-scatter',
+      stickyTracking: false,
+      autoPaint: false,
+      /**
+       * 生成时不执行动画
+       * @type {Object}
+       */
+      animate: false
+    };
+    Util.extend(Scatter, Cartesian);
+    Util.augment(Scatter, {
+      /**
+       * @protected
+       * 处理颜色
+       */
+      processColor: function() {
+        var _self = this,
+          color = _self.get('color');
+        if (color) {
+          var markers = _self.get('markers');
+          if (markers) {
+            trySet(markers.marker, 'stroke', color);
+            trySet(markers.marker, 'fill', color);
+          }
+        }
+      },
+      //绘制点
+      draw: function(points) {
+        var _self = this
+        Util.each(points, function(point) {
+          _self.addMarker(point);
+        });
+      },
+      //鼠标hover
+      onMouseOver: function() {
+        var _self = this,
+          markersGroup = _self.get('markersGroup');
+        if (markersGroup) {
+          markersGroup.on('mouseover', function(ev) {
+            var target = ev.target,
+              shape = target.shape;
+            if (shape) {
+              markersGroup.setActivedItem(shape);
+            }
+          });
+        }
+      },
+      //获取当前定位的点
+      getTrackingInfo: function() {
+        var _self = this,
+          markersGroup = _self.get('markersGroup'),
+          activeMarker,
+          rst,
+          point;
+        if (markersGroup) {
+          activeMarker = markersGroup.getActived();
+          if (activeMarker) {
+            rst = activeMarker.get('point');
+          }
+        }
+        return rst;
+      },
+      //鼠标移出
+      onMouseOut: function() {
+        var _self = this,
+          markersGroup = _self.get('markersGroup');
+        if (markersGroup) {
+          markersGroup.on('mouseout', function(ev) {
+            var target = ev.target,
+              shape = target.shape;
+            if (shape) {
+              markersGroup.clearActivedItem(shape);
+            }
+          });
+        }
+      }
+    });
+    return Scatter;
+  });
+  define("achart-series-other/1.0.0/src/flag-debug", [], function(require, exports, module) {
+    /*
+     *
+     * @line图的tag
+     *
+     * */
+    var Cartesian = require("achart-series/1.0.0/index-debug").Cartesian,
+      Util = require("achart-util/1.0.0/index-debug");
+
+    function trySet(obj, name, value) {
+      if (obj && !obj[name]) {
+        obj[name] = value;
+      }
+    }
+    /**
+     * @class Chart.Series.Flag
+     * 使用线连接数据的数据图序列
+     * @extends Chart.Series.Cartesian
+     */
+    function Flag(cfg) {
+      Flag.superclass.constructor.call(this, cfg);
+    }
+    Util.extend(Flag, Cartesian);
+    Flag.ATTRS = {
+      type: 'flag',
+      elCls: 'x-chart-flag-series',
+      zIndex: 6,
+      /**
+       * 配置
+       * @type {Object}
+       */
+      flag: null,
+      /**
+       * y偏离
+       * @type {Number}
+       */
+      distance: 0,
+      /**
+       * 笔触
+       * @type {Object}
+       */
+      line: null,
+      /**
+       * 使用html
+       * @type {bool}
+       */
+      custom: false,
+      /**
+       * 使用html时候的内容
+       * @type {String}
+       */
+      title: null
+    };
+    Util.augment(Flag, {
+      /**
+       *  重写获取point函数
+       */
+      _getPoints: function() {
+        var _self = this,
+          data = _self.get('data'),
+          xField = _self.get('xField'),
+          yField = _self.get('yField'),
+          onSeries = _self.get('onSeries'),
+          parent = _self.get('parent'),
+          distance = _self.get('distance'),
+          series = parent.find(onSeries),
+          flagAttrs = _self.get('flag'),
+          lineAttrs = _self.get('line'),
+          xAxis = _self.get('xAxis'),
+          yAxis = _self.get('yAxis'),
+          points = [];
+        cfg = Util.mix({}, flagAttrs, lineAttrs);
+        Util.each(data, function(item, index) {
+          var point, sameNum = 0;
+          if (Util.isObject(item)) {
+            var xValue = item[xField];
+            //不存在落点线条 则落到坐标轴上面
+            if (!series || !series.get('visible')) {
+              var _x = xAxis.getOffset(xValue),
+                _y = yAxis.getStartOffset();
+              point = {
+                x: _x,
+                y: _y,
+                xValue: xValue
+              }
+            } else {
+              point = series.findPointByValue(xValue);
+            }
+            //若存在坐标轴一样的flag  往上堆叠
+            Util.each(data, function(newItem, newIndex) {
+              if (newIndex < index && item[xField] == newItem[xField]) {
+                sameNum++;
+              }
+            })
+            var finalDistance = distance > 0 ? (distance * (sameNum + 1) + cfg.r * 2 * sameNum) : (distance * (sameNum + 1) - cfg.r * 2 * sameNum);
+            point = Util.mix({}, point, {
+              y: point.y + finalDistance
+            });
+            point.obj = item;
+          }
+          _self.processPoint(point, index);
+          points.push(point);
+        });
+        return points;
+      },
+      /**
+       *  重写legend导致的画面变动
+       */
+      changeShapes: function(points, animate) {
+        var _self = this,
+          flagAttrs = _self.get('flag'),
+          lineAttrs = _self.get('line'),
+          cfg = Util.mix({}, flagAttrs, lineAttrs),
+          custom = _self.get('custom'),
+          distance = _self.get('distance'),
+          groups = _self.get('children');
+        points = points || this._getPoints();
+        if (custom) {
+          var customDiv = _self.get('customDiv');
+          if (customDiv) {
+            Util.each(points, function(point, index) {
+              var flag = customDiv.childNodes[index],
+                flagWidth = Util.getWidth(flag),
+                x = point.x,
+                y = point.y,
+                flagHeight = Util.getHeight(flag),
+                left = x - flagWidth / 2,
+                top = y + distance - flagHeight / 2
+              flag.style.cssText = "z-index:5;position:absolute;left:" + left + "px;top:" + top + "px";
+            });
+          }
+        } else {
+          if (groups) {
+            Util.each(points, function(point, index) {
+              var group = groups[index],
+                x = point.x,
+                y = point.y,
+                shapes = group.get('children'),
+                circle = shapes[0],
+                line = shapes[1];
+              circle.attr({
+                cx: x,
+                cy: distance > 0 ? (y + cfg.r) : (y - cfg.r)
+              });
+              line.attr({
+                x1: x,
+                y1: y,
+                x2: x,
+                y2: y - distance
+              });
+            });
+          }
+        }
+      },
+      draw: function(points, callback) {
+        var _self = this,
+          animate = _self.get('animate'),
+          duration = _self.get('duration');
+        if (!animate) {
+          Util.each(points, function(item, index) {
+            _self._drawShape(item, index);
+          });
+          _after();
+        } else {
+          var onSeries = _self.get('onSeries'),
+            parent = _self.get('parent');
+          var seriesPoints = _self._getPoints();
+          var cur = 0,
+            sub = [],
+            count = seriesPoints.length;
+          //动画生成线和对应的点
+          Util.animStep(duration, function(factor) {
+            var pre = cur;
+            cur = parseInt((factor) * count, 10);
+            if (cur > count - 1) {
+              cur = count - 1;
+            }
+            if (cur != pre) {
+              sub = points.slice(0, cur + 1);
+              for (var i = pre; i < cur; i++) {
+                _findFlagToDraw(seriesPoints[i]);
+              }
+            }
+            if (factor == 1) {
+              _findFlagToDraw(seriesPoints[cur]);
+            }
+          }, _after);
+        }
+
+        function _after() {
+          _self.bindFlagEvent();
+          callback && callback();
+        }
+
+        function _findFlagToDraw(currPoint) {
+          Util.each(points, function(item, index) {
+            if (item.x == currPoint.x && !item.isDraw) {
+              _self._drawShape(item, index);
+              item.isDraw = true; //防止堆叠时候x值相同而重复画
+            }
+          });
+        }
+      },
+      /**
+       *  根据点绘制
+       */
+      _drawShape: function(point, index) {
+        var _self = this,
+          flagAttrs = _self.get('flag'),
+          lineAttrs = _self.get('line'),
+          custom = _self.get('custom'),
+          x = point.x,
+          y = point.y,
+          distance = _self.get('distance'),
+          flagShape = _self.get('flagShape'),
+          cfg = Util.mix({}, flagAttrs, lineAttrs);
+        //自定义html
+        if (custom) {
+          var title = _self.get('data')[index]['title'],
+            html = '<div class="ac-flags"></div>',
+            flag = Util.createDom("<span>" + title + "</span>"),
+            outterNode = _self.get('canvas').get('node').parentNode,
+            customDiv = _self.get('customDiv');
+          outterNode.style.position = 'relative';
+          //判断是否存在 不存在则追加并绑定事件
+          if (!customDiv) {
+            customDiv = Util.createDom(html);
+            outterNode.appendChild(customDiv);
+            _self.bindTooltip(customDiv);
+            _self.bindDomEvent(customDiv);
+          }
+          customDiv.appendChild(flag);
+          var flagWidth = Util.getWidth(flag),
+            flagHeight = Util.getHeight(flag),
+            left = x - flagWidth / 2,
+            top = y + distance - flagHeight / 2
+          flag.style.cssText = "z-index:5;position:absolute;left:" + left + "px;top:" + top + "px";
+          _self.set('customDiv', customDiv);
+        } else {
+          var group = _self.addGroup();
+          //circle
+          cfg = Util.mix(cfg, {
+            cx: x,
+            cy: distance > 0 ? (y + cfg.r) : (y - cfg.r)
+          });
+          group.addShape('circle', cfg);
+          //line
+          cfg = Util.mix(cfg, {
+            x1: x,
+            y1: y,
+            x2: x,
+            y2: y - distance
+          });
+          group.addShape('line', cfg);
+        }
+      },
+      /**
+       * 开放事件接口
+       */
+      bindFlagEvent: function() {
+        var _self = this;
+        _self.on('click', function(ev) {
+          _self.fireUp('flagclick', ev);
+        });
+        _self.on('mouseover', function(ev) {
+          _self.fireUp('flagmouseover', ev);
+        });
+        _self.on('mouseout', function(ev) {
+          _self.fireUp('flagmouseout', ev);
+        });
+      },
+      /**
+       *  自定义事件时，添加tooltip
+       */
+      bindTooltip: function(element) {
+        var _self = this,
+          parent = _self.get('parent');
+        Util.addEvent(element, 'mouseover', function() {
+          if (parent.setActivedItem) {
+            if (!parent.isItemActived(_self)) {
+              parent.setActivedItem(_self);
+            }
+          }
+        });
+      },
+      /**
+       * 自定义flag开放事件接口
+       */
+      bindDomEvent: function(element) {
+        var _self = this;
+        Util.addEvent(element, 'click', function(ev) {
+          _self.fireUp('flagclick', ev);
+        });
+        Util.addEvent(element, 'mouseover', function(ev) {
+          _self.fireUp('flagmouseover', ev);
+        });
+        Util.addEvent(element, 'mouseout', function(ev) {
+          _self.fireUp('flagmouseout', ev);
+        });
+      },
+      /**
+       * 显示
+       */
+      show: function() {
+        var _self = this,
+          customDiv = _self.get('customDiv');
+        _self.get('el').show();
+        _self.set('visible', true);
+        if (customDiv) {
+          customDiv.style.display = 'block';
+        }
+      },
+      /**
+       * 隐藏
+       */
+      hide: function() {
+        var _self = this,
+          customDiv = _self.get('customDiv');
+        _self.get('el').hide();
+        _self.set('visible', false);
+        if (customDiv) {
+          customDiv.style.display = 'none';
+        }
+      }
+    });
+    module.exports = Flag;
+  });
+  require("acharts/1.0.5/acharts-debug");
 })();

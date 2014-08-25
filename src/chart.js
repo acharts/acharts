@@ -3,11 +3,11 @@
  * @ignore
  */
   
-var Util = require('./util'),
-  Canvas = require('./canvas'),
-  PlotBack = require('./chart/plotback'),
-  SeriesGroup = require('./chart/seriesgroup'),
-  Theme = require('./chart/theme');
+var Util = require('achart-util'),
+  Canvas = require('achart-canvas'),
+  PlotBack = require('achart-plot').Back,
+  SeriesGroup = require('./seriesgroup'),
+  Theme = require('achart-theme');
 
 /**
  * @class Chart
@@ -265,8 +265,7 @@ Chart.ATTRS = {
      * @event plotout
      * 移出图表内部
      */
-    
-  }
+}
 
 
 

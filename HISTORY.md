@@ -22,3 +22,8 @@
 1. axis revert,support line,area,column
 2. auto fit width
 
+
+## 1.0.5
+
+1. The current project is divided into several small projects。
+2. Complete unit test。

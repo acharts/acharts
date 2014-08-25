@@ -4,13 +4,13 @@
  */
 
 
-var Util = require('../util'),
-  ActivedGroup = require('./mixin/activedgroup'),
-  PlotItem = require('./plotitem'),
-  Legend = require('./legend'),
-  Tooltip = require('./tooltip'),
-  Axis = require('./axis/index'),
-  Series = require('./series/index'),
+var Util = require('achart-util'),
+  ActivedGroup = require('achart-actived').Group,
+  PlotItem = require('achart-plot').Item,
+  Legend = require('achart-legend'),
+  Tooltip = require('achart-tooltip'),
+  Axis = require('achart-axis'),
+  Series = require('achart-series'),
   maxPixel = 120, //坐标轴上的最大间距
   minPixel = 80; //坐标轴上最小间距
 
@@ -845,9 +845,17 @@ Util.augment(Group,{
   },
   _addLegendItem : function(series){
     var _self = this,
-      legendGroup = _self.get('legendGroup');
+      legendGroup = _self.get('legendGroup'),
+      markers = series.get('markers');
+
+    var symbol = markers && markers.marker.symbol;
+
     legendGroup && legendGroup.addItem({
-      series : series
+      color : series.get('color'),
+      name : series.get('name'),
+      type : series.get('type'),
+      symbol : symbol,
+      item : series
     });
   },
   //获取序列的配置信息
