@@ -21175,6 +21175,7 @@
           lineActived: {
             'stroke-width': 1
           },
+          animate: true,
           markers: lineCfg.markers
         },
         flagCfg: {
@@ -21192,6 +21193,7 @@
           duration: 1000,
           animate: true,
           custom: false,
+          html: '<img width="21" height="19" src="https://i.alipayobjects.com/i/ecmng/png/201408/3Ds0U7nGOD_src.png" />',
           onSeries: 'xaxis'
         },
         bubbleCfg: {
