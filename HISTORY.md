@@ -27,3 +27,5 @@
 
 1. The current project is divided into several small projects。
 2. Complete unit test。
+3. fixed bugs of automatic calculation coordinate axis.
+4. fixed bugs of series,when snapping point.

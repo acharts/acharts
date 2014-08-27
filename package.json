@@ -39,6 +39,6 @@
     },
     "buildArgs": "--include standalone",
 
-    "tests": "tests/*.js"
+    "tests": "tests/area-spec.js"
   }
 }

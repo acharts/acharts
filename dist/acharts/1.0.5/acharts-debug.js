@@ -14522,7 +14522,7 @@
             stroke: color
           }, _self.get(type)),
           shape;
-        if (cfg) {
+        if (cfg && type) {
           shape = _self.addShape(type, cfg);
         }
         shape && shape.attr('cursor', 'pointer');
@@ -16870,7 +16870,10 @@
           var ticks = _self._getTicks(info.max, info.min, info.tickInterval);
           _self.set('ticks', ticks);
         }
-        info.tickInterval && _self.set('tickInterval', info.tickInterval);
+        //如果初始化时未配置tickInterval,则更改
+        if (!_self.getCfgAttr('tickInterval')) {
+          _self.set('tickInterval', info.tickInterval);
+        }
       },
       /**
        * 将指定的节点转换成对应的坐标点
@@ -17245,7 +17248,7 @@
           interval = snapTo((max - min) / count, true, intervalArray);
           max = snapMultiple(max, interval, true);
           min = snapMultiple(min, interval);
-          count = (max - min) / interval;
+          count = Math.round((max - min) / interval);
         }
       }
       //计算ticks
@@ -17375,7 +17378,7 @@
             year = Math.ceil(yfactor);
             interval = year * yms;
             var maxYear = getYear(max);
-            for (var i = minYear; i < maxYear + year; i = i + year) {
+            for (var i = minYear; i <= maxYear + year; i = i + year) {
               ticks.push(createYear(i));
             }
             interval = null;
@@ -18403,14 +18406,17 @@
       findPointByValue: function(value) {
         var _self = this,
           points = _self.get('points'),
-          rst;
+          rst,
+          last;
         Util.each(points, function(point) {
           if (_self.snapEqual(point.xValue, value) && point.value != null) {
             rst = point;
             return false;
+          } else if (Util.isNumber(value) && point.xValue < value) {
+            last = point;
           }
         });
-        return rst;
+        return rst || last;
       },
       /**
        * @protected
@@ -21160,7 +21166,17 @@
       },
       seriesOptions: {
         lineCfg: lineCfg,
-        areaCfg: lineCfg,
+        areaCfg: {
+          line: {
+            'stroke-width': .5,
+            'stroke-linejoin': 'round',
+            'stroke-linecap': 'round'
+          },
+          lineActived: {
+            'stroke-width': 1
+          },
+          markers: lineCfg.markers
+        },
         flagCfg: {
           line: {
             'stroke': '#000000',
