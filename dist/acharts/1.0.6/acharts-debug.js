@@ -74,8 +74,8 @@
       return mod.exports
     }
   })(this);
-  define("acharts/1.0.5/acharts-debug", [], function(require, exports, module) {
-    var acharts = require("acharts/1.0.5/src/chart-debug");
+  define("acharts/1.0.6/acharts-debug", [], function(require, exports, module) {
+    var acharts = require("acharts/1.0.6/src/chart-debug");
     acharts.Util = require("achart-util/1.0.0/index-debug");
     acharts.Canvas = require("achart-canvas/1.0.0/index-debug");
     acharts.Date = require("achart-date/1.0.0/index-debug");
@@ -87,7 +87,7 @@
     window.AChart = acharts;
     module.exports = acharts;
   });
-  define("acharts/1.0.5/src/chart-debug", [], function(require, exports, module) {
+  define("acharts/1.0.6/src/chart-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 图表控件
      * @ignore
@@ -95,7 +95,7 @@
     var Util = require("achart-util/1.0.0/index-debug"),
       Canvas = require("achart-canvas/1.0.0/index-debug"),
       PlotBack = require("achart-plot/1.0.0/index-debug").Back,
-      SeriesGroup = require("acharts/1.0.5/src/seriesgroup-debug"),
+      SeriesGroup = require("acharts/1.0.6/src/seriesgroup-debug"),
       Theme = require("achart-theme/1.0.0/index-debug");
     /**
      * @class Chart
@@ -13102,7 +13102,7 @@
     });
     module.exports = PlotRange;
   });
-  define("acharts/1.0.5/src/seriesgroup-debug", [], function(require, exports, module) {
+  define("acharts/1.0.6/src/seriesgroup-debug", [], function(require, exports, module) {
     /**
      * @fileOverview 所有数据图形序列的容器,管理这些序列的增删，active状态，事件处理等等
      * @ignore
@@ -13861,7 +13861,7 @@
        * 显示series
        * @param  {Chart.Series} series 数据序列对象
        */
-      showSeries: function(series) {
+      showChild: function(series) {
         var _self = this,
           yAxis = _self.get('yAxis');
         if (!series.get('visible')) {
@@ -13876,7 +13876,7 @@
        * 隐藏series
        * @param  {Chart.Series} series 数据序列对象
        */
-      hideSeries: function(series) {
+      hideChild: function(series) {
         var _self = this,
           yAxis = _self.get('yAxis');
         if (series.get('visible')) {
@@ -15204,8 +15204,15 @@
               start.y = plotRange.start.y;
             }
           } else {
-            end.x = plotRange.end.x;
-            end.y = start.y;
+            if (position == 'top') {
+              start = {};
+              start.x = plotRange.start.x;
+              start.y = plotRange.end.y;
+              end = plotRange.end;
+            } else {
+              end.x = plotRange.end.x;
+              end.y = start.y;
+            }
           }
           rst.start = start;
           rst.end = end;
@@ -15394,7 +15401,7 @@
           directfactor = _self._getDirectFactor();
           if (offset == 0) {
             offset = offset + tickOffset * directfactor;
-          } else if (offset > 0) {
+          } else if (directfactor > 0) {
             offset = offset + tickOffset;
           } else {
             offset = offset - tickOffset;
@@ -15578,7 +15585,11 @@
           var subPath = Util.substitute('M{x1} {y1}L{x2} {y2}', item);
           path += subPath;
         });
-        Util.animPath(tickShape, path, 2);
+        if (_self.get('animate')) {
+          Util.animPath(tickShape, path, 2);
+        } else {
+          tickShape.attr('path', path);
+        }
       },
       //获取方向的系数，坐标轴方向跟浏览器的方向是否一致
       _getDirectFactor: function() {
@@ -15737,6 +15748,11 @@
        */
       autoPaint: true,
       /**
+       * 坐标轴相关的动画，可以一起控制对应的labels,grid，tick的动画
+       * @type {Boolean}
+       */
+      animate: true,
+      /**
        * 格式化坐标轴上的节点
        * @type {Function}
        */
@@ -15783,6 +15799,9 @@
           plotRange;
         if (!grid) {
           return;
+        }
+        if (grid.animate == null) {
+          grid.animate = _self.get('animate');
         }
         gridGroup = _self.get('parent').addGroup(Grid, grid);
         _self.set('gridGroup', gridGroup);
@@ -16117,7 +16136,7 @@
         _self.set('items', items);
         _self._clearPre();
         _self._precessItems(items);
-        _self._changeGridLines(items, CLS_GRID + '-line', true);
+        _self._changeGridLines(items, CLS_GRID + '-line');
         _self._changeMinorLinses();
       },
       _clearPre: function() {
@@ -16157,8 +16176,9 @@
         _self.set('gridLine' + cls, gridLine);
       },
       //更改栅格
-      _changeGridLines: function(items, cls, animate) {
+      _changeGridLines: function(items, cls) {
         var _self = this,
+          animate = _self.get('animate'),
           gridLine = _self.get('gridLine' + cls);
         if (gridLine) {
           var cfg = _self._linesToPath(items, {});
@@ -16566,6 +16586,9 @@
         if (!labels.items) {
           labels.items = [];
         }
+        if (labels.animate == null) {
+          labels.animate = _self.get('animate');
+        }
         labelsGroup = _self.addGroup(Labels, labels);
         _self.set('labelsGroup', labelsGroup);
       },
@@ -16768,10 +16791,17 @@
     var Axis = require("achart-axis/1.0.0/src/base-debug"),
       Util = require("achart-util/1.0.0/index-debug"),
       abbrs = ['k', 'm', 'g', 't'],
+      APPEND = 5,
       NAN = NaN;
     //取小于当前值的
     var floor = Util.snapFloor,
       ceiling = Util.snapCeiling;
+
+    function between(v1, v2, value) {
+      var min = Math.min(v1, v2),
+        max = Math.max(v1, v2);
+      return value >= min && value <= max;
+    }
     /**
      * @class Chart.Axis.Number
      * 数字坐标轴
@@ -16797,6 +16827,16 @@
        * @type {Number}
        */
       tickInterval: null,
+      /**
+       * 根据min,max,ticks自动设置offset
+       * @type {Boolean}
+       */
+      autoOffset: false,
+      /**
+       * 自动设置offset时附加的offset,防止浮点计算精确度问题
+       * @type {Number}
+       */
+      autoAppend: 5,
       /**
        * 类型
        * @type {String}
@@ -16832,9 +16872,17 @@
       beforeRenderUI: function() {
         var _self = this;
         NumberAxis.superclass.beforeRenderUI.call(_self);
+        var ticks = _self.get('ticks');
+        if (_self.get('autoOffset') && ticks) {
+          _self._setAutoOffset({
+            ticks: ticks,
+            min: _self.get('min'),
+            max: _self.get('max')
+          });
+        }
         //如果未指定坐标轴上的点，则自动计算
-        if (!_self.get('ticks')) {
-          var ticks = _self._getTicks(_self.get('max'), _self.get('min'), _self.get('tickInterval'));
+        if (!ticks) {
+          ticks = _self._getTicks(_self.get('max'), _self.get('min'), _self.get('tickInterval'));
           _self.set('ticks', ticks);
         }
       },
@@ -16864,6 +16912,9 @@
         if (info.interval) {
           info.tickInterval = info.interval;
         }
+        if (_self.get('autoOffset')) { //自动设置tick offset
+          _self._setAutoOffset(info);
+        }
         if (info.ticks) {
           _self.set('ticks', info.ticks);
         } else {
@@ -16871,9 +16922,32 @@
           _self.set('ticks', ticks);
         }
         //如果初始化时未配置tickInterval,则更改
-        if (!_self.getCfgAttr('tickInterval')) {
-          _self.set('tickInterval', info.tickInterval);
+        //if(!_self.getCfgAttr('tickInterval')){
+        _self.set('tickInterval', info.tickInterval);
+        //}
+      },
+      _setAutoOffset: function(info) {
+        var _self = this,
+          ticks = info.ticks,
+          percentStart = 0,
+          percentEnd = 0,
+          offset = [],
+          avg,
+          append = _self.get('autoAppend'),
+          length = _self.getEndOffset() - _self.getStartOffset();
+        if (info.min != null && info.min > ticks[0]) {
+          percentStart = (ticks[1] - info.min) / (ticks[1] - ticks[0]);
+          ticks.shift();
         }
+        var count = ticks.length;
+        if (info.max != null && info.max < ticks[count - 1]) {
+          percentEnd = (info.max - ticks[count - 2]) / (ticks[count - 1] - ticks[count - 2]);
+          ticks.pop();
+        }
+        avg = length / (ticks.length - 1 + percentStart + percentEnd);
+        offset[0] = avg * percentStart + append;
+        offset[1] = avg * percentEnd + append;
+        _self.set('tickOffset', offset);
       },
       /**
        * 将指定的节点转换成对应的坐标点
@@ -16883,8 +16957,14 @@
       getOffset: function(value) {
         value = parseFloat(value);
         var _self = this,
-          offset = _self.getRelativeOffset(value);
-        return _self._appendEndOffset(offset) + _self._getStartCoord();
+          offset = _self.getRelativeOffset(value),
+          start = _self._getStartCoord(),
+          end = _self._getEndCoord();
+        offset = _self._appendEndOffset(offset) + _self._getStartCoord();
+        if (!between(start, end, offset)) {
+          return NAN;
+        }
+        return offset;
       },
       /**
        * 根据画板上的点获取坐标轴上的值，用于将cavas上的点的坐标转换成坐标轴上的坐标
@@ -16898,6 +16978,8 @@
           pointCache,
           floorVal,
           floorIndex,
+          baseVal,
+          baseIndex,
           ceilingVal,
           tickInterval,
           ticks;
@@ -16906,7 +16988,13 @@
         }
         pointCache = _self.get('pointCache');
         floorVal = floor(pointCache, offset);
+        if (isNaN(floorVal)) { //存在tickoffset,比第一个tick小的场景
+          floorVal = pointCache[0];
+          ceilingVal = pointCache[1];
+        }
+        baseVal = floorVal;
         floorIndex = Util.indexOf(pointCache, floorVal);
+        baseIndex = floorIndex;
         ticks = _self.get('ticks');
         tickInterval = _self.get('tickInterval');
         avg = _self._getAvgLength(ticks.length);
@@ -16914,10 +17002,18 @@
           return ticks[floorIndex];
         }
         if (tickInterval) {
-          return ticks[floorIndex] + ((offset - floorVal) / avg) * tickInterval;
+          return ticks[floorIndex] + ((offset - baseVal) / avg) * tickInterval;
         }
-        ceilingVal = ceiling(pointCache, offset);
-        return ticks[floorIndex] + ((offset - floorVal) / avg) * (ticks[floorIndex + 1] - ticks[floorIndex]);;
+        if (ceilingVal == null) {
+          ceilingVal = ceiling(pointCache, offset);
+          if (isNaN(ceilingVal)) {
+            var count = pointCache.length;
+            floorIndex = count - 2;
+            baseIndex = count - 1;
+            baseVal = pointCache[count - 1];
+          }
+        }
+        return ticks[baseIndex] + ((offset - baseVal) / avg) * (ticks[floorIndex + 1] - ticks[floorIndex]);;
       },
       _getAvgLength: function(count) {
         var _self = this,
@@ -16935,8 +17031,10 @@
           ticks = _self.get('ticks'),
           index = Util.indexOf(ticks, value),
           tickInterval = _self.get('tickInterval'),
-          floorVal,
-          ceilingVal,
+          count = ticks.length,
+          floorVal, //比较小的tick值
+          ceilingVal, //大一些的tick值
+          baseVal, //用于跟当前值进行减，计算比例的值
           avg = _self._getAvgLength(ticks.length),
           offset;
         //如果在指定的坐标点中，直接返回坐标点的位置
@@ -16945,16 +17043,28 @@
         }
         //获取小于当前值的最后一个坐标点
         floorVal = floor(ticks, value);
-        if (isNaN(floorVal)) {
-          return NAN;
-        }
-        index = Util.indexOf(ticks, floorVal);
-        offset = avg * index;
-        if (tickInterval) {
-          offset = offset + ((value - floorVal) / tickInterval) * avg;
+        ceilingVal = ceiling(ticks, value);
+        baseVal = floorVal;
+        if (isNaN(floorVal)) { //在最小的坐标点外面
+          floorVal = ticks[0];
+          ceilingVal = ticks[1];
+          baseVal = floorVal;
+          offset = 0;
         } else {
-          ceilingVal = ceiling(ticks, value);
-          offset = offset + ((value - floorVal) / (ceilingVal - floorVal)) * avg;
+          index = Util.indexOf(ticks, floorVal);
+          offset = avg * index;
+        }
+        if (isNaN(ceilingVal)) { //在最大的坐标点外面
+          floorVal = ticks[count - 2];
+          ceilingVal = ticks[count - 1];
+          baseVal = ceilingVal;
+          offset = avg * (count - 1);
+        }
+        /**/
+        if (tickInterval) {
+          offset = offset + ((value - baseVal) / tickInterval) * avg;
+        } else {
+          offset = offset + ((value - baseVal) / (ceilingVal - floorVal)) * avg;
         }
         return offset;
       }
@@ -16997,6 +17107,7 @@
        */
       startDate: null,
       dateFormat: null,
+      autoOffset: true,
       /**
        * 结束日期时间
        * @type {Date}
@@ -17300,7 +17411,7 @@
     }
 
     function createYear(year) {
-      return new Date(year, 0, 01).getTime();
+      return Date.UTC(year, 0, 01);
     }
 
     function getMonth(date) {
@@ -17316,7 +17427,7 @@
     }
 
     function creatMonth(year, month) {
-      return new Date(year, month, 01).getTime();
+      return Date.UTC(year, month, 01);
     }
 
     function diffDay(min, max) {
@@ -17337,9 +17448,10 @@
         data = info.data,
         interval = info.interval,
         ticks = [],
-        count;
+        count,
+        rst;
       if (isNull(min) || isNull(max) || isNull(interval)) {
-        var rst = analyzeData(data, function(date) {
+        rst = analyzeData(data, function(date) {
           if (Util.isDate(date)) {
             date = date.getTime();
           }
@@ -17400,7 +17512,7 @@
               ddays = diffDay(min, max);
             interval = day * dms;
             for (var i = 0; i <= ddays + day; i = i + day) {
-              ticks.push(new Date(year, month, mday + i).getTime());
+              ticks.push(Date.UTC(year, month, mday + i));
             }
           } else if (interval > HOUR_MS) { //大于一个小时
             var date = new Date(min),
@@ -17412,7 +17524,7 @@
               dHours = diffHour(min, max);
             interval = hours * HOUR_MS;
             for (var i = 0; i <= dHours + hours; i = i + hours) {
-              ticks.push(new Date(year, month, day, hour + i).getTime());
+              ticks.push(Date.UTC(year, month, day, hour + i));
             }
           } else if (interval > MINUTE_MS) { //最小单位是分钟
             var dMinus = diffMinus(min, max),
@@ -17444,8 +17556,8 @@
         }
       }
       return {
-        max: max,
-        min: min,
+        max: rst.max || max,
+        min: rst.min || min,
         interval: interval,
         ticks: ticks,
         count: ticks.length
@@ -18408,14 +18520,20 @@
           points = _self.get('points'),
           rst,
           last;
-        Util.each(points, function(point) {
+        Util.each(points, function(point, index) {
           if (_self.snapEqual(point.xValue, value) && point.value != null) {
             rst = point;
             return false;
           } else if (Util.isNumber(value) && point.xValue < value) {
             last = point;
+            next = points[index + 1];
           }
         });
+        if (last && next) { //计算最逼近的
+          if (Math.abs(last.xValue - value) > Math.abs(next.xValue - value)) {
+            last = next;
+          }
+        }
         return rst || last;
       },
       /**
@@ -20231,7 +20349,11 @@
           areaShape = _self.get('areaShape'),
           points = _self.getPoints(),
           path = _self._getAreaPath(points);
-        Util.animPath(areaShape, path);
+        if (_self.get('animate')) {
+          Util.animPath(areaShape, path);
+        } else {
+          areaShape.attr('path', path);
+        }
       },
       //绘制区域
       drawArea: function(points) {
@@ -21979,5 +22101,5 @@
     });
     module.exports = Flag;
   });
-  require("acharts/1.0.5/acharts-debug");
+  require("acharts/1.0.6/acharts-debug");
 })();

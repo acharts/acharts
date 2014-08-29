@@ -6,7 +6,7 @@
 
 ````html
 
-<script src="../dist/acharts/1.0.5/acharts.js?nowrap "></script>
+<script src="../dist/acharts/1.0.6/acharts.js?nowrap "></script>
 
 ````
 
@@ -250,7 +250,7 @@ chart.render();
 
 ````
 
-##  long time(different types of data)
+##  time(different types of data)
 
 ````html
 

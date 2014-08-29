@@ -817,7 +817,7 @@ Util.augment(Group,{
    * 显示series
    * @param  {Chart.Series} series 数据序列对象
    */
-  showSeries : function(series){
+  showChild : function(series){
     var _self = this,
       yAxis = _self.get('yAxis');
     if(!series.get('visible')){
@@ -832,7 +832,7 @@ Util.augment(Group,{
    * 隐藏series
    * @param  {Chart.Series} series 数据序列对象
    */
-  hideSeries : function(series){
+  hideChild : function(series){
     var _self = this,
       yAxis = _self.get('yAxis');
     if(series.get('visible')){

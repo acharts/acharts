@@ -29,3 +29,9 @@
 2. Complete unit test。
 3. fixed bugs of automatic calculation coordinate axis.
 4. fixed bugs of series,when snapping point.
+
+## 1.0.6
+
+1. Time axis displayed automatically indent, used to fill the entire chart。
+2. The animation control of axis。
+3. Bug fix find points.
