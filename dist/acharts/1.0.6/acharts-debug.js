@@ -16797,10 +16797,10 @@
     var floor = Util.snapFloor,
       ceiling = Util.snapCeiling;
 
-    function between(v1, v2, value) {
+    function between(v1, v2, value) { //在2个数值之间，容忍一个像素的误差
       var min = Math.min(v1, v2),
         max = Math.max(v1, v2);
-      return value >= min && value <= max;
+      return (value >= min || min - value < 1) && (value <= max || value - max < 1);
     }
     /**
      * @class Chart.Axis.Number
@@ -16937,7 +16937,11 @@
           length = _self.getEndOffset() - _self.getStartOffset();
         if (info.min != null && info.min > ticks[0]) {
           percentStart = (ticks[1] - info.min) / (ticks[1] - ticks[0]);
-          ticks.shift();
+          if (percentStart < 0.8) {
+            ticks.shift();
+          } else {
+            percentStart = 0;
+          }
         }
         var count = ticks.length;
         if (info.max != null && info.max < ticks[count - 1]) {
