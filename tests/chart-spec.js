@@ -1,7 +1,7 @@
 var expect = require('expect.js'),
     sinon = require('sinon'),
     $ = require('jquery'),
-    Chart = require('../acharts');
+    Chart = require('../src/chart');
 
 $('<div id="c1"></div>').prependTo('body');
 

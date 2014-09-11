@@ -315,8 +315,8 @@ describe('测试折线分组',function(){
       count = labelsGroup.getCount();
 
     it('隐藏序列,重置坐标轴',function(done){
-      group.hideSeries(group.getChildAt(0));
-      group.hideSeries(group.getChildAt(1));
+      group.hideChild(group.getChildAt(0));
+      group.hideChild(group.getChildAt(1));
       setTimeout(function(){
         expect(interval).to.be(yAxis.get('tickInterval'));
         expect(count).not.to.be(labelsGroup.getCount());
@@ -325,8 +325,8 @@ describe('测试折线分组',function(){
       
     });
     it('显示图例,重置坐标轴',function(done){
-      group.showSeries(group.getChildAt(0));
-      group.showSeries(group.getChildAt(1));
+      group.showChild(group.getChildAt(0));
+      group.showChild(group.getChildAt(1));
       setTimeout(function(){
         expect(interval).to.be(yAxis.get('tickInterval'));
         expect(count).to.be(labelsGroup.getCount());

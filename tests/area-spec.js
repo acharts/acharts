@@ -1,10 +1,10 @@
 var expect = require('expect.js'),
     sinon = require('sinon'),
+    DateUtil = require('achart-date'),
     $ = require('jquery'),
-    Chart = require('../acharts');
+    AChart = require('../acharts');
 
 $('<div id="a1"></div>').prependTo('body');
-/*
 $.getJSON('data/time-data.json?nowrap',function (data) {
   // body...
   var chart = new AChart({
@@ -20,7 +20,7 @@ $.getJSON('data/time-data.json?nowrap',function (data) {
         xAxis : {//格式化时间
           type : 'time' ,
           formatter : function(value)   {
-            return AChart.Date.format(new Date(value),'yyyy-mm-dd');
+            return DateUtil.format(new Date(value),'yyyy-mm-dd');
           }
         },
         seriesOptions : { //设置多个序列共同的属性
@@ -63,7 +63,7 @@ describe('time area',function(){
     xAxis : {//格式化时间
       type : 'time' ,
       formatter : function(value)   {
-        return AChart.Date.format(new Date(value),'yyyy-mm-dd');
+        return DateUtil.format(new Date(value),'yyyy-mm-dd');
       }
     },
     seriesOptions : { //设置多个序列共同的属性
@@ -207,6 +207,7 @@ describe('time area',function(){
 
   chart.render();
 });
+/*
 */
 
 describe('other data',function(){
@@ -227,7 +228,7 @@ describe('other data',function(){
     xAxis : {//格式化时间
       type : 'time' ,
       formatter : function(value)   {
-        return AChart.Date.format(new Date(value),'yyyy-mm-dd');
+        return DateUtil.format(new Date(value),'yyyy-mm-dd');
       },
       //autoOffset : false
     },
