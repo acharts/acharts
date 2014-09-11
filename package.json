@@ -2,7 +2,11 @@
   "name": "acharts",
   "version": "1.0.6",
   "description": "",
-  "keywords": ["charts","javascript charts","acharts"],
+  "keywords": [
+    "charts",
+    "javascript charts",
+    "acharts"
+  ],
   "homepage": "https://github.com/acharts/acharts",
   "author": "dxq613@gmail.com",
   "repository": {
@@ -16,29 +20,33 @@
   "spm": {
     "main": "acharts.js",
     "dependencies": {
-      "achart-util" : "1.0.0",
-      "achart-canvas" : "1.0.0",
-      "achart-legend" : "1.0.0",
-      "achart-axis" : "1.0.0",
-      "achart-series" : "1.0.0",
-      "achart-series-other" : "1.0.0",
-      "achart-tooltip" : "1.0.0",
-      "achart-actived" : "1.0.0",
-      "achart-plot" : "1.0.0",
-      "achart-theme" : "1.0.0",
-      "achart-date" : "1.0.0"
+      "achart-util": "1.0.0",
+      "achart-canvas": "1.0.0",
+      "achart-legend": "1.0.0",
+      "achart-axis": "1.0.0",
+      "achart-series": "1.0.0",
+      "achart-series-other": "1.0.0",
+      "achart-tooltip": "1.0.0",
+      "achart-actived": "1.0.0",
+      "achart-plot": "1.0.0",
+      "achart-theme": "1.0.0",
+      "achart-date": "1.0.0",
+      "expect": "0.3.1",
+      "expect.js": "0.3.1",
+      "sinon": "1.6.0",
+      "event-simulate": "1.0.0"
     },
     "devDependencies": {
       "expect.js": "0.3.1",
-      "sinon" : "1.6.0",
-      "event-simulate" : "1.0.0",
-      "jquery" : "1.9.1"
+      "sinon": "1.6.0",
+      "event-simulate": "1.0.0",
+      "jquery": "1.9.1"
     },
     "engines": {
       "seajs": "2.2.1"
     },
     "buildArgs": "--include standalone",
-
     "tests": "tests/*.js"
+
   }
 }
