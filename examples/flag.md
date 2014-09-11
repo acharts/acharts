@@ -97,18 +97,6 @@ seajs.use('acharts', function(Achart) {
     });
  
     chart.render();
- 
-    //绑定点击事件
-    chart.on('flagclick',function(ev){
-        console.log('click');
-    });
-    //绑定hover事件
-    chart.on('flagmouseover',function(ev){
-        console.log('over');
-    });
-    chart.on('flagmouseout',function(ev){
-        console.log('out');
-    });
 });
 ````
 
@@ -151,20 +139,38 @@ seajs.use('acharts', function(Achart) {
     },
     seriesOptions: {
         flagCfg: {
-            line: {//线的配置
-                'stroke': '#cc0000',
-                'stroke-width': 1
+            flags:{
+                flag:{
+                    distance: -15,              //上下偏移的距离
+                    line: {
+                        'stroke': '#000000',
+                        'stroke-width': 1
+                    },
+                    shapeType: 'circle',        //可选circle，rect，image三种，默认rect
+                    shapeCfg: {                 //shape的配置项
+                        stock: '#ccc',
+                        r: 10,
+                        width: 22,
+                        height: 22
+                    },
+                    title: 'A',                 //显示的title
+                    titleCfg: {                 //title配置项
+                        rotate : 90,
+                        fill : '#333333',
+                        'font-size':13,
+                        'font-weight' : 'bold'
+                    },
+                    text: '这是一个flag',         //tooltip显示
+
+                },
+                events: {
+                    flagclick: function(ev){
+                        console.log(ev);
+                    }
+                }
             },
-            flag: {//圈的配置
-                'fill' : '#cc0000',
-                'stroke': '#cc0000',
-                'stroke-width': 1,
-                'r': 5
-            },
-            distance: -15,      //上下偏移的距离
-            duration : 1000,    //动画时间
-            animate: true,      //是否动画
-            custom: false       //是否自定义flag，当此项为true时，line和flag的配置失效
+            duration : 1000,                //动画时间
+            animate: true,                  //是否动画
         }
     },
     series : [{
@@ -193,18 +199,6 @@ seajs.use('acharts', function(Achart) {
     });
  
     chart.render();
- 
-    //绑定点击事件
-    chart.on('flagclick',function(ev){
-        console.log('click');
-    });
-    //绑定hover事件
-    chart.on('flagmouseover',function(ev){
-        console.log('over');
-    });
-    chart.on('flagmouseout',function(ev){
-        console.log('out');
-    });
 });
 ````
 
@@ -246,13 +240,6 @@ seajs.use('acharts', function(Achart) {
         custom : true //自定义tooltip
     },
     seriesOptions: {
-        flagCfg: {
-            distance: -7,      //上下偏移的距离
-            duration : 1000,   //动画时间
-            animate: true,     //是否动画
-            custom: true,      //是否自定义flag，当此项为true时，line和flag的配置失效
-            html: '<img width="21" height="19" src="https://i.alipayobjects.com/i/ecmng/png/201408/3Ds0U7nGOD_src.png" />' //html模板，默认就是<img width="21" height="19" src="https://i.alipayobjects.com/i/ecmng/png/201408/3Ds0U7nGOD_src.png" />
-        }
     },
     series : [{
         id: 's1',
@@ -267,13 +254,45 @@ seajs.use('acharts', function(Achart) {
         name: 'flag',
         data:[{
             x : '一月',
-            html : '<span><img width="15.5" height="19" src="https://i.alipayobjects.com/i/ecmng/png/201408/3Ds9p7HMph_src.png" /></span>'
+            flag:{//可以配置在内部
+                title:''  ,
+                distance: 0,
+                shapeType: 'image',
+                shapeCfg: {
+                    width: 16,
+                    height: 20,
+                    src: 'https://i.alipayobjects.com/i/ecmng/png/201408/3Ds9p7HMph_src.png'
+                }
+            },
         },{
-            x : '一月'
+            x : '一月',
+            flag:{
+                title:''  ,
+                distance: 0,
+                shapeType: 'image',
+                shapeCfg: {
+                    width: 16,
+                    height: 20,
+                    src: 'https://i.alipayobjects.com/i/ecmng/png/201408/3Ds9p7HMph_src.png'
+                }
+            },
         },{
-            x : '十一月'
+            x : '十一月',
+            flag:{
+                title:'F',
+            },
         },{
-            x : '十二月'
+            x : '十二月',
+            flag:{
+                title:'G',
+                shapeType: 'circle',        //可选circle，rect，image三种，默认rect
+                shapeCfg: {                 //shape的配置项
+                    stock: '#ccc',
+                    r: 10,
+                    width: 22,
+                    height: 22
+                },
+            },
         }],
         type: 'flag',
         onSeries: 's1' //定义flag坐落的series
@@ -281,18 +300,6 @@ seajs.use('acharts', function(Achart) {
     });
  
     chart.render();
- 
-    //绑定点击事件
-    chart.on('flagclick',function(ev){
-        console.log('click');
-    });
-    //绑定hover事件
-    chart.on('flagmouseover',function(ev){
-        console.log('over');
-    });
-    chart.on('flagmouseout',function(ev){
-        console.log('out');
-    });
 
 });
 ````
