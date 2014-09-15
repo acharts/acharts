@@ -75,11 +75,11 @@ seajs.use('acharts', function(Achart) {
             id: 's1',
             type: 'line',
             name: 'Tokyo',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            data: [7.0, 6.9, 19.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
         }, {
             type: 'line',
             name: 'Beijing',
-            data: [13.9, 14.2, 15.7, 18.5, 21.9, 25.2, 27.0, 26.6, 24.2, 20.3, 16.6, 14.8]
+            data: [13.9, 14.2, 15.7, 8.5, 21.9, 25.2, 7.0, 26.6, 24.2, 20.3, 16.6, 14.8]
         },{
             name: 'flag',
             data:[{
@@ -91,6 +91,7 @@ seajs.use('acharts', function(Achart) {
             },{
                 x : '十二月'
             }],
+            animate: true,
             type: 'flag',
             onSeries: 's1' //定义flag坐落的series,不存在则坐落在x轴上面
         }]
@@ -242,11 +243,12 @@ seajs.use('acharts', function(Achart) {
     seriesOptions: {
     },
     series : [{
-        id: 's1',
+
         type: 'line',
         name: 'Tokyo',
         data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
     }, {
+    id: 's1',
         type: 'line',
         name: 'Beijing',
         data: [13.9, 14.2, 15.7, 18.5, 21.9, 25.2, 27.0, 26.6, 24.2, 20.3, 16.6, 14.8]
