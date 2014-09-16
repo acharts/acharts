@@ -1,6 +1,6 @@
 {
   "name": "acharts",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "keywords": [
     "charts",
@@ -46,7 +46,7 @@
       "seajs": "2.2.1"
     },
     "buildArgs": "--include standalone",
-    "tests": "tests/*.js"
+    "tests": "tests/dync-spec.js"
 
   }
 }
