@@ -35,3 +35,9 @@
 1. Time axis displayed automatically indent, used to fill the entire chart。
 2. The animation control of axis。
 3. Bug fix find points.
+
+## 1.0.8
+
+1. fixed bug of pie label.
+2. fixed bug of all data is 0.
+3. fixed bug of axis of autoOffset.
