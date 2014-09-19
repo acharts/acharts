@@ -149,7 +149,7 @@ seajs.use('acharts', function(Achart) {
                     },
                     shapeType: 'circle',        //可选circle，rect，image三种，默认rect
                     shapeCfg: {                 //shape的配置项
-                        stock: '#ccc',
+                        stroke: '#ccc',
                         r: 10,
                         width: 22,
                         height: 22
@@ -289,7 +289,7 @@ seajs.use('acharts', function(Achart) {
                 title:'G',
                 shapeType: 'circle',        //可选circle，rect，image三种，默认rect
                 shapeCfg: {                 //shape的配置项
-                    stock: '#ccc',
+                    stroke: '#ccc',
                     r: 10,
                     width: 22,
                     height: 22
