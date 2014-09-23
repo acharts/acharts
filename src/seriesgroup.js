@@ -10,9 +10,7 @@ var Util = require('achart-util'),
   Legend = require('achart-legend'),
   Tooltip = require('achart-tooltip'),
   Axis = require('achart-axis'),
-  Series = require('achart-series'),
-  maxPixel = 120, //坐标轴上的最大间距
-  minPixel = 80; //坐标轴上最小间距
+  Series = require('achart-series');
 
 function min(x,y){
   return x > y ? y : x;
@@ -52,6 +50,17 @@ Group.ATTRS = {
    * @type {Object}
    */
   seriesOptions : {},
+
+  /**
+   * y轴的坐标个数限制
+   * @type {Array}
+   */
+  yTickCounts : [3,5],
+  /**
+   * x轴的坐标轴个数限制
+   * @type {Array}
+   */
+  xTickCounts : [5,10],
   /**
    * 数据图形序列的配置项
    * @type {Array}
@@ -455,13 +464,12 @@ Util.augment(Group,{
       data = [],
       type = axis.get('type'),
       length = axis.getLength(),
-      minCount = Math.floor(length / maxPixel),
-      maxCount = Math.ceil(length / minPixel),
       stackType,
       series,
       min,
       max,
       interval,
+      tickCounts = (name == 'xAxis' ? _self.get('xTickCounts') :  _self.get('yTickCounts')) || [],
       autoUtil,
       rst;
       if(type == 'number' || type == 'radius') {
@@ -487,12 +495,11 @@ Util.augment(Group,{
     var cfg = {
       min : min,
       max : max,
-
+      minCount : tickCounts[0],
+      maxCount : tickCounts[1],
       interval: interval
     };
     if(name == 'yAxis'){
-      cfg.maxCount = maxCount;
-      cfg.minCount = minCount;
       stackType = series[0].get('stackType');
     }
     if(stackType && stackType != 'none'){
@@ -648,7 +655,7 @@ Util.augment(Group,{
   //数据变化或者序列显示隐藏引起的坐标轴变化
   _resetAxis : function(axis,type){
 
-    if(!axis.get('autoTicks')){
+    if(!axis.get('autoTicks')){//如果是非自动计算坐标轴，不进行重新计算
       if(axis.isRangeChange()){
         axis.change({
           ticks : axis.get('ticks')
@@ -661,10 +668,9 @@ Util.augment(Group,{
     this.set('stackedData',null);
 
     var _self = this,
-      info = _self._caculateAxisInfo(axis,type),
-      series = _self.getSeries();
+      info = _self._caculateAxisInfo(axis,type);
 
-    //如果是非自动计算坐标轴，不进行重新计算
+    
 
     axis.change(info);
   },
@@ -716,7 +722,11 @@ Util.augment(Group,{
         var arr = _self._getSeriesData(item.get('name'),index);
         item.changeData(arr);
       }else{
-        item.changeData(data);
+        if(Util.isArray(data[0])){
+          item.changeData(data[i]);
+        }else{
+          item.changeData(data);
+        }
       }
     });
     _self.repaint();

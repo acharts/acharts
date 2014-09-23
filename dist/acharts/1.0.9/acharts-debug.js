@@ -1,6 +1,6 @@
 ;
 (function() {
-  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_100_src_legenditem_debug, achart_tooltip_100_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_legend_100_src_legend_debug, achart_tooltip_100_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_legend_100_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_107_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_107_src_chart_debug, acharts_107_acharts_debug;
+  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_100_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_legend_100_src_legend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_legend_100_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_109_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_109_src_chart_debug, acharts_109_acharts_debug;
   achart_raphael_100_src_eve_debug = function() {
     // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
     // 
@@ -8316,16 +8316,17 @@
         if (isNull(min)) {
           min = rst.min;
         }
+        if (max == min) {
+          max = min + 1;
+          min = min - 1;
+          interval = 1;
+        }
         if (isNull(interval)) {
           var temp = (max - min) / avgCount;
           if (rst.deviation > temp) {
             interval = snapTo(temp, true, intervalArray);
           } else {
-            if (rst.deviation) {
-              interval = snapTo(rst.deviation, true, intervalArray);
-            } else {
-              interval = snapTo(temp, true, intervalArray);
-            }
+            interval = snapTo(temp, true, intervalArray);
           }
           count = parseInt((max - min) / interval, 10);
           if (count > maxCount) {
@@ -8411,7 +8412,7 @@
     }
 
     function diffMinus(min, max) {
-      return Math.ceil((max - min) / 60 * 1000);
+      return Math.ceil((max - min) / (60 * 1000));
     }
     Auto.Time.caculate = function(info) {
       var min = info.min,
@@ -8763,12 +8764,12 @@
             flag: {
               distance: -15,
               line: {
-                'stroke': '#000000',
+                'stroke': '#333',
                 'stroke-width': 1
               },
               shapeType: 'rect',
               shapeCfg: {
-                stock: '#ccc',
+                stroke: '#333',
                 width: 22,
                 height: 22
               },
@@ -8785,6 +8786,26 @@
           duration: 1000,
           animate: true,
           onSeries: 'xaxis'
+        },
+        candlestickCfg: {
+          candlesticks: {
+            candlestick: {
+              riseLine: {
+                stroke: 'red'
+              },
+              fallLine: {
+                stroke: 'green'
+              },
+              riseShape: {
+                stroke: '#000000',
+                fill: 'red'
+              },
+              fallShape: {
+                stroke: '#000000',
+                fill: 'green'
+              }
+            }
+          }
         },
         bubbleCfg: {
           circle: {
@@ -10274,19 +10295,12 @@
     exports = LegendItem;
     return exports;
   }();
-  achart_tooltip_100_src_tooltip_debug = function(exports) {
+  achart_tooltip_101_src_tooltip_debug = function(exports) {
     var PlotItem = achart_plot_100_index_debug.Item,
       Util = achart_util_100_index_debug,
       CLS_TITLE = 'ac-title',
       CLS_LIST = 'ac-list';
-
-    function min(x, y) {
-      return x > y ? y : x;
-    }
-
-    function max(x, y) {
-      return x > y ? x : y;
-    }
+    var max = Math.max;
 
     function getElementsByClassName(dom, cls) {
       var els = dom.getElementsByTagName('*');
@@ -10354,9 +10368,7 @@
       custom: false,
       customFollow: true,
       html: '<div class="ac-tooltip" style="position:absolute;visibility: hidden;"><h4 class="' + CLS_TITLE + '"></h4><ul class="' + CLS_LIST + '"></ul></div>',
-      formatter: function(item, index) {
-        return Util.substitute('<li><span style="color:{color}">{name}</span> : {value}</li>', item);
-      },
+      itemTpl: '<li><span style="color:{color}">{name}</span> : {value}</li>',
       items: [],
       crossLine: {
         stroke: '#C0C0C0'
@@ -10404,6 +10416,10 @@
           outterNode.style.position = 'relative';
         }
         _self.set('customDiv', customDiv);
+        var items = _self.get('items');
+        Util.each(items, function(item, index) {
+          _self.addCustomItem(item, index);
+        });
       },
       _renderItemGroup: function() {
         var _self = this,
@@ -10420,8 +10436,17 @@
       _renderCrossLine: function() {
         var _self = this,
           crosshairs = _self.get('crosshairs'),
-          shape, plotRange = _self.get('plotRange');
+          shape, canvas = _self.get('canvas'),
+          plotRange = _self.get('plotRange');
         if (crosshairs) {
+          var y1, y2;
+          if (plotRange) {
+            y1 = plotRange.bl.y;
+            y2 = plotRange.tl.y;
+          } else {
+            y1 = canvas.get('height');
+            y2 = 0;
+          }
           shape = _self.get('parent').addShape({
             type: 'line',
             visible: false,
@@ -10429,9 +10454,9 @@
             attrs: {
               stroke: _self.get('crossLine').stroke,
               x1: 0,
-              y1: plotRange.bl.y,
+              y1: y1,
               x2: 0,
-              y2: plotRange.tl.y
+              y2: y2
             }
           });
           _self.set('crossShape', shape);
@@ -10454,6 +10479,7 @@
         titleShape = _self.get('titleShape');
         if (!titleShape) {
           title.text = text || '';
+          title['text-anchor'] = 'start';
           titleShape = _self.addShape('text', title);
           _self.set('titleShape', titleShape);
         }
@@ -10472,6 +10498,9 @@
         }
         rst.width = bbx.x + width + 8;
         rst.height = bbx.height + bbx.y + 10;
+        if (tbox) {
+          rst.height += tbox.height;
+        }
         return rst;
       },
       setColor: function(color) {
@@ -10527,7 +10556,8 @@
         x = x - bbox.width - offset;
         y = y - bbox.height;
         if (customDiv && _self.get('customFollow')) {
-          x = x - Util.getOuterWidth(customDiv);
+          var paddingLeft = parseFloat(Util.getStyle(customDiv, 'paddingLeft')) || 0;
+          x = x - Util.getOuterWidth(customDiv) + paddingLeft;
         }
         if (plotRange) {
           if (!plotRange.isInRange(x, y)) {
@@ -10580,11 +10610,12 @@
         }
       },
       addCustomItem: function(item, index) {
+        item.index = index;
         var _self = this,
           customDiv = _self.get('customDiv'),
           listDom = find(customDiv, CLS_LIST),
-          formatter = _self.get('formatter'),
-          str = formatter(item, index),
+          itemTpl = _self.get('itemTpl'),
+          str = Util.substitute(itemTpl, item),
           node = Util.createDom(str);
         listDom.appendChild(node);
       },
@@ -10681,7 +10712,7 @@
           crossShape = _self.get('crossShape'),
           customDiv = _self.get('customDiv');
         crossShape && crossShape.remove();
-        Tooltip.superclass.remove(this);
+        Tooltip.superclass.remove.call(this);
         if (customDiv) {
           customDiv.parentNode.removeChild(customDiv);
         }
@@ -11857,8 +11888,8 @@
     exports = Legend;
     return exports;
   }();
-  achart_tooltip_100_index_debug = function(exports) {
-    var achartTooltip = achart_tooltip_100_src_tooltip_debug;
+  achart_tooltip_101_index_debug = function(exports) {
+    var achartTooltip = achart_tooltip_101_src_tooltip_debug;
     exports = achartTooltip;
     return exports;
   }();
@@ -12477,7 +12508,7 @@
         var _self = this;
         Series.superclass.bindUI.call(_self);
         if (_self.get('enableMouseTracking')) {
-          _self.onMouseOver();
+          _self.bindMouseOver();
           var parent = _self.get('parent');
           _self.on('mouseover', function() {
             if (parent.setActivedItem) {
@@ -12488,7 +12519,7 @@
           });
         }
         if (!_self.get('stickyTracking')) {
-          _self.onMouseOut();
+          _self.bindMouseOut();
         }
       },
       changeData: function(data, redraw) {
@@ -12505,6 +12536,9 @@
             _self.repaint();
           }
         }
+        _self.fire('datachange', {
+          data: data
+        });
       },
       addPoint: function(point, shift, redraw) {
         var _self = this,
@@ -12527,6 +12561,9 @@
               _self.set('points', null);
               _self.shiftPoint();
               _self.repaint();
+              _self.fire('datachange', {
+                data: data
+              });
             }, 800);
           }
         }
@@ -12554,8 +12591,8 @@
         }
       },
       getData: function(type) {},
-      onMouseOver: function(ev) {},
-      onMouseOut: function(ev) {},
+      bindMouseOver: function(ev) {},
+      bindMouseOut: function(ev) {},
       onStickyTracking: function(ev) {},
       processColor: function() {},
       getTrackingInfo: function(point) {},
@@ -12591,6 +12628,7 @@
           } else {
             point = _self.getPointByIndex(item, index);
           }
+          point.name = _self.get('name');
           _self.processPoint(point, index);
           points.push(point);
         });
@@ -12626,7 +12664,7 @@
       snapEqual: function(value1, value2) {
         return value1 == value2;
       },
-      draw: function(points) {},
+      draw: function(points, callback) {},
       paint: function() {
         var _self = this,
           points = _self.getPoints();
@@ -12634,8 +12672,10 @@
           return;
         }
         _self.set('painting', true);
+        _self.fire('beforepaint');
         _self.draw(points, function() {
           _self.sort();
+          _self.fire('afterpaint');
         });
         _self.set('isPaint', true);
         _self.set('painting', false);
@@ -12721,8 +12761,6 @@
           markersGroup = _self.get('markersGroup');
         markersGroup && markersGroup.remove();
       },
-      getActiveAtrrs: function() {},
-      getUnActiveAttrs: function() {},
       setActiveStatus: function(actived) {},
       remove: function() {
         var _self = this;
@@ -13072,6 +13110,9 @@
       drawInner: function(points) {},
       _drawPoint: function(point) {
         var _self = this;
+        if (point.value == null) {
+          return;
+        }
         if (_self.get('markers') && !_self.get('markersGroup').get('single')) {
           _self.addMarker(point);
         }
@@ -13672,9 +13713,6 @@
       item.orignY = item.y;
       item.x = center.x + (r + 5) * Math.cos(item.angle * RAD);
       item.y = center.y + (r + 5) * Math.sin(item.angle * RAD);
-      if (innerAngle == 0) {
-        item['text-anchor'] = 'middle';
-      }
     }
 
     function alignLables(center, r, arr, endAngle, factor, lineHeight) {
@@ -13907,7 +13945,7 @@
         Pie.superclass.bindUI.call(this);
         this.bindItemClick();
       },
-      onMouseOver: function() {
+      bindMouseOver: function() {
         var _self = this;
         _self.on('mouseover', function(ev) {
           var target = ev.target,
@@ -14451,9 +14489,11 @@
       },
       paint: function() {
         var _self = this;
+        _self.fire('beforepaint');
         _self._drawLines();
         _self._renderTicks();
         _self._renderGrid();
+        _self.fire('afterpaint');
       },
       _changeLine: function() {
         var _self = this,
@@ -14992,8 +15032,8 @@
         if (info.max != null && info.max < ticks[count - 1]) {
           while (info.max < ticks[count - 2]) {
             ticks.pop();
+            count = ticks.length;
           }
-          count = ticks.length;
           percentEnd = (info.max - ticks[count - 2]) / (ticks[count - 1] - ticks[count - 2]);
           ticks.pop();
         }
@@ -15018,15 +15058,21 @@
         var _self = this,
           startCoord = _self._getStartCoord(),
           endCoord = _self._getEndCoord(),
+          vertical = _self.isVertical(),
           pointCache, floorVal, floorIndex, baseVal, baseIndex, ceilingVal, tickInterval, ticks;
-        if (offset < startCoord || offset > endCoord) {
+        pointCache = _self.get('pointCache');
+        var max = Math.max(startCoord, endCoord),
+          min = Math.min(startCoord, endCoord);
+        if (offset < min || offset > max) {
           return NaN;
         }
-        pointCache = _self.get('pointCache');
-        floorVal = floor(pointCache, offset);
+        var tmpCache = pointCache.slice(0).sort(function(v1, v2) {
+          return v1 - v2;
+        });
+        floorVal = vertical ? ceiling(tmpCache, offset) : floor(tmpCache, offset);
         if (isNaN(floorVal)) {
-          floorVal = pointCache[0];
-          ceilingVal = pointCache[1];
+          floorVal = tmpCache[0];
+          ceilingVal = tmpCache[1];
         }
         baseVal = floorVal;
         floorIndex = Util.indexOf(pointCache, floorVal);
@@ -15041,12 +15087,12 @@
           return ticks[floorIndex] + (offset - baseVal) / avg * tickInterval;
         }
         if (ceilingVal == null) {
-          ceilingVal = ceiling(pointCache, offset);
+          ceilingVal = ceiling(tmpCache, offset);
           if (isNaN(ceilingVal)) {
-            var count = pointCache.length;
+            var count = tmpCache.length;
             floorIndex = count - 2;
             baseIndex = count - 1;
-            baseVal = pointCache[count - 1];
+            baseVal = tmpCache[count - 1];
           }
         }
         return ticks[baseIndex] + (offset - baseVal) / avg * (ticks[floorIndex + 1] - ticks[floorIndex]);
@@ -15118,6 +15164,7 @@
       Time.superclass.constructor.call(this, cfg);
     };
     Time.ATTRS = {
+      type: 'time',
       startDate: null,
       autoOffset: true,
       endDate: null
@@ -15157,8 +15204,10 @@
         Radius.superclass.beforeRenderUI.call(this);
         var _self = this,
           circle = _self.get('circle');
-        _self.set('start', circle.getCenter());
-        _self.set('end', circle.getCirclePoint(0));
+        if (circle) {
+          _self.set('start', circle.getCenter());
+          _self.set('end', circle.getCirclePoint(0));
+        }
       },
       getGridItemCfg: function(offsetPoint) {
         var _self = this,
@@ -15184,6 +15233,17 @@
           center = circle.getCenter(),
           offset = _self.getOffset(value);
         return circle.getCirclePoint(angle, Math.abs(offset - center.y));
+      },
+      _resetRange: function() {},
+      isRangeChange: function() {
+        return false;
+      },
+      getValueByPoint: function(x, y) {
+        var _self = this,
+          circle = _self.get('circle'),
+          center = circle.getCenter(),
+          distance = circle.getDistance(x, y);
+        return _self.getValue(center.y - distance);
       }
     });
     exports = Radius;
@@ -15265,7 +15325,7 @@
       elCls: 'x-chart-column',
       columnWidth: null,
       columnOffset: 0,
-      cancelSelect: 'false',
+      cancelSelect: false,
       stackPadding: 1,
       animate: true,
       duration: 1000,
@@ -15338,7 +15398,7 @@
         }
         var _self = this,
           curIndex, xAxis = _self.get('xAxis'),
-          tickLength = xAxis.getTickAvgLength(),
+          tickLength = _self._getAvgLength(),
           count, margin = 10,
           width, offset, info = _self._getIndexInfo();
         count = info.count;
@@ -15348,6 +15408,19 @@
         offset = 1 / 2 * (tickLength - count * width - (count - 1) * margin) + ((curIndex + 1) * width + curIndex * margin) - 1 / 2 * width - 1 / 2 * tickLength;
         _self.set('columnWidth', width);
         _self.set('columnOffset', offset);
+      },
+      _getAvgLength: function() {
+        var _self = this,
+          xAxis = _self.get('xAxis'),
+          type = xAxis.get('type'),
+          avgLength, data = _self.get('data');
+        if (type != 'time' && type != 'number') {
+          avgLength = xAxis.getTickAvgLength();
+        } else {
+          var length = xAxis.getLength();
+          avgLength = length / data.length;
+        }
+        return avgLength;
       },
       _getIndexInfo: function() {
         var _self = this,
@@ -15648,7 +15721,7 @@
       _getRadius: function(r) {
         return Math.pow(r, 0.75);
       },
-      onMouseOver: function() {
+      bindMouseOver: function() {
         var _self = this;
         _self.get('group').on('mouseover', function(ev) {
           var target = ev.target,
@@ -15656,7 +15729,7 @@
           _self.setItemActived(shape, true);
         });
       },
-      onMouseOut: function() {
+      bindMouseOut: function() {
         var _self = this;
         _self.get('group').on('mouseout', function(ev) {
           var target = ev.target,
@@ -15707,7 +15780,7 @@
           _self.addMarker(point);
         });
       },
-      onMouseOver: function() {
+      bindMouseOver: function() {
         var _self = this,
           markersGroup = _self.get('markersGroup');
         if (markersGroup) {
@@ -15732,7 +15805,7 @@
         }
         return rst;
       },
-      onMouseOut: function() {
+      bindMouseOut: function() {
         var _self = this,
           markersGroup = _self.get('markersGroup');
         if (markersGroup) {
@@ -15915,16 +15988,14 @@
     exports = Flag;
     return exports;
   }();
-  acharts_107_src_seriesgroup_debug = function(exports) {
+  acharts_109_src_seriesgroup_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       ActivedGroup = achart_actived_100_index_debug.Group,
       PlotItem = achart_plot_100_index_debug.Item,
       Legend = achart_legend_100_index_debug,
-      Tooltip = achart_tooltip_100_index_debug,
+      Tooltip = achart_tooltip_101_index_debug,
       Axis = achart_axis_100_index_debug,
-      Series = achart_series_100_index_debug,
-      maxPixel = 120,
-      minPixel = 80;
+      Series = achart_series_100_index_debug;
 
     function min(x, y) {
       return x > y ? y : x;
@@ -15944,6 +16015,14 @@
       colors: ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
       symbols: ['circle', 'diamond', 'square', 'triangle', 'triangle-down'],
       seriesOptions: {},
+      yTickCounts: [
+        3,
+        5
+      ],
+      xTickCounts: [
+        5,
+        10
+      ],
       series: null,
       legend: null,
       xAxis: null,
@@ -16260,9 +16339,8 @@
           data = [],
           type = axis.get('type'),
           length = axis.getLength(),
-          minCount = Math.floor(length / maxPixel),
-          maxCount = Math.ceil(length / minPixel),
-          stackType, series, min, max, interval, autoUtil, rst;
+          stackType, series, min, max, interval, tickCounts = (name == 'xAxis' ? _self.get('xTickCounts') : _self.get('yTickCounts')) || [],
+          autoUtil, rst;
         if (type == 'number' || type == 'radius') {
           min = axis.getCfgAttr('min');
           max = axis.getCfgAttr('max');
@@ -16283,11 +16361,11 @@
         var cfg = {
           min: min,
           max: max,
+          minCount: tickCounts[0],
+          maxCount: tickCounts[1],
           interval: interval
         };
         if (name == 'yAxis') {
-          cfg.maxCount = maxCount;
-          cfg.minCount = minCount;
           stackType = series[0].get('stackType');
         }
         if (stackType && stackType != 'none') {
@@ -16416,8 +16494,7 @@
         type = type || 'yAxis';
         this.set('stackedData', null);
         var _self = this,
-          info = _self._caculateAxisInfo(axis, type),
-          series = _self.getSeries();
+          info = _self._caculateAxisInfo(axis, type);
         axis.change(info);
       },
       _resetSeries: function() {
@@ -16459,7 +16536,11 @@
             var arr = _self._getSeriesData(item.get('name'), index);
             item.changeData(arr);
           } else {
-            item.changeData(data);
+            if (Util.isArray(data[0])) {
+              item.changeData(data[i]);
+            } else {
+              item.changeData(data);
+            }
           }
         });
         _self.repaint();
@@ -16620,11 +16701,11 @@
     exports = Series;
     return exports;
   }();
-  acharts_107_src_chart_debug = function(exports) {
+  acharts_109_src_chart_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       Canvas = achart_canvas_100_index_debug,
       PlotBack = achart_plot_100_index_debug.Back,
-      SeriesGroup = acharts_107_src_seriesgroup_debug,
+      SeriesGroup = acharts_109_src_seriesgroup_debug,
       Theme = achart_theme_100_index_debug;
     var Chart = function(cfg) {
       this._attrs = Util.mix({}, Chart.ATTRS, cfg);
@@ -16894,8 +16975,8 @@
     exports = Chart;
     return exports;
   }();
-  acharts_107_acharts_debug = function(exports) {
-    var acharts = acharts_107_src_chart_debug;
+  acharts_109_acharts_debug = function(exports) {
+    var acharts = acharts_109_src_chart_debug;
     acharts.Util = achart_util_100_index_debug;
     acharts.Canvas = achart_canvas_100_index_debug;
     acharts.Date = achart_date_100_index_debug;
