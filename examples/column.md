@@ -91,6 +91,61 @@ seajs.use('acharts', function(Achart) {
 });
 ````
 
+## event 
+
+````html
+<div id="c1"></div>
+````
+
+````javascript
+seajs.use('acharts', function(Achart) {
+        var chart = new AChart({
+          id : 'c1',
+          
+          width : 950,
+          height : 500,
+          plotCfg : {
+            margin : [50,50,80] //画板的边距
+          },
+          title : {
+            text : '柱状图'
+          },
+          subTitle : {
+            text : 'Source: WorldClimate.com'
+          },
+          xAxis : {
+            type : 'category'
+          },
+          yAxis : {
+            min : 0
+          },
+          seriesOptions : { //设置多个序列共同的属性
+            columnCfg : { //公共的样式在此配置
+ 
+            }
+          },
+          tooltip : {
+            valueSuffix : '%'
+          },
+          series : [ {
+            name: '浏览器分布',
+            type : 'column',
+            data: [
+              {x : 'ie',y : 50,attrs : {fill : '#7179cb'}},
+              {x : 'chrome',y : 30,attrs : {fill : '#6ed7ff'}},
+              {x : 'firfox',y : 10,attrs : {fill : '#79c850'}},
+              {x : 'other',y : 10,attrs : {fill : '#ffb65d'}},
+            ]
+ 
+          }]
+ 
+        });
+ 
+        chart.render();
+});
+````
+
+ 
 ## Multi column
 
 

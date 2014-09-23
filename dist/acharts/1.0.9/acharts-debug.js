@@ -13284,7 +13284,10 @@
                 _self.setSelected(shape);
               }
             }
-            _self.fire('itemclick', shape);
+            _self.fire('itemclick', {
+              item: shape,
+              point: shape.get('point')
+            });
             _self.fireUpGroup('click', shape);
           }
         });
@@ -13333,13 +13336,15 @@
       },
       onSelected: function(item) {
         this.fire('itemselected', {
-          item: item
+          item: item,
+          point: item.get('point')
         });
         this.fireUpGroup('selected', item);
       },
       onUnSelected: function(item) {
         this.fire('itemunselected', {
-          item: item
+          item: item,
+          point: item.get('point')
         });
         this.fireUpGroup('unselected', item);
       },
@@ -13799,6 +13804,7 @@
       item: {
         'stroke': '#fff'
       },
+      cancelSelect: true,
       xField: 'name',
       stickyTracking: false,
       animate: true,

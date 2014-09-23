@@ -41,3 +41,9 @@
 1. fixed bug of pie label.
 2. fixed bug of all data is 0.
 3. fixed bug of axis of autoOffset.
+
+## 1.0.9
+
+1. time axis support for column
+2. fixed bug of change axis of radius
+3. add point to markerclick event
