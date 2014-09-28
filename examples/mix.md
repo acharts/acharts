@@ -2,7 +2,7 @@
 
 ---
 
-## Line chart and Regional chart
+## Line chart and Area chart
 
 
 ````html
@@ -260,5 +260,7 @@ seajs.use('acharts', function(Achart) {
         chart.render();
 });
 ````
+
+
 
 

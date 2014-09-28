@@ -42,6 +42,17 @@ Chart.ATTRS = {
     data : undefined,
 
     /**
+     * y轴的坐标个数限制
+     * @type {Array}
+     */
+    yTickCounts : null,
+    /**
+     * x轴的坐标轴个数限制
+     * @type {Array}
+     */
+    xTickCounts : null,
+
+    /**
      * 宽度
      * @type {Number}
      */
@@ -451,6 +462,8 @@ Util.augment(Chart,{
     });
     Util.mix(true,cfg,theme,{
       colors :  attrs.colors,
+      xTickCounts : attrs.xTickCounts,
+      yTickCounts : attrs.yTickCounts,
       data : attrs.data,
       invert : _self.get('invert'),
       fields : attrs.fields,

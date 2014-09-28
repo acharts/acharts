@@ -2,6 +2,8 @@ var acharts = require('./src/chart');
 
 acharts.Util = require('achart-util');
 acharts.Canvas = require('achart-canvas');
+acharts.Plot = require('achart-plot');
+acharts.Actived = require('achart-actived');
 
 acharts.Date = require('achart-date');
 acharts.Theme = require('achart-theme');

@@ -121,6 +121,7 @@ Util.augment(Group,{
     _self._renderLegend();
 
     _self._renderSeries();
+
     _self._renderAxis();
     _self._addSeriesAxis();
 
@@ -531,7 +532,7 @@ Util.augment(Group,{
       for (var i = 1; i < data.length; i++) {
         var arr = data[i];
         Util.each(arr,function(value){
-          if(Util.indexOf(categories,value) != -1){
+          if(Util.indexOf(categories,value) == -1){
             categories.push(value);
           }
         });
@@ -799,7 +800,7 @@ Util.augment(Group,{
       series = _self.getSeries();
 
     Util.each(series,function(item){
-      if(item.get('type') == 'pie'){
+      if(!(item.constructor instanceof Series.Cartesian)){
         return true;
       }
       //x轴

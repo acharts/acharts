@@ -47,3 +47,10 @@
 1. time axis support for column
 2. fixed bug of change axis of radius
 3. add point to markerclick event
+
+## 1.0.10
+
+1. When pointInterval series set, regardless of whether the array data, the x axis are calculated according to pointInterval
+2. Change the animation of some series,like line,area,bubble and so on.
+3. add the configuration of ticks count.
+

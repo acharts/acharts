@@ -1,6 +1,6 @@
 ;
 (function() {
-  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_100_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_legend_100_src_legend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_legend_100_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_109_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_109_src_chart_debug, acharts_109_acharts_debug;
+  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_100_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_legend_100_src_legend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_legend_100_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1010_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_1010_src_chart_debug, acharts_1010_acharts_debug;
   achart_raphael_100_src_eve_debug = function() {
     // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
     // 
@@ -7617,10 +7617,16 @@
       show: function() {
         this.get('el').show();
         this.set('visible', true);
+        if (!this.get('visible')) {
+          this.fire('show');
+        }
       },
       hide: function() {
         this.get('el').hide();
         this.set('visible', false);
+        if (this.get('visible')) {
+          this.fire('hide');
+        }
       },
       attr: function(name, value) {
         var _self = this,
@@ -8084,7 +8090,7 @@
         _self.clearActivedItem();
         if (item && !_self.isItemActived(item)) {
           _self.setItemActived(item, true);
-          _self.onActived();
+          _self.onActived(item);
         }
       },
       getActived: function() {
@@ -8556,6 +8562,12 @@
       stackType: 'none'
     };
     Util.augment(Stacked, {
+      /**
+       * @protected
+       * 处理层叠的点
+       * @param  {Object} point 处理的点
+       * @param  {Number} index 索引
+       */
       processStackedPoint: function(point, index) {
         var _self = this,
           pre = _self.getVisiblePrev(),
@@ -8705,6 +8717,14 @@
       plotCfg: {
         margin: [50]
       },
+      yTickCounts: [
+        3,
+        5
+      ],
+      xTickCounts: [
+        5,
+        10
+      ],
       title: {
         'font-size': '16px',
         'font-family': 'SimSun,Georgia, Times, serif',
@@ -8797,11 +8817,11 @@
                 stroke: 'green'
               },
               riseShape: {
-                stroke: '#000000',
+                stroke: 'red',
                 fill: 'red'
               },
               fallShape: {
-                stroke: '#000000',
+                stroke: 'green',
                 fill: 'green'
               }
             }
@@ -8829,7 +8849,8 @@
       },
       tooltip: {
         x: -999,
-        y: -999
+        y: -999,
+        offset: 5
       }
     });
     // 所有的基础样式.由于深度继承,所以数组类的自己覆盖
@@ -9734,7 +9755,8 @@
           attrs = _self.get('attrs'),
           node;
         if (!el) {
-          el = _self.createElement(attrs);
+          el = _self.createElement();
+          attrs && el.attr(attrs);
           _self.set('el', el);
         }
         node = el.node;
@@ -9800,9 +9822,14 @@
         var _self = this,
           el = _self.get('el');
         if (Util.svg) {
-          el.animate({
-            transform: 't ' + params.x + ' ' + params.y
-          }, ms, easing, callback);
+          var cfg = {};
+          if (params.x != undefined) {
+            cfg.transform = 't ' + params.x + ' ' + params.y;
+          }
+          if (params['clip-rect']) {
+            cfg['clip-rect'] = params['clip-rect'];
+          }
+          el.animate(cfg, ms, easing, callback);
         } else {
           el.animate(params, ms, easing, callback);
         }
@@ -11297,9 +11324,10 @@
         _self.on('click', function(ev) {
           var shape = ev.target.shape;
           if (shape) {
+            var point = shape.get('point') || shape.get('item');
             _self.fire('markerclick', {
               marker: shape,
-              item: shape.get('item')
+              point: point
             });
           }
         });
@@ -12497,7 +12525,7 @@
       renderUI: function() {
         var _self = this;
         Series.superclass.renderUI.call(_self);
-        _self.processColor();
+        _self.processColor(this.get('color'));
         _self.renderLabels();
         _self.renderMarkers();
         if (_self.get('autoPaint')) {
@@ -12594,7 +12622,7 @@
       bindMouseOver: function(ev) {},
       bindMouseOut: function(ev) {},
       onStickyTracking: function(ev) {},
-      processColor: function() {},
+      processColor: function(color) {},
       getTrackingInfo: function(point) {},
       getPoints: function() {
         var _self = this,
@@ -12623,7 +12651,11 @@
             }
             point.obj = item;
           } else if (Util.isArray(item)) {
-            point = _self.getPointByValue(item[0], item[1]);
+            if (_self.hasXValueInArray()) {
+              point = _self.getPointByValue(item[0], item[1]);
+            } else {
+              point = _self.getPointByIndex(item[0], index);
+            }
             point.arr = item;
           } else {
             point = _self.getPointByIndex(item, index);
@@ -12634,8 +12666,10 @@
         });
         return points;
       },
+      hasXValueInArray: function() {
+        return true;
+      },
       processPoint: function(point, index) {},
-      getPointByObject: function(item) {},
       getPointByIndex: function(item, index) {},
       getPointByValue: function(xValue, value) {},
       getTipItem: function(point) {
@@ -12699,34 +12733,36 @@
         }
         _self.changeShapes(points);
         Util.each(points, function(point) {
-          if (labels) {
-            var item = {};
-            item.text = point.value;
-            item.x = point.x;
-            item.y = point.y;
-            labels.items.push(item);
-          }
-          if (markers) {
-            markers.items.push(point);
+          if (point.value != null) {
+            if (labels) {
+              var item = {};
+              item.text = point.value;
+              item.x = point.x;
+              item.y = point.y;
+              labels.items.push(item);
+            }
+            if (markers) {
+              markers.items.push(point);
+            }
           }
         });
         _self._changeMarkers();
         _self._changeLabels();
       },
       changeShapes: function(points) {},
-      addMarker: function(offset) {
+      addMarker: function(point) {
         var _self = this,
           markersGroup = _self.get('markersGroup'),
           marker = {},
           rst;
         if (markersGroup) {
-          marker.x = offset.x;
-          marker.y = offset.y;
-          if (offset.obj && offset.obj.marker) {
-            Util.mix(marker, offset.obj.marker);
+          marker.x = point.x;
+          marker.y = point.y;
+          if (point.obj && point.obj.marker) {
+            Util.mix(marker, point.obj.marker);
           }
           rst = markersGroup.addMarker(marker);
-          rst.set('point', offset);
+          rst.set('point', point);
         }
         return rst;
       },
@@ -12751,6 +12787,10 @@
         if (markers) {
           markersGroup = _self.get('markersGroup');
           markersGroup.change(markers.items);
+          var children = markersGroup.get('children');
+          Util.each(children, function(item, index) {
+            item.set('point', markers.items[index]);
+          });
         }
       },
       _changeLabels: function() {
@@ -12848,11 +12888,37 @@
         this.set('pointsCache', {});
         Cartesian.superclass.changeData.call(this, data, redraw);
       },
+      hasXValueInArray: function() {
+        var _self = this,
+          xAxis = _self.get('xAxis'),
+          type = xAxis.get('type');
+        if ((type == 'number' || type == 'time') && _self.get('pointInterval')) {
+          return false;
+        }
+        return true;
+      },
       getPointByValue: function(xValue, value) {
         return this.getPoint(xValue, value);
       },
       parseYValue: function(value) {
         return value;
+      },
+      animateClip: function(fn, callback) {
+        var _self = this,
+          canvas = _self.get('canvas'),
+          invert = _self.get('invert'),
+          width = canvas.get('width'),
+          duration = _self.get('duration'),
+          height = canvas.get('height'),
+          clip = invert ? '0,0,' + width + ',0' : '0,0,0,' + height;
+        _self.attr('clip-rect', clip);
+        fn && fn();
+        _self.animate({
+          'clip-rect': '0,0,' + width + ',' + height
+        }, duration, function() {
+          callback && callback();
+          _self.attr('clip-rect', '');
+        });
       },
       snapEqual: function(value1, value2) {
         var _self = this;
@@ -13046,6 +13112,17 @@
           duration = _self.get('duration'),
           lineShape, path = '';
         if (!animate) {
+          drawLine();
+        } else {
+          lineShape = _self._createLine(path);
+          if (_self.isInCircle()) {
+            _self.circleAnimate(points, lineShape);
+          } else {
+            _self.animateClip(drawLine, after);
+          }
+        }
+
+        function drawLine() {
           path = _self.points2path(points);
           lineShape = _self._createLine(path);
           Util.each(points, function(point) {
@@ -13053,34 +13130,6 @@
           });
           _self.drawInner(points);
           after();
-        } else {
-          lineShape = _self._createLine(path);
-          if (_self.isInCircle()) {
-            _self.circleAnimate(points, lineShape);
-          } else {
-            var cur = 0,
-              sub = [],
-              count = points.length;
-            Util.animStep(duration, function(factor) {
-              var pre = cur;
-              cur = parseInt(factor * count, 10);
-              if (cur > count - 1) {
-                cur = count - 1;
-              }
-              if (cur != pre) {
-                sub = points.slice(0, cur + 1);
-                path = _self.points2path(sub);
-                lineShape.attr('path', path);
-                _self.drawInner(sub);
-                for (var i = pre; i < cur; i++) {
-                  _self._drawPoint(points[i]);
-                }
-              }
-              if (factor == 1) {
-                _self._drawPoint(points[cur]);
-              }
-            }, after);
-          }
         }
 
         function after() {
@@ -14989,7 +15038,7 @@
         var ticks = [],
           count = (max - min) / tickInterval,
           cur;
-        if (!(max > min) || isNaN(max) || max == null) {
+        if (!(max > min) || isNaN(max) || max == null || isNaN(min) || min == null || isNaN(tickInterval) || tickInterval == null) {
           return [];
         }
         ticks.push(min);
@@ -15994,7 +16043,7 @@
     exports = Flag;
     return exports;
   }();
-  acharts_109_src_seriesgroup_debug = function(exports) {
+  acharts_1010_src_seriesgroup_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       ActivedGroup = achart_actived_100_index_debug.Group,
       PlotItem = achart_plot_100_index_debug.Item,
@@ -16400,7 +16449,7 @@
           for (var i = 1; i < data.length; i++) {
             var arr = data[i];
             Util.each(arr, function(value) {
-              if (Util.indexOf(categories, value) != -1) {
+              if (Util.indexOf(categories, value) == -1) {
                 categories.push(value);
               }
             });
@@ -16707,11 +16756,11 @@
     exports = Series;
     return exports;
   }();
-  acharts_109_src_chart_debug = function(exports) {
+  acharts_1010_src_chart_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       Canvas = achart_canvas_100_index_debug,
       PlotBack = achart_plot_100_index_debug.Back,
-      SeriesGroup = acharts_109_src_seriesgroup_debug,
+      SeriesGroup = acharts_1010_src_seriesgroup_debug,
       Theme = achart_theme_100_index_debug;
     var Chart = function(cfg) {
       this._attrs = Util.mix({}, Chart.ATTRS, cfg);
@@ -16721,6 +16770,8 @@
       canvas: undefined,
       colors: undefined,
       data: undefined,
+      yTickCounts: null,
+      xTickCounts: null,
       width: null,
       height: null,
       legend: undefined,
@@ -16893,6 +16944,8 @@
         });
         Util.mix(true, cfg, theme, {
           colors: attrs.colors,
+          xTickCounts: attrs.xTickCounts,
+          yTickCounts: attrs.yTickCounts,
           data: attrs.data,
           invert: _self.get('invert'),
           fields: attrs.fields,
@@ -16981,10 +17034,12 @@
     exports = Chart;
     return exports;
   }();
-  acharts_109_acharts_debug = function(exports) {
-    var acharts = acharts_109_src_chart_debug;
+  acharts_1010_acharts_debug = function(exports) {
+    var acharts = acharts_1010_src_chart_debug;
     acharts.Util = achart_util_100_index_debug;
     acharts.Canvas = achart_canvas_100_index_debug;
+    acharts.Plot = achart_plot_100_index_debug;
+    acharts.Actived = achart_actived_100_index_debug;
     acharts.Date = achart_date_100_index_debug;
     acharts.Theme = achart_theme_100_index_debug;
     acharts.Series = achart_series_100_index_debug;
