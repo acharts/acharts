@@ -10,6 +10,7 @@ acharts.Theme = require('achart-theme');
 
 acharts.Series = require('achart-series');
 acharts.Axis = require('achart-axis');
+acharts.Tooltip = require('achart-tooltip');
 
 require('achart-series-other');
 

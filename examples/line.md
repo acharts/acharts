@@ -179,9 +179,6 @@ seajs.use('acharts', function(Achart) {
                 7.9, 7.9, 7.5, 6.7, 7.7, 7.7, 7.4, 7.0, 7.1, 5.8, 5.9, 7.4,
                 8.2, 8.5, 9.4, 8.1, 10.9, 10.4, 10.9, 12.4, 12.1, 9.5, 7.5,
                 7.1, 7.5, 8.1, 6.8, 3.4, 2.1, 1.9, 2.8, 2.9, 1.3, 4.4, 4.2]
-          }, {
-              name: 'London',
-              data: [[100,3.9], [250,4.2], [300,5.7], [400,8.5], [520,11.9], [600,15.2], [900,17.0], [1050,16.6], [1100,14.2]]
           }]
  
         });
@@ -293,9 +290,7 @@ seajs.use('acharts', function(Achart) {
           }],
           seriesOptions : { //设置多个序列共同的属性
             lineCfg : { //不同类型的图对应不同的共用属性，lineCfg,areaCfg,columnCfg等，type + Cfg 标示
-              smooth : true,
-              pointStart : 20,
-              pointInterval : 100
+              smooth : true
             }
           },
           tooltip : {
@@ -303,6 +298,8 @@ seajs.use('acharts', function(Achart) {
           },
           series : [{
             name: 'Tokyo',
+            pointStart : 20,
+            pointInterval : 100,
             data: [10,412,5020,5034,5023,5078,5008,5025,4997,420,18,40]
           }, {
               name: 'London',

@@ -291,7 +291,7 @@ Util.augment(Group,{
       point : {}
     };
     var count = 0,
-      renderer = this.get('tipGroup').get('pointRenderer');
+      renderer = this.get('tipGroup') && this.get('tipGroup').get('pointRenderer');
     Util.each(sArray,function(series,index){
       var info = series.getTrackingInfo(point),
           item = {},
@@ -302,11 +302,23 @@ Util.augment(Group,{
 
       if(info){
         if(series.get('visible')){
+          var formatter = renderer;
+          if(series.get('pointRenderer')){
+            formatter = series.get('pointRenderer');
+          }
           count = count + 1;
-          item.name = series.get('name');
-          item.value = renderer ? renderer(info,series) : series.getTipItem(info);
-          item.color = info.color || series.get('color');
-          rst.items.push(item);
+          var tipInfo = series.getTipInfo(info);
+          if(Util.isObject(tipInfo)){
+            rst.items.push(tipInfo);
+          }else if(Util.isArray(tipInfo) && Util.isObject(tipInfo[0])){
+            rst.items = rst.items.concat(tipInfo);
+          }else{
+            item.name = series.get('name');
+            item.value = formatter ? formatter(info,series) : tipInfo;
+            item.color = info.color || series.get('color');
+            item.suffix = series.get('suffix');
+            rst.items.push(item);
+          }
           var markersGroup = series.get('markersGroup');
           if(markersGroup && markersGroup.get('single')){
             var marker = markersGroup.getChildAt(0);
@@ -437,14 +449,17 @@ Util.augment(Group,{
       type = axis.type,
       C,
       name;
-    if(axis.categories){
+    if(!type && axis.categories){
       type = 'category';
+    }
+    if(type == 'category' || type == 'timeCategory'){
+      if(!axis.categories){
+        axis.autoTicks = true; //标记是自动计算的坐标轴
+      }
     }else if(!axis.ticks && type != 'circle'){
       axis.autoTicks = true; //标记是自动计算的坐标轴
     }
-    if(type == 'category' && !axis.categories){
-      axis.autoTicks = true; //标记是自动计算的坐标轴
-    }
+
     axis.plotRange = _self.get('plotRange');
     axis.autoPaint = false;  //暂时不绘制坐标轴，需要自动生成坐标轴
 
@@ -487,11 +502,13 @@ Util.augment(Group,{
           max = endDate.getTime();
         }
         autoUtil = Axis.Auto.Time;
+      }else if(type == 'timeCategory'){
+        autoUtil = Axis.Auto.TimeCategory;
       }
 
       interval = axis.getCfgAttr('tickInterval');
 
-    series = _self.getSeries();
+    series = _self._getRelativeSeries(axis,name);
 
     var cfg = {
       min : min,
@@ -500,7 +517,7 @@ Util.augment(Group,{
       maxCount : tickCounts[1],
       interval: interval
     };
-    if(name == 'yAxis'){
+    if(name == 'yAxis' && series.length){
       stackType = series[0].get('stackType');
     }
     if(stackType && stackType != 'none'){
@@ -549,20 +566,21 @@ Util.augment(Group,{
    * @param  {String} name 坐标轴名称
    * @return {Array} 数据集合
    */
-  getSeriesData : function(axis,name){
+  getSeriesData : function(axis,name,stacked){
     var _self = this,
       data = [],
-      series = _self.getVisibleSeries();
+      series = _self._getRelativeSeries(axis,name);
     axis = axis || _self.get('yAxis');
     name = name || 'yAxis';
 
     Util.each(series,function(item){
-      if(item.get(name) == axis){
-        var arr = item.getData(name);
-        if(arr.length){
-          data.push(arr);
+      if(name == 'xAxis' || (stacked && item.isStacked && item.isStacked())|| (!stacked &&(!item.isStacked || !item.isStacked()))){
+        if(item.get(name) == axis){
+          var arr = item.getData(name);
+          if(arr.length){
+            data.push(arr);
+          }
         }
-
       }
     });
 
@@ -589,11 +607,12 @@ Util.augment(Group,{
       data,
       first
       stackedData = _self.get('stackedData'),
+      rst = [],
       arr = [];
     if(stackedData){
       arr = stackedData;
     }else{
-      data = _self.getSeriesData(axis,name);
+      data = _self.getSeriesData(axis,name,true);
       first = data[0],
       min = Math.min.apply(null,first);
 
@@ -611,8 +630,15 @@ Util.augment(Group,{
       arr.push(min);
       _self.set('stackedData',arr);
     }
-
-    return arr;
+    var otherData = _self.getSeriesData(axis,name,false);
+    if(otherData.length){
+      rst.push(arr);
+      rst = rst.concat(otherData);
+    }else{
+      rst = arr;
+    }
+    
+    return rst;
   },
   //name 标示是xAxis ,yAxis and so on
   _paintAxis : function(axis,name){
@@ -637,6 +663,18 @@ Util.augment(Group,{
 
     });
 
+  },
+  _getRelativeSeries : function(axis,name){
+    var _self = this,
+      series = _self.getVisibleSeries(),
+      rst = [];
+
+    Util.each(series,function(item){
+      if(item.get(name) == axis){
+        rst.push(item);
+      }
+    });
+    return rst;
   },
   //是否存在关联的数据序列
   _hasRelativeSeries : function(axis,name){
@@ -670,8 +708,6 @@ Util.augment(Group,{
 
     var _self = this,
       info = _self._caculateAxisInfo(axis,type);
-
-    
 
     axis.change(info);
   },
@@ -800,7 +836,7 @@ Util.augment(Group,{
       series = _self.getSeries();
 
     Util.each(series,function(item){
-      if(!(item.constructor instanceof Series.Cartesian)){
+      if(!(item instanceof Series.Cartesian)){
         return true;
       }
       //x轴
@@ -830,7 +866,7 @@ Util.augment(Group,{
    */
   showChild : function(series){
     var _self = this,
-      yAxis = _self.get('yAxis');
+      yAxis = series.get('yAxis');
     if(!series.get('visible')){
       series.show();
       if(yAxis){
@@ -845,7 +881,7 @@ Util.augment(Group,{
    */
   hideChild : function(series){
     var _self = this,
-      yAxis = _self.get('yAxis');
+      yAxis = series.get('yAxis');
     if(series.get('visible')){
       series.hide();
       if(yAxis){
@@ -896,9 +932,7 @@ Util.augment(Group,{
       }else{
         item.data = data;
       }
-
     }
-
     return item;
   },
   //根据类型获取构造函数
@@ -915,7 +949,6 @@ Util.augment(Group,{
 
     Group.superclass.remove.call(_self);
   }
-
 });
 
 module.exports = Group;

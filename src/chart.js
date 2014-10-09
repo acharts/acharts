@@ -45,12 +45,12 @@ Chart.ATTRS = {
      * y轴的坐标个数限制
      * @type {Array}
      */
-    yTickCounts : null,
+    yTickCounts : undefined,
     /**
      * x轴的坐标轴个数限制
      * @type {Array}
      */
-    xTickCounts : null,
+    xTickCounts : undefined,
 
     /**
      * 宽度
@@ -483,7 +483,11 @@ Util.augment(Chart,{
         yAxis : attrs.yAxis
       });
     }else if(Util.isArray(attrs.yAxis)){
-      attrs.yAxis[0] = Util.mix(true,{},theme.yAxis,attrs.yAxis[0]);
+
+      Util.each(attrs.yAxis,function(axis,indexs){
+        attrs.yAxis[indexs] = Util.mix(true,{},theme.yAxis,axis);
+      });
+      
       cfg.yAxis = attrs.yAxis;
     }
 

@@ -268,7 +268,7 @@ seajs.use('acharts', function(Achart) {
       text : 'Source: WorldClimate.com'
     },
     xAxis : {//格式化时间
-      type : 'time' ,
+      type : 'timeCategory' ,
       formatter : function(value)   {
         return AChart.Date.format(new Date(value),'yyyy-mm-dd');
       }

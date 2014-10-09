@@ -1,6 +1,6 @@
 ;
 (function() {
-  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_100_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_legend_100_src_legend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_legend_100_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1010_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_1010_src_chart_debug, acharts_1010_acharts_debug;
+  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_100_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_legend_100_src_legend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_legend_100_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_timecategory_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1010_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_1010_src_chart_debug, acharts_1010_acharts_debug;
   achart_raphael_100_src_eve_debug = function() {
     // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
     // 
@@ -647,7 +647,7 @@
        */
       parse: function(date) {
         if (typeof date === 'string') {
-          date = date.replace('/', '-');
+          date = date.replace(/-/g, '/');
         }
         return dateParse(date);
       },
@@ -7473,6 +7473,10 @@
         }
         reserve = reserve || 0;
         duration = duration || 400;
+        if (!toPath) {
+          after();
+          return;
+        }
         var curPath = pathShape.getPath(),
           endPath = Util.parsePathString(toPath),
           tempPath, last = curPath.slice(reserve * -1);
@@ -8269,7 +8273,7 @@
       };
     }
 
-    function analyzeData(data, parser, stacked) {
+    function getSimpleArray(data, stacked) {
       var arr = [];
       if (Util.isArray(data[0])) {
         if (stacked) {
@@ -8288,6 +8292,11 @@
       } else {
         arr = data;
       }
+      return arr;
+    }
+
+    function analyzeData(data, parser, stacked) {
+      var arr = getSimpleArray(data, stacked);
       if (parser) {
         arr = Util.map(arr, parser);
       }
@@ -8305,13 +8314,11 @@
         avgCount = (minCount + maxCount) / 2,
         count, stacked = false;
       if (stackType) {
-        if (stackType != 'none') {
-          stacked = true;
-        }
         if (stackType == 'percent') {
           min = 0;
           max = 100;
           interval = 25;
+          stacked = true;
         }
       }
       if (isNull(min) || isNull(max) || isNull(interval)) {
@@ -8536,6 +8543,26 @@
         count: ticks.length
       };
     };
+    Auto.TimeCategory = {};
+    Auto.TimeCategory.caculate = function(info) {
+      var rst = {},
+        ticks = [],
+        tickCount = info.maxCount || MAX_COUNT;
+      var categories = getSimpleArray(info.data);
+      if (categories.length < tickCount) {
+        ticks = [].concat(categories);
+      } else {
+        var length = categories.length,
+          step = parseInt(length / tickCount, 10);
+        for (var i = 0; i < length - 1; i = i + step) {
+          ticks.push(categories[i]);
+        }
+        ticks.push(categories[length - 1]);
+      }
+      rst.categories = categories;
+      rst.ticks = ticks;
+      return rst;
+    };
     exports = Auto;
     return exports;
   }();
@@ -8650,7 +8677,7 @@
        * 获取提示信息
        * @return {*} 返回显示在上面的文本
        */
-      getTipItem: function(point) {
+      getTipInfo: function(point) {
         var _self = this,
           stackType = _self.get('stackType');
         if (stackType == 'percent') {
@@ -10391,6 +10418,7 @@
       duration: 100,
       pointRenderer: null,
       valueSuffix: '',
+      valueSplit: ' ',
       visible: false,
       custom: false,
       customFollow: true,
@@ -10425,7 +10453,7 @@
       _renderText: function() {
         var _self = this,
           title = _self.get('title');
-        _self.setTitle(title.text);
+        title && _self.setTitle(title.text);
       },
       _renderCustom: function() {
         var _self = this,
@@ -10451,10 +10479,16 @@
       _renderItemGroup: function() {
         var _self = this,
           items = _self.get('items'),
-          group = _self.addGroup({
+          titleShape = _self.get('titleShape'),
+          cfg = {
             x: 8,
-            y: 30
-          });
+            y: 10
+          },
+          group;
+        if (titleShape) {
+          cfg.y += 20;
+        }
+        group = _self.addGroup(cfg);
         _self.set('textGroup', group);
         if (items) {
           _self.setItems(items);
@@ -10494,6 +10528,9 @@
           titleShape, title = _self.get('title'),
           custom = _self.get('custom'),
           cfg;
+        if (!title) {
+          return;
+        }
         _self.set('titleText', text);
         if (custom) {
           var customDiv = _self.get('customDiv'),
@@ -10524,10 +10561,7 @@
           width = Math.max(width, tbox.width);
         }
         rst.width = bbx.x + width + 8;
-        rst.height = bbx.height + bbx.y + 10;
-        if (tbox) {
-          rst.height += tbox.height;
-        }
+        rst.height = bbx.height + bbx.y + 8;
         return rst;
       },
       setColor: function(color) {
@@ -10653,16 +10687,18 @@
           name = _self.get('name'),
           value = _self.get('value'),
           y = index * 16,
-          cfg;
-        cfg = Util.mix({}, name, {
-          x: 0,
-          y: y,
-          text: item.name + ':',
-          'fill': item.color
-        });
-        var nameShape = group.addShape('text', cfg),
-          width = nameShape.getBBox().width + 10,
-          valueSuffix = _self.get('valueSuffix'),
+          cfg, nameShape, width = 0;
+        if (name) {
+          cfg = Util.mix({}, name, {
+            x: 0,
+            y: y,
+            text: item.name + ':',
+            'fill': item.color
+          });
+          nameShape = group.addShape('text', cfg);
+          width = nameShape.getBBox().width + 10;
+        }
+        var valueSuffix = item.suffix || _self.get('valueSuffix'),
           itemValue;
         if (Util.isArray(item.value)) {
           Util.each(item.value, function(sub) {
@@ -10675,7 +10711,7 @@
             width = width + subItem.getBBox().width;
           });
         } else {
-          itemValue = valueSuffix ? item.value + ' ' + valueSuffix : item.value;
+          itemValue = valueSuffix ? item.value + _self.get('valueSplit') + valueSuffix : item.value;
           addValue(itemValue);
         }
 
@@ -12672,7 +12708,7 @@
       processPoint: function(point, index) {},
       getPointByIndex: function(item, index) {},
       getPointByValue: function(xValue, value) {},
-      getTipItem: function(point) {
+      getTipInfo: function(point) {
         return point.value;
       },
       findPointByValue: function(value) {
@@ -13113,10 +13149,12 @@
           lineShape, path = '';
         if (!animate) {
           drawLine();
+          after();
         } else {
           lineShape = _self._createLine(path);
           if (_self.isInCircle()) {
             _self.circleAnimate(points, lineShape);
+            after();
           } else {
             _self.animateClip(drawLine, after);
           }
@@ -13129,7 +13167,6 @@
             _self._drawPoint(point);
           });
           _self.drawInner(points);
-          after();
         }
 
         function after() {
@@ -13528,9 +13565,11 @@
         var _self = this,
           canvas = _self.get('canvas'),
           markersGroup = _self.get('markersGroup');
-        if (markersGroup && _self.isStacked()) {
-          canvas.get('node').appendChild(markersGroup.get('node'));
-        }
+        _self.on('afterpaint', function() {
+          if (markersGroup && _self.isStacked()) {
+            canvas.get('node').appendChild(markersGroup.get('node'));
+          }
+        });
       },
       hide: function() {
         Area.superclass.hide.call(this);
@@ -14896,7 +14935,8 @@
     Util.extend(Category, Axis);
     Category.ATTRS = {
       categories: null,
-      type: 'category'
+      type: 'category',
+      tickAlignCenter: true
     };
     Util.augment(Category, {
       beforeRenderUI: function() {
@@ -14906,10 +14946,16 @@
           var categories = _self.get('categories'),
             ticks = [];
           ticks = ticks.concat(categories);
-          if (ticks[ticks.length - 1] != ' ') {
-            ticks.push(' ');
+          if (_self.get('tickAlignCenter')) {
+            if (ticks[ticks.length - 1] != ' ') {
+              ticks.push(' ');
+            }
           }
           _self.set('ticks', ticks);
+        } else if (!_self.get('categories')) {
+          var categories = [];
+          categories.concat(_self.get('ticks'));
+          _self.set('categories', categories);
         }
       },
       changeInfo: function(info) {
@@ -14917,10 +14963,10 @@
           ticks = info.ticks;
         if (!ticks) {
           ticks = [].concat(info.categories);
-          if (ticks.length && ticks[ticks.length - 1] != ' ') {
+          if (_self.get('tickAlignCenter') && ticks.length && ticks[ticks.length - 1] != ' ') {
             ticks.push(' ');
           }
-        } else {
+        } else if (!info.categories) {
           info.categories = [].concat(info.ticks);
           Util.remove(info.categories, ' ');
         }
@@ -14928,24 +14974,61 @@
         _self.set('ticks', ticks);
       },
       getOffsetByIndex: function(index) {
-        var _self = this,
-          avg = _self._getAvgLength(),
-          offset = avg * index;
-        offset += avg / 2;
-        return _self._appendEndOffset(offset) + _self._getStartCoord();
+        return this._getOffsetByTicks(index);
       },
       getValue: function(offset) {
         var _self = this,
-          index = _self.getSnapIndex(offset),
-          categories = _self.get('categories');
+          ticks = _self.get('ticks'),
+          categories = _self.get('categories'),
+          pointCache = _self.get('pointCache'),
+          index;
+        if (categories.length <= ticks.length) {
+          index = _self.getSnapIndex(offset);
+        } else {
+          var start = pointCache[0],
+            distancd = offset - start,
+            count = _self.get('tickAlignCenter') ? categories.length + 1 : categories.length,
+            avg = _self._getAvgLength(count);
+          index = Math.round(distancd / avg);
+        }
         return categories[index];
       },
-      changeAxis: function(info) {},
-      _getAvgLength: function() {
+      getOffset: function(value) {
+        var _self = this,
+          categories = _self.get('categories'),
+          index = Util.indexOf(categories, value);
+        return _self._getOffsetByCategories(index);
+      },
+      _getOffsetByIndex: function(index, count) {
+        var _self = this,
+          avg = _self._getAvgLength(count),
+          offset = avg * index;
+        if (_self.get('tickAlignCenter')) {
+          offset += avg / 2;
+        }
+        return _self._appendEndOffset(offset) + _self._getStartCoord();
+      },
+      _getOffsetByCategories: function(index) {
+        var _self = this,
+          categories = _self.get('categories'),
+          count = _self.get('tickAlignCenter') ? categories.length + 1 : categories.length;
+        return _self._getOffsetByIndex(index, count);
+      },
+      _getOffsetByTicks: function(index) {
+        var _self = this,
+          ticks = _self.get('ticks'),
+          categories = _self.get('categories'),
+          tick = ticks[index],
+          tickIndex = Util.indexOf(categories, tick);
+        if (tickIndex != -1) {
+          return _self._getOffsetByCategories(tickIndex);
+        }
+        return _self._getOffsetByIndex(index);
+      },
+      _getAvgLength: function(count) {
         var _self = this,
           length = _self._getLength(),
-          ticks = _self.get('ticks'),
-          count = ticks.length,
+          count = count || _self.get('ticks').length,
           avg = length / (count - 1);
         return avg;
       },
@@ -14954,7 +15037,9 @@
           ortho = _self._getOrthoCoord(),
           avg = _self._getAvgLength(),
           current = _self.getOffsetByIndex(index);
-        current -= avg / 2;
+        if (_self.get('tickAlignCenter')) {
+          current -= avg / 2;
+        }
         if (_self.isVertical()) {
           return {
             x: ortho,
@@ -15242,6 +15327,20 @@
     exports = Time;
     return exports;
   }();
+  achart_axis_100_src_timecategory_debug = function(exports) {
+    var Util = achart_util_100_index_debug,
+      CAxis = achart_axis_100_src_category_debug;
+    var TimeCategory = function(cfg) {
+      TimeCategory.superclass.constructor.call(this, cfg);
+    };
+    TimeCategory.ATTRS = {
+      type: 'timeCategory',
+      tickAlignCenter: false
+    };
+    Util.extend(TimeCategory, CAxis);
+    exports = TimeCategory;
+    return exports;
+  }();
   achart_axis_100_src_radius_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       NumberAxis = achart_axis_100_src_number_debug;
@@ -15469,7 +15568,7 @@
           xAxis = _self.get('xAxis'),
           type = xAxis.get('type'),
           avgLength, data = _self.get('data');
-        if (type != 'time' && type != 'number') {
+        if (type != 'time' && type != 'number' && type != 'timeCategory') {
           avgLength = xAxis.getTickAvgLength();
         } else {
           var length = xAxis.getLength();
@@ -15643,6 +15742,7 @@
     Axis.Category = achart_axis_100_src_category_debug;
     Axis.Number = achart_axis_100_src_number_debug;
     Axis.Time = achart_axis_100_src_time_debug;
+    Axis.TimeCategory = achart_axis_100_src_timecategory_debug;
     Axis.Auto = achart_axis_100_src_auto_debug;
     Axis.Circle = achart_axis_100_src_circle_debug;
     Axis.Radius = achart_axis_100_src_radius_debug;
@@ -16240,7 +16340,7 @@
           point: {}
         };
         var count = 0,
-          renderer = this.get('tipGroup').get('pointRenderer');
+          renderer = this.get('tipGroup') && this.get('tipGroup').get('pointRenderer');
         Util.each(sArray, function(series, index) {
           var info = series.getTrackingInfo(point),
             item = {},
@@ -16249,11 +16349,23 @@
             yName = invert ? 'x' : 'y';
           if (info) {
             if (series.get('visible')) {
+              var formatter = renderer;
+              if (series.get('pointRenderer')) {
+                formatter = series.get('pointRenderer');
+              }
               count = count + 1;
-              item.name = series.get('name');
-              item.value = renderer ? renderer(info, series) : series.getTipItem(info);
-              item.color = info.color || series.get('color');
-              rst.items.push(item);
+              var tipInfo = series.getTipInfo(info);
+              if (Util.isObject(tipInfo)) {
+                rst.items.push(tipInfo);
+              } else if (Util.isArray(tipInfo) && Util.isObject(tipInfo[0])) {
+                rst.items = rst.items.concat(tipInfo);
+              } else {
+                item.name = series.get('name');
+                item.value = formatter ? formatter(info, series) : tipInfo;
+                item.color = info.color || series.get('color');
+                item.suffix = series.get('suffix');
+                rst.items.push(item);
+              }
               var markersGroup = series.get('markersGroup');
               if (markersGroup && markersGroup.get('single')) {
                 var marker = markersGroup.getChildAt(0);
@@ -16368,12 +16480,14 @@
         var _self = this,
           type = axis.type,
           C, name;
-        if (axis.categories) {
+        if (!type && axis.categories) {
           type = 'category';
-        } else if (!axis.ticks && type != 'circle') {
-          axis.autoTicks = true;
         }
-        if (type == 'category' && !axis.categories) {
+        if (type == 'category' || type == 'timeCategory') {
+          if (!axis.categories) {
+            axis.autoTicks = true;
+          }
+        } else if (!axis.ticks && type != 'circle') {
           axis.autoTicks = true;
         }
         axis.plotRange = _self.get('plotRange');
@@ -16410,9 +16524,11 @@
             max = endDate.getTime();
           }
           autoUtil = Axis.Auto.Time;
+        } else if (type == 'timeCategory') {
+          autoUtil = Axis.Auto.TimeCategory;
         }
         interval = axis.getCfgAttr('tickInterval');
-        series = _self.getSeries();
+        series = _self._getRelativeSeries(axis, name);
         var cfg = {
           min: min,
           max: max,
@@ -16420,7 +16536,7 @@
           maxCount: tickCounts[1],
           interval: interval
         };
-        if (name == 'yAxis') {
+        if (name == 'yAxis' && series.length) {
           stackType = series[0].get('stackType');
         }
         if (stackType && stackType != 'none') {
@@ -16459,17 +16575,19 @@
           categories: categories
         };
       },
-      getSeriesData: function(axis, name) {
+      getSeriesData: function(axis, name, stacked) {
         var _self = this,
           data = [],
-          series = _self.getVisibleSeries();
+          series = _self._getRelativeSeries(axis, name);
         axis = axis || _self.get('yAxis');
         name = name || 'yAxis';
         Util.each(series, function(item) {
-          if (item.get(name) == axis) {
-            var arr = item.getData(name);
-            if (arr.length) {
-              data.push(arr);
+          if (name == 'xAxis' || stacked && item.isStacked && item.isStacked() || !stacked && (!item.isStacked || !item.isStacked())) {
+            if (item.get(name) == axis) {
+              var arr = item.getData(name);
+              if (arr.length) {
+                data.push(arr);
+              }
             }
           }
         });
@@ -16485,11 +16603,11 @@
       getStackedData: function(axis, name) {
         var _self = this,
           data, first;
-        stackedData = _self.get('stackedData'), arr = [];
+        stackedData = _self.get('stackedData'), rst = [], arr = [];
         if (stackedData) {
           arr = stackedData;
         } else {
-          data = _self.getSeriesData(axis, name);
+          data = _self.getSeriesData(axis, name, true);
           first = data[0], min = Math.min.apply(null, first);
           Util.each(first, function(value, index) {
             var temp = value;
@@ -16505,7 +16623,14 @@
           arr.push(min);
           _self.set('stackedData', arr);
         }
-        return arr;
+        var otherData = _self.getSeriesData(axis, name, false);
+        if (otherData.length) {
+          rst.push(arr);
+          rst = rst.concat(otherData);
+        } else {
+          rst = arr;
+        }
+        return rst;
       },
       _paintAxis: function(axis, name) {
         var _self = this,
@@ -16524,6 +16649,17 @@
             item.paint();
           }
         });
+      },
+      _getRelativeSeries: function(axis, name) {
+        var _self = this,
+          series = _self.getVisibleSeries(),
+          rst = [];
+        Util.each(series, function(item) {
+          if (item.get(name) == axis) {
+            rst.push(item);
+          }
+        });
+        return rst;
       },
       _hasRelativeSeries: function(axis, name) {
         var _self = this,
@@ -16654,7 +16790,7 @@
         var _self = this,
           series = _self.getSeries();
         Util.each(series, function(item) {
-          if (item.get('type') == 'pie') {
+          if (!(item instanceof Series.Cartesian)) {
             return true;
           }
           if (!item.get('xAxis')) {
@@ -16675,7 +16811,7 @@
       },
       showChild: function(series) {
         var _self = this,
-          yAxis = _self.get('yAxis');
+          yAxis = series.get('yAxis');
         if (!series.get('visible')) {
           series.show();
           if (yAxis) {
@@ -16686,7 +16822,7 @@
       },
       hideChild: function(series) {
         var _self = this,
-          yAxis = _self.get('yAxis');
+          yAxis = series.get('yAxis');
         if (series.get('visible')) {
           series.hide();
           if (yAxis) {
@@ -16770,8 +16906,8 @@
       canvas: undefined,
       colors: undefined,
       data: undefined,
-      yTickCounts: null,
-      xTickCounts: null,
+      yTickCounts: undefined,
+      xTickCounts: undefined,
       width: null,
       height: null,
       legend: undefined,
@@ -16963,7 +17099,9 @@
             yAxis: attrs.yAxis
           });
         } else if (Util.isArray(attrs.yAxis)) {
-          attrs.yAxis[0] = Util.mix(true, {}, theme.yAxis, attrs.yAxis[0]);
+          Util.each(attrs.yAxis, function(axis, indexs) {
+            attrs.yAxis[indexs] = Util.mix(true, {}, theme.yAxis, axis);
+          });
           cfg.yAxis = attrs.yAxis;
         }
         seriesGroup = _self.get('canvas').addGroup(SeriesGroup, cfg);
@@ -17044,6 +17182,7 @@
     acharts.Theme = achart_theme_100_index_debug;
     acharts.Series = achart_series_100_index_debug;
     acharts.Axis = achart_axis_100_index_debug;
+    acharts.Tooltip = achart_tooltip_101_index_debug;
     achart_series_other_100_index_debug;
     window.Chart = acharts;
     window.AChart = acharts;

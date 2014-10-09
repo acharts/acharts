@@ -46,7 +46,7 @@
       "seajs": "2.2.1"
     },
     "buildArgs": "--include standalone",
-    "tests": "tests/dync-spec.js"
+    "tests": "tests/multiple-axis-spec.js"
 
   }
 }
