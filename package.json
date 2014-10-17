@@ -1,6 +1,6 @@
 {
   "name": "acharts",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "keywords": [
     "charts",
@@ -22,7 +22,7 @@
     "dependencies": {
       "achart-util": "1.0.0",
       "achart-canvas": "1.0.0",
-      "achart-legend": "1.0.0",
+      "achart-legend": "1.0.1",
       "achart-axis": "1.0.0",
       "achart-series": "1.0.0",
       "achart-series-other": "1.0.0",
@@ -46,7 +46,7 @@
       "seajs": "2.2.1"
     },
     "buildArgs": "--include standalone",
-    "tests": "tests/multiple-axis-spec.js"
+    "tests": "tests/chart-spec.js"
 
   }
 }

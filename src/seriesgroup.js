@@ -108,7 +108,7 @@ Group.ATTRS = {
 
 Util.extend(Group,PlotItem);
 
-Util.mixin(Group,[ActivedGroup]);
+Util.mixin(Group,[ActivedGroup,Legend.UseLegend]);
 
 Util.augment(Group,{
 
@@ -118,7 +118,7 @@ Util.augment(Group,{
     var _self = this;
     Group.superclass.renderUI.call(_self);
     //_self._renderTracer();
-    _self._renderLegend();
+    
 
     _self._renderSeries();
 
@@ -129,6 +129,7 @@ Util.augment(Group,{
     _self._paintAxis(_self.get('yAxis'),'yAxis');
     _self._paintSeries();
 
+    _self.renderLegend();
     _self._renderTooltip();
   },
   //绑定事件
@@ -300,7 +301,7 @@ Util.augment(Group,{
           xName = invert ? 'y' : 'x',
           yName = invert ? 'x' : 'y';
 
-      if(info){
+      if(info && info.value != null){
         if(series.get('visible')){
           var formatter = renderer;
           if(series.get('pointRenderer')){
@@ -393,18 +394,24 @@ Util.augment(Group,{
       _self.addSeries(item,index);
     });
   },
-  //渲染legend
-  _renderLegend : function(){
-    var _self = this,
-      legend = _self.get('legend'),
-      legendGroup;
+  getLengendItems : function(){
+      var _self = this,
+        series = _self.getSeries(),
+        items = [];
+      Util.each(series,function(item){
+        var markers = item.get('markers'),
+          symbol = markers && markers.marker.symbol;
+        var item = {
+          name : item.get('name'),
+          color : item.get('color'),
+          type : item.get('legendType'),
+          symbol : symbol,
+          item : item
+        };
+        items.push(item);
+      });
 
-    if(legend){
-      legend.items = legend.items || [];
-      legend.plotRange = _self.get('plotRange');
-      legendGroup = _self.get('parent').addGroup(Legend,legend);
-      _self.set('legendGroup',legendGroup);
-    }
+      return items;
   },
   //渲染tooltip
   _renderTooltip : function(){
@@ -819,7 +826,7 @@ Util.augment(Group,{
     cfg.autoPaint = cfg.autoPaint || false;
 
     series  = _self.addGroup(cons,cfg);
-    _self._addLegendItem(series);
+    
     return series;
   },
   //绘制数据线
@@ -889,21 +896,6 @@ Util.augment(Group,{
         _self._resetSeries();
       }
     }
-  },
-  _addLegendItem : function(series){
-    var _self = this,
-      legendGroup = _self.get('legendGroup'),
-      markers = series.get('markers');
-
-    var symbol = markers && markers.marker.symbol;
-
-    legendGroup && legendGroup.addItem({
-      color : series.get('color'),
-      name : series.get('name'),
-      type : series.get('legendType'),
-      symbol : symbol,
-      item : series
-    });
   },
   //获取序列的配置信息
   _getSeriesCfg : function(type,item,index){

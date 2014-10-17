@@ -280,6 +280,8 @@ seajs.use('acharts',function(){
 
 ````
 
+ * 给漏斗图添加legend（图例）参考：[图例扩展](http://spmjs.io/docs/achart-legend/wiki/use.html#使用图例扩展)
+
 
 
 

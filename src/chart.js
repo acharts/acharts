@@ -12,13 +12,14 @@ var Util = require('achart-util'),
 /**
  * @class Chart
  * 图，里面包括坐标轴、图例等图形
+ *
+ *  - [文档地址](http://spmjs.io/docs/acharts)
+ *  - [详细Wiki](http://spmjs.io/docs/acharts/wiki/)
  */
 var Chart = function(cfg){
   this._attrs = Util.mix({},Chart.ATTRS,cfg);
   this.events = {};
 };
-
-
 
 Chart.ATTRS = {
 
