@@ -31,10 +31,8 @@
       "achart-plot": "1.0.0",
       "achart-theme": "1.0.0",
       "achart-date": "1.0.0",
-      "expect": "0.3.1",
-      "expect.js": "0.3.1",
-      "sinon": "1.6.0",
-      "event-simulate": "1.0.0"
+      "achart-flags" : "1.0.0",
+      "achart-candlesticks" : "1.0.0"
     },
     "devDependencies": {
       "expect.js": "0.3.1",

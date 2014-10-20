@@ -1,6 +1,6 @@
 ;
 (function() {
-  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_101_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_legend_101_src_legend_debug, achart_legend_101_src_uselegend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_legend_101_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_timecategory_debug, achart_axis_100_src_numbercategory_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1011_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_1011_src_chart_debug, acharts_1011_acharts_debug;
+  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_101_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_candlesticks_100_src_candlestick_debug, achart_legend_101_src_legend_debug, achart_legend_101_src_uselegend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_candlesticks_100_src_candlesticks_debug, achart_legend_101_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_candlesticks_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_timecategory_debug, achart_axis_100_src_numbercategory_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1011_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_1011_src_chart_debug, acharts_1011_acharts_debug;
   achart_raphael_100_src_eve_debug = function(exports) {
     // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
     // 
@@ -10204,7 +10204,8 @@
   achart_legend_101_src_legenditem_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       PlotItem = achart_plot_100_index_debug.Item,
-      MARKER_WIDTH = 20;
+      MARKER_WIDTH = 20,
+      ALIGN_Y = 7;
     var LegendItem = function(cfg) {
       LegendItem.superclass.constructor.call(this, cfg);
     };
@@ -10213,7 +10214,7 @@
       label: {
         x: MARKER_WIDTH,
         'text-anchor': 'start',
-        y: 7,
+        y: ALIGN_Y,
         cursor: 'pointer'
       },
       checked: true,
@@ -10290,7 +10291,14 @@
           cfg = Util.mix({}, label, {
             text: text
           }),
-          labelShape = _self.addShape('label', cfg);
+          labelShape;
+        if (!cfg.x) {
+          cfg.x = MARKER_WIDTH;
+        }
+        if (!cfg.y) {
+          cfg.y = ALIGN_Y;
+        }
+        labelShape = _self.addShape('label', cfg);
         _self.set('labelShape', labelShape);
       },
       _createShape: function() {
@@ -11734,6 +11742,118 @@
     exports = Flag;
     return exports;
   }();
+  achart_candlesticks_100_src_candlestick_debug = function(exports) {
+    /**
+     * @fileOverview 股票k线图 单个节点
+     * @ignoreig
+     */
+    var Util = achart_util_100_index_debug,
+      Item = achart_plot_100_index_debug.Item;
+    /**
+     * @class Chart.Group.Flag
+     * 图形标记，包含文本和连接线
+     */
+    var Candlestick = function(cfg) {
+      Candlestick.superclass.constructor.call(this, cfg);
+    };
+    Candlestick.ATTRS = {
+      /**
+       * 上升线的配置信息
+       * @type {Object}
+       */
+      riseLine: null,
+      /**
+       * 下降线的配置信息
+       * @type {Object}
+       */
+      fallLine: null,
+      /**
+       * 上升的图形的配置信息
+       * @type {Object}
+       */
+      riseShape: null,
+      /**
+       * 下降的图形的配置信息
+       * @type {Object}
+       */
+      fallShape: null,
+      /**
+       * 点信息
+       * @type {Array}
+       * [open,high,low,close]
+       */
+      points: null,
+      /**
+       * 单个蜡烛的宽度
+       * @type {Number}
+       */
+      singleWidth: null
+    };
+    Util.extend(Candlestick, Item);
+    Util.augment(Candlestick, {
+      //渲染控件
+      renderUI: function() {
+        var _self = this;
+        Candlestick.superclass.renderUI.call(_self);
+        _self._drawCandlestick();
+      },
+      _drawCandlestick: function() {
+        var _self = this;
+        //判断涨还是跌
+        _self._setType();
+        //画线
+        _self._drawLine();
+        //画图形
+        _self._drawShape();
+      },
+      //判断涨还是跌
+      _setType: function() {
+        var _self = this,
+          points = _self.get('points'),
+          openPoint = points[0],
+          closePoint = points[3];
+        var isRise = openPoint.value >= closePoint.value ? false : true;
+        _self.set('isRise', isRise);
+      },
+      //画线
+      _drawLine: function() {
+        var _self = this,
+          isRise = _self.get('isRise'),
+          lineAttr = isRise ? _self.get('riseLine') : _self.get('fallLine'),
+          points = _self.get('points'),
+          highPoint = points[1],
+          lowPoint = points[2];
+        var cfg = Util.mix(lineAttr, {
+          x1: highPoint.x,
+          y1: highPoint.y,
+          x2: lowPoint.x,
+          y2: lowPoint.y
+        });
+        var line = _self.addShape('line', cfg);
+        _self.set('lineShape', line);
+      },
+      //画图形
+      _drawShape: function() {
+        var _self = this,
+          points = _self.get('points'),
+          isRise = _self.get('isRise'),
+          shapeCfg = isRise ? _self.get('riseShape') : _self.get('fallShape'),
+          openPoint = points[0],
+          closePoint = points[3];
+        var width = _self.get('singleWidth') || shapeCfg.width || 20;
+        var cfg = Util.mix(shapeCfg, {
+          x: openPoint.x - width / 2,
+          y: Math.min(openPoint.y, closePoint.y),
+          width: width,
+          height: Math.max(Math.abs(openPoint.y - closePoint.y), 0.1)
+        });
+        var rect = _self.addShape('rect', cfg);
+        _self.set('rectShape', rect);
+      }
+    });
+    exports = Candlestick;
+    return exports;
+  }();
   achart_legend_101_src_legend_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       PlotItem = achart_plot_100_index_debug.Item,
@@ -12267,6 +12387,102 @@
       }
     });
     exports = Flags;
+    return exports;
+  }();
+  achart_candlesticks_100_src_candlesticks_debug = function(exports) {
+    var Util = achart_util_100_index_debug,
+      Candlestick = achart_candlesticks_100_src_candlestick_debug,
+      Group = achart_actived_100_index_debug.Group,
+      PlotItem = achart_plot_100_index_debug.Item;
+    var Candlesticks = function(cfg) {
+      Candlesticks.superclass.constructor.call(this, cfg);
+    };
+    Util.extend(Candlesticks, PlotItem);
+    Util.mixin(Candlesticks, [Group]);
+    Candlesticks.ATTRS = {
+      elCls: 'x-chart-candlesticks',
+      zIndex: 6,
+      candlestick: {},
+      items: null,
+      candlestickGroup: []
+    };
+    Util.augment(Candlesticks, {
+      renderUI: function() {
+        var _self = this;
+        Candlesticks.superclass.renderUI.call(_self);
+        _self._drawCandlesticks();
+      },
+      bindUI: function() {
+        var _self = this;
+        _self.on('click', function(ev) {
+          var candlestick = _self.findBy(function(item) {
+            return item.containsElement && item.containsElement(ev.target);
+          });
+          _self.fire('stockclick', {
+            candlestick: candlestick
+          });
+        });
+        _self.on('mouseover', function(ev) {
+          var candlestick = _self.findBy(function(item) {
+            return item.containsElement && item.containsElement(ev.target);
+          });
+          _self.fire('stockover', {
+            candlestick: candlestick
+          });
+        });
+        _self.on('mouseout', function(ev) {
+          var candlestick = _self.findBy(function(item) {
+            return item.containsElement && item.containsElement(ev.target);
+          });
+          _self.fire('stockout', {
+            candlestick: candlestick
+          });
+        });
+      },
+      _drawCandlesticks: function() {
+        var _self = this,
+          candlestickGroup = _self.get('candlestickGroup'),
+          items = _self.get('items');
+        Util.each(items, function(item, index) {
+          _self._drawSingle(item);
+        });
+      },
+      _drawSingle: function(item) {
+        var _self = this,
+          candlestickGroup = _self.get('candlestickGroup'),
+          candlestick = _self.get('candlestick');
+        var cfg = Util.mix({}, candlestick, item);
+        var group = _self.addGroup(Candlestick, cfg);
+        candlestickGroup.push(group);
+        return group;
+      },
+      addCandlestick: function(item) {
+        var _self = this,
+          items = _self.get('items');
+        if (!items) {
+          items = [];
+          _self.set('items', items);
+        }
+        items.push(item);
+        return _self._drawSingle(item);
+      },
+      removeAll: function() {
+        var _self = this,
+          candlestickGroup = _self.get('candlestickGroup');
+        Util.each(candlestickGroup, function(item, index) {
+          item.remove();
+        });
+        _self.set('candlestickGroup', []);
+        _self.set('items', []);
+      },
+      change: function(items) {
+        var _self = this;
+        _self.removeAll();
+        _self.set('items', items);
+        _self._drawCandlesticks();
+      }
+    });
+    exports = Candlesticks;
     return exports;
   }();
   achart_legend_101_index_debug = function(exports) {
@@ -13087,21 +13303,25 @@
         return value;
       },
       animateClip: function(fn, callback) {
-        var _self = this,
-          canvas = _self.get('canvas'),
-          invert = _self.get('invert'),
-          width = canvas.get('width'),
-          duration = _self.get('duration'),
-          height = canvas.get('height'),
-          clip = invert ? '0,0,' + width + ',0' : '0,0,0,' + height;
-        _self.attr('clip-rect', clip);
-        fn && fn();
-        _self.animate({
-          'clip-rect': '0,0,' + width + ',' + height
-        }, duration, function() {
+        if (Util.svg) {
+          var _self = this,
+            canvas = _self.get('canvas'),
+            invert = _self.get('invert'),
+            width = canvas.get('width'),
+            duration = _self.get('duration'),
+            height = canvas.get('height'),
+            clip = invert ? '0,0,' + width + ',0' : '0,0,0,' + height;
+          _self.attr('clip-rect', clip);
+          fn && fn();
+          _self.animate({
+            'clip-rect': '0,0,' + width + ',' + height
+          }, duration, function() {
+            callback && callback();
+            _self.attr('clip-rect', '');
+          });
+        } else {
           callback && callback();
-          _self.attr('clip-rect', '');
-        });
+        }
       },
       snapEqual: function(value1, value2) {
         var _self = this;
@@ -13294,7 +13514,7 @@
           animate = _self.get('animate'),
           duration = _self.get('duration'),
           lineShape, path = '';
-        if (!animate) {
+        if (!animate || !Util.svg) {
           drawLine();
           after();
         } else {
@@ -14157,12 +14377,13 @@
       getLengendItems: function() {
         var _self = this,
           children = _self.getItems(),
+          legendType = _self.get('legendType') || 'rect',
           items = [];
         Util.each(children, function(child, i) {
           var item = {
             name: child.get('point').xValue,
             color: child.attr('fill'),
-            type: 'rect',
+            type: legendType,
             item: child
           };
           items.push(item);
@@ -14369,8 +14590,9 @@
         var _self = this,
           points = _self.getVisiblePoints(),
           visible = false;
+        point.index = index;
         Util.each(points, function(item) {
-          if (point.xValue == item.xValue) {
+          if (point.index == item.index || point == item) {
             visible = true;
           }
         });
@@ -14405,7 +14627,7 @@
           curIndex = null,
           rst = {};
         Util.each(points, function(item, index) {
-          if (point.xValue == item.xValue) {
+          if (point.index == item.index || point == item) {
             curIndex = index;
           }
         });
@@ -14651,7 +14873,7 @@
       },
       remove: function() {
         this.removeLegend();
-        AGroup.superclass.remove.call(this);
+        Pie.superclass.remove.call(this);
       }
     });
     exports = Pie;
@@ -14660,6 +14882,11 @@
   achart_flags_100_index_debug = function(exports) {
     var achartFlags = achart_flags_100_src_flags_debug;
     exports = achartFlags;
+    return exports;
+  }();
+  achart_candlesticks_100_index_debug = function(exports) {
+    var achartCandlesticks = achart_candlesticks_100_src_candlesticks_debug;
+    exports = achartCandlesticks;
     return exports;
   }();
   achart_axis_100_src_base_debug = function(exports) {
@@ -16004,16 +16231,32 @@
     return exports;
   }();
   achart_series_other_100_src_bubble_debug = function(exports) {
+    /**
+     * @fileOverview 气泡图
+     * @ignore
+     */
     var Cartesian = achart_series_100_index_debug.Cartesian,
       ActiveGroup = achart_actived_100_index_debug.Group,
       Util = achart_util_100_index_debug;
+    /**
+     * @class Chart.Series.Bubble
+     * 冒泡图
+     */
     var Bubble = function(cfg) {
       Bubble.superclass.constructor.call(this, cfg);
     };
     Bubble.ATTRS = {
       elCls: 'x-chart-bubble',
       type: 'bubble',
+      /**
+       * 气泡的配置信息
+       * @type {Object}
+       */
       circle: {},
+      /**
+       * 激活气泡的状态
+       * @type {Object}
+       */
       activeCircle: {},
       legendType: 'circle',
       animate: true,
@@ -16023,6 +16266,10 @@
     Util.extend(Bubble, Cartesian);
     Util.mixin(Bubble, [ActiveGroup]);
     Util.augment(Bubble, {
+      /**
+       * @protected
+       * 处理颜色
+       */
       processColor: function() {
         var _self = this,
           color = _self.get('color');
@@ -16038,12 +16285,17 @@
         Bubble.superclass.renderUI.call(this);
         this._renderGroup();
       },
+      //渲染圆
       draw: function(points) {
         var _self = this;
         Util.each(points, function(point) {
           _self.addBubble(point);
         });
       },
+      /**
+       * @protected
+       * 内部图形发生改变
+       */
       changeShapes: function() {
         var _self = this,
           points = _self.getPoints(),
@@ -16057,9 +16309,18 @@
           item.set('point', point);
         });
       },
+      /**
+       * 获取内部的圆
+       * @return {Array} 图形圆的集合
+       */
       getItems: function() {
         return this.get('group').get('children');
       },
+      /**
+       * @protected
+       * 获取可以被激活的元素
+       * @return {Chart.Actived[]} 可以被激活的元素集合
+       */
       getActiveItems: function() {
         return this.getItems();
       },
@@ -16068,6 +16329,7 @@
           group = _self.addGroup();
         _self.set('group', group);
       },
+      //设置激活状态
       setItemActived: function(item, actived) {
         var _self = this,
           circle = _self.get('circle'),
@@ -16080,18 +16342,27 @@
           item.set('actived', false);
         }
       },
+      //获取当前定位的点
       getTrackingInfo: function() {
         var _self = this,
           activedCircle = _self.getActived();
         return activedCircle && activedCircle.get('point');
       },
+      /**
+       * @protected
+       * 是否激活
+       * @param {Chart.Actived} item 可以被激活的元素
+       * @return {Chart.Actived[]} 可以被激活的元素集合
+       */
       isItemActived: function(item) {
         return item.get('actived');
       },
+      //添加冒泡
       addBubble: function(point) {
         var _self = this,
           circle = _self.get('circle'),
           r = 5,
+          //默认5
           radius, cfg = Util.mix({}, circle),
           shape;
         if (point.obj) {
@@ -16118,6 +16389,7 @@
       _getRadius: function(r) {
         return Math.pow(r, 0.75);
       },
+      //鼠标hover
       bindMouseOver: function() {
         var _self = this;
         _self.get('group').on('mouseover', function(ev) {
@@ -16126,6 +16398,7 @@
           _self.setItemActived(shape, true);
         });
       },
+      //鼠标hover
       bindMouseOut: function() {
         var _self = this;
         _self.get('group').on('mouseout', function(ev) {
@@ -16139,15 +16412,24 @@
     return exports;
   }();
   achart_series_other_100_src_scatter_debug = function(exports) {
+    /**
+     * @fileOverview 散列图,用于标示点的分步
+     * @ignore
+     */
     var Util = achart_util_100_index_debug,
       Cartesian = achart_series_100_index_debug.Cartesian,
       ActiveGroup = achart_actived_100_index_debug.Group;
 
     function trySet(obj, name, value) {
-      if (obj && !obj[name]) {
-        obj[name] = value;
+        if (obj && !obj[name]) {
+          obj[name] = value;
+        }
       }
-    }
+      /**
+       * @class Chart.Series.Scatter
+       * 散点图序列
+       * @extends Chart.Series.Cartesian
+       */
     var Scatter = function(cfg) {
       Scatter.superclass.constructor.call(this, cfg);
     };
@@ -16155,11 +16437,19 @@
       elCls: 'x-chart-scatter',
       stickyTracking: false,
       autoPaint: false,
+      /**
+       * 生成时不执行动画
+       * @type {Object}
+       */
       animate: false,
       legendType: null
     };
     Util.extend(Scatter, Cartesian);
     Util.augment(Scatter, {
+      /**
+       * @protected
+       * 处理颜色
+       */
       processColor: function() {
         var _self = this,
           color = _self.get('color');
@@ -16171,12 +16461,14 @@
           }
         }
       },
+      //绘制点
       draw: function(points) {
         var _self = this;
         Util.each(points, function(point) {
           _self.addMarker(point);
         });
       },
+      //鼠标hover
       bindMouseOver: function() {
         var _self = this,
           markersGroup = _self.get('markersGroup');
@@ -16190,6 +16482,7 @@
           });
         }
       },
+      //获取当前定位的点
       getTrackingInfo: function() {
         var _self = this,
           markersGroup = _self.get('markersGroup'),
@@ -16202,6 +16495,7 @@
         }
         return rst;
       },
+      //鼠标移出
       bindMouseOut: function() {
         var _self = this,
           markersGroup = _self.get('markersGroup');
@@ -16220,10 +16514,19 @@
     return exports;
   }();
   achart_series_other_100_src_flag_debug = function(exports) {
+    /*
+     *
+     * @line图的tag
+     *
+     * */
     var Cartesian = achart_series_100_index_debug.Cartesian,
       Flags = achart_flags_100_index_debug,
       Util = achart_util_100_index_debug;
-
+    /**
+     * @class Chart.Series.Flag
+     * 图列上面的标识
+     * @extends Chart.Series.Cartesian
+     */
     function Flag(cfg) {
       Flag.superclass.constructor.call(this, cfg);
     }
@@ -16231,10 +16534,18 @@
     Flag.ATTRS = {
       type: 'flag',
       elCls: 'x-chart-flag-series',
+      /**
+       * flag 配置项
+       * @type {Object}
+       */
       flags: null,
       zIndex: 6
     };
     Util.augment(Flag, {
+      /**
+       *  @private
+       *  重写获取point函数
+       */
       _getPoints: function() {
         var _self = this,
           data = _self.get('data'),
@@ -16253,6 +16564,7 @@
           var point, sameNum = 0;
           if (Util.isObject(item)) {
             var xValue = item[xField];
+            //不存在落点线条 则落到坐标轴上面
             if (!series || !series.get('visible')) {
               var _x = xAxis.getOffset(xValue),
                 _y = yAxis.getStartOffset();
@@ -16265,6 +16577,7 @@
               point = series.findPointByValue(xValue);
             }
             if (!point) return true;
+            //若存在坐标轴一样的flag  往上堆叠
             Util.each(data, function(newItem, newIndex) {
               if (newIndex < index && item[xField] == newItem[xField]) {
                 sameNum++;
@@ -16282,6 +16595,10 @@
         });
         return points;
       },
+      /**
+       *  @private
+       *  重写legend导致的画面变动
+       */
       changeShapes: function(points, animate) {
         var _self = this,
           flagAttrs = _self.get('flag'),
@@ -16294,17 +16611,25 @@
         Util.each(points, function(item, index) {
           var cfg = _self.__getShapeCfg(item, index);
           newItems.push(cfg);
+          //if(flagGroup.get('flagGroups') && flagGroup.get('flagGroups')[index]){
+          //flagGroup.get('flagGroups')[index].changeStackCfg(cfg);
           flagGroup.changeStackCfg(index, cfg);
         });
         flagGroup.change(newItems, animate);
       },
+      /**
+       * 获取提示信息
+       * @return {*} 返回显示在上面的文本
+       */
       getTipItem: function(point) {
         return point.obj.tooltip ? point.obj.tooltip : point.value;
       },
+      //根据points画出标记
       draw: function(points, callback) {
         var _self = this,
           animate = _self.get('animate'),
           duration = _self.get('duration');
+        //添加Flags
         _self.set('flagGroup', _self.addGroup(Flags, _self.get('flags')));
         if (!animate) {
           Util.each(points, function(item, index) {
@@ -16318,6 +16643,7 @@
           var cur = 0,
             sub = [],
             count = seriesPoints.length;
+          //动画生成线和对应的点
           Util.animStep(duration, function(factor) {
             var pre = cur;
             cur = parseInt(factor * count, 10);
@@ -16349,6 +16675,10 @@
           });
         }
       },
+      /**
+       *  @private
+       *  根据点绘制
+       */
       _drawShape: function(point, index) {
         var _self = this,
           flagGroup = _self.get('flagGroup');
@@ -16365,9 +16695,11 @@
         var cfg = Util.mix({}, {}, {
           point: point
         });
+        //合并data内容到cfg
         if (data && data[index] && data[index].flag) {
           Util.mix(cfg, data[index].flag);
         }
+        //向上堆叠
         if (point.index > 0) {
           Util.each(flagGroup.get('children'), function(item, index) {
             var lastPoint = item.get('point');
@@ -16980,7 +17312,7 @@
             item.changeData(arr);
           } else {
             if (Util.isArray(data[0])) {
-              item.changeData(data[i]);
+              item.changeData(data[index]);
             } else {
               item.changeData(data);
             }
@@ -17419,6 +17751,8 @@
     acharts.Date = achart_date_100_index_debug;
     acharts.Theme = achart_theme_100_index_debug;
     acharts.Series = achart_series_100_index_debug;
+    acharts.Flags = achart_flags_100_index_debug;
+    acharts.Candlesticks = achart_candlesticks_100_index_debug;
     acharts.Axis = achart_axis_100_index_debug;
     acharts.Tooltip = achart_tooltip_101_index_debug;
     achart_series_other_100_index_debug;

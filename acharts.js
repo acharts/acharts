@@ -9,6 +9,10 @@ acharts.Date = require('achart-date');
 acharts.Theme = require('achart-theme');
 
 acharts.Series = require('achart-series');
+
+acharts.Flags = require('achart-flags');
+acharts.Candlesticks = require('achart-candlesticks');
+
 acharts.Axis = require('achart-axis');
 acharts.Tooltip = require('achart-tooltip');
 

@@ -767,7 +767,7 @@ Util.augment(Group,{
         item.changeData(arr);
       }else{
         if(Util.isArray(data[0])){
-          item.changeData(data[i]);
+          item.changeData(data[index]);
         }else{
           item.changeData(data);
         }
