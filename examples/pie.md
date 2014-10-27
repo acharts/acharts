@@ -950,3 +950,124 @@ seajs.use('acharts', function(Achart) {
 ````
 
 
+## 级联饼图
+
+````html
+
+<div id="c14"></div>
+
+````
+
+````javascript
+seajs.use('acharts', function(AChart) {
+          var data = [{
+                name: 'MSIE',
+                value: 55.11,
+                selected : true,
+                drilldown: [
+                  {name : 'MSIE 6.0',value : 10.85},
+                  {name : 'MSIE 7.0',value : 7.35},
+                  {name : 'MSIE 8.0',value : 33.06},
+                  {name : 'MSIE 9.0',value : 2.81}
+                ]
+            }, {
+                name: 'Firefox',
+                value: 21.63,
+                drilldown:[
+                  {name : 'Firefox 2.0',value : 0.20},
+                  {name : 'Firefox 3.0',value : 0.83},
+                  {name : 'Firefox 3.5',value : 1.58},
+                  {name : 'Firefox 3.6',value : 13.12},
+                  {name : 'Firefox 4.0',value : 5.43}
+                ]
+            }, {
+                name: 'Chrome',
+                value: 11.94,
+                drilldown: [
+                  {name : 'Chrome 5.0',value : 0.12},
+                  {name : 'Chrome 6.0',value : 0.19},
+                  {name : 'Chrome 7.0',value : 0.12},
+                  {name : 'Chrome 8.0',value : 0.36},
+                  {name : 'Chrome 9.0',value : 9.91},
+                  {name : 'Chrome 10.0',value : 0.50},
+                  {name : 'Chrome 11.0',value : 0.22}
+                ]
+            }, {
+                name: 'Safari',
+                value: 7.15,
+                drilldown:[
+                  {name : 'Safari 5.0',value : 4.55},
+                  {name : 'Safari 4.0',value : 1.42},
+                  {name : 'Safari Win 5.0',value : 0.23},
+                  {name : 'Safari/Maxthon',value : 0.21},
+                  {name : 'Safari 3.1',value : 0.20},
+                  {name : 'Safari 4.1',value : 0.19},
+                ]
+            }, {
+                name: 'Opera',
+                value: 2.14,
+                drilldown: [
+                  {name : 'Opera 9.x',value : 0.12},
+                  {name : 'Opera 10.x',value : 0.37},
+                  {name : 'Opera 11.x',value : 1.65}
+                ]
+          }];
+
+        var chart = new AChart({
+          id : 'c14',
+          width : 950,
+          height : 500,
+          title : {
+            text : '浏览器分布图'
+          },
+          legend : null ,//不显示图例
+          seriesOptions : { //设置多个序列共同的属性
+            pieCfg : {
+              allowPointSelect : true,
+              yField : 'value', //表示值的字段
+              labels : {
+                distance : 20,
+                label : {
+                  //文本信息可以在此配置
+                },
+                renderer : function(value,item){ //格式化文本
+                  return value + ' ' + (item.point.percent * 100).toFixed(2)  + '%';
+                }
+              }
+            }
+          },
+          tooltip : {
+            pointRenderer : function(point){
+              return (point.percent * 100).toFixed(2)+ '%';
+            }
+          },
+          series : [{
+              type: 'pie',
+              center : [200,200],
+              size : '50%',
+              name: '浏览器分步',
+              data: data
+          },{
+              type: 'pie',
+              name : '内部版本',
+              center : [600,200],
+              size : '50%'
+          },]
+        });
+
+        
+
+        chart.render();
+
+        var mainPie = chart.getSeries()[0],
+          subPie = chart.getSeries()[1];
+
+        mainPie.on('itemselected',function(ev){
+          var item = ev.point.obj;
+          subPie.changeData(item.drilldown,true);
+        });
+});
+
+````
+
+

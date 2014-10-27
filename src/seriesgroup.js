@@ -301,33 +301,43 @@ Util.augment(Group,{
           xName = invert ? 'y' : 'x',
           yName = invert ? 'x' : 'y';
 
-      if(info && info.value != null){
+      if(info/* && */){
         if(series.get('visible')){
-          var formatter = renderer;
-          if(series.get('pointRenderer')){
-            formatter = series.get('pointRenderer');
-          }
-          count = count + 1;
-          var tipInfo = series.getTipInfo(info);
-          if(Util.isObject(tipInfo)){
-            rst.items.push(tipInfo);
-          }else if(Util.isArray(tipInfo) && Util.isObject(tipInfo[0])){
-            rst.items = rst.items.concat(tipInfo);
-          }else{
-            item.name = series.get('name');
-            item.value = formatter ? formatter(info,series) : tipInfo;
-            item.color = info.color || series.get('color');
-            item.suffix = series.get('suffix');
-            rst.items.push(item);
-          }
           var markersGroup = series.get('markersGroup');
-          if(markersGroup && markersGroup.get('single')){
-            var marker = markersGroup.getChildAt(0);
-            marker && marker.attr({
-              x :info.x,
-              y : info.y
-            });
+          if(info.value != null){
+            var formatter = renderer;
+            if(series.get('pointRenderer')){
+              formatter = series.get('pointRenderer');
+            }
+            count = count + 1;
+            var tipInfo = series.getTipInfo(info);
+            if(Util.isObject(tipInfo)){
+              rst.items.push(tipInfo);
+            }else if(Util.isArray(tipInfo) && Util.isObject(tipInfo[0])){
+              rst.items = rst.items.concat(tipInfo);
+            }else{
+              item.name = series.get('name');
+              item.value = formatter ? formatter(info,series) : tipInfo;
+              item.color = info.color || series.get('color');
+              item.suffix = series.get('suffix');
+              rst.items.push(item);
+            }
+
+            if(markersGroup && markersGroup.get('single')){
+                markersGroup.show();
+                var marker = markersGroup.getChildAt(0);
+                marker && marker.attr({
+                  x :info.x,
+                  y : info.y
+                });
+            }
+
+          }else{
+            if(markersGroup && markersGroup.get('single')){
+              markersGroup.hide();
+            }
           }
+                    
         }
         if(series.get('xAxis')){
           title = series.get('xAxis').formatPoint(info.xValue);

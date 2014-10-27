@@ -162,7 +162,7 @@ Chart.ATTRS = {
      * 应用的样式
      * @type {Object}
      */
-    theme : Theme.Base
+    theme : Theme.SmoothBase
     
     /**
      * @event seriesactived
@@ -523,6 +523,15 @@ Util.augment(Chart,{
    */
   getSeries : function(){
     return this.get('seriesGroup').getSeries();
+  },
+  /**
+   * 根据name获取序列
+   * @return {Chart.Series} 对应的数据序列
+   */
+  getSerieByName : function(name){
+    return this.get('seriesGroup').findBy(function(item){
+      return item.get('name') == name;
+    });
   },
    /**
    * 改变数据

@@ -1,6 +1,6 @@
 ;
 (function() {
-  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_101_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_candlesticks_100_src_candlestick_debug, achart_legend_101_src_legend_debug, achart_legend_101_src_uselegend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_candlesticks_100_src_candlesticks_debug, achart_legend_101_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_candlesticks_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_timecategory_debug, achart_axis_100_src_numbercategory_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1011_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_1011_src_chart_debug, acharts_1011_acharts_debug;
+  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_101_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_candlesticks_100_src_candlestick_debug, achart_legend_101_src_legend_debug, achart_legend_101_src_uselegend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_candlesticks_100_src_candlesticks_debug, achart_legend_101_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_candlesticks_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_timecategory_debug, achart_axis_100_src_numbercategory_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1012_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_1012_src_chart_debug, acharts_1012_acharts_debug;
   achart_raphael_100_src_eve_debug = function(exports) {
     // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
     // 
@@ -8246,10 +8246,7 @@
     function analyze(arr) {
       var max = arr[0],
         min = arr[0],
-        avg, total = arr[0],
-        length = arr.length,
-        deviation = 0,
-        avg;
+        length = arr.length;
       for (var i = 1; i < length; i++) {
         var val = arr[i];
         if (max < val) {
@@ -8258,13 +8255,7 @@
         if (min > val) {
           min = val;
         }
-        total += val;
       }
-      avg = total / length;
-      for (var i = 0; i < length; i++) {
-        deviation += Math.abs(arr[i] - avg);
-      }
-      deviation = deviation / length;
       if (min == max) {
         if (min > 0) {
           min = 0;
@@ -8274,9 +8265,7 @@
       }
       return {
         max: max,
-        min: min,
-        avg: avg,
-        deviation: deviation
+        min: min
       };
     }
 
@@ -8342,11 +8331,7 @@
         }
         if (isNull(interval)) {
           var temp = (max - min) / avgCount;
-          if (rst.deviation > temp) {
-            interval = snapTo(temp, true, intervalArray);
-          } else {
-            interval = snapTo(temp, true, intervalArray);
-          }
+          interval = snapTo(temp, true, intervalArray);
           count = parseInt((max - min) / interval, 10);
           if (count > maxCount) {
             count = maxCount;
@@ -8914,7 +8899,7 @@
     // smooth风格的基础样式,色系分布均为6种.
     Theme.SmoothBase = Theme.initTheme(Theme.Origin, {
       title: {
-        'fill': '#444'
+        'fill': '#505050'
       },
       subTitle: {
         'fill': '#999'
@@ -8924,15 +8909,12 @@
           'stroke-width': 1,
           'stroke': '#a7a7a7'
         },
-        tickLine: {
-          'stroke': '#a7a7a7',
-          'stroke-width': 1,
-          value: 5
-        },
+        tickLine: null,
         labels: {
           label: {
             y: 12,
-            fill: '#444'
+            fill: '#444444',
+            'font-size': '12'
           }
         }
       },
@@ -8948,14 +8930,15 @@
         title: {
           text: '',
           rotate: -90,
-          x: -30,
+          x: -35,
           fill: '#444'
         },
         position: 'left',
         labels: {
           label: {
-            x: -12,
-            fill: '#444'
+            x: -20,
+            fill: '#444444',
+            'font-size': '12'
           }
         }
       },
@@ -8966,19 +8949,78 @@
           100
         ]
       },
-      colors: ['#00a3d7', '#6ebb46', '#f6c100', '#ff6a00', '#e32400', '#423ba8'],
-      symbols: ['circle', 'diamond', 'square', 'triangle', 'triangle-down'],
+      legend: {
+        back: null,
+        spacingX: 30,
+        itemCfg: {
+          //子项的配置信息
+          label: {
+            fill: '#a7a7a7',
+            'text-anchor': 'start',
+            cursor: 'pointer',
+            'font-size': '12'
+          }
+        }
+      },
+      colors: ['#4dceff', '#79c850', '#ffb65d', '#fc694b', '#7179cb', '#9a9792'],
+      symbols: ['circle'],
       seriesOptions: {
+        lineCfg: {
+          line: {
+            'stroke-width': 4
+          },
+          lineActived: {
+            'stroke-width': 4
+          },
+          markers: {
+            marker: {
+              fill: '#fff',
+              radius: 6,
+              'stroke-width': 4
+            },
+            actived: {
+              fill: '#fff',
+              'stroke-width': 5,
+              stroke: null
+            }
+          }
+        },
+        areaCfg: {
+          markers: {
+            single: true,
+            marker: {
+              fill: '#fff',
+              radius: 6,
+              'stroke-width': 4
+            },
+            actived: {
+              fill: '#fff',
+              'stroke-width': 5,
+              stroke: null
+            }
+          },
+          area: {
+            'fill-opacity': 0.5,
+            stroke: null
+          }
+        },
         pieCfg: {
-          colors: ['#00a3d7', '#6ebb46', '#f6c100', '#ff6a00', '#e32400', '#423ba8']
+          colors: ['#4dceff', '#79c850', '#ffb65d', '#fc694b', '#7179cb', '#9a9792'],
+          labels: {
+            distance: 30,
+            label: {
+              'font-size': '12',
+              fill: '#a7a7a7'
+            }
+          }
         }
       },
       tooltip: {
         offset: 10,
         title: {
-          'font-size': '10',
+          'font-size': '12',
           'text-anchor': 'start',
-          x: 5,
+          x: 8,
           y: 15,
           fill: '#444'
         },
@@ -8989,16 +9031,17 @@
           fill: '#444'
         },
         crossLine: {
-          stroke: '#a7a7a7'
+          stroke: '#d7d7d7'
         }
       }
     });
     Theme.Smooth1 = Theme.initTheme(Theme.SmoothBase);
     Theme.Smooth2 = Theme.initTheme(Theme.SmoothBase, {
-      colors: ['#7179cb', '#4dceff', '#79c850', '#ffb65d', '#fc694b', '#9a9792'],
+      colors: ['#00a3d7', '#6ebb46', '#f6c100', '#ff6a00', '#e32400', '#423ba8'],
+      symbols: ['circle', 'diamond', 'square', 'triangle', 'triangle-down'],
       seriesOptions: {
         pieCfg: {
-          colors: ['#7179cb', '#4dceff', '#79c850', '#ffb65d', '#fc694b', '#9a9792']
+          colors: ['#00a3d7', '#6ebb46', '#f6c100', '#ff6a00', '#e32400', '#423ba8']
         }
       }
     });
@@ -10605,12 +10648,14 @@
         x = x - bbox.width - offset;
         y = y - bbox.height;
         if (customDiv && _self.get('customFollow')) {
-          var paddingLeft = parseFloat(Util.getStyle(customDiv, 'paddingLeft')) || 0;
+          var paddingLeft = parseFloat(Util.getStyle(customDiv, 'paddingLeft')) || 0,
+            padingTop = parseFloat(Util.getStyle(customDiv, 'paddingTop')) || 0;
           x = x - Util.getOuterWidth(customDiv) + paddingLeft;
+          y = y - Util.getOuterHeight(customDiv) + padingTop;
         }
         if (plotRange) {
           if (!plotRange.isInRange(x, y)) {
-            if (!plotRange.isInVertical(y)) {
+            if (!plotRange.isInVertical(y) && !customDiv) {
               y = plotRange.tl.y;
             }
             if (!plotRange.isInHorizontal(x)) {
@@ -10662,8 +10707,11 @@
         item.index = index;
         var _self = this,
           customDiv = _self.get('customDiv'),
-          listDom = find(customDiv, CLS_LIST),
-          itemTpl = _self.get('itemTpl'),
+          listDom = find(customDiv, CLS_LIST);
+        if (!listDom) {
+          return;
+        }
+        var itemTpl = _self.get('itemTpl'),
           str = Util.substitute(itemTpl, item),
           node = Util.createDom(str);
         listDom.appendChild(node);
@@ -12917,7 +12965,8 @@
       yField: 'y',
       itemName: 'seriesItem',
       legendType: 'rect',
-      groupName: 'series'
+      groupName: 'series',
+      effectChart: false
     };
     Util.augment(Series, {
       renderUI: function() {
@@ -12956,7 +13005,7 @@
           _self.set('data', data);
         }
         if (redraw) {
-          if (parent && parent.repaint) {
+          if (_self.get('effectChart') && parent && parent.repaint) {
             parent.repaint();
           } else if (_self.get('visible')) {
             _self.repaint();
@@ -13077,7 +13126,11 @@
       findPointByValue: function(value) {
         var _self = this,
           points = _self.get('points'),
-          rst, last;
+          rst, first = points[0],
+          next, last = points[points.length - 1];
+        if (Util.isNumber(value) && (value > last.xValue || value < first.xValue)) {
+          return null;
+        }
         Util.each(points, function(point, index) {
           if (_self.snapEqual(point.xValue, value) && point.value != null) {
             rst = point;
@@ -13107,9 +13160,9 @@
         _self.set('painting', true);
         _self.fire('beforepaint');
         _self.draw(points, function() {
-          _self.sort();
           _self.fire('afterpaint');
         });
+        _self.sort();
         _self.set('isPaint', true);
         _self.set('painting', false);
       },
@@ -13123,6 +13176,7 @@
           _self.paint();
           return;
         }
+        _self.set('repainting', true);
         points = _self.getPoints();
         if (labels) {
           labels.items = [];
@@ -13147,6 +13201,7 @@
         });
         _self._changeMarkers();
         _self._changeLabels();
+        _self.set('repainting', false);
       },
       changeShapes: function(points) {},
       addMarker: function(point) {
@@ -13236,6 +13291,7 @@
       pointStart: 0,
       xAxis: null,
       yAxis: null,
+      effectChart: true,
       invert: false,
       pointsCache: {}
     };
@@ -14262,6 +14318,7 @@
       item: {
         'stroke': '#fff'
       },
+      visibleCache: {},
       cancelSelect: true,
       xField: 'name',
       stickyTracking: false,
@@ -14306,24 +14363,18 @@
       },
       changeShapes: function(points, animate) {
         var _self = this;
-        this.set('visiblePoints', null);
+        points = points || _self.getPoints();
         Util.each(points, function(point, index) {
           _self.formatPoint(point, index);
         });
         this.clearSelected();
         _self.changePoints(points);
       },
-      changeData: function(data, redraw) {
-        var _self = this,
-          curanimate = _self.get('animate');
-        if (redraw) {
-          _self.get('group').clear();
-          _self.set('animate', false);
-        }
-        Pie.superclass.changeData.call(this, data, redraw);
-        if (redraw && _self.get('legend')) {
+      repaint: function() {
+        var _self = this;
+        Pie.superclass.repaint.call(this);
+        if (_self.get('legend')) {
           _self.resetLegendItems();
-          _self.set('animate', curanimate);
         }
       },
       processLabels: function(points) {
@@ -14645,7 +14696,7 @@
         var _self = this,
           visiblePoints, points = [],
           items = _self.getItems();
-        if (!_self.get('isPaint') || items.length == 0) {
+        if (!_self.get('isPaint') || items.length == 0 || _self.get('repainting')) {
           return _self.getPoints();
         }
         visiblePoints = _self.get('visiblePoints');
@@ -14863,13 +14914,20 @@
         }
         item.set('selected', selected);
       },
+      _onVisibleChange: function() {
+        var _self = this;
+        _self.set('points', null);
+        this.set('visiblePoints', null);
+        this.changeShapes();
+        _self.resetLabels();
+      },
       showChild: function(item) {
         Pie.superclass.showChild.call(this, item);
-        this.repaint();
+        this._onVisibleChange();
       },
       hideChild: function(item) {
         Pie.superclass.hideChild.call(this, item);
-        this.repaint();
+        this._onVisibleChange();
       },
       remove: function() {
         this.removeLegend();
@@ -16717,7 +16775,7 @@
     exports = Flag;
     return exports;
   }();
-  acharts_1011_src_seriesgroup_debug = function(exports) {
+  acharts_1012_src_seriesgroup_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       ActivedGroup = achart_actived_100_index_debug.Group,
       PlotItem = achart_plot_100_index_debug.Item,
@@ -16924,32 +16982,39 @@
             title, invert = series.get('invert'),
             xName = invert ? 'y' : 'x',
             yName = invert ? 'x' : 'y';
-          if (info && info.value != null) {
+          if (info) {
             if (series.get('visible')) {
-              var formatter = renderer;
-              if (series.get('pointRenderer')) {
-                formatter = series.get('pointRenderer');
-              }
-              count = count + 1;
-              var tipInfo = series.getTipInfo(info);
-              if (Util.isObject(tipInfo)) {
-                rst.items.push(tipInfo);
-              } else if (Util.isArray(tipInfo) && Util.isObject(tipInfo[0])) {
-                rst.items = rst.items.concat(tipInfo);
-              } else {
-                item.name = series.get('name');
-                item.value = formatter ? formatter(info, series) : tipInfo;
-                item.color = info.color || series.get('color');
-                item.suffix = series.get('suffix');
-                rst.items.push(item);
-              }
               var markersGroup = series.get('markersGroup');
-              if (markersGroup && markersGroup.get('single')) {
-                var marker = markersGroup.getChildAt(0);
-                marker && marker.attr({
-                  x: info.x,
-                  y: info.y
-                });
+              if (info.value != null) {
+                var formatter = renderer;
+                if (series.get('pointRenderer')) {
+                  formatter = series.get('pointRenderer');
+                }
+                count = count + 1;
+                var tipInfo = series.getTipInfo(info);
+                if (Util.isObject(tipInfo)) {
+                  rst.items.push(tipInfo);
+                } else if (Util.isArray(tipInfo) && Util.isObject(tipInfo[0])) {
+                  rst.items = rst.items.concat(tipInfo);
+                } else {
+                  item.name = series.get('name');
+                  item.value = formatter ? formatter(info, series) : tipInfo;
+                  item.color = info.color || series.get('color');
+                  item.suffix = series.get('suffix');
+                  rst.items.push(item);
+                }
+                if (markersGroup && markersGroup.get('single')) {
+                  markersGroup.show();
+                  var marker = markersGroup.getChildAt(0);
+                  marker && marker.attr({
+                    x: info.x,
+                    y: info.y
+                  });
+                }
+              } else {
+                if (markersGroup && markersGroup.get('single')) {
+                  markersGroup.hide();
+                }
               }
             }
             if (series.get('xAxis')) {
@@ -17462,11 +17527,11 @@
     exports = Series;
     return exports;
   }();
-  acharts_1011_src_chart_debug = function(exports) {
+  acharts_1012_src_chart_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       Canvas = achart_canvas_100_index_debug,
       PlotBack = achart_plot_100_index_debug.Back,
-      SeriesGroup = acharts_1011_src_seriesgroup_debug,
+      SeriesGroup = acharts_1012_src_seriesgroup_debug,
       Theme = achart_theme_100_index_debug;
     var Chart = function(cfg) {
       this._attrs = Util.mix({}, Chart.ATTRS, cfg);
@@ -17494,7 +17559,7 @@
       forceFit: false,
       fitRatio: 0,
       fields: undefined,
-      theme: Theme.Base
+      theme: Theme.SmoothBase
     };
     Util.augment(Chart, {
       get: function(name) {
@@ -17696,6 +17761,11 @@
       getSeries: function() {
         return this.get('seriesGroup').getSeries();
       },
+      getSerieByName: function(name) {
+        return this.get('seriesGroup').findBy(function(item) {
+          return item.get('name') == name;
+        });
+      },
       changeData: function(data) {
         var _self = this,
           group = _self.get('seriesGroup');
@@ -17742,8 +17812,8 @@
     exports = Chart;
     return exports;
   }();
-  acharts_1011_acharts_debug = function(exports) {
-    var acharts = acharts_1011_src_chart_debug;
+  acharts_1012_acharts_debug = function(exports) {
+    var acharts = acharts_1012_src_chart_debug;
     acharts.Util = achart_util_100_index_debug;
     acharts.Canvas = achart_canvas_100_index_debug;
     acharts.Plot = achart_plot_100_index_debug;
