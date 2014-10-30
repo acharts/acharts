@@ -236,6 +236,7 @@ Util.augment(Group,{
         Util.each(_self.getVisibleSeries(),function(series){
           var markers = series.get('markersGroup');
           markers && markers.clearActivedItem();
+          series.clearActivedItem && series.clearActivedItem();
         });
       }
       _self._hideTip();

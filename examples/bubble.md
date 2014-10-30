@@ -302,3 +302,129 @@ seajs.use('acharts', function(Achart) {
 });
 ````
 
+## 文本
+
+````html
+
+<div id="c4"></div>
+
+````
+
+````javascript
+seajs.use('acharts', function(AChart) {
+  var chart = new AChart({
+    theme : AChart.Theme.SmoothBase,
+    id : 'c4',
+    width : 950,
+    height : 500,
+    plotCfg : {
+      margin : [50,50,100]
+    },
+    xAxis : {
+      type : 'time',
+      formatter : function(value)   {
+              return AChart.Date.format(new Date(value),'yyyy-mm-dd');
+      }
+    },
+    yAxis : {
+      title : {
+        text : '气泡'
+      },
+      min : -10
+    },  
+    tooltip : {
+      shared : true
+    },
+    seriesOptions : {
+        bubbleCfg : {
+          labels : {
+            label : {
+              'font-size' : 12,
+              fill : '#fff'
+            }
+          }
+        }
+    },
+    series: [{
+      name : 'bubble1',
+      data: [
+      [1147651200000,81,63],
+      [1147737600000,5,89],
+      [1147824000000,50,73],
+      [1147910400000,22,14],
+      [1147996800000,24,20],
+      [1148256000000,37,34],
+      [1148342400000,56,53],
+      [1148428800000,45,70],
+      [1148515200000,44,28],
+      [1148601600000,52,59]]
+  }]
+  });
+
+  chart.render();
+});
+
+````
+
+## 自定义信息
+
+````html
+
+<div id="c5"></div>
+
+````
+
+````javascript
+seajs.use('acharts', function(AChart) {
+  var chart = new AChart({
+    theme : AChart.Theme.SmoothBase,
+    id : 'c5',
+    width : 950,
+    height : 500,
+    plotCfg : {
+      margin : [50,50,100]
+    },
+    xAxis : {
+      
+    },
+    yAxis : {
+      title : {
+        text : '气泡'
+      },
+      min : -10
+    },  
+    tooltip : {
+      shared : true
+    },
+    seriesOptions : {
+        bubbleCfg : {
+          labels : {
+            label : {
+              'font-size' : 12,
+              fill : '#fff'
+            }
+          }
+        }
+    },
+    series: [{
+      name : 'bubble1',
+      data: [
+        {x : 97,y:36,r:79,name : '1'},
+        {x : 94,y:74,r:60,name : '2'},
+        {x : 68,y:76,r:58,name : '3'},
+        {x : 64,y:87,r:56,name : '4'},
+        {x : 68,y:27,r:73,name : '5'},
+        {x : 74,y:99,r:42,name : '6'},
+        {x : 7,y:93,r:87,name : '7'},
+        {x : 51,y:69,r:40,name : '8'},
+        {x : 38,y:23,r:33,name : '9'},
+        {x : 57,y:86,r:31,name : '10'}
+      ]
+  }]
+  });
+
+  chart.render();
+});
+
+````
+
