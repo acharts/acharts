@@ -8805,6 +8805,21 @@
           animate: true,
           markers: lineCfg.markers
         },
+        arearangeCfg: {
+          markers: null,
+          line: {
+            stroke: null
+          },
+          area: {
+            stroke: null
+          },
+          lineActived: {
+            stroke: null
+          },
+          areaActived: {
+            stroke: null
+          }
+        },
         flagCfg: {
           flags: {
             flag: {
@@ -13352,6 +13367,9 @@
           xAxis = _self.get('xAxis'),
           type = xAxis.get('type');
         if ((type == 'number' || type == 'time') && _self.get('pointInterval')) {
+          return false;
+        }
+        if (type == 'category' && !xAxis.get('autoTicks')) {
           return false;
         }
         return true;

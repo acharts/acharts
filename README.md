@@ -10,7 +10,7 @@ Acharts is a javascript charts,using svg and vml,Using Raphael as a foundation.
 ## links
 
 * [API](http://acharts.github.io/acharts-api/api/index.html)
-* [demo](http://builive.com/chart/index.php)
+* [demo](http://acharts.github.io)
 * [使用文档](wiki/)
 
 ## 答疑
