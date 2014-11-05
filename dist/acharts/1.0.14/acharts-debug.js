@@ -1,6 +1,6 @@
 ;
 (function() {
-  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_101_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_candlesticks_100_src_candlestick_debug, achart_legend_101_src_legend_debug, achart_legend_101_src_uselegend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_candlesticks_100_src_candlesticks_debug, achart_legend_101_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_candlesticks_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_timecategory_debug, achart_axis_100_src_numbercategory_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1013_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_1013_src_chart_debug, acharts_1013_acharts_debug;
+  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_101_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_candlesticks_100_src_candlestick_debug, achart_legend_101_src_legend_debug, achart_legend_101_src_uselegend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_candlesticks_100_src_candlesticks_debug, achart_legend_101_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_candlesticks_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_timecategory_debug, achart_axis_100_src_numbercategory_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1014_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_1014_src_chart_debug, acharts_1014_acharts_debug;
   achart_raphael_100_src_eve_debug = function(exports) {
     // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
     // 
@@ -16820,7 +16820,7 @@
     exports = Flag;
     return exports;
   }();
-  acharts_1013_src_seriesgroup_debug = function(exports) {
+  acharts_1014_src_seriesgroup_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       ActivedGroup = achart_actived_100_index_debug.Group,
       PlotItem = achart_plot_100_index_debug.Item,
@@ -17573,11 +17573,11 @@
     exports = Series;
     return exports;
   }();
-  acharts_1013_src_chart_debug = function(exports) {
+  acharts_1014_src_chart_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       Canvas = achart_canvas_100_index_debug,
       PlotBack = achart_plot_100_index_debug.Back,
-      SeriesGroup = acharts_1013_src_seriesgroup_debug,
+      SeriesGroup = acharts_1014_src_seriesgroup_debug,
       Theme = achart_theme_100_index_debug;
     var Chart = function(cfg) {
       this._attrs = Util.mix({}, Chart.ATTRS, cfg);
@@ -17812,6 +17812,26 @@
           return item.get('name') == name;
         });
       },
+      getXAxis: function(name) {
+        var _self = this,
+          series;
+        if (name) {
+          series = _self.getSerieByName(name);
+        } else {
+          series = _self.getSeries()[0];
+        }
+        return series.get('xAxis');
+      },
+      getYAxis: function(name) {
+        var _self = this,
+          series;
+        if (name) {
+          series = _self.getSerieByName(name);
+        } else {
+          series = _self.getSeries()[0];
+        }
+        return series.get('yAxis');
+      },
       changeData: function(data) {
         var _self = this,
           group = _self.get('seriesGroup');
@@ -17858,8 +17878,8 @@
     exports = Chart;
     return exports;
   }();
-  acharts_1013_acharts_debug = function(exports) {
-    var acharts = acharts_1013_src_chart_debug;
+  acharts_1014_acharts_debug = function(exports) {
+    var acharts = acharts_1014_src_chart_debug;
     acharts.Util = achart_util_100_index_debug;
     acharts.Canvas = achart_canvas_100_index_debug;
     acharts.Plot = achart_plot_100_index_debug;
@@ -17867,6 +17887,7 @@
     acharts.Date = achart_date_100_index_debug;
     acharts.Theme = achart_theme_100_index_debug;
     acharts.Series = achart_series_100_index_debug;
+    acharts.Legend = achart_legend_101_index_debug;
     acharts.Flags = achart_flags_100_index_debug;
     acharts.Candlesticks = achart_candlesticks_100_index_debug;
     acharts.Axis = achart_axis_100_index_debug;

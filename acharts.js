@@ -10,6 +10,8 @@ acharts.Theme = require('achart-theme');
 
 acharts.Series = require('achart-series');
 
+acharts.Legend = require('achart-legend');
+
 acharts.Flags = require('achart-flags');
 acharts.Candlesticks = require('achart-candlesticks');
 

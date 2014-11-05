@@ -77,8 +77,13 @@ describe('测试图形的基础内容', function() {
       expect(plotRange.getWidth()).to.be(chart.get('canvas').get('width') - 100);
     });
     /**/
-    it('测试边框',function(){
+    it('测试获取函数',function(){
+      var xAxis = chart.getXAxis(),
+        yAxis = chart.getYAxis(),
+        first = chart.getSeries()[0];
+      expect(xAxis).to.be(first.get('xAxis'));
 
+      expect(yAxis).to.be(first.get('yAxis'));
     });
 
     it('测试背景',function(){

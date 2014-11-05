@@ -25,7 +25,7 @@ Acharts is a javascript charts,using svg and vml,Using Raphael as a foundation.
   1. 引入cdn上的代码 
   
   ```js
-    <script src="http://g.tbcdn.cn/bui/acharts/1.0.13/acharts-min.js"></script>
+    <script src="http://g.tbcdn.cn/bui/acharts/1.0.14/acharts-min.js"></script>
   ```
 
   2. 使用,引入acharts文件后，会在window上增加Chart变量代表Chart控件类
@@ -72,6 +72,21 @@ Acharts is a javascript charts,using svg and vml,Using Raphael as a foundation.
 
   * canvas 画布，详细信息参考[画布](http://spmjs.io/docs/achart-canvas/)
 
+
+
+### 方法
+
+  * render() 渲染图表
+  * on(eventName,fn) 绑定事件
+  * off(eventName,fn) 解除事件绑定
+  * get(name) 获取属性
+  * set(name,value) 设置属性
+
+  * getSeries() 返回所有的series
+  * getSeriesByName(name) 获取指定名称的series
+  * getXAxis(seriesName) 根据序列series的name返回对应的x坐标轴，如果不指定则取第一个序列的x坐标轴
+  * getYAxis(seriesName) 根据序列series的name返回对应的y坐标轴，如果不指定则取第一个序列的y坐标轴
+  * changeData(data) 更改数据，如果有多个序列则 data 是一个多维数组，data = [data1,data2...datan]
 
 
 ### 绑定事件

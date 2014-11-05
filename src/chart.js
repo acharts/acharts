@@ -533,6 +533,36 @@ Util.augment(Chart,{
       return item.get('name') == name;
     });
   },
+  /**
+   * 获取x坐标轴
+   * @param  {String} [seriesName] 数据序列的名称，如果为空，则返回第一个数据序列的x坐标轴
+   * @return {Chart.Series}  坐标轴
+   */
+  getXAxis : function (name) {
+    var _self = this,
+      series;
+    if(name){
+      series = _self.getSerieByName(name);
+    }else{
+      series = _self.getSeries()[0];
+    }
+    return series.get('xAxis');
+  },
+  /**
+   * 获取y坐标轴
+   * @param  {String} [seriesName] 数据序列的名称，如果为空，则返回第一个数据序列的y坐标轴
+   * @return {Chart.Series}  坐标轴
+   */
+  getYAxis : function (name) {
+    var _self = this,
+      series;
+    if(name){
+      series = _self.getSerieByName(name);
+    }else{
+      series = _self.getSeries()[0];
+    }
+    return series.get('yAxis');
+  },
    /**
    * 改变数据
    * @param  {Array} data 数据
