@@ -25,7 +25,7 @@ Acharts is a javascript charts,using svg and vml,Using Raphael as a foundation.
   1. 引入cdn上的代码 
   
   ```js
-    <script src="http://g.tbcdn.cn/bui/acharts/1.0.14/acharts-min.js"></script>
+    <script src="http://g.tbcdn.cn/bui/acharts/1.0.15/acharts-min.js"></script>
   ```
 
   2. 使用,引入acharts文件后，会在window上增加Chart变量代表Chart控件类

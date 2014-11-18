@@ -347,6 +347,7 @@ Util.augment(Group,{
         }
         if(count == 1){
           rst.title =  title;
+          rst.point.name = info.name;
           if(info[xName]){
             rst.point[xName] = info[xName];
             if(sArray.length == 1){
@@ -370,7 +371,7 @@ Util.augment(Group,{
     var _self = this,
       tooltip = _self.get('tipGroup'),
       prePoint = _self.get('prePoint');
-    if(!prePoint || prePoint.x != point.x || prePoint.y != point.y){
+    if(!prePoint || (prePoint.x != point.x || prePoint.y != point.y) || point.name != prePoint.name){
       tooltip.setPosition(point.x,point.y);
       _self.set('prePoint',point);
       if(!tooltip.get('visible')){
