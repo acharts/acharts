@@ -9,6 +9,7 @@ acharts.Date = require('achart-date');
 acharts.Theme = require('achart-theme');
 
 acharts.Series = require('achart-series');
+acharts.Series.Arearange = require('achart-arearange');
 
 acharts.Legend = require('achart-legend');
 

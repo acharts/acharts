@@ -1,6 +1,6 @@
 {
   "name": "acharts",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "",
   "keywords": [
     "charts",
@@ -32,7 +32,8 @@
       "achart-theme": "1.0.0",
       "achart-date": "1.0.0",
       "achart-flags" : "1.0.0",
-      "achart-candlesticks" : "1.0.0"
+      "achart-candlesticks" : "1.0.0",
+      "achart-arearange" : "1.0.0"
     },
     "devDependencies": {
       "expect.js": "0.3.1",

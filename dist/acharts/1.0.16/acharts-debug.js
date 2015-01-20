@@ -1,7 +1,7 @@
 ;
 (function() {
-  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_101_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_candlesticks_100_src_candlestick_debug, achart_legend_101_src_legend_debug, achart_legend_101_src_uselegend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_candlesticks_100_src_candlesticks_debug, achart_legend_101_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_candlesticks_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_timecategory_debug, achart_axis_100_src_numbercategory_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1014_src_seriesgroup_debug, achart_series_other_100_index_debug, acharts_1014_src_chart_debug, acharts_1014_acharts_debug;
-  achart_raphael_100_src_eve_debug = function(exports) {
+  var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_101_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_candlesticks_100_src_candlestick_debug, achart_legend_101_src_legend_debug, achart_legend_101_src_uselegend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_candlesticks_100_src_candlesticks_debug, achart_legend_101_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_candlesticks_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_timecategory_debug, achart_axis_100_src_numbercategory_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_arearange_100_src_arearange_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1016_src_seriesgroup_debug, achart_arearange_100_index_debug, achart_series_other_100_index_debug, acharts_1016_src_chart_debug, acharts_1016_acharts_debug;
+  achart_raphael_100_src_eve_debug = function() {
     // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
     // 
     // Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,19 +33,19 @@
           n: {}
         },
         /*\
-             * eve
-             [ method ]
+           * eve
+           [ method ]
       
-             * Fires event with given `name`, given scope and other parameters.
+           * Fires event with given `name`, given scope and other parameters.
       
-             > Arguments
+           > Arguments
       
-             - name (string) name of the *event*, dot (`.`) or slash (`/`) separated
-             - scope (object) context for the event handlers
-             - varargs (...) the rest of arguments will be sent to event handlers
+           - name (string) name of the *event*, dot (`.`) or slash (`/`) separated
+           - scope (object) context for the event handlers
+           - varargs (...) the rest of arguments will be sent to event handlers
       
-             = (object) array of returned values from the listeners
-            \*/
+           = (object) array of returned values from the listeners
+          \*/
         eve = function(name, scope) {
           name = String(name);
           var e = events,
@@ -110,17 +110,17 @@
       // Undocumented. Debug only.
       eve._events = events;
       /*\
-           * eve.listeners
-           [ method ]
+         * eve.listeners
+         [ method ]
     
-           * Internal method which gives you array of all event handlers that will be triggered by the given `name`.
+         * Internal method which gives you array of all event handlers that will be triggered by the given `name`.
     
-           > Arguments
+         > Arguments
     
-           - name (string) name of the event, dot (`.`) or slash (`/`) separated
+         - name (string) name of the event, dot (`.`) or slash (`/`) separated
     
-           = (array) array of event handlers
-          \*/
+         = (array) array of event handlers
+        \*/
       eve.listeners = function(name) {
         var names = name.split(separator),
           e = events,
@@ -148,29 +148,29 @@
         return out;
       };
       /*\
-         * eve.on
-         [ method ]
-         **
-         * Binds given event handler with a given name. You can use wildcards “`*`” for the names:
-         | eve.on("*.under.*", f);
-         | eve("mouse.under.floor"); // triggers f
-         * Use @eve to trigger the listener.
-         **
-         > Arguments
-         **
-         - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
-         - f (function) event handler function
-         **
-         = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment. 
-         > Example:
-         | eve.on("mouse", eatIt)(2);
-         | eve.on("mouse", scream);
-         | eve.on("mouse", catchIt)(1);
-         * This will ensure that `catchIt()` function will be called before `eatIt()`.
-      *
-         * If you want to put your handler before non-indexed handlers, specify a negative value.
-         * Note: I assume most of the time you don’t need to worry about z-index, but it’s nice to have this feature “just in case”.
-        \*/
+       * eve.on
+       [ method ]
+       **
+       * Binds given event handler with a given name. You can use wildcards “`*`” for the names:
+       | eve.on("*.under.*", f);
+       | eve("mouse.under.floor"); // triggers f
+       * Use @eve to trigger the listener.
+       **
+       > Arguments
+       **
+       - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
+       - f (function) event handler function
+       **
+       = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment. 
+       > Example:
+       | eve.on("mouse", eatIt)(2);
+       | eve.on("mouse", scream);
+       | eve.on("mouse", catchIt)(1);
+       * This will ensure that `catchIt()` function will be called before `eatIt()`.
+    *
+       * If you want to put your handler before non-indexed handlers, specify a negative value.
+       * Note: I assume most of the time you don’t need to worry about z-index, but it’s nice to have this feature “just in case”.
+      \*/
       eve.on = function(name, f) {
         name = String(name);
         if (typeof f != 'function') {
@@ -197,21 +197,21 @@
         };
       };
       /*\
-         * eve.f
-         [ method ]
-         **
-         * Returns function that will fire given event with optional arguments.
-      * Arguments that will be passed to the result function will be also
-      * concated to the list of final arguments.
-       | el.onclick = eve.f("click", 1, 2);
-       | eve.on("click", function (a, b, c) {
-       |     console.log(a, b, c); // 1, 2, [event object]
-       | });
-         > Arguments
-      - event (string) event name
-      - varargs (…) and any other arguments
-      = (function) possible event handler function
-        \*/
+       * eve.f
+       [ method ]
+       **
+       * Returns function that will fire given event with optional arguments.
+    * Arguments that will be passed to the result function will be also
+    * concated to the list of final arguments.
+     | el.onclick = eve.f("click", 1, 2);
+     | eve.on("click", function (a, b, c) {
+     |     console.log(a, b, c); // 1, 2, [event object]
+     | });
+       > Arguments
+    - event (string) event name
+    - varargs (…) and any other arguments
+    = (function) possible event handler function
+      \*/
       eve.f = function(event) {
         var attrs = [].slice.call(arguments, 1);
         return function() {
@@ -222,28 +222,28 @@
         };
       };
       /*\
-       * eve.stop
-       [ method ]
-       **
-       * Is used inside an event handler to stop the event, preventing any subsequent listeners from firing.
-      \*/
+     * eve.stop
+     [ method ]
+     **
+     * Is used inside an event handler to stop the event, preventing any subsequent listeners from firing.
+    \*/
       eve.stop = function() {
         stop = 1;
       };
       /*\
-       * eve.nt
-       [ method ]
-       **
-       * Could be used inside event handler to figure out actual name of the event.
-       **
-       > Arguments
-       **
-       - subname (string) #optional subname of the event
-       **
-       = (string) name of the event, if `subname` is not specified
-       * or
-       = (boolean) `true`, if current event’s name contains `subname`
-      \*/
+     * eve.nt
+     [ method ]
+     **
+     * Could be used inside event handler to figure out actual name of the event.
+     **
+     > Arguments
+     **
+     - subname (string) #optional subname of the event
+     **
+     = (string) name of the event, if `subname` is not specified
+     * or
+     = (boolean) `true`, if current event’s name contains `subname`
+    \*/
       eve.nt = function(subname) {
         if (subname) {
           return new RegExp('(?:\\.|\\/|^)' + subname + '(?:\\.|\\/|$)').test(current_event);
@@ -251,35 +251,35 @@
         return current_event;
       };
       /*\
-       * eve.nts
-       [ method ]
-       **
-       * Could be used inside event handler to figure out actual name of the event.
-       **
-       **
-       = (array) names of the event
-      \*/
+     * eve.nts
+     [ method ]
+     **
+     * Could be used inside event handler to figure out actual name of the event.
+     **
+     **
+     = (array) names of the event
+    \*/
       eve.nts = function() {
         return current_event.split(separator);
       };
       /*\
-         * eve.off
-         [ method ]
-         **
-         * Removes given function from the list of event listeners assigned to given name.
-      * If no arguments specified all the events will be cleared.
-         **
-         > Arguments
-         **
-         - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
-         - f (function) event handler function
-        \*/
-      /*\
-       * eve.unbind
+       * eve.off
        [ method ]
        **
-       * See @eve.off
+       * Removes given function from the list of event listeners assigned to given name.
+    * If no arguments specified all the events will be cleared.
+       **
+       > Arguments
+       **
+       - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
+       - f (function) event handler function
       \*/
+      /*\
+     * eve.unbind
+     [ method ]
+     **
+     * See @eve.off
+    \*/
       eve.off = eve.unbind = function(name, f) {
         if (!name) {
           eve._events = events = {
@@ -341,22 +341,22 @@
         }
       };
       /*\
-       * eve.once
-       [ method ]
-       **
-       * Binds given event handler with a given name to only run once then unbind itself.
-       | eve.once("login", f);
-       | eve("login"); // triggers f
-       | eve("login"); // no listeners
-       * Use @eve to trigger the listener.
-       **
-       > Arguments
-       **
-       - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
-       - f (function) event handler function
-       **
-       = (function) same return function as @eve.on
-      \*/
+     * eve.once
+     [ method ]
+     **
+     * Binds given event handler with a given name to only run once then unbind itself.
+     | eve.once("login", f);
+     | eve("login"); // triggers f
+     | eve("login"); // no listeners
+     * Use @eve to trigger the listener.
+     **
+     > Arguments
+     **
+     - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
+     - f (function) event handler function
+     **
+     = (function) same return function as @eve.on
+    \*/
       eve.once = function(name, f) {
         var f2 = function() {
           eve.unbind(name, f2);
@@ -365,11 +365,11 @@
         return eve.on(name, f2);
       };
       /*\
-       * eve.version
-       [ property (string) ]
-       **
-       * Current version of the library.
-      \*/
+     * eve.version
+     [ property (string) ]
+     **
+     * Current version of the library.
+    \*/
       eve.version = version;
       eve.toString = function() {
         return 'You are running Eve ' + version;
@@ -378,7 +378,6 @@
       glob.eve = eve;
       exports = eve;
     }(this));
-    return exports;
   }();
   achart_date_100_index_debug = function(exports) {
     var dateRegex = /^(?:(?!0000)[0-9]{4}([-/.]+)(?:(?:0?[1-9]|1[0-2])\1(?:0?[1-9]|1[0-9]|2[0-8])|(?:0?[13-9]|1[0-2])\1(?:29|30)|(?:0?[13578]|1[02])\1(?:31))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)([-/.]?)0?2\2(?:29))(\s+([01]|([01][0-9]|2[0-3])):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9]))?$/;
@@ -2887,240 +2886,240 @@
       };
 
       function Matrix(a, b, c, d, e, f) {
-          if (a != null) {
-            this.a = +a;
-            this.b = +b;
-            this.c = +c;
-            this.d = +d;
-            this.e = +e;
-            this.f = +f;
-          } else {
-            this.a = 1;
-            this.b = 0;
-            this.c = 0;
-            this.d = 1;
-            this.e = 0;
-            this.f = 0;
-          }
+        if (a != null) {
+          this.a = +a;
+          this.b = +b;
+          this.c = +c;
+          this.d = +d;
+          this.e = +e;
+          this.f = +f;
+        } else {
+          this.a = 1;
+          this.b = 0;
+          this.c = 0;
+          this.d = 1;
+          this.e = 0;
+          this.f = 0;
         }
-        (function(matrixproto) {
-          matrixproto.add = function(a, b, c, d, e, f) {
-            var out = [
-                [],
-                [],
-                []
+      }
+      (function(matrixproto) {
+        matrixproto.add = function(a, b, c, d, e, f) {
+          var out = [
+              [],
+              [],
+              []
+            ],
+            m = [
+              [
+                this.a,
+                this.c,
+                this.e
               ],
-              m = [
-                [
-                  this.a,
-                  this.c,
-                  this.e
-                ],
-                [
-                  this.b,
-                  this.d,
-                  this.f
-                ],
-                [
-                  0,
-                  0,
-                  1
-                ]
+              [
+                this.b,
+                this.d,
+                this.f
               ],
-              matrix = [
-                [
-                  a,
-                  c,
-                  e
-                ],
-                [
-                  b,
-                  d,
-                  f
-                ],
-                [
-                  0,
-                  0,
-                  1
-                ]
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            matrix = [
+              [
+                a,
+                c,
+                e
               ],
-              x, y, z, res;
-            if (a && a instanceof Matrix) {
-              matrix = [
-                [
-                  a.a,
-                  a.c,
-                  a.e
-                ],
-                [
-                  a.b,
-                  a.d,
-                  a.f
-                ],
-                [
-                  0,
-                  0,
-                  1
-                ]
-              ];
-            }
-            for (x = 0; x < 3; x++) {
-              for (y = 0; y < 3; y++) {
-                res = 0;
-                for (z = 0; z < 3; z++) {
-                  res += m[x][z] * matrix[z][y];
-                }
-                out[x][y] = res;
+              [
+                b,
+                d,
+                f
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            x, y, z, res;
+          if (a && a instanceof Matrix) {
+            matrix = [
+              [
+                a.a,
+                a.c,
+                a.e
+              ],
+              [
+                a.b,
+                a.d,
+                a.f
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ];
+          }
+          for (x = 0; x < 3; x++) {
+            for (y = 0; y < 3; y++) {
+              res = 0;
+              for (z = 0; z < 3; z++) {
+                res += m[x][z] * matrix[z][y];
               }
+              out[x][y] = res;
             }
-            this.a = out[0][0];
-            this.b = out[1][0];
-            this.c = out[0][1];
-            this.d = out[1][1];
-            this.e = out[0][2];
-            this.f = out[1][2];
-          };
-          matrixproto.invert = function() {
-            var me = this,
-              x = me.a * me.d - me.b * me.c;
-            return new Matrix(me.d / x, -me.b / x, -me.c / x, me.a / x, (me.c * me.f - me.d * me.e) / x, (me.b * me.e - me.a * me.f) / x);
-          };
-          matrixproto.clone = function() {
-            return new Matrix(this.a, this.b, this.c, this.d, this.e, this.f);
-          };
-          matrixproto.translate = function(x, y) {
-            this.add(1, 0, 0, 1, x, y);
-          };
-          matrixproto.scale = function(x, y, cx, cy) {
-            y == null && (y = x);
-            (cx || cy) && this.add(1, 0, 0, 1, cx, cy);
-            this.add(x, 0, 0, y, 0, 0);
-            (cx || cy) && this.add(1, 0, 0, 1, -cx, -cy);
-          };
-          matrixproto.rotate = function(a, x, y) {
-            a = R.rad(a);
-            x = x || 0;
-            y = y || 0;
-            var cos = +math.cos(a).toFixed(9),
-              sin = +math.sin(a).toFixed(9);
-            this.add(cos, sin, -sin, cos, x, y);
-            this.add(1, 0, 0, 1, -x, -y);
-          };
-          matrixproto.x = function(x, y) {
-            return x * this.a + y * this.c + this.e;
-          };
-          matrixproto.y = function(x, y) {
-            return x * this.b + y * this.d + this.f;
-          };
-          matrixproto.get = function(i) {
-            return +this[Str.fromCharCode(97 + i)].toFixed(4);
-          };
-          matrixproto.toString = function() {
-            return R.svg ? 'matrix(' + [
+          }
+          this.a = out[0][0];
+          this.b = out[1][0];
+          this.c = out[0][1];
+          this.d = out[1][1];
+          this.e = out[0][2];
+          this.f = out[1][2];
+        };
+        matrixproto.invert = function() {
+          var me = this,
+            x = me.a * me.d - me.b * me.c;
+          return new Matrix(me.d / x, -me.b / x, -me.c / x, me.a / x, (me.c * me.f - me.d * me.e) / x, (me.b * me.e - me.a * me.f) / x);
+        };
+        matrixproto.clone = function() {
+          return new Matrix(this.a, this.b, this.c, this.d, this.e, this.f);
+        };
+        matrixproto.translate = function(x, y) {
+          this.add(1, 0, 0, 1, x, y);
+        };
+        matrixproto.scale = function(x, y, cx, cy) {
+          y == null && (y = x);
+          (cx || cy) && this.add(1, 0, 0, 1, cx, cy);
+          this.add(x, 0, 0, y, 0, 0);
+          (cx || cy) && this.add(1, 0, 0, 1, -cx, -cy);
+        };
+        matrixproto.rotate = function(a, x, y) {
+          a = R.rad(a);
+          x = x || 0;
+          y = y || 0;
+          var cos = +math.cos(a).toFixed(9),
+            sin = +math.sin(a).toFixed(9);
+          this.add(cos, sin, -sin, cos, x, y);
+          this.add(1, 0, 0, 1, -x, -y);
+        };
+        matrixproto.x = function(x, y) {
+          return x * this.a + y * this.c + this.e;
+        };
+        matrixproto.y = function(x, y) {
+          return x * this.b + y * this.d + this.f;
+        };
+        matrixproto.get = function(i) {
+          return +this[Str.fromCharCode(97 + i)].toFixed(4);
+        };
+        matrixproto.toString = function() {
+          return R.svg ? 'matrix(' + [
+            this.get(0),
+            this.get(1),
+            this.get(2),
+            this.get(3),
+            this.get(4),
+            this.get(5)
+          ].join() + ')' : [
+            this.get(0),
+            this.get(2),
+            this.get(1),
+            this.get(3),
+            0,
+            0
+          ].join();
+        };
+        matrixproto.toFilter = function() {
+          return 'progid:DXImageTransform.Microsoft.Matrix(M11=' + this.get(0) + ', M12=' + this.get(2) + ', M21=' + this.get(1) + ', M22=' + this.get(3) + ', Dx=' + this.get(4) + ', Dy=' + this.get(5) + ', sizingmethod=\'auto expand\')';
+        };
+        matrixproto.offset = function() {
+          return [
+            this.e.toFixed(4),
+            this.f.toFixed(4)
+          ];
+        };
+
+        function norm(a) {
+          return a[0] * a[0] + a[1] * a[1];
+        }
+
+        function normalize(a) {
+          var mag = math.sqrt(norm(a));
+          a[0] && (a[0] /= mag);
+          a[1] && (a[1] /= mag);
+        }
+        matrixproto.split = function() {
+          var out = {};
+          out.dx = this.e;
+          out.dy = this.f;
+          var row = [
+            [
+              this.a,
+              this.c
+            ],
+            [
+              this.b,
+              this.d
+            ]
+          ];
+          out.scalex = math.sqrt(norm(row[0]));
+          normalize(row[0]);
+          out.shear = row[0][0] * row[1][0] + row[0][1] * row[1][1];
+          row[1] = [
+            row[1][0] - row[0][0] * out.shear,
+            row[1][1] - row[0][1] * out.shear
+          ];
+          out.scaley = math.sqrt(norm(row[1]));
+          normalize(row[1]);
+          out.shear /= out.scaley;
+          var sin = -row[0][1],
+            cos = row[1][1];
+          if (cos < 0) {
+            out.rotate = R.deg(math.acos(cos));
+            if (sin < 0) {
+              out.rotate = 360 - out.rotate;
+            }
+          } else {
+            out.rotate = R.deg(math.asin(sin));
+          }
+          out.isSimple = !+out.shear.toFixed(9) && (out.scalex.toFixed(9) == out.scaley.toFixed(9) || !out.rotate);
+          out.isSuperSimple = !+out.shear.toFixed(9) && out.scalex.toFixed(9) == out.scaley.toFixed(9) && !out.rotate;
+          out.noRotation = !+out.shear.toFixed(9) && !out.rotate;
+          return out;
+        };
+        matrixproto.toTransformString = function(shorter) {
+          var s = shorter || this[split]();
+          if (s.isSimple) {
+            s.scalex = +s.scalex.toFixed(4);
+            s.scaley = +s.scaley.toFixed(4);
+            s.rotate = +s.rotate.toFixed(4);
+            return (s.dx || s.dy ? 't' + [
+              s.dx,
+              s.dy
+            ] : E) + (s.scalex != 1 || s.scaley != 1 ? 's' + [
+              s.scalex,
+              s.scaley,
+              0,
+              0
+            ] : E) + (s.rotate ? 'r' + [
+              s.rotate,
+              0,
+              0
+            ] : E);
+          } else {
+            return 'm' + [
               this.get(0),
               this.get(1),
               this.get(2),
               this.get(3),
               this.get(4),
               this.get(5)
-            ].join() + ')' : [
-              this.get(0),
-              this.get(2),
-              this.get(1),
-              this.get(3),
-              0,
-              0
-            ].join();
-          };
-          matrixproto.toFilter = function() {
-            return 'progid:DXImageTransform.Microsoft.Matrix(M11=' + this.get(0) + ', M12=' + this.get(2) + ', M21=' + this.get(1) + ', M22=' + this.get(3) + ', Dx=' + this.get(4) + ', Dy=' + this.get(5) + ', sizingmethod=\'auto expand\')';
-          };
-          matrixproto.offset = function() {
-            return [
-              this.e.toFixed(4),
-              this.f.toFixed(4)
             ];
-          };
-
-          function norm(a) {
-            return a[0] * a[0] + a[1] * a[1];
           }
-
-          function normalize(a) {
-            var mag = math.sqrt(norm(a));
-            a[0] && (a[0] /= mag);
-            a[1] && (a[1] /= mag);
-          }
-          matrixproto.split = function() {
-            var out = {};
-            out.dx = this.e;
-            out.dy = this.f;
-            var row = [
-              [
-                this.a,
-                this.c
-              ],
-              [
-                this.b,
-                this.d
-              ]
-            ];
-            out.scalex = math.sqrt(norm(row[0]));
-            normalize(row[0]);
-            out.shear = row[0][0] * row[1][0] + row[0][1] * row[1][1];
-            row[1] = [
-              row[1][0] - row[0][0] * out.shear,
-              row[1][1] - row[0][1] * out.shear
-            ];
-            out.scaley = math.sqrt(norm(row[1]));
-            normalize(row[1]);
-            out.shear /= out.scaley;
-            var sin = -row[0][1],
-              cos = row[1][1];
-            if (cos < 0) {
-              out.rotate = R.deg(math.acos(cos));
-              if (sin < 0) {
-                out.rotate = 360 - out.rotate;
-              }
-            } else {
-              out.rotate = R.deg(math.asin(sin));
-            }
-            out.isSimple = !+out.shear.toFixed(9) && (out.scalex.toFixed(9) == out.scaley.toFixed(9) || !out.rotate);
-            out.isSuperSimple = !+out.shear.toFixed(9) && out.scalex.toFixed(9) == out.scaley.toFixed(9) && !out.rotate;
-            out.noRotation = !+out.shear.toFixed(9) && !out.rotate;
-            return out;
-          };
-          matrixproto.toTransformString = function(shorter) {
-            var s = shorter || this[split]();
-            if (s.isSimple) {
-              s.scalex = +s.scalex.toFixed(4);
-              s.scaley = +s.scaley.toFixed(4);
-              s.rotate = +s.rotate.toFixed(4);
-              return (s.dx || s.dy ? 't' + [
-                s.dx,
-                s.dy
-              ] : E) + (s.scalex != 1 || s.scaley != 1 ? 's' + [
-                s.scalex,
-                s.scaley,
-                0,
-                0
-              ] : E) + (s.rotate ? 'r' + [
-                s.rotate,
-                0,
-                0
-              ] : E);
-            } else {
-              return 'm' + [
-                this.get(0),
-                this.get(1),
-                this.get(2),
-                this.get(3),
-                this.get(4),
-                this.get(5)
-              ];
-            }
-          };
-        }(Matrix.prototype));
+        };
+      }(Matrix.prototype));
       var version = navigator.userAgent.match(/Version\/(.*?)\s/) || navigator.userAgent.match(/Chrome\/(\d+)/);
       if (navigator.vendor == 'Apple Computer, Inc.' && (version && version[1] < 4 || navigator.platform.slice(0, 2) == 'iP') || navigator.vendor == 'Google Inc.' && version && version[1] < 8) {
         paperproto.safari = function() {
@@ -3873,7 +3872,7 @@
                       }
                       break;
                   }
-                  set[attr] = now;
+                  set [attr] = now;
                 }
               that.attr(set);
               (function(id, that, anim) {
@@ -4898,11 +4897,11 @@
             }
             if (o._.arrows) {
               if (isEnd) {
-                o._.arrows.endPath && markerCounter[o._.arrows.endPath] --;
-                o._.arrows.endMarker && markerCounter[o._.arrows.endMarker] --;
+                o._.arrows.endPath && markerCounter[o._.arrows.endPath]--;
+                o._.arrows.endMarker && markerCounter[o._.arrows.endMarker]--;
               } else {
-                o._.arrows.startPath && markerCounter[o._.arrows.startPath] --;
-                o._.arrows.startMarker && markerCounter[o._.arrows.startMarker] --;
+                o._.arrows.startPath && markerCounter[o._.arrows.startPath]--;
+                o._.arrows.startMarker && markerCounter[o._.arrows.startMarker]--;
               }
             } else {
               o._.arrows = {};
@@ -4918,7 +4917,7 @@
                 }));
                 markerCounter[pathId] = 1;
               } else {
-                markerCounter[pathId] ++;
+                markerCounter[pathId]++;
               }
               var marker = R._g.doc.getElementById(markerId),
                 use;
@@ -4940,7 +4939,7 @@
                 p.defs.appendChild(marker);
                 markerCounter[markerId] = 1;
               } else {
-                markerCounter[markerId] ++;
+                markerCounter[markerId]++;
                 use = marker.getElementsByTagName('use')[0];
               }
               $(use, attr);
@@ -6233,9 +6232,9 @@
                 fill.src = E;
                 fill.type = 'solid';
                 if (R.getRGB(params.fill).error && (res.type in {
-                    circle: 1,
-                    ellipse: 1
-                  } || Str(params.fill).charAt() != 'r') && addGradientFill(res, params.fill, fill)) {
+                  circle: 1,
+                  ellipse: 1
+                } || Str(params.fill).charAt() != 'r') && addGradientFill(res, params.fill, fill)) {
                   a.fill = 'none';
                   a.gradient = params.fill;
                   fill.rotate = false;
@@ -7414,7 +7413,7 @@
       },
       getWidth: function(el) {
         var width = Util.getStyle(el, 'width');
-        if (width == 'auto') {
+        if (width == 'auto' || width.indexOf('%') > -1) {
           width = el.offsetWidth;
         }
         return parseFloat(width);
@@ -8639,11 +8638,11 @@
        * @protected
        * 转换显示的值，一般用于层叠的数据序列中
        */
-      parseYValue: function(value) {
+      parseYValue: function(value, index) {
         var _self = this,
           stackType = _self.get('stackType'),
           data = _self.get('data'),
-          index = Util.indexOf(data, value),
+          index = index == null ? Util.indexOf(data, value) : index,
           percentValue;
         if (stackType == 'percent') {
           percentValue = _self.getStackedPercent(value, index);
@@ -9139,7 +9138,7 @@
           parent = _self.get('parent'),
           set = parent.get('el').add([attrs]),
           element;
-        element = set[0];
+        element = set [0];
         return element;
       },
       parseElCfg: function(attrs) {
@@ -13377,7 +13376,7 @@
       getPointByValue: function(xValue, value) {
         return this.getPoint(xValue, value);
       },
-      parseYValue: function(value) {
+      parseYValue: function(value, index) {
         return value;
       },
       animateClip: function(fn, callback) {
@@ -13467,7 +13466,7 @@
           yAxis = _self.get('yAxis'),
           xName = _self.getXName(),
           yName = _self.getYName(),
-          x, yValue = _self.parseYValue(value),
+          x, yValue = _self.parseYValue(value, index),
           y = yAxis.getOffset(yValue),
           originValue, xValue, point = {};
         if (xAxis.get('type') == 'number' || xAxis.get('type') == 'time') {
@@ -13596,14 +13595,15 @@
           drawLine();
           after();
         } else {
-          lineShape = _self._createLine(path);
           if (_self.isInCircle()) {
+            lineShape = _self._createLine(path);
             _self.circleAnimate(points, lineShape);
             after();
           } else {
             _self.animateClip(drawLine, after);
           }
         }
+        _self.drawTracker(points);
 
         function drawLine() {
           path = _self.points2path(points);
@@ -13615,7 +13615,6 @@
         }
 
         function after() {
-          _self.drawTracker(points);
           callback && callback();
         }
       },
@@ -16315,6 +16314,303 @@
     exports = Series;
     return exports;
   }();
+  achart_arearange_100_src_arearange_debug = function(exports) {
+    var Series = achart_series_100_index_debug,
+      Util = achart_util_100_index_debug;
+    var Arearange = function(cfg) {
+      Arearange.superclass.constructor.call(this, cfg);
+    };
+    Util.extend(Arearange, Series.Cartesian);
+    Arearange.ATTRS = {
+      elCls: 'x-chart-arearange-series',
+      connectNulls: false,
+      area: {},
+      line: {},
+      lineActived: {},
+      areaActived: {}
+    };
+    Util.augment(Arearange, {
+      processColor: function(color) {
+        var _self = this,
+          line = _self.get('line'),
+          area = _self.get('area');
+        if (!line.stroke) {
+          line.stroke = color;
+        }
+        if (!area.fill) {
+          area.fill = color;
+        }
+      },
+      draw: function(points, callback) {
+        var _self = this;
+        if (_self.get('animate')) {
+          _self.animateClip(function() {
+            _self._drawArea(points);
+            _self._drawLine(points);
+          }, callback);
+        } else {
+          _self._drawArea(points);
+          _self._drawLine(points);
+        }
+      },
+      getTipInfo: function(point) {
+        return point.lowValue + ' ~ ' + point.highValue;
+      },
+      getData: function(type) {
+        var _self = this,
+          data = _self.get('data'),
+          rst = [];
+        if (type == 'xAxis') {
+          rst = Util.map(data, function(item) {
+            return item[0];
+          });
+        } else {
+          Util.each(data, function(item) {
+            var tmp = item.slice(1, 3);
+            rst.push(Math.max.apply(null, tmp));
+            rst.push(Math.min.apply(null, tmp));
+          });
+        }
+        return rst;
+      },
+      processPoint: function(point) {
+        var _self = this,
+          arr = point.arr,
+          length = arr.length,
+          yAxis = _self.get('yAxis');
+        point.lowY = point.y;
+        point.lowValue = arr[length - 2];
+        point.highY = yAxis.getOffset(arr[length - 1]);
+        point.highValue = arr[length - 1];
+        return point;
+      },
+      _drawLine: function(points) {
+        var _self = this,
+          line = _self.get('line'),
+          cfg = Util.mix({}, line);
+        cfg.path = _self.point2path(points);
+        lineShape = _self.addShape('path', cfg);
+        _self.set('lineShape', lineShape);
+      },
+      _drawArea: function(points) {
+        var _self = this,
+          area = _self.get('area'),
+          cfg = Util.mix({}, area);
+        cfg.path = _self.point2Area(points);
+        var areaShape = _self.addShape('path', cfg);
+        _self.set('areaShape', areaShape);
+      },
+      _getFirstPoint: function(points) {
+        var rst = null;
+        Util.each(points, function(point, index) {
+          if (point.value != null) {
+            rst = point;
+            rst.index = index;
+            return false;
+          }
+        });
+        return rst;
+      },
+      _getLastPoint: function(points) {
+        var rst = null;
+        for (var i = points.length - 1; i >= 0; i--) {
+          var point = points[i];
+          if (point.value != null) {
+            rst = point;
+            rst.index = i;
+            break;
+          }
+        }
+        return rst;
+      },
+      _getNextPoint: function(points, index) {
+        var rst = null;
+        for (var i = index; i < points.length; i++) {
+          var point = points[i];
+          if (point.value != null) {
+            rst = point;
+            rst.index = i;
+            break;
+          }
+        }
+        return rst;
+      },
+      getLinePath: function(points) {
+        var _self = this,
+          connectNulls = _self.get('connectNulls'),
+          count = points.length,
+          firstPoint = _self._getFirstPoint(points) || points[0],
+          lastPoint = _self._getLastPoint(points) || points[count - 1],
+          path = [];
+        var linePath = {
+            lowPath: [],
+            highPath: []
+          },
+          notNullArray = [],
+          lineRange = [];
+        for (var index = 0; index < count; index++) {
+          var item = points[index];
+          if (item.value != null) {
+            notNullArray.push(index);
+          }
+        }
+        var preIndex, startIndex, endIndex;
+        Util.each(notNullArray, function(index, i) {
+          if (i == 0) {
+            startIndex = index;
+          } else if (preIndex + 1 != index) {
+            lineRange.push({
+              startIndex: startIndex,
+              endIndex: preIndex
+            });
+            startIndex = index;
+            if (i == notNullArray.length - 1) {
+              lineRange.push({
+                startIndex: index,
+                endIndex: index
+              });
+            }
+          } else if (i == notNullArray.length - 1) {
+            lineRange.push({
+              startIndex: startIndex,
+              endIndex: notNullArray[i]
+            });
+          }
+          preIndex = index;
+        });
+        Util.each(lineRange, function(item, index) {
+          var highArr = [],
+            lowArr = [],
+            startIndex = item.startIndex,
+            endIndex = item.endIndex;
+          highArr.push(['M',
+            points[startIndex].x,
+            points[startIndex].highY
+          ]);
+          if (startIndex == endIndex) {
+            highArr.push(['L',
+              points[endIndex].x,
+              points[endIndex].highY
+            ]);
+          }
+          for (var i = startIndex + 1; i <= endIndex; i++) {
+            var item = ['L',
+              points[i].x,
+              points[i].highY
+            ];
+            highArr.push(item);
+          }
+          lowArr.push(['M',
+            points[endIndex].x,
+            points[endIndex].lowY
+          ]);
+          if (startIndex == endIndex) {
+            lowArr.push(['L',
+              points[endIndex].x,
+              points[endIndex].highY
+            ]);
+          }
+          for (var i = endIndex - 1; i >= startIndex; i--) {
+            var item = ['L',
+              points[i].x,
+              points[i].lowY
+            ];
+            lowArr.push(item);
+          }
+          linePath.highPath.push(highArr);
+          linePath.lowPath.push(lowArr);
+        });
+        if (connectNulls) {
+          var newHigh = [],
+            newLow = [],
+            len = linePath.highPath.length;
+          for (var i = 0; i < len; i++) {
+            var highPath = linePath.highPath[i],
+              lowPath = linePath.lowPath[len - i - 1];
+            if (i > 0) {
+              highPath[0][0] = 'L';
+              lowPath[0][0] = 'L';
+            }
+            for (var j = 0; j < highPath.length; j++) {
+              newHigh.push(highPath[j]);
+            }
+            for (var j = 0; j < lowPath.length; j++) {
+              newLow.push(lowPath[j]);
+            }
+          }
+          linePath = {
+            lowPath: [newLow],
+            highPath: [newHigh]
+          };
+        }
+        return linePath;
+      },
+      point2path: function(points) {
+        var _self = this,
+          connectNulls = _self.get('connectNulls'),
+          linePath = _self.getLinePath(points),
+          path = [],
+          highPath = [],
+          lowPath = [];
+        Util.each(linePath.highPath, function(item, index) {
+          highPath = highPath.concat(item);
+        });
+        Util.each(linePath.lowPath, function(item, index) {
+          lowPath = lowPath.concat(item);
+        });
+        path = highPath.concat(lowPath);
+        return path;
+      },
+      point2Area: function(points) {
+        var _self = this,
+          linePath = _self.getLinePath(points),
+          pathArrs = [],
+          path = [];
+        Util.each(linePath.lowPath, function(item, index) {
+          var currHigh = linePath.highPath[index],
+            currPath = [];
+          item[0][0] = 'L';
+          currPath = currHigh.concat(item);
+          currPath.push(['z']);
+          pathArrs.push(currPath);
+        });
+        path = pathArrs.join();
+        return path;
+      },
+      changeShapes: function(points) {
+        var _self = this,
+          lineShape = _self.get('lineShape'),
+          areaShape = _self.get('areaShape'),
+          linePath = _self.point2path(points),
+          areaPath = _self.point2Area(points);
+        if (_self.get('animate')) {
+          Util.animPath(areaShape, areaPath);
+          Util.animPath(lineShape, linePath);
+        } else {
+          lineShape.attr('path', linePath);
+          areaShape.attr('path', areaPath);
+        }
+      },
+      setActiveStatus: function(actived) {
+        var _self = this,
+          line = _self.get('line'),
+          area = _self.get('area'),
+          lineShape = _self.get('lineShape'),
+          areaShape = _self.get('areaShape'),
+          lineActived = _self.get('lineActived'),
+          areaActived = _self.get('areaActived');
+        if (actived) {
+          lineActived && lineShape.attr(lineActived);
+          areaActived && areaShape.attr(areaActived);
+        } else {
+          line && lineShape.attr(line);
+          area && areaShape.attr(area);
+        }
+      }
+    });
+    exports = Arearange;
+    return exports;
+  }();
   achart_series_other_100_src_bubble_debug = function(exports) {
     /**
      * @fileOverview 气泡图
@@ -16542,15 +16838,15 @@
       ActiveGroup = achart_actived_100_index_debug.Group;
 
     function trySet(obj, name, value) {
-        if (obj && !obj[name]) {
-          obj[name] = value;
-        }
+      if (obj && !obj[name]) {
+        obj[name] = value;
       }
-      /**
-       * @class Chart.Series.Scatter
-       * 散点图序列
-       * @extends Chart.Series.Cartesian
-       */
+    }
+    /**
+     * @class Chart.Series.Scatter
+     * 散点图序列
+     * @extends Chart.Series.Cartesian
+     */
     var Scatter = function(cfg) {
       Scatter.superclass.constructor.call(this, cfg);
     };
@@ -16838,7 +17134,7 @@
     exports = Flag;
     return exports;
   }();
-  acharts_1014_src_seriesgroup_debug = function(exports) {
+  acharts_1016_src_seriesgroup_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       ActivedGroup = achart_actived_100_index_debug.Group,
       PlotItem = achart_plot_100_index_debug.Item,
@@ -17088,6 +17384,7 @@
             }
             if (count == 1) {
               rst.title = title;
+              rst.point.name = info.name;
               if (info[xName]) {
                 rst.point[xName] = info[xName];
                 if (sArray.length == 1) {
@@ -17108,7 +17405,7 @@
         var _self = this,
           tooltip = _self.get('tipGroup'),
           prePoint = _self.get('prePoint');
-        if (!prePoint || prePoint.x != point.x || prePoint.y != point.y) {
+        if (!prePoint || (prePoint.x != point.x || prePoint.y != point.y) || point.name != prePoint.name) {
           tooltip.setPosition(point.x, point.y);
           _self.set('prePoint', point);
           if (!tooltip.get('visible')) {
@@ -17583,6 +17880,11 @@
     exports = Group;
     return exports;
   }();
+  achart_arearange_100_index_debug = function(exports) {
+    var Arearange = achart_arearange_100_src_arearange_debug;
+    exports = Arearange;
+    return exports;
+  }();
   achart_series_other_100_index_debug = function(exports) {
     var Series = achart_series_100_index_debug;
     Series.Bubble = achart_series_other_100_src_bubble_debug;
@@ -17591,11 +17893,11 @@
     exports = Series;
     return exports;
   }();
-  acharts_1014_src_chart_debug = function(exports) {
+  acharts_1016_src_chart_debug = function(exports) {
     var Util = achart_util_100_index_debug,
       Canvas = achart_canvas_100_index_debug,
       PlotBack = achart_plot_100_index_debug.Back,
-      SeriesGroup = acharts_1014_src_seriesgroup_debug,
+      SeriesGroup = acharts_1016_src_seriesgroup_debug,
       Theme = achart_theme_100_index_debug;
     var Chart = function(cfg) {
       this._attrs = Util.mix({}, Chart.ATTRS, cfg);
@@ -17896,8 +18198,8 @@
     exports = Chart;
     return exports;
   }();
-  acharts_1014_acharts_debug = function(exports) {
-    var acharts = acharts_1014_src_chart_debug;
+  acharts_1016_acharts_debug = function(exports) {
+    var acharts = acharts_1016_src_chart_debug;
     acharts.Util = achart_util_100_index_debug;
     acharts.Canvas = achart_canvas_100_index_debug;
     acharts.Plot = achart_plot_100_index_debug;
@@ -17905,6 +18207,7 @@
     acharts.Date = achart_date_100_index_debug;
     acharts.Theme = achart_theme_100_index_debug;
     acharts.Series = achart_series_100_index_debug;
+    acharts.Series.Arearange = achart_arearange_100_index_debug;
     acharts.Legend = achart_legend_101_index_debug;
     acharts.Flags = achart_flags_100_index_debug;
     acharts.Candlesticks = achart_candlesticks_100_index_debug;
