@@ -411,14 +411,17 @@ Util.augment(Group,{
         series = _self.getSeries(),
         items = [];
       Util.each(series,function(item){
-        var markers = item.get('markers'),
-          symbol = markers && markers.marker.symbol;
+        var markers = item.get('markers');
+        var symbol = markers && markers.marker.symbol;
+        var visible = item.get('visible');
+
         var item = {
           name : item.get('name'),
           color : item.get('color'),
           type : item.get('legendType'),
           symbol : symbol,
-          item : item
+          item : item,
+          checked: visible
         };
         items.push(item);
       });
