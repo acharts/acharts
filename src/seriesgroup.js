@@ -251,7 +251,11 @@ Util.augment(Group,{
   onMouseOut : function(ev){
     var _self = this;
     var canvasNode = _self.get('canvas').get('node');
-    if (ev && (Util.contains(canvasNode,ev.target) || canvasNode === ev.target )) {
+
+    if (ev && !Util.contains(canvasNode,ev.toElement)){
+       _self.onTriggerOut(ev);
+    } 
+    if (ev && (Util.contains(canvasNode,ev.target) || (canvasNode === ev.target))) {
       return;
     }
     _self.onTriggerOut(ev);
