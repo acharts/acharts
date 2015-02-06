@@ -1,6 +1,524 @@
 ;(function() {
-var achart_raphael_100_src_eve_debug, achart_date_100_index_debug, achart_raphael_100_src_core_debug, achart_raphael_100_src_svg_debug, achart_raphael_100_src_vml_debug, achart_raphael_100_src_index_debug, achart_raphael_100_index_debug, achart_util_100_src_util_debug, achart_util_100_index_debug, achart_canvas_100_src_base_debug, achart_canvas_100_src_canvasitem_debug, achart_canvas_100_src_raphealgroup_debug, achart_plot_100_src_plotrange_debug, achart_actived_100_src_actived_debug, achart_actived_100_src_activedgroup_debug, achart_axis_100_src_auto_debug, achart_series_100_src_stacked_debug, achart_theme_100_index_debug, achart_canvas_100_src_shape_debug, achart_actived_100_index_debug, achart_canvas_100_src_container_debug, achart_canvas_100_src_group_debug, achart_canvas_100_src_canvas_debug, achart_canvas_100_index_debug, achart_plot_100_src_plotitem_debug, achart_plot_100_src_plotback_debug, achart_plot_100_index_debug, achart_legend_101_src_legenditem_debug, achart_tooltip_101_src_tooltip_debug, achart_axis_100_src_grid_debug, achart_labels_100_src_labels_debug, achart_labels_100_src_showlabels_debug, achart_markers_100_src_markers_debug, achart_flags_100_src_flag_debug, achart_candlesticks_100_src_candlestick_debug, achart_legend_101_src_legend_debug, achart_legend_101_src_uselegend_debug, achart_tooltip_101_index_debug, achart_labels_100_index_debug, achart_markers_100_index_debug, achart_flags_100_src_flags_debug, achart_candlesticks_100_src_candlesticks_debug, achart_legend_101_index_debug, achart_axis_100_src_abstract_debug, achart_axis_100_src_circle_debug, achart_series_100_src_base_debug, achart_series_100_src_cartesian_debug, achart_series_100_src_line_debug, achart_series_100_src_itemgroup_debug, achart_series_100_src_area_debug, achart_series_100_src_pie_debug, achart_flags_100_index_debug, achart_candlesticks_100_index_debug, achart_axis_100_src_base_debug, achart_axis_100_src_category_debug, achart_axis_100_src_number_debug, achart_axis_100_src_time_debug, achart_axis_100_src_timecategory_debug, achart_axis_100_src_numbercategory_debug, achart_axis_100_src_radius_debug, achart_series_100_src_column_debug, achart_axis_100_index_debug, achart_series_100_index_debug, achart_arearange_100_src_arearange_debug, achart_series_other_100_src_bubble_debug, achart_series_other_100_src_scatter_debug, achart_series_other_100_src_flag_debug, acharts_1017_src_seriesgroup_debug, achart_arearange_100_index_debug, achart_series_other_100_index_debug, acharts_1017_src_chart_debug, acharts_1017_acharts_debug;
-achart_raphael_100_src_eve_debug = function (exports) {
+var achart_util_110_src_util_debug, achart_raphael_101_src_eve_debug, achart_raphael_101_src_vml_debug, achart_date_100_index_debug, achart_util_110_index_debug, achart_raphael_101_src_core_debug, achart_raphael_101_src_svg_debug, achart_canvas_112_src_canvasitem_debug, achart_plot_111_src_plotrange_debug, achart_actived_102_src_actived_debug, achart_actived_102_src_activedgroup_debug, achart_auto_103_index_debug, achart_series_107_src_stacked_debug, achart_theme_101_index_debug, achart_raphael_101_src_index_debug, achart_actived_102_index_debug, achart_raphael_101_index_debug, achart_canvas_112_src_raphealgroup_debug, achart_canvas_112_src_util_debug, achart_canvas_112_src_base_debug, achart_canvas_112_src_shape_debug, achart_canvas_112_src_container_debug, achart_canvas_112_src_group_debug, achart_canvas_112_src_canvas_debug, achart_canvas_112_index_debug, achart_plot_111_src_plotitem_debug, achart_plot_111_src_plotback_debug, achart_plot_111_index_debug, achart_legend_102_src_legenditem_debug, achart_tooltip_103_src_tooltip_debug, achart_axis_113_src_grid_debug, achart_labels_103_src_labels_debug, achart_labels_103_src_showlabels_debug, achart_markers_102_src_markers_debug, achart_flags_101_src_flag_debug, achart_candlesticks_101_src_candlestick_debug, achart_legend_102_src_legend_debug, achart_legend_102_src_uselegend_debug, achart_tooltip_103_index_debug, achart_labels_103_index_debug, achart_markers_102_index_debug, achart_flags_101_src_flags_debug, achart_candlesticks_101_src_candlesticks_debug, achart_legend_102_index_debug, achart_axis_113_src_abstract_debug, achart_axis_113_src_circle_debug, achart_series_107_src_base_debug, achart_series_107_src_cartesian_debug, achart_series_107_src_line_debug, achart_series_107_src_itemgroup_debug, achart_series_107_src_area_debug, achart_series_107_src_pie_debug, achart_flags_101_index_debug, achart_candlesticks_101_index_debug, achart_axis_113_src_base_debug, achart_axis_113_src_category_debug, achart_axis_113_src_number_debug, achart_axis_113_src_time_debug, achart_axis_113_src_timecategory_debug, achart_axis_113_src_numbercategory_debug, achart_axis_113_src_radius_debug, achart_series_107_src_column_debug, achart_axis_113_index_debug, achart_series_107_index_debug, achart_arearange_101_src_arearange_debug, achart_series_other_104_src_bubble_debug, achart_series_other_104_src_scatter_debug, achart_series_other_104_src_flag_debug, acharts_1017_src_seriesgroup_debug, achart_arearange_101_index_debug, achart_series_other_104_index_debug, acharts_1017_src_chart_debug, acharts_1017_acharts_debug;
+achart_util_110_src_util_debug = function (exports) {
+  var NAN = NaN, objectPrototype = Object.prototype, toString = objectPrototype.toString;
+  //取小于当前值的
+  function floor(values, value) {
+    var length = values.length, pre = values[0];
+    if (value < values[0]) {
+      return NAN;
+    }
+    if (value >= values[length - 1]) {
+      return values[length - 1];
+    }
+    for (var i = 1; i < values.length; i++) {
+      if (value < values[i]) {
+        break;
+      }
+      pre = values[i];
+    }
+    return pre;
+  }
+  //大于当前值的第一个
+  function ceiling(values, value) {
+    var length = values.length, pre = values[0], rst;
+    if (value > values[length - 1]) {
+      return NAN;
+    }
+    if (value < values[0]) {
+      return values[0];
+    }
+    for (var i = 1; i < values.length; i++) {
+      if (value <= values[i]) {
+        rst = values[i];
+        break;
+      }
+      pre = values[i];
+    }
+    return rst;
+  }
+  //将数值逼近到指定的数
+  function tryFixed(v, base) {
+    var str = base.toString(), index = str.indexOf('.');
+    if (index == -1) {
+      return parseInt(v);
+    }
+    var length = str.substr(index + 1).length;
+    return parseFloat(v.toFixed(length));
+  }
+  var MAX_LEVEL = 5;
+  function deepMix(dst, src, level) {
+    level = level || 0;
+    for (var k in src) {
+      if (src.hasOwnProperty(k)) {
+        var value = src[k];
+        if (value !== null && Util.isObject(value)) {
+          if (!Util.isObject(dst[k])) {
+            dst[k] = {};
+          }
+          if (level < MAX_LEVEL) {
+            deepMix(dst[k], src[k]);
+          } else {
+            dst[k] = src[k];
+          }
+        } else if (Util.isArray(value)) {
+          //if(!Util.isArray(dst[k])){
+          dst[k] = [];
+          //}
+          dst[k] = dst[k].concat(value);
+        } else if (value !== undefined) {
+          dst[k] = src[k];
+        }
+      }
+    }
+  }
+  /**
+   * @class Chart.Util
+   * @singleton
+   * 绘图的工具类
+   */
+  var Util = {
+      /**
+       * 替换字符串中的字段.
+       * @param {String} str 模版字符串
+       * @param {Object} o json data
+       * @param {RegExp} [regexp] 匹配字符串的正则表达式
+       */
+      substitute: function (str, o) {
+        if (!str || !o) {
+          return str;
+        }
+        return str.replace(/\\?\{([^{}]+)\}/g, function (match, name) {
+          if (match.charAt(0) === '\\') {
+            return match.slice(1);
+          }
+          return o[name] === undefined ? '' : o[name];
+        });
+      },
+      /**
+       * 使第一个字母变成大写
+       * @param  {String} s 字符串
+       * @return {String} 首字母大写后的字符串
+       */
+      ucfirst: function (s) {
+        s += '';
+        return s.charAt(0).toUpperCase() + s.substring(1);
+      },
+      /**
+       * 判断是否是字符串
+       * @return {Boolean} 是否是字符串
+       */
+      isString: function (value) {
+        return typeof value === 'string';
+      },
+      /**
+       * 判断是否数字
+       * @return {Boolean} 是否数字
+       */
+      isNumber: function (value) {
+        return typeof value === 'number';
+      },
+      /**
+       * 判断是否数字或者数字字符串，由于$.isNumberic方法会把 '123'认为数字
+       * @return {Boolean} 是否数字
+       */
+      isNumeric: function (value) {
+        return !isNaN(parseFloat(value)) && isFinite(value);
+      },
+      /**
+       * 是否是布尔类型
+       *
+       * @param {Object} value 测试的值
+       * @return {Boolean}
+       */
+      isBoolean: function (value) {
+        return typeof value === 'boolean';
+      },
+      /**
+       * 是否为函数
+       * @param  {*} fn 对象
+       * @return {Boolean}  是否函数
+       */
+      isFunction: function (fn) {
+        return typeof fn === 'function';
+      },
+      /**
+       * 是否数组
+       * @method
+       * @param  {*}  obj 是否数组
+       * @return {Boolean}  是否数组
+       */
+      isArray: 'isArray' in Array ? Array.isArray : function (value) {
+        return toString.call(value) === '[object Array]';
+      },
+      /**
+       * 是否日期
+       * @param  {*}  value 对象
+       * @return {Boolean}  是否日期
+       */
+      isDate: function (value) {
+        return toString.call(value) === '[object Date]';
+      },
+      /**
+       * 是否是javascript对象
+       * @param {Object} value The value to test
+       * @return {Boolean}
+       * @method
+       */
+      isObject: toString.call(null) === '[object Object]' ? function (value) {
+        // check ownerDocument here as well to exclude DOM nodes
+        return value !== null && value !== undefined && toString.call(value) === '[object Object]' && value.ownerDocument === undefined;
+      } : function (value) {
+        return toString.call(value) === '[object Object]';
+      },
+      /**
+       * 实现类的继承，通过父类生成子类
+       * @param  {Function} subclass
+       * @param  {Function} superclass 父类构造函数
+       * @param  {Object} overrides  子类的属性或者方法
+       * @return {Function} 返回的子类构造函数
+       * 示例:
+       *      @example
+       *      //父类
+       *      function base(){
+       *  
+       *      }
+       *
+       *      function sub(){
+       * 
+       *      }
+       *      //子类
+       *      Util.extend(sub,base,{
+       *          method : function(){
+       *    
+       *          }
+       *      });
+       *
+       *      //或者
+       *      var sub = Util.extend(base,{});
+       */
+      extend: function (subclass, superclass, overrides, staticOverrides) {
+        //如果只提供父类构造函数，则自动生成子类构造函数
+        if (!Util.isFunction(superclass)) {
+          overrides = superclass;
+          superclass = subclass;
+          subclass = function () {
+          };
+        }
+        var create = Object.create ? function (proto, c) {
+            return Object.create(proto, { constructor: { value: c } });
+          } : function (proto, c) {
+            function F() {
+            }
+            F.prototype = proto;
+            var o = new F();
+            o.constructor = c;
+            return o;
+          };
+        var superObj = create(superclass.prototype, subclass);
+        //new superclass(),//实例化父类作为子类的prototype
+        subclass.prototype = Util.mix(superObj, subclass.prototype);
+        //指定子类的prototype
+        subclass.superclass = create(superclass.prototype, superclass);
+        Util.mix(superObj, overrides);
+        Util.mix(subclass, staticOverrides);
+        return subclass;
+      },
+      /**
+       * 复制到原型链上
+       * @param  {Function} c   类
+       * @param  {Object} obj 对象
+       */
+      augment: function (c) {
+        var args = Util.toArray(arguments);
+        for (var i = 1; i < args.length; i++) {
+          var obj = args[i];
+          if (Util.isFunction(obj)) {
+            obj = obj.prototype;
+          }
+          Util.mix(c.prototype, obj);
+        }
+      },
+      /**
+       * 转换成数组
+       * @param  {*} value 需要转换的对象
+       * @return {Array}  数组
+       */
+      toArray: function (value) {
+        if (!value || !value.length) {
+          return [];
+        }
+        if (Util.vml) {
+          var rst = [];
+          for (var i = 0; i < value.length; i++) {
+            rst.push(value[i]);
+          }
+          return rst;
+        } else {
+          return Array.prototype.slice.call(value);
+        }
+      },
+      /**
+       * 合并数据
+       * @return {Object} 将数据合并到第一个
+       */
+      mix: function () {
+        var args = Util.toArray(arguments), obj = args[0];
+        if (obj == true) {
+          obj = args[1];
+          for (var i = 2; i < args.length; i++) {
+            var source = args[i];
+            deepMix(obj, source);
+          }
+        } else {
+          for (var i = 1; i < args.length; i++) {
+            var source = args[i];
+            for (var k in source) {
+              if (source.hasOwnProperty(k) && k != 'constructor') {
+                obj[k] = source[k];
+              }
+            }
+          }
+        }
+        return obj;
+      },
+      mixin: function (c, mixins) {
+        if (c && mixins) {
+          c._mixins = mixins;
+          c.ATTRS = c.ATTRS || {};
+          var temp = {};
+          Util.each(mixins, function (mixin) {
+            Util.augment(c, mixin);
+            var attrs = mixin.ATTRS;
+            if (attrs) {
+              Util.mix(temp, attrs);
+            }
+          });
+          c.ATTRS = Util.mix(temp, c.ATTRS);
+        }
+      },
+      /**
+       * map 数组
+       * @param  {Array} arr 数组
+       * @return {Array} map后的数组
+       */
+      map: function (arr, func) {
+        var result = [];
+        Util.each(arr, function (value, index) {
+          result.push(func(value, index));
+        });
+        return result;
+      },
+      /**
+       * 过滤数组
+       * @param {Object|Array} element/Object 数组中的元素或者对象的值 
+       * @param {Function} func 遍历的函数 function(elememt,index){} 或者 function(value,key){},如果返回true则添加到结果集
+       * @return {Array} 过滤的结果集
+       */
+      filter: function (array, func) {
+        var result = [];
+        Util.each(array, function (value, index) {
+          if (func(value, index)) {
+            result.push(value);
+          }
+        });
+        return result;
+      },
+      /**
+       * 遍历数组或者对象
+       * @param {Object|Array} element/Object 数组中的元素或者对象的值
+       * @param {Function} func 遍历的函数 function(elememt,index){} 或者 function(value,key){}
+       */
+      each: function (elements, func) {
+        if (!elements) {
+          return;
+        }
+        if (Util.isObject(elements)) {
+          for (var k in elements) {
+            if (elements.hasOwnProperty(k)) {
+              var rst = func(elements[k], k);
+              if (rst == false) {
+                break;
+              }
+            }
+          }
+        } else if (elements.length) {
+          for (var i = 0; i < elements.length; i++) {
+            var rst = func(elements[i], i);
+            if (rst == false) {
+              break;
+            }
+          }
+        }
+      },
+      requestAnimationFrame: function (fn) {
+        var method = window.requestAnimationFrame || window.webkitRequestAnimationFrame || function (fn) {
+            return setTimeout(fn, 16);
+          };
+        return method(fn);
+      },
+      cancelAnimationFrame: function (id) {
+        var method = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || function (id) {
+            return clearTimeout(id);
+          };
+        return method(id);
+      },
+      /**
+       * 生成唯一的Id
+       * @method
+       * @param {String} prefix 前缀
+       * @return {String} 唯一的编号
+       */
+      guid: function () {
+        var map = {};
+        return function (prefix) {
+          prefix = prefix || 'acharts';
+          if (!map[prefix]) {
+            map[prefix] = 1;
+          } else {
+            map[prefix] += 1;
+          }
+          return prefix + map[prefix];
+        };
+      }(),
+      indexOf: function (arr, obj) {
+        var m = Array.prototype.indexOf;
+        if (m) {
+          return m.call(arr, obj);
+        }
+        var index = -1;
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] == obj) {
+            index = i;
+            break;
+          }
+        }
+        return index;
+      },
+      /**
+       * 删除
+       */
+      remove: function (arr, obj) {
+        var index = Util.indexOf(arr, obj);
+        if (index !== -1) {
+          arr.splice(index, 1);
+        }
+      },
+      /**
+       * 清空
+       * @param  {Array} array 数组
+       */
+      empty: function (array) {
+        if (!(array instanceof Array)) {
+          for (var i = array.length - 1; i >= 0; i--) {
+            delete array[i];
+          }
+        }
+        array.length = 0;
+      },
+      /**
+       * 2个数组是否等同
+       * @param  {Array} a1 数组1
+       * @param  {Array} a2 数组2
+       * @return {Boolean} 2个数组相等或者内部元素是否相等
+       */
+      equalsArray: function (a1, a2) {
+        if (a1 == a2) {
+          return true;
+        }
+        if (!a1 || !a2) {
+          return false;
+        }
+        if (a1.length != a2.length) {
+          return false;
+        }
+        var rst = true;
+        for (var i = 0; i < a1.length; i++) {
+          if (a1[i] !== a2[i]) {
+            rst = false;
+            break;
+          }
+        }
+        return rst;
+      },
+      /**
+       * 封装事件，便于使用上下文this,和便于解除事件时使用
+       * @protected
+       * @param  {Object} self   对象
+       * @param  {String} action 事件名称
+       */
+      wrapBehavior: function (self, action) {
+        return self['_wrap_' + action] = function (e) {
+          self[action](e);
+        };
+      },
+      /**
+       * 获取封装的事件
+       * @protected
+       * @param  {Object} self   对象
+       * @param  {String} action 事件名称
+       */
+      getWrapBehavior: function (self, action) {
+        return self['_wrap_' + action];
+      },
+      /**
+       * 获取逼近的值，用于对齐数据
+       * @param  {Array} values   数据集合
+       * @param  {Number} value   数值
+       * @param  {Number} [tolerance=10] 逼近范围
+       * @return {Number} 逼近的值
+       */
+      snapTo: function (values, value, tolerance) {
+        if (tolerance) {
+          return Raphael.snapTo(values, value, tolerance);
+        }
+        var floorVal = floor(values, value), ceilingVal = ceiling(values, value);
+        if (isNaN(floorVal) || isNaN(ceilingVal)) {
+          if (values[0] >= value) {
+            return values[0];
+          }
+          var last = values[values.length - 1];
+          if (last <= value) {
+            return last;
+          }
+        }
+        if (Math.abs(value - floorVal) < Math.abs(ceilingVal - value)) {
+          return floorVal;
+        }
+        return ceilingVal;
+      },
+      /**
+       * 获取逼近的最小值，用于对齐数据
+       * @param  {Array} values   数据集合
+       * @param  {Number} value   数值
+       * @return {Number} 逼近的最小值
+       */
+      snapFloor: function (values, value) {
+        return floor(values, value);
+      },
+      /**
+       * 获取逼近的最大值，用于对齐数据
+       * @param  {Array} values   数据集合
+       * @param  {Number} value   数值
+       * @return {Number} 逼近的最大值
+       */
+      snapCeiling: function (values, value) {
+        return ceiling(values, value);
+      },
+      /**
+       * 将数字保留对应数字的小数位
+       * @param  {Number} value 值
+       * @param  {Number} base  基准值
+       * @return {Number}  fixed后的数字
+       */
+      tryFixed: function (value, base) {
+        return tryFixed(value, base);
+      }
+    };
+  exports = Util;
+  return exports;
+}();
+achart_raphael_101_src_eve_debug = function () {
   // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
   // 
   // Licensed under the Apache License, Version 2.0 (the "License");
@@ -352,9 +870,950 @@ achart_raphael_100_src_eve_debug = function (exports) {
     };
     //(typeof module != "undefined" && module.exports) ? (module.exports = eve) : (typeof define != "undefined" ? (define("eve", [], function() { return eve; })) : (glob.eve = eve));
     glob.eve = eve;
-    exports = eve;
   }(this));
-  return exports;
+}();
+achart_raphael_101_src_vml_debug = function () {
+  // ┌─────────────────────────────────────────────────────────────────────┐ \\
+  // │ Raphaël - JavaScript Vector Library                                 │ \\
+  // ├─────────────────────────────────────────────────────────────────────┤ \\
+  // │ VML Module                                                          │ \\
+  // ├─────────────────────────────────────────────────────────────────────┤ \\
+  // │ Copyright (c) 2008-2011 Dmitry Baranovskiy (http://raphaeljs.com)   │ \\
+  // │ Copyright (c) 2008-2011 Sencha Labs (http://sencha.com)             │ \\
+  // │ Licensed under the MIT (http://raphaeljs.com/license.html) license. │ \\
+  // └─────────────────────────────────────────────────────────────────────┘ \\
+  window.Raphael && window.Raphael.vml && function (R) {
+    var has = 'hasOwnProperty', Str = String, toFloat = parseFloat, math = Math, round = math.round, mmax = math.max, mmin = math.min, abs = math.abs, fillString = 'fill', separator = /[, ]+/, eve = R.eve, ms = ' progid:DXImageTransform.Microsoft', S = ' ', E = '', map = {
+        M: 'm',
+        L: 'l',
+        C: 'c',
+        Z: 'x',
+        m: 't',
+        l: 'r',
+        c: 'v',
+        z: 'x'
+      }, bites = /([clmz]),?([^clmz]*)/gi, blurregexp = / progid:\S+Blur\([^\)]+\)/g, val = /-?[^,\s-]+/g, cssDot = 'position:absolute;left:0;top:0;width:1px;height:1px', zoom = 21600, pathTypes = {
+        path: 1,
+        rect: 1,
+        image: 1
+      }, ovalTypes = {
+        circle: 1,
+        ellipse: 1
+      }, path2vml = function (path) {
+        var total = /[ahqstv]/gi, command = R._pathToAbsolute;
+        Str(path).match(total) && (command = R._path2curve);
+        total = /[clmz]/g;
+        if (command == R._pathToAbsolute && !Str(path).match(total)) {
+          var res = Str(path).replace(bites, function (all, command, args) {
+              var vals = [], isMove = command.toLowerCase() == 'm', res = map[command];
+              args.replace(val, function (value) {
+                if (isMove && vals.length == 2) {
+                  res += vals + map[command == 'm' ? 'l' : 'L'];
+                  vals = [];
+                }
+                vals.push(round(value * zoom));
+              });
+              return res + vals;
+            });
+          return res;
+        }
+        var pa = command(path), p, r;
+        res = [];
+        for (var i = 0, ii = pa.length; i < ii; i++) {
+          p = pa[i];
+          r = pa[i][0].toLowerCase();
+          r == 'z' && (r = 'x');
+          for (var j = 1, jj = p.length; j < jj; j++) {
+            r += round(p[j] * zoom) + (j != jj - 1 ? ',' : E);
+          }
+          res.push(r);
+        }
+        return res.join(S);
+      }, compensation = function (deg, dx, dy) {
+        var m = R.matrix();
+        m.rotate(-deg, 0.5, 0.5);
+        return {
+          dx: m.x(dx, dy),
+          dy: m.y(dx, dy)
+        };
+      }, setCoords = function (p, sx, sy, dx, dy, deg) {
+        var _ = p._, m = p.matrix, fillpos = _.fillpos, o = p.node, s = o.style, y = 1, flip = '', dxdy, kx = zoom / sx, ky = zoom / sy;
+        s.visibility = 'hidden';
+        if (!sx || !sy) {
+          return;
+        }
+        o.coordsize = abs(kx) + S + abs(ky);
+        s.rotation = deg * (sx * sy < 0 ? -1 : 1);
+        if (deg) {
+          var c = compensation(deg, dx, dy);
+          dx = c.dx;
+          dy = c.dy;
+        }
+        sx < 0 && (flip += 'x');
+        sy < 0 && (flip += ' y') && (y = -1);
+        s.flip = flip;
+        o.coordorigin = dx * -kx + S + dy * -ky;
+        if (fillpos || _.fillsize) {
+          var fill = o.getElementsByTagName(fillString);
+          fill = fill && fill[0];
+          o.removeChild(fill);
+          if (fillpos) {
+            c = compensation(deg, m.x(fillpos[0], fillpos[1]), m.y(fillpos[0], fillpos[1]));
+            fill.position = c.dx * y + S + c.dy * y;
+          }
+          if (_.fillsize) {
+            fill.size = _.fillsize[0] * abs(sx) + S + _.fillsize[1] * abs(sy);
+          }
+          o.appendChild(fill);
+        }
+        s.visibility = 'visible';
+      };
+    R.toString = function () {
+      return 'Your browser doesn\u2019t support SVG. Falling down to VML.\nYou are running Rapha\xEBl ' + this.version;
+    };
+    var addArrow = function (o, value, isEnd) {
+        var values = Str(value).toLowerCase().split('-'), se = isEnd ? 'end' : 'start', i = values.length, type = 'classic', w = 'medium', h = 'medium';
+        while (i--) {
+          switch (values[i]) {
+          case 'block':
+          case 'classic':
+          case 'oval':
+          case 'diamond':
+          case 'open':
+          case 'none':
+            type = values[i];
+            break;
+          case 'wide':
+          case 'narrow':
+            h = values[i];
+            break;
+          case 'long':
+          case 'short':
+            w = values[i];
+            break;
+          }
+        }
+        var stroke = o.node.getElementsByTagName('stroke')[0];
+        stroke[se + 'arrow'] = type;
+        stroke[se + 'arrowlength'] = w;
+        stroke[se + 'arrowwidth'] = h;
+      }, setFillAndStroke = function (o, params) {
+        // o.paper.canvas.style.display = "none";
+        o.attrs = o.attrs || {};
+        var node = o.node, a = o.attrs, s = node.style, xy, newpath = pathTypes[o.type] && (params.x != a.x || params.y != a.y || params.width != a.width || params.height != a.height || params.cx != a.cx || params.cy != a.cy || params.rx != a.rx || params.ry != a.ry || params.r != a.r), isOval = ovalTypes[o.type] && (a.cx != params.cx || a.cy != params.cy || a.r != params.r || a.rx != params.rx || a.ry != params.ry), res = o;
+        for (var par in params)
+          if (params[has](par)) {
+            a[par] = params[par];
+          }
+        if (newpath) {
+          a.path = R._getPath[o.type](o);
+          o._.dirty = 1;
+        }
+        params.href && (node.href = params.href);
+        params.title && (node.title = params.title);
+        params.target && (node.target = params.target);
+        params.cursor && (s.cursor = params.cursor);
+        'blur' in params && o.blur(params.blur);
+        if (params.path && o.type == 'path' || newpath) {
+          node.path = path2vml(~Str(a.path).toLowerCase().indexOf('r') ? R._pathToAbsolute(a.path) : a.path);
+          if (o.type == 'image') {
+            o._.fillpos = [
+              a.x,
+              a.y
+            ];
+            o._.fillsize = [
+              a.width,
+              a.height
+            ];
+            setCoords(o, 1, 1, 0, 0, 0);
+          }
+        }
+        'transform' in params && o.transform(params.transform);
+        if (isOval) {
+          var cx = +a.cx, cy = +a.cy, rx = +a.rx || +a.r || 0, ry = +a.ry || +a.r || 0;
+          node.path = R.format('ar{0},{1},{2},{3},{4},{1},{4},{1}x', round((cx - rx) * zoom), round((cy - ry) * zoom), round((cx + rx) * zoom), round((cy + ry) * zoom), round(cx * zoom));
+          o._.dirty = 1;
+        }
+        if ('clip-rect' in params) {
+          var rect = Str(params['clip-rect']).split(separator);
+          if (rect.length == 4) {
+            rect[2] = +rect[2] + +rect[0];
+            rect[3] = +rect[3] + +rect[1];
+            var div = node.clipRect || R._g.doc.createElement('div'), dstyle = div.style;
+            dstyle.clip = R.format('rect({1}px {2}px {3}px {0}px)', rect);
+            if (!node.clipRect) {
+              dstyle.position = 'absolute';
+              dstyle.top = 0;
+              dstyle.left = 0;
+              dstyle.width = o.paper.width + 'px';
+              dstyle.height = o.paper.height + 'px';
+              node.parentNode.insertBefore(div, node);
+              div.appendChild(node);
+              node.clipRect = div;
+            }
+          }
+          if (!params['clip-rect']) {
+            node.clipRect && (node.clipRect.style.clip = 'auto');
+          }
+        }
+        if (o.textpath) {
+          var textpathStyle = o.textpath.style;
+          params.font && (textpathStyle.font = params.font);
+          params['font-family'] && (textpathStyle.fontFamily = '"' + params['font-family'].split(',')[0].replace(/^['"]+|['"]+$/g, E) + '"');
+          params['font-size'] && (textpathStyle.fontSize = params['font-size']);
+          params['font-weight'] && (textpathStyle.fontWeight = params['font-weight']);
+          params['font-style'] && (textpathStyle.fontStyle = params['font-style']);
+        }
+        if ('arrow-start' in params) {
+          addArrow(res, params['arrow-start']);
+        }
+        if ('arrow-end' in params) {
+          addArrow(res, params['arrow-end'], 1);
+        }
+        if (params.opacity != null || params['stroke-width'] != null || params.fill != null || params.src != null || params.stroke != null || params['stroke-width'] != null || params['stroke-opacity'] != null || params['fill-opacity'] != null || params['stroke-dasharray'] != null || params['stroke-miterlimit'] != null || params['stroke-linejoin'] != null || params['stroke-linecap'] != null) {
+          var fill = node.getElementsByTagName(fillString), newfill = false;
+          fill = fill && fill[0];
+          !fill && (newfill = fill = createNode(fillString));
+          if (o.type == 'image' && params.src) {
+            fill.src = params.src;
+          }
+          params.fill && (fill.on = true);
+          if (fill.on == null || params.fill == 'none' || params.fill === null) {
+            fill.on = false;
+          }
+          if (fill.on && params.fill) {
+            var isURL = Str(params.fill).match(R._ISURL);
+            if (isURL) {
+              fill.parentNode == node && node.removeChild(fill);
+              fill.rotate = true;
+              fill.src = isURL[1];
+              fill.type = 'tile';
+              var bbox = o.getBBox(1);
+              fill.position = bbox.x + S + bbox.y;
+              o._.fillpos = [
+                bbox.x,
+                bbox.y
+              ];
+              R._preload(isURL[1], function () {
+                o._.fillsize = [
+                  this.offsetWidth,
+                  this.offsetHeight
+                ];
+              });
+            } else {
+              fill.color = R.getRGB(params.fill).hex;
+              fill.src = E;
+              fill.type = 'solid';
+              if (R.getRGB(params.fill).error && (res.type in {
+                  circle: 1,
+                  ellipse: 1
+                } || Str(params.fill).charAt() != 'r') && addGradientFill(res, params.fill, fill)) {
+                a.fill = 'none';
+                a.gradient = params.fill;
+                fill.rotate = false;
+              }
+            }
+          }
+          if ('fill-opacity' in params || 'opacity' in params) {
+            var opacity = ((+a['fill-opacity'] + 1 || 2) - 1) * ((+a.opacity + 1 || 2) - 1) * ((+R.getRGB(params.fill).o + 1 || 2) - 1);
+            opacity = mmin(mmax(opacity, 0), 1);
+            fill.opacity = opacity;
+            if (fill.src) {
+              fill.color = 'none';
+            }
+          }
+          node.appendChild(fill);
+          var stroke = node.getElementsByTagName('stroke') && node.getElementsByTagName('stroke')[0], newstroke = false;
+          !stroke && (newstroke = stroke = createNode('stroke'));
+          if (params.stroke && params.stroke != 'none' || params['stroke-width'] || params['stroke-opacity'] != null || params['stroke-dasharray'] || params['stroke-miterlimit'] || params['stroke-linejoin'] || params['stroke-linecap']) {
+            stroke.on = true;
+          }
+          (params.stroke == 'none' || params.stroke === null || stroke.on == null || params.stroke == 0 || params['stroke-width'] == 0) && (stroke.on = false);
+          var strokeColor = R.getRGB(params.stroke);
+          stroke.on && params.stroke && (stroke.color = strokeColor.hex);
+          opacity = ((+a['stroke-opacity'] + 1 || 2) - 1) * ((+a.opacity + 1 || 2) - 1) * ((+strokeColor.o + 1 || 2) - 1);
+          var width = (toFloat(params['stroke-width']) || 1) * 0.75;
+          opacity = mmin(mmax(opacity, 0), 1);
+          params['stroke-width'] == null && (width = a['stroke-width']);
+          params['stroke-width'] && (stroke.weight = width);
+          width && width < 1 && (opacity *= width) && (stroke.weight = 1);
+          stroke.opacity = opacity;
+          params['stroke-linejoin'] && (stroke.joinstyle = params['stroke-linejoin'] || 'miter');
+          stroke.miterlimit = params['stroke-miterlimit'] || 8;
+          params['stroke-linecap'] && (stroke.endcap = params['stroke-linecap'] == 'butt' ? 'flat' : params['stroke-linecap'] == 'square' ? 'square' : 'round');
+          if (params['stroke-dasharray']) {
+            var dasharray = {
+                '-': 'shortdash',
+                '.': 'shortdot',
+                '-.': 'shortdashdot',
+                '-..': 'shortdashdotdot',
+                '. ': 'dot',
+                '- ': 'dash',
+                '--': 'longdash',
+                '- .': 'dashdot',
+                '--.': 'longdashdot',
+                '--..': 'longdashdotdot'
+              };
+            stroke.dashstyle = dasharray[has](params['stroke-dasharray']) ? dasharray[params['stroke-dasharray']] : E;
+          }
+          newstroke && node.appendChild(stroke);
+        }
+        if (res.type == 'text') {
+          res.paper.canvas.style.display = E;
+          var span = res.paper.span, m = 100, fontSize = a.font && a.font.match(/\d+(?:\.\d*)?(?=px)/);
+          s = span.style;
+          a.font && (s.font = a.font);
+          a['font-family'] && (s.fontFamily = a['font-family']);
+          a['font-weight'] && (s.fontWeight = a['font-weight']);
+          a['font-style'] && (s.fontStyle = a['font-style']);
+          fontSize = toFloat(a['font-size'] || fontSize && fontSize[0]) || 10;
+          s.fontSize = fontSize * m + 'px';
+          res.textpath.string && (span.innerHTML = Str(res.textpath.string).replace(/</g, '&#60;').replace(/&/g, '&#38;').replace(/\n/g, '<br>'));
+          var brect = span.getBoundingClientRect();
+          res.W = a.w = (brect.right - brect.left) / m;
+          res.H = a.h = (brect.bottom - brect.top) / m;
+          // res.paper.canvas.style.display = "none";
+          res.X = a.x;
+          res.Y = a.y + res.H / 2;
+          ('x' in params || 'y' in params) && (res.path.v = R.format('m{0},{1}l{2},{1}', round(a.x * zoom), round(a.y * zoom), round(a.x * zoom) + 1));
+          var dirtyattrs = [
+              'x',
+              'y',
+              'text',
+              'font',
+              'font-family',
+              'font-weight',
+              'font-style',
+              'font-size'
+            ];
+          for (var d = 0, dd = dirtyattrs.length; d < dd; d++)
+            if (dirtyattrs[d] in params) {
+              res._.dirty = 1;
+              break;
+            }
+          // text-anchor emulation
+          switch (a['text-anchor']) {
+          case 'start':
+            res.textpath.style['v-text-align'] = 'left';
+            res.bbx = res.W / 2;
+            break;
+          case 'end':
+            res.textpath.style['v-text-align'] = 'right';
+            res.bbx = -res.W / 2;
+            break;
+          default:
+            res.textpath.style['v-text-align'] = 'center';
+            res.bbx = 0;
+            break;
+          }
+          res.textpath.style['v-text-kern'] = true;
+        }
+      }, addGradientFill = function (o, gradient, fill) {
+        o.attrs = o.attrs || {};
+        var attrs = o.attrs, pow = Math.pow, opacity, oindex, type = 'linear', fxfy = '.5 .5';
+        o.attrs.gradient = gradient;
+        gradient = Str(gradient).replace(R._radial_gradient, function (all, fx, fy) {
+          type = 'radial';
+          if (fx && fy) {
+            fx = toFloat(fx);
+            fy = toFloat(fy);
+            pow(fx - 0.5, 2) + pow(fy - 0.5, 2) > 0.25 && (fy = math.sqrt(0.25 - pow(fx - 0.5, 2)) * ((fy > 0.5) * 2 - 1) + 0.5);
+            fxfy = fx + S + fy;
+          }
+          return E;
+        });
+        gradient = gradient.split(/\s*\-\s*/);
+        if (type == 'linear') {
+          var angle = gradient.shift();
+          angle = -toFloat(angle);
+          if (isNaN(angle)) {
+            return null;
+          }
+        }
+        var dots = R._parseDots(gradient);
+        if (!dots) {
+          return null;
+        }
+        o = o.shape || o.node;
+        if (dots.length) {
+          o.removeChild(fill);
+          fill.on = true;
+          fill.method = 'none';
+          fill.color = dots[0].color;
+          fill.color2 = dots[dots.length - 1].color;
+          var clrs = [];
+          for (var i = 0, ii = dots.length; i < ii; i++) {
+            dots[i].offset && clrs.push(dots[i].offset + S + dots[i].color);
+          }
+          fill.colors = clrs.length ? clrs.join() : '0% ' + fill.color;
+          if (type == 'radial') {
+            fill.type = 'gradientTitle';
+            fill.focus = '100%';
+            fill.focussize = '0 0';
+            fill.focusposition = fxfy;
+            fill.angle = 0;
+          } else {
+            // fill.rotate= true;
+            fill.type = 'gradient';
+            fill.angle = (270 - angle) % 360;
+          }
+          o.appendChild(fill);
+        }
+        return 1;
+      }, Element = function (node, vml) {
+        this[0] = this.node = node;
+        node.raphael = true;
+        this.id = R._oid++;
+        node.raphaelid = this.id;
+        this.X = 0;
+        this.Y = 0;
+        this.attrs = {};
+        this.paper = vml;
+        this.matrix = R.matrix();
+        this._ = {
+          transform: [],
+          sx: 1,
+          sy: 1,
+          dx: 0,
+          dy: 0,
+          deg: 0,
+          dirty: 1,
+          dirtyT: 1
+        };
+        !vml.bottom && (vml.bottom = this);
+        this.prev = vml.top;
+        vml.top && (vml.top.next = this);
+        vml.top = this;
+        this.next = null;
+      };
+    var elproto = R.el;
+    Element.prototype = elproto;
+    elproto.constructor = Element;
+    elproto.transform = function (tstr) {
+      if (tstr == null) {
+        return this._.transform;
+      }
+      var vbs = this.paper._viewBoxShift, vbt = vbs ? 's' + [
+          vbs.scale,
+          vbs.scale
+        ] + '-1-1t' + [
+          vbs.dx,
+          vbs.dy
+        ] : E, oldt;
+      if (vbs) {
+        oldt = tstr = Str(tstr).replace(/\.{3}|\u2026/g, this._.transform || E);
+      }
+      R._extractTransform(this, vbt + tstr);
+      var matrix = this.matrix.clone(), skew = this.skew, o = this.node, split, isGrad = ~Str(this.attrs.fill).indexOf('-'), isPatt = !Str(this.attrs.fill).indexOf('url(');
+      matrix.translate(1, 1);
+      if (isPatt || isGrad || this.type == 'image') {
+        skew.matrix = '1 0 0 1';
+        skew.offset = '0 0';
+        split = matrix.split();
+        if (isGrad && split.noRotation || !split.isSimple) {
+          o.style.filter = matrix.toFilter();
+          var bb = this.getBBox(), bbt = this.getBBox(1), dx = bb.x - bbt.x, dy = bb.y - bbt.y;
+          o.coordorigin = dx * -zoom + S + dy * -zoom;
+          setCoords(this, 1, 1, dx, dy, 0);
+        } else {
+          o.style.filter = E;
+          setCoords(this, split.scalex, split.scaley, split.dx, split.dy, split.rotate);
+        }
+      } else if (skew) {
+        o.style.filter = E;
+        skew.matrix = Str(matrix);
+        skew.offset = matrix.offset();
+      }
+      oldt && (this._.transform = oldt);
+      return this;
+    };
+    elproto.rotate = function (deg, cx, cy) {
+      if (this.removed) {
+        return this;
+      }
+      if (deg == null) {
+        return;
+      }
+      deg = Str(deg).split(separator);
+      if (deg.length - 1) {
+        cx = toFloat(deg[1]);
+        cy = toFloat(deg[2]);
+      }
+      deg = toFloat(deg[0]);
+      cy == null && (cx = cy);
+      if (cx == null || cy == null) {
+        var bbox = this.getBBox(1);
+        cx = bbox.x + bbox.width / 2;
+        cy = bbox.y + bbox.height / 2;
+      }
+      this._.dirtyT = 1;
+      this.transform(this._.transform.concat([[
+          'r',
+          deg,
+          cx,
+          cy
+        ]]));
+      return this;
+    };
+    elproto.translate = function (dx, dy) {
+      if (this.removed) {
+        return this;
+      }
+      dx = Str(dx).split(separator);
+      if (dx.length - 1) {
+        dy = toFloat(dx[1]);
+      }
+      dx = toFloat(dx[0]) || 0;
+      dy = +dy || 0;
+      if (this._.bbox) {
+        this._.bbox.x += dx;
+        this._.bbox.y += dy;
+      }
+      this.transform(this._.transform.concat([[
+          't',
+          dx,
+          dy
+        ]]));
+      return this;
+    };
+    elproto.scale = function (sx, sy, cx, cy) {
+      if (this.removed) {
+        return this;
+      }
+      sx = Str(sx).split(separator);
+      if (sx.length - 1) {
+        sy = toFloat(sx[1]);
+        cx = toFloat(sx[2]);
+        cy = toFloat(sx[3]);
+        isNaN(cx) && (cx = null);
+        isNaN(cy) && (cy = null);
+      }
+      sx = toFloat(sx[0]);
+      sy == null && (sy = sx);
+      cy == null && (cx = cy);
+      if (cx == null || cy == null) {
+        var bbox = this.getBBox(1);
+      }
+      cx = cx == null ? bbox.x + bbox.width / 2 : cx;
+      cy = cy == null ? bbox.y + bbox.height / 2 : cy;
+      this.transform(this._.transform.concat([[
+          's',
+          sx,
+          sy,
+          cx,
+          cy
+        ]]));
+      this._.dirtyT = 1;
+      return this;
+    };
+    elproto.hide = function () {
+      !this.removed && (this.node.style.display = 'none');
+      return this;
+    };
+    elproto.show = function () {
+      !this.removed && (this.node.style.display = E);
+      return this;
+    };
+    elproto._getBBox = function () {
+      if (this.removed) {
+        return {};
+      }
+      return {
+        x: this.X + (this.bbx || 0) - this.W / 2,
+        y: this.Y - this.H,
+        width: this.W,
+        height: this.H
+      };
+    };
+    elproto.remove = function () {
+      if (this.removed || !this.node.parentNode) {
+        return;
+      }
+      this.paper.__set__ && this.paper.__set__.exclude(this);
+      R.eve.unbind('raphael.*.*.' + this.id);
+      R._tear(this, this.paper);
+      this.node.parentNode.removeChild(this.node);
+      this.shape && this.shape.parentNode.removeChild(this.shape);
+      for (var i in this) {
+        this[i] = typeof this[i] == 'function' ? R._removedFactory(i) : null;
+      }
+      this.removed = true;
+    };
+    elproto.attr = function (name, value) {
+      if (this.removed) {
+        return this;
+      }
+      if (name == null) {
+        var res = {};
+        for (var a in this.attrs)
+          if (this.attrs[has](a)) {
+            res[a] = this.attrs[a];
+          }
+        res.gradient && res.fill == 'none' && (res.fill = res.gradient) && delete res.gradient;
+        res.transform = this._.transform;
+        return res;
+      }
+      if (value == null && R.is(name, 'string')) {
+        if (name == fillString && this.attrs.fill == 'none' && this.attrs.gradient) {
+          return this.attrs.gradient;
+        }
+        var names = name.split(separator), out = {};
+        for (var i = 0, ii = names.length; i < ii; i++) {
+          name = names[i];
+          if (name in this.attrs) {
+            out[name] = this.attrs[name];
+          } else if (R.is(this.paper.customAttributes[name], 'function')) {
+            out[name] = this.paper.customAttributes[name].def;
+          } else {
+            out[name] = R._availableAttrs[name];
+          }
+        }
+        return ii - 1 ? out : out[names[0]];
+      }
+      if (this.attrs && value == null && R.is(name, 'array')) {
+        out = {};
+        for (i = 0, ii = name.length; i < ii; i++) {
+          out[name[i]] = this.attr(name[i]);
+        }
+        return out;
+      }
+      var params;
+      if (value != null) {
+        params = {};
+        params[name] = value;
+      }
+      value == null && R.is(name, 'object') && (params = name);
+      for (var key in params) {
+        eve('raphael.attr.' + key + '.' + this.id, this, params[key]);
+      }
+      if (params) {
+        for (key in this.paper.customAttributes)
+          if (this.paper.customAttributes[has](key) && params[has](key) && R.is(this.paper.customAttributes[key], 'function')) {
+            var par = this.paper.customAttributes[key].apply(this, [].concat(params[key]));
+            this.attrs[key] = params[key];
+            for (var subkey in par)
+              if (par[has](subkey)) {
+                params[subkey] = par[subkey];
+              }
+          }
+        // this.paper.canvas.style.display = "none";
+        if (params.text && this.type == 'text') {
+          this.textpath.string = params.text;
+        }
+        setFillAndStroke(this, params);
+      }
+      return this;
+    };
+    elproto.toFront = function () {
+      !this.removed && this.node.parentNode.appendChild(this.node);
+      this.paper && this.paper.top != this && R._tofront(this, this.paper);
+      return this;
+    };
+    elproto.toBack = function () {
+      if (this.removed) {
+        return this;
+      }
+      if (this.node.parentNode.firstChild != this.node) {
+        this.node.parentNode.insertBefore(this.node, this.node.parentNode.firstChild);
+        R._toback(this, this.paper);
+      }
+      return this;
+    };
+    elproto.insertAfter = function (element) {
+      if (this.removed) {
+        return this;
+      }
+      if (element.constructor == R.st.constructor) {
+        element = element[element.length - 1];
+      }
+      if (element.node.nextSibling) {
+        element.node.parentNode.insertBefore(this.node, element.node.nextSibling);
+      } else {
+        element.node.parentNode.appendChild(this.node);
+      }
+      R._insertafter(this, element, this.paper);
+      return this;
+    };
+    elproto.insertBefore = function (element) {
+      if (this.removed) {
+        return this;
+      }
+      if (element.constructor == R.st.constructor) {
+        element = element[0];
+      }
+      element.node.parentNode.insertBefore(this.node, element.node);
+      R._insertbefore(this, element, this.paper);
+      return this;
+    };
+    elproto.blur = function (size) {
+      var s = this.node.runtimeStyle, f = s.filter;
+      f = f.replace(blurregexp, E);
+      if (+size !== 0) {
+        this.attrs.blur = size;
+        s.filter = f + S + ms + '.Blur(pixelradius=' + (+size || 1.5) + ')';
+        s.margin = R.format('-{0}px 0 0 -{0}px', round(+size || 1.5));
+      } else {
+        s.filter = f;
+        s.margin = 0;
+        delete this.attrs.blur;
+      }
+      return this;
+    };
+    R._engine.path = function (pathString, vml) {
+      var el = createNode('shape');
+      el.style.cssText = cssDot;
+      el.coordsize = zoom + S + zoom;
+      el.coordorigin = vml.coordorigin;
+      var p = new Element(el, vml), attr = {
+          fill: 'none',
+          stroke: '#000'
+        };
+      pathString && (attr.path = pathString);
+      p.type = 'path';
+      p.path = [];
+      p.Path = E;
+      setFillAndStroke(p, attr);
+      vml.canvas.appendChild(el);
+      var skew = createNode('skew');
+      skew.on = true;
+      el.appendChild(skew);
+      p.skew = skew;
+      p.transform(E);
+      return p;
+    };
+    R._engine.rect = function (vml, x, y, w, h, r) {
+      var path = R._rectPath(x, y, w, h, r), res = vml.path(path), a = res.attrs;
+      res.X = a.x = x;
+      res.Y = a.y = y;
+      res.W = a.width = w;
+      res.H = a.height = h;
+      a.r = r;
+      a.path = path;
+      res.type = 'rect';
+      return res;
+    };
+    R._engine.ellipse = function (vml, x, y, rx, ry) {
+      var res = vml.path(), a = res.attrs;
+      res.X = x - rx;
+      res.Y = y - ry;
+      res.W = rx * 2;
+      res.H = ry * 2;
+      res.type = 'ellipse';
+      setFillAndStroke(res, {
+        cx: x,
+        cy: y,
+        rx: rx,
+        ry: ry
+      });
+      return res;
+    };
+    R._engine.circle = function (vml, x, y, r) {
+      var res = vml.path(), a = res.attrs;
+      res.X = x - r;
+      res.Y = y - r;
+      res.W = res.H = r * 2;
+      res.type = 'circle';
+      setFillAndStroke(res, {
+        cx: x,
+        cy: y,
+        r: r
+      });
+      return res;
+    };
+    R._engine.image = function (vml, src, x, y, w, h) {
+      var path = R._rectPath(x, y, w, h), res = vml.path(path).attr({ stroke: 'none' }), a = res.attrs, node = res.node, fill = node.getElementsByTagName(fillString)[0];
+      a.src = src;
+      res.X = a.x = x;
+      res.Y = a.y = y;
+      res.W = a.width = w;
+      res.H = a.height = h;
+      a.path = path;
+      res.type = 'image';
+      fill.parentNode == node && node.removeChild(fill);
+      fill.rotate = true;
+      fill.src = src;
+      fill.type = 'tile';
+      res._.fillpos = [
+        x,
+        y
+      ];
+      res._.fillsize = [
+        w,
+        h
+      ];
+      node.appendChild(fill);
+      setCoords(res, 1, 1, 0, 0, 0);
+      return res;
+    };
+    R._engine.text = function (vml, x, y, text) {
+      var el = createNode('shape'), path = createNode('path'), o = createNode('textpath');
+      x = x || 0;
+      y = y || 0;
+      text = text || '';
+      path.v = R.format('m{0},{1}l{2},{1}', round(x * zoom), round(y * zoom), round(x * zoom) + 1);
+      path.textpathok = true;
+      o.string = Str(text);
+      o.on = true;
+      el.style.cssText = cssDot;
+      el.coordsize = zoom + S + zoom;
+      el.coordorigin = '0 0';
+      var p = new Element(el, vml), attr = {
+          fill: '#000',
+          stroke: 'none',
+          font: R._availableAttrs.font,
+          text: text
+        };
+      p.shape = el;
+      p.path = path;
+      p.textpath = o;
+      p.type = 'text';
+      p.attrs.text = Str(text);
+      p.attrs.x = x;
+      p.attrs.y = y;
+      p.attrs.w = 1;
+      p.attrs.h = 1;
+      setFillAndStroke(p, attr);
+      el.appendChild(o);
+      el.appendChild(path);
+      vml.canvas.appendChild(el);
+      var skew = createNode('skew');
+      skew.on = true;
+      el.appendChild(skew);
+      p.skew = skew;
+      p.transform(E);
+      return p;
+    };
+    R._engine.setSize = function (width, height) {
+      var cs = this.canvas.style;
+      this.width = width;
+      this.height = height;
+      width == +width && (width += 'px');
+      height == +height && (height += 'px');
+      cs.width = width;
+      cs.height = height;
+      cs.clip = 'rect(0 ' + width + ' ' + height + ' 0)';
+      if (this._viewBox) {
+        R._engine.setViewBox.apply(this, this._viewBox);
+      }
+      return this;
+    };
+    R._engine.setViewBox = function (x, y, w, h, fit) {
+      R.eve('raphael.setViewBox', this, this._viewBox, [
+        x,
+        y,
+        w,
+        h,
+        fit
+      ]);
+      var width = this.width, height = this.height, size = 1 / mmax(w / width, h / height), H, W;
+      if (fit) {
+        H = height / h;
+        W = width / w;
+        if (w * H < width) {
+          x -= (width - w * H) / 2 / H;
+        }
+        if (h * W < height) {
+          y -= (height - h * W) / 2 / W;
+        }
+      }
+      this._viewBox = [
+        x,
+        y,
+        w,
+        h,
+        !!fit
+      ];
+      this._viewBoxShift = {
+        dx: -x,
+        dy: -y,
+        scale: size
+      };
+      this.forEach(function (el) {
+        el.transform('...');
+      });
+      return this;
+    };
+    var createNode;
+    R._engine.initWin = function (win) {
+      var doc = win.document;
+      doc.createStyleSheet().addRule('.rvml', 'behavior:url(#default#VML)');
+      try {
+        !doc.namespaces.rvml && doc.namespaces.add('rvml', 'urn:schemas-microsoft-com:vml');
+        createNode = function (tagName) {
+          return doc.createElement('<rvml:' + tagName + ' class="rvml">');
+        };
+      } catch (e) {
+        createNode = function (tagName) {
+          return doc.createElement('<' + tagName + ' xmlns="urn:schemas-microsoft.com:vml" class="rvml">');
+        };
+      }
+    };
+    R._engine.initWin(R._g.win);
+    R._engine.create = function () {
+      var con = R._getContainer.apply(0, arguments), container = con.container, height = con.height, s, width = con.width, x = con.x, y = con.y;
+      if (!container) {
+        throw new Error('VML container not found.');
+      }
+      var res = new R._Paper(), c = res.canvas = R._g.doc.createElement('div'), cs = c.style;
+      x = x || 0;
+      y = y || 0;
+      width = width || 512;
+      height = height || 342;
+      res.width = width;
+      res.height = height;
+      width == +width && (width += 'px');
+      height == +height && (height += 'px');
+      res.coordsize = zoom * 1000 + S + zoom * 1000;
+      res.coordorigin = '0 0';
+      res.span = R._g.doc.createElement('span');
+      res.span.style.cssText = 'position:absolute;left:-9999em;top:-9999em;padding:0;margin:0;line-height:1;';
+      c.appendChild(res.span);
+      cs.cssText = R.format('top:0;left:0;width:{0};height:{1};display:inline-block;position:relative;clip:rect(0 {0} {1} 0);overflow:hidden', width, height);
+      if (container == 1) {
+        R._g.doc.body.appendChild(c);
+        cs.left = x + 'px';
+        cs.top = y + 'px';
+        cs.position = 'absolute';
+      } else {
+        if (container.firstChild) {
+          container.insertBefore(c, container.firstChild);
+        } else {
+          container.appendChild(c);
+        }
+      }
+      res.renderfix = function () {
+      };
+      return res;
+    };
+    R.prototype.clear = function () {
+      R.eve('raphael.clear', this);
+      this.canvas.innerHTML = E;
+      this.span = R._g.doc.createElement('span');
+      this.span.style.cssText = 'position:absolute;left:-9999em;top:-9999em;padding:0;margin:0;line-height:1;display:inline;';
+      this.canvas.appendChild(this.span);
+      this.bottom = this.top = null;
+    };
+    R.prototype.remove = function () {
+      R.eve('raphael.remove', this);
+      this.canvas.parentNode.removeChild(this.canvas);
+      for (var i in this) {
+        this[i] = typeof this[i] == 'function' ? R._removedFactory(i) : null;
+      }
+      return true;
+    };
+    var setproto = R.st;
+    for (var method in elproto)
+      if (elproto[has](method) && !setproto[has](method)) {
+        setproto[method] = function (methodname) {
+          return function () {
+            var arg = arguments;
+            return this.forEach(function (el) {
+              el[methodname].apply(el, arg);
+            });
+          };
+        }(method);
+      }
+  }(window.Raphael);
 }();
 achart_date_100_index_debug = function (exports) {
   var dateRegex = /^(?:(?!0000)[0-9]{4}([-/.]+)(?:(?:0?[1-9]|1[0-2])\1(?:0?[1-9]|1[0-9]|2[0-8])|(?:0?[13-9]|1[0-2])\1(?:29|30)|(?:0?[13578]|1[02])\1(?:31))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)([-/.]?)0?2\2(?:29))(\s+([01]|([01][0-9]|2[0-3])):([0-9]|[0-5][0-9]):([0-9]|[0-5][0-9]))?$/;
@@ -684,8 +2143,13 @@ achart_date_100_index_debug = function (exports) {
   exports = DateUtil;
   return exports;
 }();
-achart_raphael_100_src_core_debug = function (exports) {
-  achart_raphael_100_src_eve_debug;
+achart_util_110_index_debug = function (exports) {
+  var achartUtil = achart_util_110_src_util_debug;
+  exports = achartUtil;
+  return exports;
+}();
+achart_raphael_101_src_core_debug = function (exports) {
+  achart_raphael_101_src_eve_debug;
   (function (glob, factory) {
     if (typeof define === 'function' && define.amd) {
       define(['eve'], function (eve) {
@@ -742,6 +2206,8 @@ achart_raphael_100_src_core_debug = function (exports) {
         'arrow-start': 'none',
         blur: 0,
         'clip-rect': '0 0 1e9 1e9',
+        'clip-angle': '0 0 1e9 1e9',
+        'clip-circle': '0 0 1e9',
         cursor: 'default',
         cx: 0,
         cy: 0,
@@ -779,6 +2245,8 @@ achart_raphael_100_src_core_debug = function (exports) {
       }, availableAnimAttrs = R._availableAnimAttrs = {
         blur: nu,
         'clip-rect': 'csv',
+        'clip-angle': 'csv',
+        'clip-circle': 'csv',
         cx: nu,
         cy: nu,
         fill: 'colour',
@@ -3602,6 +5070,18 @@ achart_raphael_100_src_core_debug = function (exports) {
                     while (i--) {
                       now[i] = +from[attr][i] + pos * ms * diff[attr][i];
                     }
+                  } else if (attr == 'clip-circle') {
+                    now = [];
+                    i = 3;
+                    while (i--) {
+                      now[i] = +from[attr][i] + pos * ms * diff[attr][i];
+                    }
+                  } else if (attr == 'clip-angle') {
+                    now = [];
+                    i = 4;
+                    while (i--) {
+                      now[i] = +from[attr][i] + pos * ms * diff[attr][i];
+                    }
                   }
                   break;
                 default:
@@ -3852,7 +5332,7 @@ achart_raphael_100_src_core_debug = function (exports) {
                 break;
               case 'csv':
                 var values = Str(params[attr])[split](separator), from2 = Str(from[attr])[split](separator);
-                if (attr == 'clip-rect') {
+                if (attr == 'clip-rect' || attr == 'clip-circle' || attr == 'clip-angle') {
                   from[attr] = from2;
                   diff[attr] = [];
                   i = from2.length;
@@ -4395,8 +5875,8 @@ achart_raphael_100_src_core_debug = function (exports) {
   exports = Raphael;
   return exports;
 }();
-achart_raphael_100_src_svg_debug = function () {
-  achart_raphael_100_src_core_debug;
+achart_raphael_101_src_svg_debug = function () {
+  achart_raphael_101_src_core_debug;
   window.Raphael && window.Raphael.svg && function (R) {
     var has = 'hasOwnProperty', Str = String, toFloat = parseFloat, toInt = parseInt, math = Math, mmax = math.max, abs = math.abs, pow = math.pow, separator = /[, ]+/, eve = R.eve, E = '', S = ' ';
     var xlink = 'http://www.w3.org/1999/xlink', markers = {
@@ -4753,6 +6233,93 @@ achart_raphael_100_src_svg_debug = function () {
               break;
             case 'arrow-end':
               addArrow(o, value, 1);
+              break;
+            case 'clip-angle':
+              var angle = Str(value).split(separator);
+              if (angle.length == 4) {
+                var center = {
+                    x: parseInt(angle[0], 10),
+                    y: parseInt(angle[1], 10)
+                  };
+                var RAD = Math.PI / 180;
+                function _getCoord(angle, r) {
+                  var self = this;
+                  var rst = {};
+                  rst.x = center.x + r * Math.sin(angle * RAD);
+                  rst.y = center.y - r * Math.cos(angle * RAD);
+                  return rst;
+                }
+                function getPiePath(startAngle, endAngle, r) {
+                  var path, cx = center.x, cy = center.y, start = _getCoord(startAngle, r), end = _getCoord(endAngle, r);
+                  path = [
+                    'M',
+                    cx + ',',
+                    cy,
+                    'L',
+                    start.x + ',',
+                    start.y,
+                    'A',
+                    r + ',',
+                    r + ',',
+                    0 + ',',
+                    +(endAngle - startAngle > 180) + ',',
+                    1 + ',',
+                    end.x + ',',
+                    end.y,
+                    'z'
+                  ];
+                  return path.join('');
+                }
+                o.clip && o.clip.parentNode.parentNode.removeChild(o.clip.parentNode);
+                var el = $('clipPath'), pt = $('path');
+                el.id = R.createUUID();
+                var p = getPiePath(0, parseInt(angle[3], 10), parseInt(angle[2], 10));
+                $(pt, {
+                  d: p,
+                  fill: '#ffffff',
+                  stroke: '#000000',
+                  'stroke-width': 1.5
+                });
+                el.appendChild(pt);
+                o.paper.defs.appendChild(el);
+                $(node, { 'clip-path': 'url(#' + el.id + ')' });
+                o.clip = pt;
+              }
+              if (!value) {
+                var path = node.getAttribute('clip-path');
+                if (path) {
+                  var clip = R._g.doc.getElementById(path.replace(/(^url\(#|\)$)/g, E));
+                  clip && clip.parentNode.removeChild(clip);
+                  $(node, { 'clip-path': E });
+                  delete o.clip;
+                }
+              }
+              break;
+            case 'clip-circle':
+              var circle = Str(value).split(separator);
+              if (circle.length == 3) {
+                o.clip && o.clip.parentNode.parentNode.removeChild(o.clip.parentNode);
+                var el = $('clipPath'), cc = $('circle');
+                el.id = R.createUUID();
+                $(cc, {
+                  cx: circle[0],
+                  cy: circle[1],
+                  r: circle[2]
+                });
+                el.appendChild(cc);
+                o.paper.defs.appendChild(el);
+                $(node, { 'clip-path': 'url(#' + el.id + ')' });
+                o.clip = cc;
+              }
+              if (!value) {
+                var path = node.getAttribute('clip-path');
+                if (path) {
+                  var clip = R._g.doc.getElementById(path.replace(/(^url\(#|\)$)/g, E));
+                  clip && clip.parentNode.removeChild(clip);
+                  $(node, { 'clip-path': E });
+                  delete o.clip;
+                }
+              }
               break;
             case 'clip-rect':
               var rect = Str(value).split(separator);
@@ -5533,1702 +7100,8 @@ achart_raphael_100_src_svg_debug = function () {
       }
   }(window.Raphael);
 }();
-achart_raphael_100_src_vml_debug = function () {
-  achart_raphael_100_src_core_debug;
-  window.Raphael && window.Raphael.vml && function (R) {
-    var has = 'hasOwnProperty', Str = String, toFloat = parseFloat, math = Math, round = math.round, mmax = math.max, mmin = math.min, abs = math.abs, fillString = 'fill', separator = /[, ]+/, eve = R.eve, ms = ' progid:DXImageTransform.Microsoft', S = ' ', E = '', map = {
-        M: 'm',
-        L: 'l',
-        C: 'c',
-        Z: 'x',
-        m: 't',
-        l: 'r',
-        c: 'v',
-        z: 'x'
-      }, bites = /([clmz]),?([^clmz]*)/gi, blurregexp = / progid:\S+Blur\([^\)]+\)/g, val = /-?[^,\s-]+/g, cssDot = 'position:absolute;left:0;top:0;width:1px;height:1px', zoom = 21600, pathTypes = {
-        path: 1,
-        rect: 1,
-        image: 1
-      }, ovalTypes = {
-        circle: 1,
-        ellipse: 1
-      }, path2vml = function (path) {
-        var total = /[ahqstv]/gi, command = R._pathToAbsolute;
-        Str(path).match(total) && (command = R._path2curve);
-        total = /[clmz]/g;
-        if (command == R._pathToAbsolute && !Str(path).match(total)) {
-          var res = Str(path).replace(bites, function (all, command, args) {
-              var vals = [], isMove = command.toLowerCase() == 'm', res = map[command];
-              args.replace(val, function (value) {
-                if (isMove && vals.length == 2) {
-                  res += vals + map[command == 'm' ? 'l' : 'L'];
-                  vals = [];
-                }
-                vals.push(round(value * zoom));
-              });
-              return res + vals;
-            });
-          return res;
-        }
-        var pa = command(path), p, r;
-        res = [];
-        for (var i = 0, ii = pa.length; i < ii; i++) {
-          p = pa[i];
-          r = pa[i][0].toLowerCase();
-          r == 'z' && (r = 'x');
-          for (var j = 1, jj = p.length; j < jj; j++) {
-            r += round(p[j] * zoom) + (j != jj - 1 ? ',' : E);
-          }
-          res.push(r);
-        }
-        return res.join(S);
-      }, compensation = function (deg, dx, dy) {
-        var m = R.matrix();
-        m.rotate(-deg, 0.5, 0.5);
-        return {
-          dx: m.x(dx, dy),
-          dy: m.y(dx, dy)
-        };
-      }, setCoords = function (p, sx, sy, dx, dy, deg) {
-        var _ = p._, m = p.matrix, fillpos = _.fillpos, o = p.node, s = o.style, y = 1, flip = '', dxdy, kx = zoom / sx, ky = zoom / sy;
-        s.visibility = 'hidden';
-        if (!sx || !sy) {
-          return;
-        }
-        o.coordsize = abs(kx) + S + abs(ky);
-        s.rotation = deg * (sx * sy < 0 ? -1 : 1);
-        if (deg) {
-          var c = compensation(deg, dx, dy);
-          dx = c.dx;
-          dy = c.dy;
-        }
-        sx < 0 && (flip += 'x');
-        sy < 0 && (flip += ' y') && (y = -1);
-        s.flip = flip;
-        o.coordorigin = dx * -kx + S + dy * -ky;
-        if (fillpos || _.fillsize) {
-          var fill = o.getElementsByTagName(fillString);
-          fill = fill && fill[0];
-          o.removeChild(fill);
-          if (fillpos) {
-            c = compensation(deg, m.x(fillpos[0], fillpos[1]), m.y(fillpos[0], fillpos[1]));
-            fill.position = c.dx * y + S + c.dy * y;
-          }
-          if (_.fillsize) {
-            fill.size = _.fillsize[0] * abs(sx) + S + _.fillsize[1] * abs(sy);
-          }
-          o.appendChild(fill);
-        }
-        s.visibility = 'visible';
-      };
-    R.toString = function () {
-      return 'Your browser doesn\u2019t support SVG. Falling down to VML.\nYou are running Rapha\xEBl ' + this.version;
-    };
-    var addArrow = function (o, value, isEnd) {
-        var values = Str(value).toLowerCase().split('-'), se = isEnd ? 'end' : 'start', i = values.length, type = 'classic', w = 'medium', h = 'medium';
-        while (i--) {
-          switch (values[i]) {
-          case 'block':
-          case 'classic':
-          case 'oval':
-          case 'diamond':
-          case 'open':
-          case 'none':
-            type = values[i];
-            break;
-          case 'wide':
-          case 'narrow':
-            h = values[i];
-            break;
-          case 'long':
-          case 'short':
-            w = values[i];
-            break;
-          }
-        }
-        var stroke = o.node.getElementsByTagName('stroke')[0];
-        stroke[se + 'arrow'] = type;
-        stroke[se + 'arrowlength'] = w;
-        stroke[se + 'arrowwidth'] = h;
-      }, setFillAndStroke = function (o, params) {
-        o.attrs = o.attrs || {};
-        var node = o.node, a = o.attrs, s = node.style, xy, newpath = pathTypes[o.type] && (params.x != a.x || params.y != a.y || params.width != a.width || params.height != a.height || params.cx != a.cx || params.cy != a.cy || params.rx != a.rx || params.ry != a.ry || params.r != a.r), isOval = ovalTypes[o.type] && (a.cx != params.cx || a.cy != params.cy || a.r != params.r || a.rx != params.rx || a.ry != params.ry), res = o;
-        for (var par in params)
-          if (params[has](par)) {
-            a[par] = params[par];
-          }
-        if (newpath) {
-          a.path = R._getPath[o.type](o);
-          o._.dirty = 1;
-        }
-        params.href && (node.href = params.href);
-        params.title && (node.title = params.title);
-        params.target && (node.target = params.target);
-        params.cursor && (s.cursor = params.cursor);
-        'blur' in params && o.blur(params.blur);
-        if (params.path && o.type == 'path' || newpath) {
-          node.path = path2vml(~Str(a.path).toLowerCase().indexOf('r') ? R._pathToAbsolute(a.path) : a.path);
-          if (o.type == 'image') {
-            o._.fillpos = [
-              a.x,
-              a.y
-            ];
-            o._.fillsize = [
-              a.width,
-              a.height
-            ];
-            setCoords(o, 1, 1, 0, 0, 0);
-          }
-        }
-        'transform' in params && o.transform(params.transform);
-        if (isOval) {
-          var cx = +a.cx, cy = +a.cy, rx = +a.rx || +a.r || 0, ry = +a.ry || +a.r || 0;
-          node.path = R.format('ar{0},{1},{2},{3},{4},{1},{4},{1}x', round((cx - rx) * zoom), round((cy - ry) * zoom), round((cx + rx) * zoom), round((cy + ry) * zoom), round(cx * zoom));
-          o._.dirty = 1;
-        }
-        if ('clip-rect' in params) {
-          var rect = Str(params['clip-rect']).split(separator);
-          if (rect.length == 4) {
-            rect[2] = +rect[2] + +rect[0];
-            rect[3] = +rect[3] + +rect[1];
-            var div = node.clipRect || R._g.doc.createElement('div'), dstyle = div.style;
-            dstyle.clip = R.format('rect({1}px {2}px {3}px {0}px)', rect);
-            if (!node.clipRect) {
-              dstyle.position = 'absolute';
-              dstyle.top = 0;
-              dstyle.left = 0;
-              dstyle.width = o.paper.width + 'px';
-              dstyle.height = o.paper.height + 'px';
-              node.parentNode.insertBefore(div, node);
-              div.appendChild(node);
-              node.clipRect = div;
-            }
-          }
-          if (!params['clip-rect']) {
-            node.clipRect && (node.clipRect.style.clip = 'auto');
-          }
-        }
-        if (o.textpath) {
-          var textpathStyle = o.textpath.style;
-          params.font && (textpathStyle.font = params.font);
-          params['font-family'] && (textpathStyle.fontFamily = '"' + params['font-family'].split(',')[0].replace(/^['"]+|['"]+$/g, E) + '"');
-          params['font-size'] && (textpathStyle.fontSize = params['font-size']);
-          params['font-weight'] && (textpathStyle.fontWeight = params['font-weight']);
-          params['font-style'] && (textpathStyle.fontStyle = params['font-style']);
-        }
-        if ('arrow-start' in params) {
-          addArrow(res, params['arrow-start']);
-        }
-        if ('arrow-end' in params) {
-          addArrow(res, params['arrow-end'], 1);
-        }
-        if (params.opacity != null || params['stroke-width'] != null || params.fill != null || params.src != null || params.stroke != null || params['stroke-width'] != null || params['stroke-opacity'] != null || params['fill-opacity'] != null || params['stroke-dasharray'] != null || params['stroke-miterlimit'] != null || params['stroke-linejoin'] != null || params['stroke-linecap'] != null) {
-          var fill = node.getElementsByTagName(fillString), newfill = false;
-          fill = fill && fill[0];
-          !fill && (newfill = fill = createNode(fillString));
-          if (o.type == 'image' && params.src) {
-            fill.src = params.src;
-          }
-          params.fill && (fill.on = true);
-          if (fill.on == null || params.fill == 'none' || params.fill === null) {
-            fill.on = false;
-          }
-          if (fill.on && params.fill) {
-            var isURL = Str(params.fill).match(R._ISURL);
-            if (isURL) {
-              fill.parentNode == node && node.removeChild(fill);
-              fill.rotate = true;
-              fill.src = isURL[1];
-              fill.type = 'tile';
-              var bbox = o.getBBox(1);
-              fill.position = bbox.x + S + bbox.y;
-              o._.fillpos = [
-                bbox.x,
-                bbox.y
-              ];
-              R._preload(isURL[1], function () {
-                o._.fillsize = [
-                  this.offsetWidth,
-                  this.offsetHeight
-                ];
-              });
-            } else {
-              fill.color = R.getRGB(params.fill).hex;
-              fill.src = E;
-              fill.type = 'solid';
-              if (R.getRGB(params.fill).error && (res.type in {
-                  circle: 1,
-                  ellipse: 1
-                } || Str(params.fill).charAt() != 'r') && addGradientFill(res, params.fill, fill)) {
-                a.fill = 'none';
-                a.gradient = params.fill;
-                fill.rotate = false;
-              }
-            }
-          }
-          if ('fill-opacity' in params || 'opacity' in params) {
-            var opacity = ((+a['fill-opacity'] + 1 || 2) - 1) * ((+a.opacity + 1 || 2) - 1) * ((+R.getRGB(params.fill).o + 1 || 2) - 1);
-            opacity = mmin(mmax(opacity, 0), 1);
-            fill.opacity = opacity;
-            if (fill.src) {
-              fill.color = 'none';
-            }
-          }
-          node.appendChild(fill);
-          var stroke = node.getElementsByTagName('stroke') && node.getElementsByTagName('stroke')[0], newstroke = false;
-          !stroke && (newstroke = stroke = createNode('stroke'));
-          if (params.stroke && params.stroke != 'none' || params['stroke-width'] || params['stroke-opacity'] != null || params['stroke-dasharray'] || params['stroke-miterlimit'] || params['stroke-linejoin'] || params['stroke-linecap']) {
-            stroke.on = true;
-          }
-          (params.stroke == 'none' || params.stroke === null || stroke.on == null || params.stroke == 0 || params['stroke-width'] == 0) && (stroke.on = false);
-          var strokeColor = R.getRGB(params.stroke);
-          stroke.on && params.stroke && (stroke.color = strokeColor.hex);
-          opacity = ((+a['stroke-opacity'] + 1 || 2) - 1) * ((+a.opacity + 1 || 2) - 1) * ((+strokeColor.o + 1 || 2) - 1);
-          var width = (toFloat(params['stroke-width']) || 1) * 0.75;
-          opacity = mmin(mmax(opacity, 0), 1);
-          params['stroke-width'] == null && (width = a['stroke-width']);
-          params['stroke-width'] && (stroke.weight = width);
-          width && width < 1 && (opacity *= width) && (stroke.weight = 1);
-          stroke.opacity = opacity;
-          params['stroke-linejoin'] && (stroke.joinstyle = params['stroke-linejoin'] || 'miter');
-          stroke.miterlimit = params['stroke-miterlimit'] || 8;
-          params['stroke-linecap'] && (stroke.endcap = params['stroke-linecap'] == 'butt' ? 'flat' : params['stroke-linecap'] == 'square' ? 'square' : 'round');
-          if (params['stroke-dasharray']) {
-            var dasharray = {
-                '-': 'shortdash',
-                '.': 'shortdot',
-                '-.': 'shortdashdot',
-                '-..': 'shortdashdotdot',
-                '. ': 'dot',
-                '- ': 'dash',
-                '--': 'longdash',
-                '- .': 'dashdot',
-                '--.': 'longdashdot',
-                '--..': 'longdashdotdot'
-              };
-            stroke.dashstyle = dasharray[has](params['stroke-dasharray']) ? dasharray[params['stroke-dasharray']] : E;
-          }
-          newstroke && node.appendChild(stroke);
-        }
-        if (res.type == 'text') {
-          res.paper.canvas.style.display = E;
-          var span = res.paper.span, m = 100, fontSize = a.font && a.font.match(/\d+(?:\.\d*)?(?=px)/);
-          s = span.style;
-          a.font && (s.font = a.font);
-          a['font-family'] && (s.fontFamily = a['font-family']);
-          a['font-weight'] && (s.fontWeight = a['font-weight']);
-          a['font-style'] && (s.fontStyle = a['font-style']);
-          fontSize = toFloat(a['font-size'] || fontSize && fontSize[0]) || 10;
-          s.fontSize = fontSize * m + 'px';
-          res.textpath.string && (span.innerHTML = Str(res.textpath.string).replace(/</g, '&#60;').replace(/&/g, '&#38;').replace(/\n/g, '<br>'));
-          var brect = span.getBoundingClientRect();
-          res.W = a.w = (brect.right - brect.left) / m;
-          res.H = a.h = (brect.bottom - brect.top) / m;
-          res.X = a.x;
-          res.Y = a.y + res.H / 2;
-          ('x' in params || 'y' in params) && (res.path.v = R.format('m{0},{1}l{2},{1}', round(a.x * zoom), round(a.y * zoom), round(a.x * zoom) + 1));
-          var dirtyattrs = [
-              'x',
-              'y',
-              'text',
-              'font',
-              'font-family',
-              'font-weight',
-              'font-style',
-              'font-size'
-            ];
-          for (var d = 0, dd = dirtyattrs.length; d < dd; d++)
-            if (dirtyattrs[d] in params) {
-              res._.dirty = 1;
-              break;
-            }
-          switch (a['text-anchor']) {
-          case 'start':
-            res.textpath.style['v-text-align'] = 'left';
-            res.bbx = res.W / 2;
-            break;
-          case 'end':
-            res.textpath.style['v-text-align'] = 'right';
-            res.bbx = -res.W / 2;
-            break;
-          default:
-            res.textpath.style['v-text-align'] = 'center';
-            res.bbx = 0;
-            break;
-          }
-          res.textpath.style['v-text-kern'] = true;
-        }
-      }, addGradientFill = function (o, gradient, fill) {
-        o.attrs = o.attrs || {};
-        var attrs = o.attrs, pow = Math.pow, opacity, oindex, type = 'linear', fxfy = '.5 .5';
-        o.attrs.gradient = gradient;
-        gradient = Str(gradient).replace(R._radial_gradient, function (all, fx, fy) {
-          type = 'radial';
-          if (fx && fy) {
-            fx = toFloat(fx);
-            fy = toFloat(fy);
-            pow(fx - 0.5, 2) + pow(fy - 0.5, 2) > 0.25 && (fy = math.sqrt(0.25 - pow(fx - 0.5, 2)) * ((fy > 0.5) * 2 - 1) + 0.5);
-            fxfy = fx + S + fy;
-          }
-          return E;
-        });
-        gradient = gradient.split(/\s*\-\s*/);
-        if (type == 'linear') {
-          var angle = gradient.shift();
-          angle = -toFloat(angle);
-          if (isNaN(angle)) {
-            return null;
-          }
-        }
-        var dots = R._parseDots(gradient);
-        if (!dots) {
-          return null;
-        }
-        o = o.shape || o.node;
-        if (dots.length) {
-          o.removeChild(fill);
-          fill.on = true;
-          fill.method = 'none';
-          fill.color = dots[0].color;
-          fill.color2 = dots[dots.length - 1].color;
-          var clrs = [];
-          for (var i = 0, ii = dots.length; i < ii; i++) {
-            dots[i].offset && clrs.push(dots[i].offset + S + dots[i].color);
-          }
-          fill.colors = clrs.length ? clrs.join() : '0% ' + fill.color;
-          if (type == 'radial') {
-            fill.type = 'gradientTitle';
-            fill.focus = '100%';
-            fill.focussize = '0 0';
-            fill.focusposition = fxfy;
-            fill.angle = 0;
-          } else {
-            fill.type = 'gradient';
-            fill.angle = (270 - angle) % 360;
-          }
-          o.appendChild(fill);
-        }
-        return 1;
-      }, Element = function (node, vml) {
-        this[0] = this.node = node;
-        node.raphael = true;
-        this.id = R._oid++;
-        node.raphaelid = this.id;
-        this.X = 0;
-        this.Y = 0;
-        this.attrs = {};
-        this.paper = vml;
-        this.matrix = R.matrix();
-        this._ = {
-          transform: [],
-          sx: 1,
-          sy: 1,
-          dx: 0,
-          dy: 0,
-          deg: 0,
-          dirty: 1,
-          dirtyT: 1
-        };
-        !vml.bottom && (vml.bottom = this);
-        this.prev = vml.top;
-        vml.top && (vml.top.next = this);
-        vml.top = this;
-        this.next = null;
-      };
-    var elproto = R.el;
-    Element.prototype = elproto;
-    elproto.constructor = Element;
-    elproto.transform = function (tstr) {
-      if (tstr == null) {
-        return this._.transform;
-      }
-      var vbs = this.paper._viewBoxShift, vbt = vbs ? 's' + [
-          vbs.scale,
-          vbs.scale
-        ] + '-1-1t' + [
-          vbs.dx,
-          vbs.dy
-        ] : E, oldt;
-      if (vbs) {
-        oldt = tstr = Str(tstr).replace(/\.{3}|\u2026/g, this._.transform || E);
-      }
-      R._extractTransform(this, vbt + tstr);
-      var matrix = this.matrix.clone(), skew = this.skew, o = this.node, split, isGrad = ~Str(this.attrs.fill).indexOf('-'), isPatt = !Str(this.attrs.fill).indexOf('url(');
-      matrix.translate(1, 1);
-      if (isPatt || isGrad || this.type == 'image') {
-        skew.matrix = '1 0 0 1';
-        skew.offset = '0 0';
-        split = matrix.split();
-        if (isGrad && split.noRotation || !split.isSimple) {
-          o.style.filter = matrix.toFilter();
-          var bb = this.getBBox(), bbt = this.getBBox(1), dx = bb.x - bbt.x, dy = bb.y - bbt.y;
-          o.coordorigin = dx * -zoom + S + dy * -zoom;
-          setCoords(this, 1, 1, dx, dy, 0);
-        } else {
-          o.style.filter = E;
-          setCoords(this, split.scalex, split.scaley, split.dx, split.dy, split.rotate);
-        }
-      } else if (skew) {
-        o.style.filter = E;
-        skew.matrix = Str(matrix);
-        skew.offset = matrix.offset();
-      }
-      oldt && (this._.transform = oldt);
-      return this;
-    };
-    elproto.rotate = function (deg, cx, cy) {
-      if (this.removed) {
-        return this;
-      }
-      if (deg == null) {
-        return;
-      }
-      deg = Str(deg).split(separator);
-      if (deg.length - 1) {
-        cx = toFloat(deg[1]);
-        cy = toFloat(deg[2]);
-      }
-      deg = toFloat(deg[0]);
-      cy == null && (cx = cy);
-      if (cx == null || cy == null) {
-        var bbox = this.getBBox(1);
-        cx = bbox.x + bbox.width / 2;
-        cy = bbox.y + bbox.height / 2;
-      }
-      this._.dirtyT = 1;
-      this.transform(this._.transform.concat([[
-          'r',
-          deg,
-          cx,
-          cy
-        ]]));
-      return this;
-    };
-    elproto.translate = function (dx, dy) {
-      if (this.removed) {
-        return this;
-      }
-      dx = Str(dx).split(separator);
-      if (dx.length - 1) {
-        dy = toFloat(dx[1]);
-      }
-      dx = toFloat(dx[0]) || 0;
-      dy = +dy || 0;
-      if (this._.bbox) {
-        this._.bbox.x += dx;
-        this._.bbox.y += dy;
-      }
-      this.transform(this._.transform.concat([[
-          't',
-          dx,
-          dy
-        ]]));
-      return this;
-    };
-    elproto.scale = function (sx, sy, cx, cy) {
-      if (this.removed) {
-        return this;
-      }
-      sx = Str(sx).split(separator);
-      if (sx.length - 1) {
-        sy = toFloat(sx[1]);
-        cx = toFloat(sx[2]);
-        cy = toFloat(sx[3]);
-        isNaN(cx) && (cx = null);
-        isNaN(cy) && (cy = null);
-      }
-      sx = toFloat(sx[0]);
-      sy == null && (sy = sx);
-      cy == null && (cx = cy);
-      if (cx == null || cy == null) {
-        var bbox = this.getBBox(1);
-      }
-      cx = cx == null ? bbox.x + bbox.width / 2 : cx;
-      cy = cy == null ? bbox.y + bbox.height / 2 : cy;
-      this.transform(this._.transform.concat([[
-          's',
-          sx,
-          sy,
-          cx,
-          cy
-        ]]));
-      this._.dirtyT = 1;
-      return this;
-    };
-    elproto.hide = function () {
-      !this.removed && (this.node.style.display = 'none');
-      return this;
-    };
-    elproto.show = function () {
-      !this.removed && (this.node.style.display = E);
-      return this;
-    };
-    elproto._getBBox = function () {
-      if (this.removed) {
-        return {};
-      }
-      return {
-        x: this.X + (this.bbx || 0) - this.W / 2,
-        y: this.Y - this.H,
-        width: this.W,
-        height: this.H
-      };
-    };
-    elproto.remove = function () {
-      if (this.removed || !this.node.parentNode) {
-        return;
-      }
-      this.paper.__set__ && this.paper.__set__.exclude(this);
-      R.eve.unbind('raphael.*.*.' + this.id);
-      R._tear(this, this.paper);
-      this.node.parentNode.removeChild(this.node);
-      this.shape && this.shape.parentNode.removeChild(this.shape);
-      for (var i in this) {
-        this[i] = typeof this[i] == 'function' ? R._removedFactory(i) : null;
-      }
-      this.removed = true;
-    };
-    elproto.attr = function (name, value) {
-      if (this.removed) {
-        return this;
-      }
-      if (name == null) {
-        var res = {};
-        for (var a in this.attrs)
-          if (this.attrs[has](a)) {
-            res[a] = this.attrs[a];
-          }
-        res.gradient && res.fill == 'none' && (res.fill = res.gradient) && delete res.gradient;
-        res.transform = this._.transform;
-        return res;
-      }
-      if (value == null && R.is(name, 'string')) {
-        if (name == fillString && this.attrs.fill == 'none' && this.attrs.gradient) {
-          return this.attrs.gradient;
-        }
-        var names = name.split(separator), out = {};
-        for (var i = 0, ii = names.length; i < ii; i++) {
-          name = names[i];
-          if (name in this.attrs) {
-            out[name] = this.attrs[name];
-          } else if (R.is(this.paper.customAttributes[name], 'function')) {
-            out[name] = this.paper.customAttributes[name].def;
-          } else {
-            out[name] = R._availableAttrs[name];
-          }
-        }
-        return ii - 1 ? out : out[names[0]];
-      }
-      if (this.attrs && value == null && R.is(name, 'array')) {
-        out = {};
-        for (i = 0, ii = name.length; i < ii; i++) {
-          out[name[i]] = this.attr(name[i]);
-        }
-        return out;
-      }
-      var params;
-      if (value != null) {
-        params = {};
-        params[name] = value;
-      }
-      value == null && R.is(name, 'object') && (params = name);
-      for (var key in params) {
-        eve('raphael.attr.' + key + '.' + this.id, this, params[key]);
-      }
-      if (params) {
-        for (key in this.paper.customAttributes)
-          if (this.paper.customAttributes[has](key) && params[has](key) && R.is(this.paper.customAttributes[key], 'function')) {
-            var par = this.paper.customAttributes[key].apply(this, [].concat(params[key]));
-            this.attrs[key] = params[key];
-            for (var subkey in par)
-              if (par[has](subkey)) {
-                params[subkey] = par[subkey];
-              }
-          }
-        if (params.text && this.type == 'text') {
-          this.textpath.string = params.text;
-        }
-        setFillAndStroke(this, params);
-      }
-      return this;
-    };
-    elproto.toFront = function () {
-      !this.removed && this.node.parentNode.appendChild(this.node);
-      this.paper && this.paper.top != this && R._tofront(this, this.paper);
-      return this;
-    };
-    elproto.toBack = function () {
-      if (this.removed) {
-        return this;
-      }
-      if (this.node.parentNode.firstChild != this.node) {
-        this.node.parentNode.insertBefore(this.node, this.node.parentNode.firstChild);
-        R._toback(this, this.paper);
-      }
-      return this;
-    };
-    elproto.insertAfter = function (element) {
-      if (this.removed) {
-        return this;
-      }
-      if (element.constructor == R.st.constructor) {
-        element = element[element.length - 1];
-      }
-      if (element.node.nextSibling) {
-        element.node.parentNode.insertBefore(this.node, element.node.nextSibling);
-      } else {
-        element.node.parentNode.appendChild(this.node);
-      }
-      R._insertafter(this, element, this.paper);
-      return this;
-    };
-    elproto.insertBefore = function (element) {
-      if (this.removed) {
-        return this;
-      }
-      if (element.constructor == R.st.constructor) {
-        element = element[0];
-      }
-      element.node.parentNode.insertBefore(this.node, element.node);
-      R._insertbefore(this, element, this.paper);
-      return this;
-    };
-    elproto.blur = function (size) {
-      var s = this.node.runtimeStyle, f = s.filter;
-      f = f.replace(blurregexp, E);
-      if (+size !== 0) {
-        this.attrs.blur = size;
-        s.filter = f + S + ms + '.Blur(pixelradius=' + (+size || 1.5) + ')';
-        s.margin = R.format('-{0}px 0 0 -{0}px', round(+size || 1.5));
-      } else {
-        s.filter = f;
-        s.margin = 0;
-        delete this.attrs.blur;
-      }
-      return this;
-    };
-    R._engine.path = function (pathString, vml) {
-      var el = createNode('shape');
-      el.style.cssText = cssDot;
-      el.coordsize = zoom + S + zoom;
-      el.coordorigin = vml.coordorigin;
-      var p = new Element(el, vml), attr = {
-          fill: 'none',
-          stroke: '#000'
-        };
-      pathString && (attr.path = pathString);
-      p.type = 'path';
-      p.path = [];
-      p.Path = E;
-      setFillAndStroke(p, attr);
-      vml.canvas.appendChild(el);
-      var skew = createNode('skew');
-      skew.on = true;
-      el.appendChild(skew);
-      p.skew = skew;
-      p.transform(E);
-      return p;
-    };
-    R._engine.rect = function (vml, x, y, w, h, r) {
-      var path = R._rectPath(x, y, w, h, r), res = vml.path(path), a = res.attrs;
-      res.X = a.x = x;
-      res.Y = a.y = y;
-      res.W = a.width = w;
-      res.H = a.height = h;
-      a.r = r;
-      a.path = path;
-      res.type = 'rect';
-      return res;
-    };
-    R._engine.ellipse = function (vml, x, y, rx, ry) {
-      var res = vml.path(), a = res.attrs;
-      res.X = x - rx;
-      res.Y = y - ry;
-      res.W = rx * 2;
-      res.H = ry * 2;
-      res.type = 'ellipse';
-      setFillAndStroke(res, {
-        cx: x,
-        cy: y,
-        rx: rx,
-        ry: ry
-      });
-      return res;
-    };
-    R._engine.circle = function (vml, x, y, r) {
-      var res = vml.path(), a = res.attrs;
-      res.X = x - r;
-      res.Y = y - r;
-      res.W = res.H = r * 2;
-      res.type = 'circle';
-      setFillAndStroke(res, {
-        cx: x,
-        cy: y,
-        r: r
-      });
-      return res;
-    };
-    R._engine.image = function (vml, src, x, y, w, h) {
-      var path = R._rectPath(x, y, w, h), res = vml.path(path).attr({ stroke: 'none' }), a = res.attrs, node = res.node, fill = node.getElementsByTagName(fillString)[0];
-      a.src = src;
-      res.X = a.x = x;
-      res.Y = a.y = y;
-      res.W = a.width = w;
-      res.H = a.height = h;
-      a.path = path;
-      res.type = 'image';
-      fill.parentNode == node && node.removeChild(fill);
-      fill.rotate = true;
-      fill.src = src;
-      fill.type = 'tile';
-      res._.fillpos = [
-        x,
-        y
-      ];
-      res._.fillsize = [
-        w,
-        h
-      ];
-      node.appendChild(fill);
-      setCoords(res, 1, 1, 0, 0, 0);
-      return res;
-    };
-    R._engine.text = function (vml, x, y, text) {
-      var el = createNode('shape'), path = createNode('path'), o = createNode('textpath');
-      x = x || 0;
-      y = y || 0;
-      text = text || '';
-      path.v = R.format('m{0},{1}l{2},{1}', round(x * zoom), round(y * zoom), round(x * zoom) + 1);
-      path.textpathok = true;
-      o.string = Str(text);
-      o.on = true;
-      el.style.cssText = cssDot;
-      el.coordsize = zoom + S + zoom;
-      el.coordorigin = '0 0';
-      var p = new Element(el, vml), attr = {
-          fill: '#000',
-          stroke: 'none',
-          font: R._availableAttrs.font,
-          text: text
-        };
-      p.shape = el;
-      p.path = path;
-      p.textpath = o;
-      p.type = 'text';
-      p.attrs.text = Str(text);
-      p.attrs.x = x;
-      p.attrs.y = y;
-      p.attrs.w = 1;
-      p.attrs.h = 1;
-      setFillAndStroke(p, attr);
-      el.appendChild(o);
-      el.appendChild(path);
-      vml.canvas.appendChild(el);
-      var skew = createNode('skew');
-      skew.on = true;
-      el.appendChild(skew);
-      p.skew = skew;
-      p.transform(E);
-      return p;
-    };
-    R._engine.setSize = function (width, height) {
-      var cs = this.canvas.style;
-      this.width = width;
-      this.height = height;
-      width == +width && (width += 'px');
-      height == +height && (height += 'px');
-      cs.width = width;
-      cs.height = height;
-      cs.clip = 'rect(0 ' + width + ' ' + height + ' 0)';
-      if (this._viewBox) {
-        R._engine.setViewBox.apply(this, this._viewBox);
-      }
-      return this;
-    };
-    R._engine.setViewBox = function (x, y, w, h, fit) {
-      R.eve('raphael.setViewBox', this, this._viewBox, [
-        x,
-        y,
-        w,
-        h,
-        fit
-      ]);
-      var width = this.width, height = this.height, size = 1 / mmax(w / width, h / height), H, W;
-      if (fit) {
-        H = height / h;
-        W = width / w;
-        if (w * H < width) {
-          x -= (width - w * H) / 2 / H;
-        }
-        if (h * W < height) {
-          y -= (height - h * W) / 2 / W;
-        }
-      }
-      this._viewBox = [
-        x,
-        y,
-        w,
-        h,
-        !!fit
-      ];
-      this._viewBoxShift = {
-        dx: -x,
-        dy: -y,
-        scale: size
-      };
-      this.forEach(function (el) {
-        el.transform('...');
-      });
-      return this;
-    };
-    var createNode;
-    R._engine.initWin = function (win) {
-      var doc = win.document;
-      doc.createStyleSheet().addRule('.rvml', 'behavior:url(#default#VML)');
-      try {
-        !doc.namespaces.rvml && doc.namespaces.add('rvml', 'urn:schemas-microsoft-com:vml');
-        createNode = function (tagName) {
-          return doc.createElement('<rvml:' + tagName + ' class="rvml">');
-        };
-      } catch (e) {
-        createNode = function (tagName) {
-          return doc.createElement('<' + tagName + ' xmlns="urn:schemas-microsoft.com:vml" class="rvml">');
-        };
-      }
-    };
-    R._engine.initWin(R._g.win);
-    R._engine.create = function () {
-      var con = R._getContainer.apply(0, arguments), container = con.container, height = con.height, s, width = con.width, x = con.x, y = con.y;
-      if (!container) {
-        throw new Error('VML container not found.');
-      }
-      var res = new R._Paper(), c = res.canvas = R._g.doc.createElement('div'), cs = c.style;
-      x = x || 0;
-      y = y || 0;
-      width = width || 512;
-      height = height || 342;
-      res.width = width;
-      res.height = height;
-      width == +width && (width += 'px');
-      height == +height && (height += 'px');
-      res.coordsize = zoom * 1000 + S + zoom * 1000;
-      res.coordorigin = '0 0';
-      res.span = R._g.doc.createElement('span');
-      res.span.style.cssText = 'position:absolute;left:-9999em;top:-9999em;padding:0;margin:0;line-height:1;';
-      c.appendChild(res.span);
-      cs.cssText = R.format('top:0;left:0;width:{0};height:{1};display:inline-block;position:relative;clip:rect(0 {0} {1} 0);overflow:hidden', width, height);
-      if (container == 1) {
-        R._g.doc.body.appendChild(c);
-        cs.left = x + 'px';
-        cs.top = y + 'px';
-        cs.position = 'absolute';
-      } else {
-        if (container.firstChild) {
-          container.insertBefore(c, container.firstChild);
-        } else {
-          container.appendChild(c);
-        }
-      }
-      res.renderfix = function () {
-      };
-      return res;
-    };
-    R.prototype.clear = function () {
-      R.eve('raphael.clear', this);
-      this.canvas.innerHTML = E;
-      this.span = R._g.doc.createElement('span');
-      this.span.style.cssText = 'position:absolute;left:-9999em;top:-9999em;padding:0;margin:0;line-height:1;display:inline;';
-      this.canvas.appendChild(this.span);
-      this.bottom = this.top = null;
-    };
-    R.prototype.remove = function () {
-      R.eve('raphael.remove', this);
-      this.canvas.parentNode.removeChild(this.canvas);
-      for (var i in this) {
-        this[i] = typeof this[i] == 'function' ? R._removedFactory(i) : null;
-      }
-      return true;
-    };
-    var setproto = R.st;
-    for (var method in elproto)
-      if (elproto[has](method) && !setproto[has](method)) {
-        setproto[method] = function (methodname) {
-          return function () {
-            var arg = arguments;
-            return this.forEach(function (el) {
-              el[methodname].apply(el, arg);
-            });
-          };
-        }(method);
-      }
-  }(window.Raphael);
-}();
-achart_raphael_100_src_index_debug = function (exports) {
-  var Raphael = achart_raphael_100_src_core_debug;
-  achart_raphael_100_src_svg_debug;
-  achart_raphael_100_src_vml_debug;
-  exports = Raphael;
-  return exports;
-}();
-achart_raphael_100_index_debug = function (exports) {
-  var achartRaphael = achart_raphael_100_src_index_debug;
-  exports = achartRaphael;
-  return exports;
-}();
-achart_util_100_src_util_debug = function (exports) {
-  var Raphael = achart_raphael_100_index_debug, STEP_MS = 16, HANDLERS = {}, TIMES = {}, NAN = NaN, PRE_HAND = 'h', objectPrototype = Object.prototype, toString = objectPrototype.toString;
-  function floor(values, value) {
-    var length = values.length, pre = values[0];
-    if (value < values[0]) {
-      return NAN;
-    }
-    if (value >= values[length - 1]) {
-      return values[length - 1];
-    }
-    for (var i = 1; i < values.length; i++) {
-      if (value < values[i]) {
-        break;
-      }
-      pre = values[i];
-    }
-    return pre;
-  }
-  function ceiling(values, value) {
-    var length = values.length, pre = values[0], rst;
-    if (value > values[length - 1]) {
-      return NAN;
-    }
-    if (value < values[0]) {
-      return values[0];
-    }
-    for (var i = 1; i < values.length; i++) {
-      if (value <= values[i]) {
-        rst = values[i];
-        break;
-      }
-      pre = values[i];
-    }
-    return rst;
-  }
-  function tryFixed(v, base) {
-    var str = base.toString(), index = str.indexOf('.');
-    if (index == -1) {
-      return parseInt(v);
-    }
-    var length = str.substr(index + 1).length;
-    return parseFloat(v.toFixed(length));
-  }
-  function animTime(duration, fn, callback) {
-    var baseTime = new Date().getTime(), baseInterval = 16, uid = Util.guid(PRE_HAND);
-    next(0, fn, duration, callback);
-    function next(num, fn, duration, callback) {
-      var nowTime = new Date().getTime();
-      var durTime = nowTime - baseTime;
-      if (durTime >= duration) {
-        fn(1, num);
-        callback && callback();
-        return;
-      }
-      var factor = Math.pow(durTime / duration, 1.7);
-      fn(factor, num);
-      HANDLERS[uid] = Util.requestAnimationFrame(function () {
-        next(num + 1, fn, duration, callback);
-      });
-    }
-    return uid;
-  }
-  function stopStep(uid) {
-    if (HANDLERS[uid]) {
-      Util.cancelAnimationFrame(HANDLERS[uid]);
-      delete HANDLERS[uid];
-    }
-  }
-  var MAX_LEVEL = 5;
-  function deepMix(dst, src, level) {
-    level = level || 0;
-    for (var k in src) {
-      if (src.hasOwnProperty(k)) {
-        var value = src[k];
-        if (value !== null && Util.isObject(value)) {
-          if (!Util.isObject(dst[k])) {
-            dst[k] = {};
-          }
-          if (level < MAX_LEVEL) {
-            deepMix(dst[k], src[k]);
-          } else {
-            dst[k] = src[k];
-          }
-        } else if (Util.isArray(value)) {
-          dst[k] = [];
-          dst[k] = dst[k].concat(value);
-        } else if (value !== undefined) {
-          dst[k] = src[k];
-        }
-      }
-    }
-  }
-  var Util = {
-      substitute: function (str, o) {
-        if (!str || !o) {
-          return str;
-        }
-        return str.replace(/\\?\{([^{}]+)\}/g, function (match, name) {
-          if (match.charAt(0) === '\\') {
-            return match.slice(1);
-          }
-          return o[name] === undefined ? '' : o[name];
-        });
-      },
-      ucfirst: function (s) {
-        s += '';
-        return s.charAt(0).toUpperCase() + s.substring(1);
-      },
-      isString: function (value) {
-        return typeof value === 'string';
-      },
-      isNumber: function (value) {
-        return typeof value === 'number';
-      },
-      isNumeric: function (value) {
-        return !isNaN(parseFloat(value)) && isFinite(value);
-      },
-      isBoolean: function (value) {
-        return typeof value === 'boolean';
-      },
-      isFunction: function (fn) {
-        return typeof fn === 'function';
-      },
-      isArray: 'isArray' in Array ? Array.isArray : function (value) {
-        return toString.call(value) === '[object Array]';
-      },
-      isDate: function (value) {
-        return toString.call(value) === '[object Date]';
-      },
-      isObject: toString.call(null) === '[object Object]' ? function (value) {
-        return value !== null && value !== undefined && toString.call(value) === '[object Object]' && value.ownerDocument === undefined;
-      } : function (value) {
-        return toString.call(value) === '[object Object]';
-      },
-      extend: function (subclass, superclass, overrides, staticOverrides) {
-        if (!Util.isFunction(superclass)) {
-          overrides = superclass;
-          superclass = subclass;
-          subclass = function () {
-          };
-        }
-        var create = Object.create ? function (proto, c) {
-            return Object.create(proto, { constructor: { value: c } });
-          } : function (proto, c) {
-            function F() {
-            }
-            F.prototype = proto;
-            var o = new F();
-            o.constructor = c;
-            return o;
-          };
-        var superObj = create(superclass.prototype, subclass);
-        subclass.prototype = Util.mix(superObj, subclass.prototype);
-        subclass.superclass = create(superclass.prototype, superclass);
-        Util.mix(superObj, overrides);
-        Util.mix(subclass, staticOverrides);
-        return subclass;
-      },
-      augment: function (c) {
-        var args = Util.toArray(arguments);
-        for (var i = 1; i < args.length; i++) {
-          var obj = args[i];
-          if (Util.isFunction(obj)) {
-            obj = obj.prototype;
-          }
-          Util.mix(c.prototype, obj);
-        }
-      },
-      toArray: function (value) {
-        if (!value || !value.length) {
-          return [];
-        }
-        if (Util.vml) {
-          var rst = [];
-          for (var i = 0; i < value.length; i++) {
-            rst.push(value[i]);
-          }
-          return rst;
-        } else {
-          return Array.prototype.slice.call(value);
-        }
-      },
-      mix: function () {
-        var args = Util.toArray(arguments), obj = args[0];
-        if (obj == true) {
-          obj = args[1];
-          for (var i = 2; i < args.length; i++) {
-            var source = args[i];
-            deepMix(obj, source);
-          }
-        } else {
-          for (var i = 1; i < args.length; i++) {
-            var source = args[i];
-            for (var k in source) {
-              if (source.hasOwnProperty(k) && k != 'constructor') {
-                obj[k] = source[k];
-              }
-            }
-          }
-        }
-        return obj;
-      },
-      mixin: function (c, mixins) {
-        if (c && mixins) {
-          c._mixins = mixins;
-          c.ATTRS = c.ATTRS || {};
-          var temp = {};
-          Util.each(mixins, function (mixin) {
-            Util.augment(c, mixin);
-            var attrs = mixin.ATTRS;
-            if (attrs) {
-              Util.mix(temp, attrs);
-            }
-          });
-          c.ATTRS = Util.mix(temp, c.ATTRS);
-        }
-      },
-      map: function (arr, func) {
-        var result = [];
-        Util.each(arr, function (value, index) {
-          result.push(func(value, index));
-        });
-        return result;
-      },
-      filter: function (array, func) {
-        var result = [];
-        Util.each(array, function (value, index) {
-          if (func(value, index)) {
-            result.push(value);
-          }
-        });
-        return result;
-      },
-      each: function (elements, func) {
-        if (!elements) {
-          return;
-        }
-        if (Util.isObject(elements)) {
-          for (var k in elements) {
-            if (elements.hasOwnProperty(k)) {
-              var rst = func(elements[k], k);
-              if (rst == false) {
-                break;
-              }
-            }
-          }
-        } else if (elements.length) {
-          for (var i = 0; i < elements.length; i++) {
-            var rst = func(elements[i], i);
-            if (rst == false) {
-              break;
-            }
-          }
-        }
-      },
-      requestAnimationFrame: function (fn) {
-        var method = window.requestAnimationFrame || window.webkitRequestAnimationFrame || function (fn) {
-            return setTimeout(fn, 16);
-          };
-        return method(fn);
-      },
-      cancelAnimationFrame: function (id) {
-        var method = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || function (id) {
-            return clearTimeout(id);
-          };
-        return method(id);
-      },
-      guid: function () {
-        var map = {};
-        return function (prefix) {
-          prefix = prefix || 'acharts';
-          if (!map[prefix]) {
-            map[prefix] = 1;
-          } else {
-            map[prefix] += 1;
-          }
-          return prefix + map[prefix];
-        };
-      }(),
-      indexOf: function (arr, obj) {
-        var m = Array.prototype.indexOf;
-        if (m) {
-          return m.call(arr, obj);
-        }
-        var index = -1;
-        for (var i = 0; i < arr.length; i++) {
-          if (arr[i] == obj) {
-            index = i;
-            break;
-          }
-        }
-        return index;
-      },
-      remove: function (arr, obj) {
-        var index = Util.indexOf(arr, obj);
-        if (index !== -1) {
-          arr.splice(index, 1);
-        }
-      },
-      empty: function (array) {
-        if (!(array instanceof Array)) {
-          for (var i = array.length - 1; i >= 0; i--) {
-            delete array[i];
-          }
-        }
-        array.length = 0;
-      },
-      equalsArray: function (a1, a2) {
-        if (a1 == a2) {
-          return true;
-        }
-        if (!a1 || !a2) {
-          return false;
-        }
-        if (a1.length != a2.length) {
-          return false;
-        }
-        var rst = true;
-        for (var i = 0; i < a1.length; i++) {
-          if (a1[i] !== a2[i]) {
-            rst = false;
-            break;
-          }
-        }
-        return rst;
-      },
-      wrapBehavior: function (self, action) {
-        return self['_wrap_' + action] = function (e) {
-          self[action](e);
-        };
-      },
-      getWrapBehavior: function (self, action) {
-        return self['_wrap_' + action];
-      }
-    };
-  var ARR_EV = [
-      'srcElement',
-      'toElement',
-      'clientX',
-      'clientY',
-      'keyCode'
-    ];
-  function getEventObj(ev) {
-    var rst = {};
-    rst.target = ev.srcElement;
-    rst.pageX = ev.clientX + document.body.scrollLeft - document.body.clientLeft;
-    rst.pageY = ev.clientY + document.body.scrollTop - document.body.clientTop;
-    Util.each(ARR_EV, function (key) {
-      rst[key] = ev[key];
-    });
-    rst.stopPropagation = function () {
-      window.event.cancelBubble = true;
-    };
-    return rst;
-  }
-  var fragmentRE = /^\s*<(\w+|!)[^>]*>/, table = document.createElement('table'), tableRow = document.createElement('tr'), containers = {
-      'tr': document.createElement('tbody'),
-      'tbody': table,
-      'thead': table,
-      'tfoot': table,
-      'td': tableRow,
-      'th': tableRow,
-      '*': document.createElement('div')
-    };
-  Util.mix(Util, {
-    vml: Raphael.vml,
-    svg: Raphael.svg,
-    createDom: function (str) {
-      var name = fragmentRE.test(str) && RegExp.$1;
-      if (!(name in containers)) {
-        name = '*';
-      }
-      container = containers[name];
-      str = str.replace(/(^\s*)|(\s*$)/g, '');
-      container.innerHTML = '' + str;
-      return container.childNodes[0];
-    },
-    getOffset: function (o) {
-      var rst = {}, left = 0, top = 0;
-      while (o != null && o != document.body) {
-        left += o.offsetLeft || 0;
-        top += o.offsetTop || 0;
-        o = o.offsetParent;
-      }
-      rst.top = top;
-      rst.left = left;
-      return rst;
-    },
-    contains: function (node, subNode) {
-      if (!node || !subNode) {
-        return false;
-      }
-      var rst = false, parent = subNode.parentNode;
-      while (parent != null && parent != document.body) {
-        if (parent == node) {
-          rst = true;
-          break;
-        }
-        parent = parent.parentNode;
-      }
-      return rst;
-    },
-    getWidth: function (el) {
-      var width = Util.getStyle(el, 'width');
-      if (width == 'auto' || width.indexOf('%') > -1) {
-        width = el.offsetWidth;
-      }
-      return parseFloat(width);
-    },
-    getHeight: function (el) {
-      var height = Util.getStyle(el, 'height');
-      if (height == 'auto') {
-        height = el.offsetHeight;
-      }
-      return parseFloat(height);
-    },
-    getOuterWidth: function (el) {
-      var width = Util.getWidth(el), bLeft = parseFloat(Util.getStyle(el, 'borderLeftWidth')) || 0, pLeft = parseFloat(Util.getStyle(el, 'paddingLeft')), pRight = parseFloat(Util.getStyle(el, 'paddingRight')), bRight = parseFloat(Util.getStyle(el, 'borderRightWidth')) || 0;
-      return width + bLeft + bRight + pLeft + pRight;
-    },
-    getOuterHeight: function (el) {
-      var height = Util.getHeight(el), bTop = parseFloat(Util.getStyle(el, 'borderTopWidth')) || 0, pTop = parseFloat(Util.getStyle(el, 'paddingTop')), pBottom = parseFloat(Util.getStyle(el, 'paddingBottom')), bBottom = parseFloat(Util.getStyle(el, 'borderBottomWidth')) || 0;
-      return height + bTop + bBottom + pTop + pBottom;
-    },
-    getStyle: function (el, name) {
-      if (window.getComputedStyle) {
-        return window.getComputedStyle(el, null)[name];
-      }
-      return el.currentStyle[name];
-    },
-    addEvent: function (obj, type, fn) {
-      if (obj.attachEvent) {
-        obj['e' + type + fn] = fn;
-        obj[type + fn] = function () {
-          window.event.target = window.event.srcElement;
-          obj['e' + type + fn](getEventObj(window.event));
-        };
-        obj.attachEvent('on' + type, obj[type + fn]);
-      } else
-        obj.addEventListener(type, fn, false);
-    },
-    removeEvent: function (obj, type, fn) {
-      if (obj.detachEvent) {
-        obj.detachEvent('on' + type, obj[type + fn]);
-        obj[type + fn] = null;
-      } else
-        obj.removeEventListener(type, fn, false);
-    },
-    angle: function (x1, y1, x2, y2) {
-      return Raphael.angle(x1, y1, x2, y2);
-    },
-    animStep: function (duration, fn, callback) {
-      return animTime(duration, fn, callback);
-    },
-    stopStep: function (handler) {
-      stopStep(handler);
-    },
-    animPath: function (pathShape, toPath, reserve, duration, easing, callback) {
-      if (Util.vml) {
-        after();
-        return;
-      }
-      reserve = reserve || 0;
-      duration = duration || 400;
-      if (!toPath) {
-        after();
-        return;
-      }
-      var curPath = pathShape.getPath(), endPath = Util.parsePathString(toPath), tempPath, last = curPath.slice(reserve * -1);
-      if (curPath.length > endPath.length) {
-        tempPath = curPath.slice(0, endPath.length);
-      } else {
-        tempPath = curPath.concat([]);
-        if (reserve) {
-          for (var i = tempPath.length; i < endPath.length; i++) {
-            tempPath = tempPath.concat(last);
-          }
-        }
-      }
-      pathShape.attr('path', tempPath);
-      pathShape.animate({ path: endPath }, duration, easing, after);
-      function after() {
-        pathShape.attr('path', toPath);
-        callback && callback();
-      }
-    },
-    getPointAtLength: function (path, length) {
-      return Raphael.getPointAtLength(path, length);
-    },
-    isPointInsidePath: function (path, x, y) {
-      return Raphael.isPointInsidePath(path, x, y);
-    },
-    getSubpath: function (path, from, to) {
-      return Raphael.getSubpath(path, from, to);
-    },
-    parsePathString: function (str) {
-      return Raphael.parsePathString(str);
-    },
-    parsePathArray: function (array) {
-      if (Util.isArray(array)) {
-        var path = Util.map(array, function (item) {
-            var str = item.join(' ');
-            return str.replace(/([a-z,A-Z])\s+/, '$1');
-          });
-        return path.join(' ');
-      }
-      return array;
-    },
-    transformPath: function (path, transform) {
-      return Raphael.transformPath(path, transform);
-    },
-    snapTo: function (values, value, tolerance) {
-      if (tolerance) {
-        return Raphael.snapTo(values, value, tolerance);
-      }
-      var floorVal = floor(values, value), ceilingVal = ceiling(values, value);
-      if (isNaN(floorVal) || isNaN(ceilingVal)) {
-        if (values[0] >= value) {
-          return values[0];
-        }
-        var last = values[values.length - 1];
-        if (last <= value) {
-          return last;
-        }
-      }
-      if (Math.abs(value - floorVal) < Math.abs(ceilingVal - value)) {
-        return floorVal;
-      }
-      return ceilingVal;
-    },
-    snapFloor: function (values, value) {
-      return floor(values, value);
-    },
-    snapCeiling: function (values, value) {
-      return ceiling(values, value);
-    },
-    tryFixed: function (value, base) {
-      return tryFixed(value, base);
-    },
-    trySet: function (obj, name, value) {
-      if (obj && !obj[name]) {
-        obj[name] = value;
-      }
-      return obj[name];
-    },
-    highlight: function (c, percent) {
-      var color = Raphael.color(c), l = color.l * (1 + percent);
-      return Raphael.hsl2rgb(color.h, color.s, l).hex;
-    },
-    dark: function (c, percent) {
-      var color = Raphael.color(c), l = color.l * (1 - percent);
-      return Raphael.hsl2rgb(color.h, color.s, l).hex;
-    }
-  });
-  exports = Util;
-  return exports;
-}();
-achart_util_100_index_debug = function (exports) {
-  var achartUtil = achart_util_100_src_util_debug;
-  exports = achartUtil;
-  return exports;
-}();
-achart_canvas_100_src_base_debug = function (exports) {
-  var Util = achart_util_100_index_debug;
-  var Base = function (cfg) {
-    this.cfg = cfg;
-    this._attrs = {
-      autoRender: true,
-      visible: true
-    };
-    this.events = {};
-    var defaultCfg = this.getDefaultCfg();
-    Util.mix(this._attrs, defaultCfg, cfg);
-    if (this.get('autoRender')) {
-      this.render();
-    }
-  };
-  Base.ATTRS = {
-    zIndex: null,
-    el: null,
-    node: null,
-    canvas: null,
-    visible: true
-  };
-  Util.augment(Base, {
-    getDefaultCfg: function () {
-      return {};
-    },
-    set: function (name, value) {
-      var m = '_onRender' + Util.ucfirst(name);
-      if (this[m]) {
-        this[m](value, this._attrs[name]);
-      }
-      this._attrs[name] = value;
-    },
-    get: function (name) {
-      return this._attrs[name];
-    },
-    getCfgAttr: function (name) {
-      return this.cfg[name];
-    },
-    show: function () {
-      this.get('el').show();
-      this.set('visible', true);
-      if (!this.get('visible')) {
-        this.fire('show');
-      }
-    },
-    hide: function () {
-      this.get('el').hide();
-      this.set('visible', false);
-      if (this.get('visible')) {
-        this.fire('hide');
-      }
-    },
-    attr: function (name, value) {
-      var _self = this, el = _self.get('el');
-      if (Util.isObject(name)) {
-        Util.each(name, function (v, k) {
-          _self.attr(k, v);
-        });
-        return _self;
-      }
-      if (value !== undefined) {
-        return _self._setAttr(name, value);
-      }
-      return _self._getAttr(name);
-    },
-    on: function (eventType, fn) {
-      var _self = this, node = _self.get('node'), events = this.events, callbacks = events[eventType];
-      Util.addEvent(node, eventType, fn);
-      if (!callbacks) {
-        callbacks = events[eventType] = [];
-      }
-      callbacks.push(fn);
-      return this;
-    },
-    off: function (eventType, fn) {
-      var _self = this, node = _self.get('node'), events = this.events, callbacks = events[eventType];
-      if (!eventType) {
-        Util.each(events, function (callbacks, type) {
-          Util.each(callbacks, function (m) {
-            Util.removeEvent(node, type, m);
-          });
-        });
-        this.events = {};
-        return this;
-      }
-      Util.removeEvent(node, eventType, fn);
-      if (callbacks) {
-        Util.remove(callbacks, fn);
-      }
-      return this;
-    },
-    fire: function (eventType, eventObj) {
-      var _self = this, events = _self.events, callbacks = events[eventType];
-      if (callbacks) {
-        Util.each(callbacks, function (m) {
-          m(eventObj);
-        });
-      }
-    },
-    _getAttr: function (name) {
-      var _self = this, el = _self.get('el'), value = el.attr ? el.attr(name) : '', m = '__get' + Util.ucfirst(name);
-      if (_self[m]) {
-        value = _self[m](value);
-      }
-      return value;
-    },
-    _setAttr: function (name, value) {
-      var _self = this, el = _self.get('el'), m = '__set' + Util.ucfirst(name);
-      if (_self[m]) {
-        _self[m](value);
-      } else {
-        el.attr && el.attr(name, value);
-      }
-      return _self;
-    },
-    _onRenderElCls: function (cls, pre) {
-      var _self = this, node = _self.get('node'), oldCls = node.getAttribute('class'), arr = oldCls ? oldCls.split(' ') : [];
-      if (pre) {
-        Util.remove(arr, pre);
-      }
-      if (cls) {
-        arr.push(cls);
-      }
-      node.setAttribute('class', arr.join(' '));
-    },
-    _onRenderZIndex: function (zIndex) {
-      var _self = this, node = _self.get('node');
-      if (zIndex != null) {
-        node.setAttribute('zIndex', zIndex);
-        if (Util.vml) {
-          node.style.zIndex = zIndex;
-        }
-      }
-    },
-    beforeRenderUI: function () {
-    },
-    render: function () {
-      var _self = this, zIndex = _self.get('zIndex'), attrs = _self._attrs, node;
-      if (!_self.get('rendered')) {
-        _self.createDom();
-        _self.beforeRenderUI();
-        _self.renderUI();
-        _self.set('rendered', true);
-        node = _self.get('node');
-        if (this.get('visible') == false) {
-          this.hide();
-        }
-        Util.each(attrs, function (v, k) {
-          var m = _self['_onRender' + Util.ucfirst(k)];
-          if (m) {
-            m.call(_self, v);
-          }
-        });
-        _self.bindUI();
-      }
-    },
-    createDom: function () {
-    },
-    renderUI: function () {
-    },
-    bindUI: function () {
-    },
-    remove: function (destroy) {
-      if (destroy == undefined) {
-        destroy = true;
-      }
-      var _self = this;
-      if (_self.get('parent')) {
-        _self.get('parent').removeChild(_self, destroy);
-        _self.set('parent', null);
-      }
-      if (destroy) {
-        _self.destroy();
-      }
-    },
-    destroy: function () {
-      var _self = this, el = _self.get('el'), destroyed = _self.get('destroyed'), node = _self.get('node');
-      if (destroyed) {
-        return;
-      }
-      el.remove && el.remove();
-      _self._attrs = {};
-      _self.events = {};
-      _self.set('destroyed', true);
-    }
-  });
-  exports = Base;
-  return exports;
-}();
-achart_canvas_100_src_canvasitem_debug = function (exports) {
-  var Util = achart_util_100_index_debug;
+achart_canvas_112_src_canvasitem_debug = function (exports) {
+  var Util = achart_util_110_index_debug;
   var Item = function () {
   };
   Util.augment(Item, {
@@ -7265,116 +7138,8 @@ achart_canvas_100_src_canvasitem_debug = function (exports) {
   exports = Item;
   return exports;
 }();
-achart_canvas_100_src_raphealgroup_debug = function () {
-  var Util = achart_util_100_index_debug, R = achart_raphael_100_index_debug;
-  R.fn.group = function () {
-    var out = R._engine.group(this);
-    this.__set__ && this.__set__.push(out);
-    return out;
-  };
-  R._getPath.group = function (el) {
-    var bbox = el._getBBox();
-    return R._rectPath(0, 0, bbox.width, bbox.height);
-  };
-  var Group = function (node, svg) {
-      Group.superclass.constructor.call(this, node, svg);
-    }, groupproto;
-  Util.extend(Group, R.el.constructor);
-  groupproto = Group.prototype;
-  groupproto.group = function () {
-    var canvas = this.paper, out = canvas.group();
-    this.node.appendChild(out.node);
-    return out;
-  };
-  if (window.Raphael.svg) {
-    function createNode(tagName) {
-      return R._g.doc.createElementNS('http://www.w3.org/2000/svg', tagName);
-    }
-    R._engine.group = function (svg) {
-      var el = createNode('g');
-      svg.canvas && svg.canvas.appendChild(el);
-      var res = new Group(el, svg);
-      res.type = 'group';
-      return res;
-    };
-    groupproto.add = function (json) {
-      var rest = this.paper.add(json), el = this.node;
-      rest.forEach(function (element) {
-        el.appendChild(element.node);
-      });
-      return rest;
-    };
-  }
-  if (window.Raphael.vml) {
-    var createNode = function (tagName) {
-      return R._g.doc.createElement('div');
-    };
-    R._getPath.group = function (el) {
-      var node = el.node, set = el.__set, width = 0, height = 0;
-      if (set) {
-        set.forEach(function (element) {
-          var bbox = element.getBBox();
-          if (width < bbox.width) {
-            width = width;
-          }
-          if (height < bbox.height) {
-            height = bbox.height;
-          }
-        });
-      }
-      return R._rectPath(0, 0, width, height);
-    };
-    groupproto.add = function (json) {
-      var rest = this.paper.add(json), el = this.node, set = this.__set;
-      rest.forEach(function (element) {
-        el.appendChild(element.node);
-        if (set) {
-          set.push(element);
-        }
-      });
-      if (!this.__set) {
-        this.__set = rest;
-      }
-      return rest;
-    };
-    groupproto.translate = function (dx, dy) {
-      var el = this.node, top = parseFloat(el.style.top, 10) || 0, left = parseFloat(el.style.left, 10) || 0;
-      el.style.top = top + dy + 'px';
-      el.style.left = left + dx + 'px';
-    };
-    groupproto.move = function (x, y) {
-      var el = this.node;
-      el.style.top = y + 'px';
-      el.style.left = x + 'px';
-    };
-    groupproto.animate = function (params, ms, easing, callback) {
-      var el = this.node, top = parseFloat(el.style.top, 10) || 0, left = parseFloat(el.style.left, 10) || 0;
-      Util.animStep(ms, function (factor) {
-        el.style.top = top + (params.y - top) * factor + 'px';
-        el.style.left = left + (params.x - left) * factor + 'px';
-      }, callback);
-    };
-    groupproto.transform = function (tstr) {
-      var set = this.__set;
-      if (set) {
-        set.forEach(function (element) {
-          element.transform(tstr);
-        });
-      }
-      Group.superclass.transform.call(this, tstr);
-    };
-    R._engine.group = function (vml) {
-      var el = createNode();
-      vml.canvas.appendChild(el);
-      var res = new Group(el, vml);
-      res.type = 'group';
-      el.style.position = 'relative';
-      return res;
-    };
-  }
-}();
-achart_plot_100_src_plotrange_debug = function (exports) {
-  var Util = achart_util_100_index_debug;
+achart_plot_111_src_plotrange_debug = function (exports) {
+  var Util = achart_util_110_index_debug;
   function min(x, y) {
     return x > y ? y : x;
   }
@@ -7446,8 +7211,8 @@ achart_plot_100_src_plotrange_debug = function (exports) {
   exports = PlotRange;
   return exports;
 }();
-achart_actived_100_src_actived_debug = function (exports) {
-  var Util = achart_util_100_index_debug;
+achart_actived_102_src_actived_debug = function (exports) {
+  var Util = achart_util_110_index_debug;
   var Actived = function () {
   };
   Actived.ATTRS = { actived: false };
@@ -7472,8 +7237,8 @@ achart_actived_100_src_actived_debug = function (exports) {
   exports = Actived;
   return exports;
 }();
-achart_actived_100_src_activedgroup_debug = function (exports) {
-  var Util = achart_util_100_index_debug;
+achart_actived_102_src_activedgroup_debug = function (exports) {
+  var Util = achart_util_110_index_debug;
   var Group = function () {
   };
   Group.ATTRS = {};
@@ -7529,8 +7294,8 @@ achart_actived_100_src_activedgroup_debug = function (exports) {
   exports = Group;
   return exports;
 }();
-achart_axis_100_src_auto_debug = function (exports) {
-  var Util = achart_util_100_index_debug, DateUtil = achart_date_100_index_debug, snapArray = [
+achart_auto_103_index_debug = function (exports) {
+  var Util = achart_util_110_index_debug, DateUtil = achart_date_100_index_debug, snapArray = [
       0,
       1,
       1.5,
@@ -7545,7 +7310,7 @@ achart_axis_100_src_auto_debug = function (exports) {
     ], intervalArray = [
       0,
       1,
-      2.5,
+      2,
       5,
       10
     ], snapTimeArray = [
@@ -7653,8 +7418,8 @@ achart_axis_100_src_auto_debug = function (exports) {
   }
   function getSimpleArray(data, stacked) {
     var arr = [];
-    if (Util.isArray(data[0])) {
-      if (stacked) {
+    if (stacked) {
+      if (Util.isArray(data[0])) {
         Util.each(data[0], function (value, index) {
           var temp = value;
           for (var i = 1; i < data.length; i++) {
@@ -7662,13 +7427,15 @@ achart_axis_100_src_auto_debug = function (exports) {
           }
           arr.push(temp);
         });
-      } else {
-        Util.each(data, function (sub) {
-          arr = arr.concat(sub);
-        });
       }
     } else {
-      arr = data;
+      Util.each(data, function (sub) {
+        if (Util.isArray(sub)) {
+          arr = arr.concat(sub);
+        } else {
+          arr.push(sub);
+        }
+      });
     }
     return arr;
   }
@@ -7892,12 +7659,12 @@ achart_axis_100_src_auto_debug = function (exports) {
   exports = Auto;
   return exports;
 }();
-achart_series_100_src_stacked_debug = function (exports) {
+achart_series_107_src_stacked_debug = function (exports) {
   /**
    * @fileOverview 处理层叠的数据序列的扩展
    * @ignore
    */
-  var Util = achart_util_100_index_debug;
+  var Util = achart_util_110_index_debug;
   /**
    * @class Chart.Series.Stacked
    * @protected
@@ -8014,12 +7781,12 @@ achart_series_100_src_stacked_debug = function (exports) {
   exports = Stacked;
   return exports;
 }();
-achart_theme_100_index_debug = function (exports) {
+achart_theme_101_index_debug = function (exports) {
   /**
    * @fileOverview 图表的皮肤
    * @ignore
    */
-  var Util = achart_util_100_index_debug;
+  var Util = achart_util_110_index_debug;
   /**
    * Chart.Theme
    * @param {Object} cfg  样式的配置项
@@ -8510,8 +8277,546 @@ achart_theme_100_index_debug = function (exports) {
   exports = Theme;
   return exports;
 }();
-achart_canvas_100_src_shape_debug = function (exports) {
-  var Base = achart_canvas_100_src_base_debug, Item = achart_canvas_100_src_canvasitem_debug, Util = achart_util_100_index_debug;
+achart_raphael_101_src_index_debug = function (exports) {
+  var Raphael = achart_raphael_101_src_core_debug;
+  achart_raphael_101_src_svg_debug;
+  achart_raphael_101_src_vml_debug;
+  exports = Raphael;
+  return exports;
+}();
+achart_actived_102_index_debug = function (exports) {
+  var Actived = achart_actived_102_src_actived_debug;
+  Actived.Group = achart_actived_102_src_activedgroup_debug;
+  exports = Actived;
+  return exports;
+}();
+achart_raphael_101_index_debug = function (exports) {
+  var achartRaphael = achart_raphael_101_src_index_debug;
+  exports = achartRaphael;
+  return exports;
+}();
+achart_canvas_112_src_raphealgroup_debug = function () {
+  var Util = achart_util_110_index_debug, R = achart_raphael_101_index_debug;
+  R.fn.group = function () {
+    var out = R._engine.group(this);
+    this.__set__ && this.__set__.push(out);
+    return out;
+  };
+  R._getPath.group = function (el) {
+    var bbox = el._getBBox();
+    return R._rectPath(0, 0, bbox.width, bbox.height);
+  };
+  var Group = function (node, svg) {
+      Group.superclass.constructor.call(this, node, svg);
+    }, groupproto;
+  Util.extend(Group, R.el.constructor);
+  groupproto = Group.prototype;
+  groupproto.group = function () {
+    var canvas = this.paper, out = canvas.group();
+    this.node.appendChild(out.node);
+    return out;
+  };
+  if (window.Raphael.svg) {
+    function createNode(tagName) {
+      return R._g.doc.createElementNS('http://www.w3.org/2000/svg', tagName);
+    }
+    R._engine.group = function (svg) {
+      var el = createNode('g');
+      svg.canvas && svg.canvas.appendChild(el);
+      var res = new Group(el, svg);
+      res.type = 'group';
+      return res;
+    };
+    groupproto.add = function (json) {
+      var rest = this.paper.add(json), el = this.node;
+      rest.forEach(function (element) {
+        el.appendChild(element.node);
+      });
+      return rest;
+    };
+  }
+  if (window.Raphael.vml) {
+    var createNode = function (tagName) {
+      return R._g.doc.createElement('div');
+    };
+    R._getPath.group = function (el) {
+      var node = el.node, set = el.__set, width = 0, height = 0;
+      if (set) {
+        set.forEach(function (element) {
+          var bbox = element.getBBox();
+          if (width < bbox.width) {
+            width = width;
+          }
+          if (height < bbox.height) {
+            height = bbox.height;
+          }
+        });
+      }
+      return R._rectPath(0, 0, width, height);
+    };
+    groupproto.add = function (json) {
+      var rest = this.paper.add(json), el = this.node, set = this.__set;
+      rest.forEach(function (element) {
+        el.appendChild(element.node);
+        if (set) {
+          set.push(element);
+        }
+      });
+      if (!this.__set) {
+        this.__set = rest;
+      }
+      return rest;
+    };
+    groupproto.translate = function (dx, dy) {
+      var el = this.node, top = parseFloat(el.style.top, 10) || 0, left = parseFloat(el.style.left, 10) || 0;
+      el.style.top = top + dy + 'px';
+      el.style.left = left + dx + 'px';
+    };
+    groupproto.move = function (x, y) {
+      var el = this.node;
+      el.style.top = y + 'px';
+      el.style.left = x + 'px';
+    };
+    groupproto.animate = function (params, ms, easing, callback) {
+      var el = this.node, top = parseFloat(el.style.top, 10) || 0, left = parseFloat(el.style.left, 10) || 0;
+      Util.animStep(ms, function (factor) {
+        el.style.top = top + (params.y - top) * factor + 'px';
+        el.style.left = left + (params.x - left) * factor + 'px';
+      }, callback);
+    };
+    groupproto.transform = function (tstr) {
+      var set = this.__set;
+      if (set) {
+        set.forEach(function (element) {
+          element.transform(tstr);
+        });
+      }
+      Group.superclass.transform.call(this, tstr);
+    };
+    R._engine.group = function (vml) {
+      var el = createNode();
+      vml.canvas.appendChild(el);
+      var res = new Group(el, vml);
+      res.type = 'group';
+      el.style.position = 'relative';
+      return res;
+    };
+  }
+}();
+achart_canvas_112_src_util_debug = function (exports) {
+  var Util = achart_util_110_index_debug;
+  var Raphael = achart_raphael_101_index_debug, HANDLERS = {}, TIMES = {}, NAN = NaN, PRE_HAND = 'h', objectPrototype = Object.prototype, toString = objectPrototype.toString;
+  function animTime(duration, fn, callback) {
+    var baseTime = new Date().getTime(), baseInterval = 16, uid = Util.guid(PRE_HAND);
+    next(0, fn, duration, callback);
+    function next(num, fn, duration, callback) {
+      var nowTime = new Date().getTime();
+      var durTime = nowTime - baseTime;
+      if (durTime >= duration) {
+        fn(1, num);
+        callback && callback();
+        return;
+      }
+      var factor = Math.pow(durTime / duration, 1.7);
+      fn(factor, num);
+      HANDLERS[uid] = Util.requestAnimationFrame(function () {
+        next(num + 1, fn, duration, callback);
+      });
+    }
+    return uid;
+  }
+  function stopStep(uid) {
+    if (HANDLERS[uid]) {
+      Util.cancelAnimationFrame(HANDLERS[uid]);
+      delete HANDLERS[uid];
+    }
+  }
+  var ARR_EV = [
+      'srcElement',
+      'toElement',
+      'clientX',
+      'clientY',
+      'keyCode'
+    ];
+  function getEventObj(ev) {
+    var rst = {};
+    rst.target = ev.srcElement;
+    rst.pageX = ev.clientX + document.body.scrollLeft - document.body.clientLeft;
+    rst.pageY = ev.clientY + document.body.scrollTop - document.body.clientTop;
+    Util.each(ARR_EV, function (key) {
+      rst[key] = ev[key];
+    });
+    rst.stopPropagation = function () {
+      window.event.cancelBubble = true;
+    };
+    return rst;
+  }
+  var fragmentRE = /^\s*<(\w+|!)[^>]*>/, table = document.createElement('table'), tableRow = document.createElement('tr'), containers = {
+      'tr': document.createElement('tbody'),
+      'tbody': table,
+      'thead': table,
+      'tfoot': table,
+      'td': tableRow,
+      'th': tableRow,
+      '*': document.createElement('div')
+    };
+  Util.mix(Util, {
+    vml: Raphael.vml,
+    svg: Raphael.svg,
+    createDom: function (str) {
+      var name = fragmentRE.test(str) && RegExp.$1;
+      if (!(name in containers)) {
+        name = '*';
+      }
+      container = containers[name];
+      str = str.replace(/(^\s*)|(\s*$)/g, '');
+      container.innerHTML = '' + str;
+      return container.childNodes[0];
+    },
+    getOffset: function (o) {
+      var rst = {}, left = 0, top = 0;
+      while (o != null && o != document.body) {
+        left += o.offsetLeft || 0;
+        top += o.offsetTop || 0;
+        o = o.offsetParent;
+      }
+      rst.top = top;
+      rst.left = left;
+      return rst;
+    },
+    contains: function (node, subNode) {
+      if (!node || !subNode) {
+        return false;
+      }
+      var rst = false, parent = subNode.parentNode;
+      while (parent != null && parent != document.body) {
+        if (parent == node) {
+          rst = true;
+          break;
+        }
+        parent = parent.parentNode;
+      }
+      return rst;
+    },
+    getWidth: function (el) {
+      var width = Util.getStyle(el, 'width');
+      if (width == 'auto') {
+        width = el.offsetWidth;
+      }
+      return parseFloat(width);
+    },
+    getHeight: function (el) {
+      var height = Util.getStyle(el, 'height');
+      if (height == 'auto') {
+        height = el.offsetHeight;
+      }
+      return parseFloat(height);
+    },
+    getOuterWidth: function (el) {
+      var width = Util.getWidth(el), bLeft = parseFloat(Util.getStyle(el, 'borderLeftWidth')) || 0, pLeft = parseFloat(Util.getStyle(el, 'paddingLeft')), pRight = parseFloat(Util.getStyle(el, 'paddingRight')), bRight = parseFloat(Util.getStyle(el, 'borderRightWidth')) || 0;
+      return width + bLeft + bRight + pLeft + pRight;
+    },
+    getOuterHeight: function (el) {
+      var height = Util.getHeight(el), bTop = parseFloat(Util.getStyle(el, 'borderTopWidth')) || 0, pTop = parseFloat(Util.getStyle(el, 'paddingTop')), pBottom = parseFloat(Util.getStyle(el, 'paddingBottom')), bBottom = parseFloat(Util.getStyle(el, 'borderBottomWidth')) || 0;
+      return height + bTop + bBottom + pTop + pBottom;
+    },
+    getStyle: function (el, name) {
+      if (window.getComputedStyle) {
+        return window.getComputedStyle(el, null)[name];
+      }
+      return el.currentStyle[name];
+    },
+    addEvent: function (obj, type, fn) {
+      if (obj.attachEvent) {
+        obj['e' + type + fn] = fn;
+        obj[type + fn] = function () {
+          window.event.target = window.event.srcElement;
+          obj['e' + type + fn](getEventObj(window.event));
+        };
+        obj.attachEvent('on' + type, obj[type + fn]);
+      } else
+        obj.addEventListener(type, fn, false);
+    },
+    removeEvent: function (obj, type, fn) {
+      if (obj.detachEvent) {
+        obj.detachEvent('on' + type, obj[type + fn]);
+        obj[type + fn] = null;
+      } else
+        obj.removeEventListener(type, fn, false);
+    },
+    angle: function (x1, y1, x2, y2) {
+      return Raphael.angle(x1, y1, x2, y2);
+    },
+    animStep: function (duration, fn, callback) {
+      return animTime(duration, fn, callback);
+    },
+    stopStep: function (handler) {
+      stopStep(handler);
+    },
+    animPath: function (pathShape, toPath, reserve, duration, easing, callback) {
+      if (Util.vml) {
+        after();
+        return;
+      }
+      reserve = reserve || 0;
+      duration = duration || 400;
+      if (!toPath) {
+        after();
+        return;
+      }
+      var curPath = pathShape.getPath(), endPath = Util.parsePathString(toPath), tempPath, last = curPath.slice(reserve * -1);
+      if (curPath.length > endPath.length) {
+        tempPath = curPath.slice(0, endPath.length);
+      } else {
+        tempPath = curPath.concat([]);
+        if (reserve) {
+          for (var i = tempPath.length; i < endPath.length; i++) {
+            tempPath = tempPath.concat(last);
+          }
+        }
+      }
+      pathShape.attr('path', tempPath);
+      pathShape.animate({ path: endPath }, duration, easing, after);
+      function after() {
+        pathShape.attr('path', toPath);
+        callback && callback();
+      }
+    },
+    getPointAtLength: function (path, length) {
+      return Raphael.getPointAtLength(path, length);
+    },
+    isPointInsidePath: function (path, x, y) {
+      return Raphael.isPointInsidePath(path, x, y);
+    },
+    getSubpath: function (path, from, to) {
+      return Raphael.getSubpath(path, from, to);
+    },
+    parsePathString: function (str) {
+      return Raphael.parsePathString(str);
+    },
+    parsePathArray: function (array) {
+      if (Util.isArray(array)) {
+        var path = Util.map(array, function (item) {
+            var str = item.join(' ');
+            return str.replace(/([a-z,A-Z])\s+/, '$1');
+          });
+        return path.join(' ');
+      }
+      return array;
+    },
+    transformPath: function (path, transform) {
+      return Raphael.transformPath(path, transform);
+    },
+    trySet: function (obj, name, value) {
+      if (obj && !obj[name]) {
+        obj[name] = value;
+      }
+      return obj[name];
+    },
+    highlight: function (c, percent) {
+      var color = Raphael.color(c), l = color.l * (1 + percent);
+      return Raphael.hsl2rgb(color.h, color.s, l).hex;
+    },
+    dark: function (c, percent) {
+      var color = Raphael.color(c), l = color.l * (1 - percent);
+      return Raphael.hsl2rgb(color.h, color.s, l).hex;
+    }
+  });
+  exports = Util;
+  return exports;
+}();
+achart_canvas_112_src_base_debug = function (exports) {
+  var Util = achart_canvas_112_src_util_debug;
+  var Base = function (cfg) {
+    this.cfg = cfg;
+    this._attrs = {
+      autoRender: true,
+      visible: true
+    };
+    this.events = {};
+    var defaultCfg = this.getDefaultCfg();
+    Util.mix(this._attrs, defaultCfg, cfg);
+    if (this.get('autoRender')) {
+      this.render();
+    }
+  };
+  Base.ATTRS = {
+    zIndex: null,
+    el: null,
+    node: null,
+    canvas: null,
+    visible: true
+  };
+  Util.augment(Base, {
+    getDefaultCfg: function () {
+      return {};
+    },
+    set: function (name, value) {
+      var m = '_onRender' + Util.ucfirst(name);
+      if (this[m]) {
+        this[m](value, this._attrs[name]);
+      }
+      this._attrs[name] = value;
+    },
+    get: function (name) {
+      return this._attrs[name];
+    },
+    getCfgAttr: function (name) {
+      return this.cfg[name];
+    },
+    show: function () {
+      this.get('el').show();
+      this.set('visible', true);
+      if (!this.get('visible')) {
+        this.fire('show');
+      }
+    },
+    hide: function () {
+      this.get('el').hide();
+      this.set('visible', false);
+      if (this.get('visible')) {
+        this.fire('hide');
+      }
+    },
+    attr: function (name, value) {
+      var _self = this, el = _self.get('el');
+      if (Util.isObject(name)) {
+        Util.each(name, function (v, k) {
+          _self.attr(k, v);
+        });
+        return _self;
+      }
+      if (value !== undefined) {
+        return _self._setAttr(name, value);
+      }
+      return _self._getAttr(name);
+    },
+    on: function (eventType, fn) {
+      var _self = this, node = _self.get('node'), events = this.events, callbacks = events[eventType];
+      Util.addEvent(node, eventType, fn);
+      if (!callbacks) {
+        callbacks = events[eventType] = [];
+      }
+      callbacks.push(fn);
+      return this;
+    },
+    off: function (eventType, fn) {
+      var _self = this, node = _self.get('node'), events = this.events, callbacks = events[eventType];
+      if (!eventType) {
+        Util.each(events, function (callbacks, type) {
+          Util.each(callbacks, function (m) {
+            Util.removeEvent(node, type, m);
+          });
+        });
+        this.events = {};
+        return this;
+      }
+      Util.removeEvent(node, eventType, fn);
+      if (callbacks) {
+        Util.remove(callbacks, fn);
+      }
+      return this;
+    },
+    fire: function (eventType, eventObj) {
+      var _self = this, events = _self.events, callbacks = events[eventType];
+      if (callbacks) {
+        Util.each(callbacks, function (m) {
+          m(eventObj);
+        });
+      }
+    },
+    _getAttr: function (name) {
+      var _self = this, el = _self.get('el'), value = el.attr ? el.attr(name) : '', m = '__get' + Util.ucfirst(name);
+      if (_self[m]) {
+        value = _self[m](value);
+      }
+      return value;
+    },
+    _setAttr: function (name, value) {
+      var _self = this, el = _self.get('el'), m = '__set' + Util.ucfirst(name);
+      if (_self[m]) {
+        _self[m](value);
+      } else {
+        el.attr && el.attr(name, value);
+      }
+      return _self;
+    },
+    _onRenderElCls: function (cls, pre) {
+      var _self = this, node = _self.get('node'), oldCls = node.getAttribute('class'), arr = oldCls ? oldCls.split(' ') : [];
+      if (pre) {
+        Util.remove(arr, pre);
+      }
+      if (cls) {
+        arr.push(cls);
+      }
+      node.setAttribute('class', arr.join(' '));
+    },
+    _onRenderZIndex: function (zIndex) {
+      var _self = this, node = _self.get('node');
+      if (zIndex != null) {
+        node.setAttribute('zIndex', zIndex);
+        if (Util.vml) {
+          node.style.zIndex = zIndex;
+        }
+      }
+    },
+    beforeRenderUI: function () {
+    },
+    render: function () {
+      var _self = this, zIndex = _self.get('zIndex'), attrs = _self._attrs, node;
+      if (!_self.get('rendered')) {
+        _self.createDom();
+        _self.beforeRenderUI();
+        _self.renderUI();
+        _self.set('rendered', true);
+        node = _self.get('node');
+        if (this.get('visible') == false) {
+          this.hide();
+        }
+        Util.each(attrs, function (v, k) {
+          var m = _self['_onRender' + Util.ucfirst(k)];
+          if (m) {
+            m.call(_self, v);
+          }
+        });
+        _self.bindUI();
+      }
+    },
+    createDom: function () {
+    },
+    renderUI: function () {
+    },
+    bindUI: function () {
+    },
+    remove: function (destroy) {
+      if (destroy == undefined) {
+        destroy = true;
+      }
+      var _self = this;
+      if (_self.get('parent')) {
+        _self.get('parent').removeChild(_self, destroy);
+        _self.set('parent', null);
+      }
+      if (destroy) {
+        _self.destroy();
+      }
+    },
+    destroy: function () {
+      var _self = this, el = _self.get('el'), destroyed = _self.get('destroyed'), node = _self.get('node');
+      if (destroyed) {
+        return;
+      }
+      el.remove && el.remove();
+      _self._attrs = {};
+      _self.events = {};
+      _self.set('destroyed', true);
+    }
+  });
+  exports = Base;
+  return exports;
+}();
+achart_canvas_112_src_shape_debug = function (exports) {
+  var Base = achart_canvas_112_src_base_debug, Item = achart_canvas_112_src_canvasitem_debug, Util = achart_util_110_index_debug;
   var Shape = function (cfg) {
     Shape.superclass.constructor.call(this, cfg);
   };
@@ -9028,14 +9333,8 @@ achart_canvas_100_src_shape_debug = function (exports) {
   exports = Shape;
   return exports;
 }();
-achart_actived_100_index_debug = function (exports) {
-  var Actived = achart_actived_100_src_actived_debug;
-  Actived.Group = achart_actived_100_src_activedgroup_debug;
-  exports = Actived;
-  return exports;
-}();
-achart_canvas_100_src_container_debug = function (exports) {
-  var Shape = achart_canvas_100_src_shape_debug, Base = achart_canvas_100_src_base_debug, Util = achart_util_100_index_debug;
+achart_canvas_112_src_container_debug = function (exports) {
+  var Shape = achart_canvas_112_src_shape_debug, Base = achart_canvas_112_src_base_debug, Util = achart_util_110_index_debug;
   var Container = function (cfg) {
     Container.superclass.constructor.call(this, cfg);
   };
@@ -9186,9 +9485,9 @@ achart_canvas_100_src_container_debug = function (exports) {
   exports = Container;
   return exports;
 }();
-achart_canvas_100_src_group_debug = function (exports) {
-  var Container = achart_canvas_100_src_container_debug, Item = achart_canvas_100_src_canvasitem_debug, Util = achart_util_100_index_debug, Shape = achart_canvas_100_src_shape_debug;
-  achart_canvas_100_src_raphealgroup_debug;
+achart_canvas_112_src_group_debug = function (exports) {
+  var Container = achart_canvas_112_src_container_debug, Item = achart_canvas_112_src_canvasitem_debug, Util = achart_util_110_index_debug, Shape = achart_canvas_112_src_shape_debug;
+  achart_canvas_112_src_raphealgroup_debug;
   var Group = function (cfg) {
     Group.superclass.constructor.call(this, cfg);
   };
@@ -9264,6 +9563,15 @@ achart_canvas_100_src_group_debug = function (exports) {
         if (params['clip-rect']) {
           cfg['clip-rect'] = params['clip-rect'];
         }
+        if (params['clip-circle']) {
+          cfg['clip-circle'] = params['clip-circle'];
+        }
+        if (params['clip-angle']) {
+          cfg['clip-angle'] = params['clip-angle'];
+        }
+        if (params['transform']) {
+          cfg['transform'] = params['transform'];
+        }
         el.animate(cfg, ms, easing, callback);
       } else {
         el.animate(params, ms, easing, callback);
@@ -9292,8 +9600,8 @@ achart_canvas_100_src_group_debug = function (exports) {
   exports = Group;
   return exports;
 }();
-achart_canvas_100_src_canvas_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Group = achart_canvas_100_src_group_debug, Raphael = achart_raphael_100_index_debug, Container = achart_canvas_100_src_container_debug;
+achart_canvas_112_src_canvas_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Group = achart_canvas_112_src_group_debug, Raphael = achart_raphael_101_index_debug, Container = achart_canvas_112_src_container_debug;
   var Canvas = function (cfg) {
     Canvas.superclass.constructor.call(this, cfg);
   };
@@ -9357,15 +9665,15 @@ achart_canvas_100_src_canvas_debug = function (exports) {
   exports = Canvas;
   return exports;
 }();
-achart_canvas_100_index_debug = function (exports) {
-  var Canvas = achart_canvas_100_src_canvas_debug;
-  Canvas.Group = achart_canvas_100_src_group_debug;
-  Canvas.Shape = achart_canvas_100_src_shape_debug;
+achart_canvas_112_index_debug = function (exports) {
+  var Canvas = achart_canvas_112_src_canvas_debug;
+  Canvas.Group = achart_canvas_112_src_group_debug;
+  Canvas.Shape = achart_canvas_112_src_shape_debug;
   exports = Canvas;
   return exports;
 }();
-achart_plot_100_src_plotitem_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Canvas = achart_canvas_100_index_debug;
+achart_plot_111_src_plotitem_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Canvas = achart_canvas_112_index_debug;
   function initClassAttrs(c) {
     if (c._attrs || c == Canvas.Group) {
       return;
@@ -9437,8 +9745,8 @@ achart_plot_100_src_plotitem_debug = function (exports) {
   exports = Item;
   return exports;
 }();
-achart_plot_100_src_plotback_debug = function (exports) {
-  var Util = achart_util_100_index_debug, PlotItem = achart_plot_100_src_plotitem_debug, PlotRange = achart_plot_100_src_plotrange_debug;
+achart_plot_111_src_plotback_debug = function (exports) {
+  var Util = achart_util_110_index_debug, PlotItem = achart_plot_111_src_plotitem_debug, PlotRange = achart_plot_111_src_plotrange_debug;
   var PlotBack = function (cfg) {
     PlotBack.superclass.constructor.call(this, cfg);
   };
@@ -9536,16 +9844,16 @@ achart_plot_100_src_plotback_debug = function (exports) {
   exports = PlotBack;
   return exports;
 }();
-achart_plot_100_index_debug = function (exports) {
+achart_plot_111_index_debug = function (exports) {
   var Plot = {};
-  Plot.Item = achart_plot_100_src_plotitem_debug;
-  Plot.Back = achart_plot_100_src_plotback_debug;
-  Plot.Range = achart_plot_100_src_plotrange_debug;
+  Plot.Item = achart_plot_111_src_plotitem_debug;
+  Plot.Back = achart_plot_111_src_plotback_debug;
+  Plot.Range = achart_plot_111_src_plotrange_debug;
   exports = Plot;
   return exports;
 }();
-achart_legend_101_src_legenditem_debug = function (exports) {
-  var Util = achart_util_100_index_debug, PlotItem = achart_plot_100_index_debug.Item, MARKER_WIDTH = 20, ALIGN_Y = 7;
+achart_legend_102_src_legenditem_debug = function (exports) {
+  var Util = achart_util_110_index_debug, PlotItem = achart_plot_111_index_debug.Item, MARKER_WIDTH = 20, ALIGN_Y = 7;
   var LegendItem = function (cfg) {
     LegendItem.superclass.constructor.call(this, cfg);
   };
@@ -9661,8 +9969,8 @@ achart_legend_101_src_legenditem_debug = function (exports) {
   exports = LegendItem;
   return exports;
 }();
-achart_tooltip_101_src_tooltip_debug = function (exports) {
-  var PlotItem = achart_plot_100_index_debug.Item, Util = achart_util_100_index_debug, CLS_TITLE = 'ac-title', CLS_LIST = 'ac-list';
+achart_tooltip_103_src_tooltip_debug = function (exports) {
+  var PlotItem = achart_plot_111_index_debug.Item, Util = achart_util_110_index_debug, CLS_TITLE = 'ac-title', CLS_LIST = 'ac-list';
   var max = Math.max;
   function getElementsByClassName(dom, cls) {
     var els = dom.getElementsByTagName('*');
@@ -9886,13 +10194,12 @@ achart_tooltip_101_src_tooltip_debug = function (exports) {
       x = x - bbox.width - offset;
       y = y - bbox.height;
       if (customDiv && _self.get('customFollow')) {
-        var paddingLeft = parseFloat(Util.getStyle(customDiv, 'paddingLeft')) || 0, padingTop = parseFloat(Util.getStyle(customDiv, 'paddingTop')) || 0;
+        var paddingLeft = parseFloat(Util.getStyle(customDiv, 'paddingLeft')) || 0;
         x = x - Util.getOuterWidth(customDiv) + paddingLeft;
-        y = y - Util.getOuterHeight(customDiv) + padingTop;
       }
       if (plotRange) {
         if (!plotRange.isInRange(x, y)) {
-          if (!plotRange.isInVertical(y) && !customDiv) {
+          if (!plotRange.isInVertical(y)) {
             y = plotRange.tl.y;
           }
           if (!plotRange.isInHorizontal(x)) {
@@ -10034,8 +10341,8 @@ achart_tooltip_101_src_tooltip_debug = function (exports) {
   exports = Tooltip;
   return exports;
 }();
-achart_axis_100_src_grid_debug = function (exports) {
-  var Item = achart_plot_100_index_debug.Item, Util = achart_util_100_index_debug, CLS_GRID = 'x-chart-grid';
+achart_axis_113_src_grid_debug = function (exports) {
+  var Item = achart_plot_111_index_debug.Item, Util = achart_util_110_index_debug, CLS_GRID = 'x-chart-grid';
   function ensure(attrName, self, defVal) {
     var item = self.get(attrName);
     if (!item) {
@@ -10294,8 +10601,8 @@ achart_axis_100_src_grid_debug = function (exports) {
   exports = Grid;
   return exports;
 }();
-achart_labels_100_src_labels_debug = function (exports) {
-  var Item = achart_plot_100_index_debug.Item, Util = achart_util_100_index_debug, CLS_LABELS = 'x-chart-labels';
+achart_labels_103_src_labels_debug = function (exports) {
+  var Item = achart_plot_111_index_debug.Item, Util = achart_util_110_index_debug, CLS_LABELS = 'x-chart-labels';
   var Labels = function (cfg) {
     Labels.superclass.constructor.call(this, cfg);
   };
@@ -10446,8 +10753,8 @@ achart_labels_100_src_labels_debug = function (exports) {
   exports = Labels;
   return exports;
 }();
-achart_labels_100_src_showlabels_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Labels = achart_labels_100_src_labels_debug;
+achart_labels_103_src_showlabels_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Labels = achart_labels_103_src_labels_debug;
   function removeLabel(label) {
     if (label.remove) {
       label.remove();
@@ -10512,8 +10819,8 @@ achart_labels_100_src_showlabels_debug = function (exports) {
   exports = ShowLabels;
   return exports;
 }();
-achart_markers_100_src_markers_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Group = achart_actived_100_index_debug.Group, PlotItem = achart_plot_100_index_debug.Item;
+achart_markers_102_src_markers_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Group = achart_actived_102_index_debug.Group, PlotItem = achart_plot_111_index_debug.Item;
   var Markers = function (cfg) {
     Markers.superclass.constructor.call(this, cfg);
   };
@@ -10660,14 +10967,14 @@ achart_markers_100_src_markers_debug = function (exports) {
   exports = Markers;
   return exports;
 }();
-achart_flags_100_src_flag_debug = function (exports) {
+achart_flags_101_src_flag_debug = function (exports) {
   /**
    * @fileOverview 图形标记，包含文本和连接线
    * @ignoreig
    */
-  var Util = achart_util_100_index_debug, Item = achart_plot_100_index_debug.Item;
+  var Util = achart_util_110_index_debug, Item = achart_plot_111_index_debug.Item;
   /**
-   * @class Chart.Group.Flag
+   * @class Chart.Flags.Flag
    * 图形标记，包含文本和连接线
    */
   var Flag = function (cfg) {
@@ -10878,12 +11185,12 @@ achart_flags_100_src_flag_debug = function (exports) {
   exports = Flag;
   return exports;
 }();
-achart_candlesticks_100_src_candlestick_debug = function (exports) {
+achart_candlesticks_101_src_candlestick_debug = function (exports) {
   /**
    * @fileOverview 股票k线图 单个节点
    * @ignoreig
    */
-  var Util = achart_util_100_index_debug, Item = achart_plot_100_index_debug.Item;
+  var Util = achart_util_110_index_debug, Item = achart_plot_111_index_debug.Item;
   /**
    * @class Chart.Group.Flag
    * 图形标记，包含文本和连接线
@@ -10976,8 +11283,8 @@ achart_candlesticks_100_src_candlestick_debug = function (exports) {
   exports = Candlestick;
   return exports;
 }();
-achart_legend_101_src_legend_debug = function (exports) {
-  var Util = achart_util_100_index_debug, PlotItem = achart_plot_100_index_debug.Item, Item = achart_legend_101_src_legenditem_debug, LINE_HEIGHT = 15, PADDING = 5;
+achart_legend_102_src_legend_debug = function (exports) {
+  var Util = achart_util_110_index_debug, PlotItem = achart_plot_111_index_debug.Item, Item = achart_legend_102_src_legenditem_debug, LINE_HEIGHT = 15, PADDING = 5;
   var Legend = function (cfg) {
     Legend.superclass.constructor.call(this, cfg);
   };
@@ -11210,8 +11517,8 @@ achart_legend_101_src_legend_debug = function (exports) {
   exports = Legend;
   return exports;
 }();
-achart_legend_101_src_uselegend_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Legend = achart_legend_101_src_legend_debug;
+achart_legend_102_src_uselegend_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Legend = achart_legend_102_src_legend_debug;
   var UseLegend = function () {
   };
   UseLegend.ATTRS = {
@@ -11280,24 +11587,24 @@ achart_legend_101_src_uselegend_debug = function (exports) {
   exports = UseLegend;
   return exports;
 }();
-achart_tooltip_101_index_debug = function (exports) {
-  var achartTooltip = achart_tooltip_101_src_tooltip_debug;
+achart_tooltip_103_index_debug = function (exports) {
+  var achartTooltip = achart_tooltip_103_src_tooltip_debug;
   exports = achartTooltip;
   return exports;
 }();
-achart_labels_100_index_debug = function (exports) {
-  var achartLabels = achart_labels_100_src_labels_debug;
-  achartLabels.ShowLabels = achart_labels_100_src_showlabels_debug;
+achart_labels_103_index_debug = function (exports) {
+  var achartLabels = achart_labels_103_src_labels_debug;
+  achartLabels.ShowLabels = achart_labels_103_src_showlabels_debug;
   exports = achartLabels;
   return exports;
 }();
-achart_markers_100_index_debug = function (exports) {
-  var achartMarkers = achart_markers_100_src_markers_debug;
+achart_markers_102_index_debug = function (exports) {
+  var achartMarkers = achart_markers_102_src_markers_debug;
   exports = achartMarkers;
   return exports;
 }();
-achart_flags_100_src_flags_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Flag = achart_flags_100_src_flag_debug, Group = achart_actived_100_index_debug.Group, PlotItem = achart_plot_100_index_debug.Item;
+achart_flags_101_src_flags_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Flag = achart_flags_101_src_flag_debug, Group = achart_actived_102_index_debug.Group, PlotItem = achart_plot_111_index_debug.Item;
   var Flags = function (cfg) {
     Flags.superclass.constructor.call(this, cfg);
   };
@@ -11423,8 +11730,8 @@ achart_flags_100_src_flags_debug = function (exports) {
   exports = Flags;
   return exports;
 }();
-achart_candlesticks_100_src_candlesticks_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Candlestick = achart_candlesticks_100_src_candlestick_debug, Group = achart_actived_100_index_debug.Group, PlotItem = achart_plot_100_index_debug.Item;
+achart_candlesticks_101_src_candlesticks_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Candlestick = achart_candlesticks_101_src_candlestick_debug, Group = achart_actived_102_index_debug.Group, PlotItem = achart_plot_111_index_debug.Item;
   var Candlesticks = function (cfg) {
     Candlesticks.superclass.constructor.call(this, cfg);
   };
@@ -11504,15 +11811,15 @@ achart_candlesticks_100_src_candlesticks_debug = function (exports) {
   exports = Candlesticks;
   return exports;
 }();
-achart_legend_101_index_debug = function (exports) {
-  var Legend = achart_legend_101_src_legend_debug;
-  Legend.Item = achart_legend_101_src_legenditem_debug;
-  Legend.UseLegend = achart_legend_101_src_uselegend_debug;
+achart_legend_102_index_debug = function (exports) {
+  var Legend = achart_legend_102_src_legend_debug;
+  Legend.Item = achart_legend_102_src_legenditem_debug;
+  Legend.UseLegend = achart_legend_102_src_uselegend_debug;
   exports = Legend;
   return exports;
 }();
-achart_axis_100_src_abstract_debug = function (exports) {
-  var Item = achart_plot_100_index_debug.Item, Grid = achart_axis_100_src_grid_debug, Util = achart_util_100_index_debug, ShowLabels = achart_labels_100_index_debug.ShowLabels, CLS_AXIS = 'x-chart-axis';
+achart_axis_113_src_abstract_debug = function (exports) {
+  var Item = achart_plot_111_index_debug.Item, Grid = achart_axis_113_src_grid_debug, Util = achart_util_110_index_debug, ShowLabels = achart_labels_103_index_debug.ShowLabels, CLS_AXIS = 'x-chart-axis';
   var Abstract = function (cfg) {
     Abstract.superclass.constructor.call(this, cfg);
   };
@@ -11684,8 +11991,8 @@ achart_axis_100_src_abstract_debug = function (exports) {
   exports = Abstract;
   return exports;
 }();
-achart_axis_100_src_circle_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Abstract = achart_axis_100_src_abstract_debug;
+achart_axis_113_src_circle_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Abstract = achart_axis_113_src_abstract_debug;
   var RAD = Math.PI / 180;
   function getPoint(self, r, angle) {
     var center = self.getCenter(), rst = {};
@@ -11852,8 +12159,8 @@ achart_axis_100_src_circle_debug = function (exports) {
   exports = Circle;
   return exports;
 }();
-achart_series_100_src_base_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Item = achart_plot_100_index_debug.Item, ShowLabels = achart_labels_100_index_debug.ShowLabels, Actived = achart_actived_100_index_debug, Markers = achart_markers_100_index_debug;
+achart_series_107_src_base_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Item = achart_plot_111_index_debug.Item, ShowLabels = achart_labels_103_index_debug.ShowLabels, Actived = achart_actived_102_index_debug, Markers = achart_markers_102_index_debug;
   var Series = function (cfg) {
     Series.superclass.constructor.call(this, cfg);
   };
@@ -12160,8 +12467,8 @@ achart_series_100_src_base_debug = function (exports) {
   exports = Series;
   return exports;
 }();
-achart_series_100_src_cartesian_debug = function (exports) {
-  var BaseSeries = achart_series_100_src_base_debug, Util = achart_util_100_index_debug;
+achart_series_107_src_cartesian_debug = function (exports) {
+  var BaseSeries = achart_series_107_src_base_debug, Util = achart_util_110_index_debug;
   function date2number(value) {
     if (Util.isNumber(value)) {
       return value;
@@ -12347,8 +12654,8 @@ achart_series_100_src_cartesian_debug = function (exports) {
   exports = Cartesian;
   return exports;
 }();
-achart_series_100_src_line_debug = function (exports) {
-  var Cartesian = achart_series_100_src_cartesian_debug, Util = achart_util_100_index_debug;
+achart_series_107_src_line_debug = function (exports) {
+  var Cartesian = achart_series_107_src_cartesian_debug, Util = achart_util_110_index_debug;
   function trySet(obj, name, value) {
     if (obj && !obj[name]) {
       obj[name] = value;
@@ -12543,8 +12850,8 @@ achart_series_100_src_line_debug = function (exports) {
   exports = Line;
   return exports;
 }();
-achart_series_100_src_itemgroup_debug = function (exports) {
-  var Base = achart_series_100_src_base_debug, Util = achart_util_100_index_debug;
+achart_series_107_src_itemgroup_debug = function (exports) {
+  var Base = achart_series_107_src_base_debug, Util = achart_util_110_index_debug;
   function removeLabel(label) {
     if (label.remove) {
       label.remove();
@@ -12730,8 +13037,8 @@ achart_series_100_src_itemgroup_debug = function (exports) {
   exports = Group;
   return exports;
 }();
-achart_series_100_src_area_debug = function (exports) {
-  var Line = achart_series_100_src_line_debug, Util = achart_util_100_index_debug, Stacked = achart_series_100_src_stacked_debug, REGEX_MOVE = /^M.*(M).*$/;
+achart_series_107_src_area_debug = function (exports) {
+  var Line = achart_series_107_src_line_debug, Util = achart_util_110_index_debug, Stacked = achart_series_107_src_stacked_debug, REGEX_MOVE = /^M.*(M).*$/;
   function trySet(obj, name, value) {
     if (obj && !obj[name]) {
       obj[name] = value;
@@ -12931,8 +13238,8 @@ achart_series_100_src_area_debug = function (exports) {
   exports = Area;
   return exports;
 }();
-achart_series_100_src_pie_debug = function (exports) {
-  var ItemGroup = achart_series_100_src_itemgroup_debug, ActiveGroup = achart_actived_100_index_debug.Group, Util = achart_util_100_index_debug, Legend = achart_legend_101_index_debug, Base = achart_series_100_src_base_debug;
+achart_series_107_src_pie_debug = function (exports) {
+  var ItemGroup = achart_series_107_src_itemgroup_debug, ActiveGroup = achart_actived_102_index_debug.Group, Util = achart_util_110_index_debug, Legend = achart_legend_102_index_debug, Base = achart_series_107_src_base_debug;
   function ensureX(self, x) {
     if (Util.isNumber(x)) {
       return x;
@@ -13590,18 +13897,18 @@ achart_series_100_src_pie_debug = function (exports) {
   exports = Pie;
   return exports;
 }();
-achart_flags_100_index_debug = function (exports) {
-  var achartFlags = achart_flags_100_src_flags_debug;
+achart_flags_101_index_debug = function (exports) {
+  var achartFlags = achart_flags_101_src_flags_debug;
   exports = achartFlags;
   return exports;
 }();
-achart_candlesticks_100_index_debug = function (exports) {
-  var achartCandlesticks = achart_candlesticks_100_src_candlesticks_debug;
+achart_candlesticks_101_index_debug = function (exports) {
+  var achartCandlesticks = achart_candlesticks_101_src_candlesticks_debug;
   exports = achartCandlesticks;
   return exports;
 }();
-achart_axis_100_src_base_debug = function (exports) {
-  var Abstract = achart_axis_100_src_abstract_debug, Util = achart_util_100_index_debug, CLS_AXIS = 'x-chart-axis';
+achart_axis_113_src_base_debug = function (exports) {
+  var Abstract = achart_axis_113_src_abstract_debug, Util = achart_util_110_index_debug, CLS_AXIS = 'x-chart-axis';
   function isBetween(x, x1, x2) {
     if (x1 > x2) {
       var temp = x2;
@@ -14017,8 +14324,8 @@ achart_axis_100_src_base_debug = function (exports) {
   exports = Axis;
   return exports;
 }();
-achart_axis_100_src_category_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Axis = achart_axis_100_src_base_debug;
+achart_axis_113_src_category_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Axis = achart_axis_113_src_base_debug;
   function Category(cfg) {
     Category.superclass.constructor.call(this, cfg);
   }
@@ -14120,8 +14427,8 @@ achart_axis_100_src_category_debug = function (exports) {
   exports = Category;
   return exports;
 }();
-achart_axis_100_src_number_debug = function (exports) {
-  var Axis = achart_axis_100_src_base_debug, Util = achart_util_100_index_debug, abbrs = [
+achart_axis_113_src_number_debug = function (exports) {
+  var Axis = achart_axis_113_src_base_debug, Util = achart_util_110_index_debug, abbrs = [
       'k',
       'm',
       'g',
@@ -14321,8 +14628,8 @@ achart_axis_100_src_number_debug = function (exports) {
   exports = NumberAxis;
   return exports;
 }();
-achart_axis_100_src_time_debug = function (exports) {
-  var Util = achart_util_100_index_debug, NAixs = achart_axis_100_src_number_debug;
+achart_axis_113_src_time_debug = function (exports) {
+  var Util = achart_util_110_index_debug, NAixs = achart_axis_113_src_number_debug;
   function parseTime(d) {
     if (d instanceof Date) {
       return d.getTime();
@@ -14363,8 +14670,8 @@ achart_axis_100_src_time_debug = function (exports) {
   exports = Time;
   return exports;
 }();
-achart_axis_100_src_timecategory_debug = function (exports) {
-  var Util = achart_util_100_index_debug, CAxis = achart_axis_100_src_category_debug;
+achart_axis_113_src_timecategory_debug = function (exports) {
+  var Util = achart_util_110_index_debug, CAxis = achart_axis_113_src_category_debug;
   var TimeCategory = function (cfg) {
     TimeCategory.superclass.constructor.call(this, cfg);
   };
@@ -14376,8 +14683,8 @@ achart_axis_100_src_timecategory_debug = function (exports) {
   exports = TimeCategory;
   return exports;
 }();
-achart_axis_100_src_numbercategory_debug = function (exports) {
-  var Util = achart_util_100_index_debug, CAxis = achart_axis_100_src_category_debug;
+achart_axis_113_src_numbercategory_debug = function (exports) {
+  var Util = achart_util_110_index_debug, CAxis = achart_axis_113_src_category_debug;
   var NumberCategory = function (cfg) {
     NumberCategory.superclass.constructor.call(this, cfg);
   };
@@ -14389,8 +14696,8 @@ achart_axis_100_src_numbercategory_debug = function (exports) {
   exports = NumberCategory;
   return exports;
 }();
-achart_axis_100_src_radius_debug = function (exports) {
-  var Util = achart_util_100_index_debug, NumberAxis = achart_axis_100_src_number_debug;
+achart_axis_113_src_radius_debug = function (exports) {
+  var Util = achart_util_110_index_debug, NumberAxis = achart_axis_113_src_number_debug;
   var Radius = function (cfg) {
     Radius.superclass.constructor.call(this, cfg);
   };
@@ -14437,8 +14744,8 @@ achart_axis_100_src_radius_debug = function (exports) {
   exports = Radius;
   return exports;
 }();
-achart_series_100_src_column_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Cartesian = achart_series_100_src_cartesian_debug, ActiveGroup = achart_actived_100_index_debug.Group, Stacked = achart_series_100_src_stacked_debug, Group = achart_series_100_src_itemgroup_debug;
+achart_series_107_src_column_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Cartesian = achart_series_107_src_cartesian_debug, ActiveGroup = achart_actived_102_index_debug.Group, Stacked = achart_series_107_src_stacked_debug, Group = achart_series_107_src_itemgroup_debug;
   function highlight(c, percent) {
     var color = Raphael.color(c), l = color.l * (1 + percent);
     return Raphael.hsl2rgb(color.h, color.s, l).hex;
@@ -14735,33 +15042,33 @@ achart_series_100_src_column_debug = function (exports) {
   exports = Column;
   return exports;
 }();
-achart_axis_100_index_debug = function (exports) {
-  var Axis = achart_axis_100_src_base_debug;
-  Axis.Category = achart_axis_100_src_category_debug;
-  Axis.Number = achart_axis_100_src_number_debug;
-  Axis.Time = achart_axis_100_src_time_debug;
-  Axis.TimeCategory = achart_axis_100_src_timecategory_debug;
-  Axis.NumberCategory = achart_axis_100_src_numbercategory_debug;
-  Axis.Auto = achart_axis_100_src_auto_debug;
-  Axis.Circle = achart_axis_100_src_circle_debug;
-  Axis.Radius = achart_axis_100_src_radius_debug;
+achart_axis_113_index_debug = function (exports) {
+  var Axis = achart_axis_113_src_base_debug;
+  Axis.Category = achart_axis_113_src_category_debug;
+  Axis.Number = achart_axis_113_src_number_debug;
+  Axis.Time = achart_axis_113_src_time_debug;
+  Axis.TimeCategory = achart_axis_113_src_timecategory_debug;
+  Axis.NumberCategory = achart_axis_113_src_numbercategory_debug;
+  Axis.Auto = achart_auto_103_index_debug;
+  Axis.Circle = achart_axis_113_src_circle_debug;
+  Axis.Radius = achart_axis_113_src_radius_debug;
   exports = Axis;
   return exports;
 }();
-achart_series_100_index_debug = function (exports) {
-  var Series = achart_series_100_src_base_debug;
-  Series.Cartesian = achart_series_100_src_cartesian_debug;
-  Series.Line = achart_series_100_src_line_debug;
-  Series.Column = achart_series_100_src_column_debug;
-  Series.Area = achart_series_100_src_area_debug;
-  Series.Pie = achart_series_100_src_pie_debug;
-  Series.Stacked = achart_series_100_src_stacked_debug;
-  Series.ItemGroup = achart_series_100_src_itemgroup_debug;
+achart_series_107_index_debug = function (exports) {
+  var Series = achart_series_107_src_base_debug;
+  Series.Cartesian = achart_series_107_src_cartesian_debug;
+  Series.Line = achart_series_107_src_line_debug;
+  Series.Column = achart_series_107_src_column_debug;
+  Series.Area = achart_series_107_src_area_debug;
+  Series.Pie = achart_series_107_src_pie_debug;
+  Series.Stacked = achart_series_107_src_stacked_debug;
+  Series.ItemGroup = achart_series_107_src_itemgroup_debug;
   exports = Series;
   return exports;
 }();
-achart_arearange_100_src_arearange_debug = function (exports) {
-  var Series = achart_series_100_index_debug, Util = achart_util_100_index_debug;
+achart_arearange_101_src_arearange_debug = function (exports) {
+  var Series = achart_series_107_index_debug, Util = achart_util_110_index_debug;
   var Arearange = function (cfg) {
     Arearange.superclass.constructor.call(this, cfg);
   };
@@ -15019,12 +15326,12 @@ achart_arearange_100_src_arearange_debug = function (exports) {
   exports = Arearange;
   return exports;
 }();
-achart_series_other_100_src_bubble_debug = function (exports) {
+achart_series_other_104_src_bubble_debug = function (exports) {
   /**
    * @fileOverview 气泡图
    * @ignore
    */
-  var Cartesian = achart_series_100_index_debug.Cartesian, ActiveGroup = achart_actived_100_index_debug.Group, Util = achart_util_100_index_debug;
+  var Cartesian = achart_series_107_index_debug.Cartesian, ActiveGroup = achart_actived_102_index_debug.Group, Util = achart_util_110_index_debug;
   /**
    * @class Chart.Series.Bubble
    * 冒泡图
@@ -15218,12 +15525,12 @@ achart_series_other_100_src_bubble_debug = function (exports) {
   exports = Bubble;
   return exports;
 }();
-achart_series_other_100_src_scatter_debug = function (exports) {
+achart_series_other_104_src_scatter_debug = function (exports) {
   /**
    * @fileOverview 散列图,用于标示点的分步
    * @ignore
    */
-  var Util = achart_util_100_index_debug, Cartesian = achart_series_100_index_debug.Cartesian, ActiveGroup = achart_actived_100_index_debug.Group;
+  var Util = achart_util_110_index_debug, Cartesian = achart_series_107_index_debug.Cartesian, ActiveGroup = achart_actived_102_index_debug.Group;
   function trySet(obj, name, value) {
     if (obj && !obj[name]) {
       obj[name] = value;
@@ -15310,13 +15617,13 @@ achart_series_other_100_src_scatter_debug = function (exports) {
   exports = Scatter;
   return exports;
 }();
-achart_series_other_100_src_flag_debug = function (exports) {
+achart_series_other_104_src_flag_debug = function (exports) {
   /*
    *
    * @line图的tag
    *
    * */
-  var Cartesian = achart_series_100_index_debug.Cartesian, Flags = achart_flags_100_index_debug, Util = achart_util_100_index_debug;
+  var Cartesian = achart_series_107_index_debug.Cartesian, Flags = achart_flags_101_index_debug, Util = achart_util_110_index_debug;
   /**
    * @class Chart.Series.Flag
    * 图列上面的标识
@@ -15334,6 +15641,11 @@ achart_series_other_100_src_flag_debug = function (exports) {
      * @type {Object}
      */
     flags: null,
+    /**
+     * 标记的series的Id
+     * @type {String}
+     */
+    onSeries: null,
     zIndex: 6
   };
   Util.augment(Flag, {
@@ -15391,8 +15703,6 @@ achart_series_other_100_src_flag_debug = function (exports) {
       Util.each(points, function (item, index) {
         var cfg = _self.__getShapeCfg(item, index);
         newItems.push(cfg);
-        //if(flagGroup.get('flagGroups') && flagGroup.get('flagGroups')[index]){
-        //flagGroup.get('flagGroups')[index].changeStackCfg(cfg);
         flagGroup.changeStackCfg(index, cfg);
       });
       flagGroup.change(newItems, animate);
@@ -15401,7 +15711,7 @@ achart_series_other_100_src_flag_debug = function (exports) {
      * 获取提示信息
      * @return {*} 返回显示在上面的文本
      */
-    getTipItem: function (point) {
+    getTipInfo: function (point) {
       return point.obj.tooltip ? point.obj.tooltip : point.value;
     },
     //根据points画出标记
@@ -15485,7 +15795,7 @@ achart_series_other_100_src_flag_debug = function (exports) {
   return exports;
 }();
 acharts_1017_src_seriesgroup_debug = function (exports) {
-  var Util = achart_util_100_index_debug, ActivedGroup = achart_actived_100_index_debug.Group, PlotItem = achart_plot_100_index_debug.Item, Legend = achart_legend_101_index_debug, Tooltip = achart_tooltip_101_index_debug, Axis = achart_axis_100_index_debug, Series = achart_series_100_index_debug;
+  var Util = achart_util_110_index_debug, ActivedGroup = achart_actived_102_index_debug.Group, PlotItem = achart_plot_111_index_debug.Item, Legend = achart_legend_102_index_debug, Tooltip = achart_tooltip_103_index_debug, Axis = achart_axis_113_index_debug, Series = achart_series_107_index_debug;
   function min(x, y) {
     return x > y ? y : x;
   }
@@ -15608,6 +15918,8 @@ acharts_1017_src_seriesgroup_debug = function (exports) {
           _self.set('isOver', false);
         }
       });
+      canvas.on('mouseout', function (ev) {
+      });
     },
     getPointInfo: function (point, ev) {
       var _self = this, shape = ev.target.shape;
@@ -15641,7 +15953,8 @@ acharts_1017_src_seriesgroup_debug = function (exports) {
     },
     onMouseOut: function (ev) {
       var _self = this;
-      if (ev && ev.target != _self.get('canvas').get('none')) {
+      var canvasNode = _self.get('canvas').get('node');
+      if (ev && (Util.contains(canvasNode, ev.target) || canvasNode === ev.target)) {
         return;
       }
       _self.onTriggerOut(ev);
@@ -16154,21 +16467,22 @@ acharts_1017_src_seriesgroup_debug = function (exports) {
   exports = Group;
   return exports;
 }();
-achart_arearange_100_index_debug = function (exports) {
-  var Arearange = achart_arearange_100_src_arearange_debug;
-  exports = Arearange;
+achart_arearange_101_index_debug = function (exports) {
+  var Series = achart_series_107_index_debug;
+  Series.Arearange = achart_arearange_101_src_arearange_debug;
+  exports = Series;
   return exports;
 }();
-achart_series_other_100_index_debug = function (exports) {
-  var Series = achart_series_100_index_debug;
-  Series.Bubble = achart_series_other_100_src_bubble_debug;
-  Series.Scatter = achart_series_other_100_src_scatter_debug;
-  Series.Flag = achart_series_other_100_src_flag_debug;
+achart_series_other_104_index_debug = function (exports) {
+  var Series = achart_series_107_index_debug;
+  Series.Bubble = achart_series_other_104_src_bubble_debug;
+  Series.Scatter = achart_series_other_104_src_scatter_debug;
+  Series.Flag = achart_series_other_104_src_flag_debug;
   exports = Series;
   return exports;
 }();
 acharts_1017_src_chart_debug = function (exports) {
-  var Util = achart_util_100_index_debug, Canvas = achart_canvas_100_index_debug, PlotBack = achart_plot_100_index_debug.Back, SeriesGroup = acharts_1017_src_seriesgroup_debug, Theme = achart_theme_100_index_debug;
+  var Util = achart_util_110_index_debug, Canvas = achart_canvas_112_index_debug, PlotBack = achart_plot_111_index_debug.Back, SeriesGroup = acharts_1017_src_seriesgroup_debug, Theme = achart_theme_101_index_debug;
   var Chart = function (cfg) {
     this._attrs = Util.mix({}, Chart.ATTRS, cfg);
     this.events = {};
@@ -16426,20 +16740,20 @@ acharts_1017_src_chart_debug = function (exports) {
 }();
 acharts_1017_acharts_debug = function (exports) {
   var acharts = acharts_1017_src_chart_debug;
-  acharts.Util = achart_util_100_index_debug;
-  acharts.Canvas = achart_canvas_100_index_debug;
-  acharts.Plot = achart_plot_100_index_debug;
-  acharts.Actived = achart_actived_100_index_debug;
+  acharts.Util = achart_util_110_index_debug;
+  acharts.Canvas = achart_canvas_112_index_debug;
+  acharts.Plot = achart_plot_111_index_debug;
+  acharts.Actived = achart_actived_102_index_debug;
   acharts.Date = achart_date_100_index_debug;
-  acharts.Theme = achart_theme_100_index_debug;
-  acharts.Series = achart_series_100_index_debug;
-  acharts.Series.Arearange = achart_arearange_100_index_debug;
-  acharts.Legend = achart_legend_101_index_debug;
-  acharts.Flags = achart_flags_100_index_debug;
-  acharts.Candlesticks = achart_candlesticks_100_index_debug;
-  acharts.Axis = achart_axis_100_index_debug;
-  acharts.Tooltip = achart_tooltip_101_index_debug;
-  achart_series_other_100_index_debug;
+  acharts.Theme = achart_theme_101_index_debug;
+  acharts.Series = achart_series_107_index_debug;
+  acharts.Series.Arearange = achart_arearange_101_index_debug;
+  acharts.Legend = achart_legend_102_index_debug;
+  acharts.Flags = achart_flags_101_index_debug;
+  acharts.Candlesticks = achart_candlesticks_101_index_debug;
+  acharts.Axis = achart_axis_113_index_debug;
+  acharts.Tooltip = achart_tooltip_103_index_debug;
+  achart_series_other_104_index_debug;
   window.Chart = acharts;
   window.AChart = acharts;
   exports = acharts;

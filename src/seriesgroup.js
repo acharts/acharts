@@ -200,6 +200,11 @@ Util.augment(Group,{
         _self.set('isOver',false);
       }
     });
+
+    canvas.on('mouseout',function(ev){
+      
+    });
+
   },
   //获取图标上对应位置的信息，待扩充
   getPointInfo : function(point,ev){
@@ -245,7 +250,8 @@ Util.augment(Group,{
 
   onMouseOut : function(ev){
     var _self = this;
-    if(ev && ev.target != _self.get('canvas').get('none')){
+    var canvasNode = _self.get('canvas').get('node');
+    if (ev && (Util.contains(canvasNode,ev.target) || canvasNode === ev.target )) {
       return;
     }
     _self.onTriggerOut(ev);

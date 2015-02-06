@@ -16,25 +16,16 @@
 seajs.use('acharts', function(Achart) {
         var chart = new AChart({
           id : 'c1',
-          
-          width : 950,
-          height : 500,
-          title : {
-            text : '浏览器分布图'
+          width : 350,
+          height : 300,
+          plotCfg: {
+            margin:10
           },
           legend : null ,//不显示图例
           seriesOptions : { //设置多个序列共同的属性
             pieCfg : {
-              allowPointSelect : true,
-              labels : {
-                distance : 40,
-                label : {
-                  //文本信息可以在此配置
-                },
-                renderer : function(value,item){ //格式化文本
-                  return value + ' ' + (item.point.percent * 100).toFixed(2)  + '%';
-                }
-              }
+              allowPointSelect : false,
+              labels : null
             }
           },
           tooltip : {
@@ -45,11 +36,13 @@ seajs.use('acharts', function(Achart) {
           series : [{
               type: 'pie',
               name: 'Browser share',
+              size: '80%',
+              innerSize: '60%',
               data: [
-                ['Firefox',   98.0],
-                ['IE',       1],
-                 ['c',       1],
-                ['Others',   1]
+                ['Firefox',   18.0],
+                ['IE',       20],
+                 ['c',       25],
+                ['Others',   30] 
               ]
           }]
         });
