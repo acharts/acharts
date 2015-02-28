@@ -236,7 +236,7 @@ Util.augment(Group,{
       tipGroup = _self.get('tipGroup');
     _self.clearActivedItem();
     //标志从显示到隐藏
-    if(tipGroup.get('visible')){
+    if(tipGroup && tipGroup.get('visible')){
       if(tipGroup.get('shared')){
         Util.each(_self.getVisibleSeries(),function(series){
           var markers = series.get('markersGroup');
