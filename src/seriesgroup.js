@@ -234,6 +234,7 @@ Util.augment(Group,{
   onTriggerOut : function(ev){
     var _self = this,
       tipGroup = _self.get('tipGroup');
+    var canvasNode = _self.get('canvas').get('node');
     _self.clearActivedItem();
     //标志从显示到隐藏
     if(tipGroup && tipGroup.get('visible')){
@@ -243,6 +244,11 @@ Util.augment(Group,{
           markers && markers.clearActivedItem();
           series.clearActivedItem && series.clearActivedItem();
         });
+        //ev 不存在或者 ev.toElement不在canvas内部
+        if(!ev || !(Util.contains(canvasNode,ev.toElement) || (canvasNode === ev.toElement)) ){
+          _self._hideTip();
+        }
+        return;
       }
       _self._hideTip();
     }
@@ -251,11 +257,10 @@ Util.augment(Group,{
   onMouseOut : function(ev){
     var _self = this;
     var canvasNode = _self.get('canvas').get('node');
-
     if (ev && !Util.contains(canvasNode,ev.toElement)){
        _self.onTriggerOut(ev);
     } 
-    if (ev && (Util.contains(canvasNode,ev.target) || (canvasNode === ev.target))) {
+    if (ev && (Util.contains(canvasNode,ev.toElement) || (canvasNode === ev.toElement))) {
       return;
     }
     _self.onTriggerOut(ev);
@@ -275,14 +280,12 @@ Util.augment(Group,{
       //prePoint = _self.get('prePoint'),
       tipInfo;
 
-
     if(!tipGroup.get('shared')){
       var activedItem = _self.getActived();
       activedItem && sArray.push(activedItem);
     }else{
       sArray = _self.getSeries();
     }
-
     Util.each(sArray,function(series){
       if(series && series.get('stickyTracking') && series.get('visible')){
         series.onStickyTracking({point : point});
@@ -293,7 +296,6 @@ Util.augment(Group,{
       if(tipInfo.items.length){
         _self._showTooltip(tipInfo.title,tipInfo.point,tipInfo.items);
       }
-
     }
   },
   //获取显示tooltip的内容
