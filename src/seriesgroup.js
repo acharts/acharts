@@ -19,6 +19,18 @@ function max(x,y){
   return x > y ? x : y;
 }
 
+function hasClass(dom,className){
+  if (!dom) {
+    return false;
+  }
+  var cls = '';
+  if (dom.className.baseVal != null){
+    cls = dom.className.baseVal
+  }else{
+    cls = dom.className;
+  }
+  return cls.indexOf(className) !== -1;
+}
 /**
  * @class Chart.SeriesGroup
  * 数据序列的容器
@@ -257,14 +269,17 @@ Util.augment(Group,{
   onMouseOut : function(ev){
     var _self = this;
     var canvasNode = _self.get('canvas').get('node');
-    if (ev && !Util.contains(canvasNode,ev.toElement)){
+    
+    /*if (ev && !Util.contains(canvasNode,ev.toElement)){
        _self.onTriggerOut(ev);
-    } 
-    if (ev && (Util.contains(canvasNode,ev.toElement) || (canvasNode === ev.toElement))) {
+    } */
+    if (ev && (Util.contains(canvasNode,ev.toElement) || (canvasNode === ev.toElement)) /*&& */) {
+      return;
+    }
+    if(ev && hasClass(ev.toElement,'ac-tooltip')){
       return;
     }
     _self.onTriggerOut(ev);
-
   },
   /**
    * 获取所有的数据序列

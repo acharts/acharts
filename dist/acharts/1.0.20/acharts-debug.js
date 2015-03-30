@@ -1,5 +1,5 @@
 ;(function() {
-var achart_util_110_src_util_debug, achart_raphael_102_src_eve_debug, achart_date_100_index_debug, achart_util_110_index_debug, achart_raphael_102_src_core_debug, achart_raphael_102_src_svg_debug, achart_raphael_102_src_vml_debug, achart_canvas_112_src_canvasitem_debug, achart_plot_111_src_plotrange_debug, achart_actived_102_src_actived_debug, achart_actived_102_src_activedgroup_debug, achart_auto_103_index_debug, achart_series_107_src_stacked_debug, achart_theme_101_index_debug, achart_raphael_102_src_index_debug, achart_actived_102_index_debug, achart_raphael_102_index_debug, achart_canvas_112_src_raphealgroup_debug, achart_canvas_112_src_util_debug, achart_canvas_112_src_base_debug, achart_canvas_112_src_shape_debug, achart_canvas_112_src_container_debug, achart_canvas_112_src_group_debug, achart_canvas_112_src_canvas_debug, achart_canvas_112_index_debug, achart_plot_111_src_plotitem_debug, achart_plot_111_src_plotback_debug, achart_plot_111_index_debug, achart_legend_103_src_legenditem_debug, achart_tooltip_104_src_tooltip_debug, achart_axis_113_src_grid_debug, achart_labels_103_src_labels_debug, achart_labels_103_src_showlabels_debug, achart_markers_102_src_markers_debug, achart_flags_101_src_flag_debug, achart_candlesticks_101_src_candlestick_debug, achart_legend_103_src_legend_debug, achart_legend_103_src_uselegend_debug, achart_tooltip_104_index_debug, achart_labels_103_index_debug, achart_markers_102_index_debug, achart_flags_101_src_flags_debug, achart_candlesticks_101_src_candlesticks_debug, achart_legend_103_index_debug, achart_axis_113_src_abstract_debug, achart_axis_113_src_circle_debug, achart_series_107_src_base_debug, achart_series_107_src_cartesian_debug, achart_series_107_src_line_debug, achart_series_107_src_itemgroup_debug, achart_series_107_src_area_debug, achart_series_107_src_pie_debug, achart_flags_101_index_debug, achart_candlesticks_101_index_debug, achart_axis_113_src_base_debug, achart_axis_113_src_category_debug, achart_axis_113_src_number_debug, achart_axis_113_src_time_debug, achart_axis_113_src_timecategory_debug, achart_axis_113_src_numbercategory_debug, achart_axis_113_src_radius_debug, achart_series_107_src_column_debug, achart_axis_113_index_debug, achart_series_107_index_debug, achart_arearange_102_src_arearange_debug, achart_series_other_104_src_bubble_debug, achart_series_other_104_src_scatter_debug, achart_series_other_104_src_flag_debug, acharts_1018_src_seriesgroup_debug, achart_arearange_102_index_debug, achart_series_other_104_index_debug, acharts_1018_src_chart_debug, acharts_1018_acharts_debug;
+var achart_util_110_src_util_debug, achart_raphael_102_src_eve_debug, achart_date_100_index_debug, achart_util_110_index_debug, achart_raphael_102_src_core_debug, achart_raphael_102_src_svg_debug, achart_raphael_102_src_vml_debug, achart_canvas_112_src_canvasitem_debug, achart_plot_111_src_plotrange_debug, achart_actived_102_src_actived_debug, achart_actived_102_src_activedgroup_debug, achart_auto_103_index_debug, achart_series_107_src_stacked_debug, achart_theme_101_index_debug, achart_raphael_102_src_index_debug, achart_actived_102_index_debug, achart_raphael_102_index_debug, achart_canvas_112_src_raphealgroup_debug, achart_canvas_112_src_util_debug, achart_canvas_112_src_base_debug, achart_canvas_112_src_shape_debug, achart_canvas_112_src_container_debug, achart_canvas_112_src_group_debug, achart_canvas_112_src_canvas_debug, achart_canvas_112_index_debug, achart_plot_111_src_plotitem_debug, achart_plot_111_src_plotback_debug, achart_plot_111_index_debug, achart_legend_103_src_legenditem_debug, achart_tooltip_104_src_tooltip_debug, achart_axis_113_src_grid_debug, achart_labels_103_src_labels_debug, achart_labels_103_src_showlabels_debug, achart_markers_102_src_markers_debug, achart_flags_101_src_flag_debug, achart_candlesticks_101_src_candlestick_debug, achart_legend_103_src_legend_debug, achart_legend_103_src_uselegend_debug, achart_tooltip_104_index_debug, achart_labels_103_index_debug, achart_markers_102_index_debug, achart_flags_101_src_flags_debug, achart_candlesticks_101_src_candlesticks_debug, achart_legend_103_index_debug, achart_axis_113_src_abstract_debug, achart_axis_113_src_circle_debug, achart_series_107_src_base_debug, achart_series_107_src_cartesian_debug, achart_series_107_src_line_debug, achart_series_107_src_itemgroup_debug, achart_series_107_src_area_debug, achart_series_107_src_pie_debug, achart_flags_101_index_debug, achart_candlesticks_101_index_debug, achart_axis_113_src_base_debug, achart_axis_113_src_category_debug, achart_axis_113_src_number_debug, achart_axis_113_src_time_debug, achart_axis_113_src_timecategory_debug, achart_axis_113_src_numbercategory_debug, achart_axis_113_src_radius_debug, achart_series_107_src_column_debug, achart_axis_113_index_debug, achart_series_107_index_debug, achart_arearange_102_src_arearange_debug, achart_series_other_104_src_bubble_debug, achart_series_other_104_src_scatter_debug, achart_series_other_104_src_flag_debug, acharts_1020_src_seriesgroup_debug, achart_arearange_102_index_debug, achart_series_other_104_index_debug, acharts_1020_src_chart_debug, acharts_1020_acharts_debug;
 achart_util_110_src_util_debug = function (exports) {
   var NAN = NaN, objectPrototype = Object.prototype, toString = objectPrototype.toString;
   //取小于当前值的
@@ -15815,13 +15815,25 @@ achart_series_other_104_src_flag_debug = function (exports) {
   exports = Flag;
   return exports;
 }();
-acharts_1018_src_seriesgroup_debug = function (exports) {
+acharts_1020_src_seriesgroup_debug = function (exports) {
   var Util = achart_util_110_index_debug, ActivedGroup = achart_actived_102_index_debug.Group, PlotItem = achart_plot_111_index_debug.Item, Legend = achart_legend_103_index_debug, Tooltip = achart_tooltip_104_index_debug, Axis = achart_axis_113_index_debug, Series = achart_series_107_index_debug;
   function min(x, y) {
     return x > y ? y : x;
   }
   function max(x, y) {
     return x > y ? x : y;
+  }
+  function hasClass(dom, className) {
+    if (!dom) {
+      return false;
+    }
+    var cls = '';
+    if (dom.className.baseVal != null) {
+      cls = dom.className.baseVal;
+    } else {
+      cls = dom.className;
+    }
+    return cls.indexOf(className) !== -1;
   }
   function Group(cfg) {
     Group.superclass.constructor.call(this, cfg);
@@ -15960,6 +15972,7 @@ acharts_1018_src_seriesgroup_debug = function (exports) {
     },
     onTriggerOut: function (ev) {
       var _self = this, tipGroup = _self.get('tipGroup');
+      var canvasNode = _self.get('canvas').get('node');
       _self.clearActivedItem();
       if (tipGroup && tipGroup.get('visible')) {
         if (tipGroup.get('shared')) {
@@ -15968,6 +15981,10 @@ acharts_1018_src_seriesgroup_debug = function (exports) {
             markers && markers.clearActivedItem();
             series.clearActivedItem && series.clearActivedItem();
           });
+          if (!ev || !(Util.contains(canvasNode, ev.toElement) || canvasNode === ev.toElement)) {
+            _self._hideTip();
+          }
+          return;
         }
         _self._hideTip();
       }
@@ -15975,10 +15992,10 @@ acharts_1018_src_seriesgroup_debug = function (exports) {
     onMouseOut: function (ev) {
       var _self = this;
       var canvasNode = _self.get('canvas').get('node');
-      if (ev && !Util.contains(canvasNode, ev.toElement)) {
-        _self.onTriggerOut(ev);
+      if (ev && (Util.contains(canvasNode, ev.toElement) || canvasNode === ev.toElement)) {
+        return;
       }
-      if (ev && (Util.contains(canvasNode, ev.target) || canvasNode === ev.target)) {
+      if (ev && hasClass(ev.toElement, 'ac-tooltip')) {
         return;
       }
       _self.onTriggerOut(ev);
@@ -16504,8 +16521,8 @@ achart_series_other_104_index_debug = function (exports) {
   exports = Series;
   return exports;
 }();
-acharts_1018_src_chart_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Canvas = achart_canvas_112_index_debug, PlotBack = achart_plot_111_index_debug.Back, SeriesGroup = acharts_1018_src_seriesgroup_debug, Theme = achart_theme_101_index_debug;
+acharts_1020_src_chart_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Canvas = achart_canvas_112_index_debug, PlotBack = achart_plot_111_index_debug.Back, SeriesGroup = acharts_1020_src_seriesgroup_debug, Theme = achart_theme_101_index_debug;
   var Chart = function (cfg) {
     this._attrs = Util.mix({}, Chart.ATTRS, cfg);
     this.events = {};
@@ -16761,8 +16778,8 @@ acharts_1018_src_chart_debug = function (exports) {
   exports = Chart;
   return exports;
 }();
-acharts_1018_acharts_debug = function (exports) {
-  var acharts = acharts_1018_src_chart_debug;
+acharts_1020_acharts_debug = function (exports) {
+  var acharts = acharts_1020_src_chart_debug;
   acharts.Util = achart_util_110_index_debug;
   acharts.Canvas = achart_canvas_112_index_debug;
   acharts.Plot = achart_plot_111_index_debug;
