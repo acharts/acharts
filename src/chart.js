@@ -26,18 +26,19 @@ Chart.ATTRS = {
     /**
      * 画板
      * <code>
+     *  //可通过下面方法获取canvas
      *  var canvas =  chart.get('canvas');
      * </code>
      * @type {Chart.Canvas}
      */
     canvas : undefined,
     /**
-     * 数据图例默认的颜色顺序
+     * 数据图例默认的颜色顺序,如['red','green']
      * @type {Array}
      */
     colors : undefined,
     /**
-     * 显示的数据
+     * 显示的数据,可以在series里面指定
      * @type {Array}
      */
     data : undefined,
@@ -48,7 +49,7 @@ Chart.ATTRS = {
      */
     yTickCounts : undefined,
     /**
-     * x轴的坐标轴个数限制
+     * x轴的坐标轴个数限制，仅在坐标轴类型是time的时候生效 如[1,5]表示生成1~5个坐标点
      * @type {Array}
      */
     xTickCounts : undefined,
@@ -67,7 +68,7 @@ Chart.ATTRS = {
 
     /**
      * 标示每个图例颜色的配置项
-     * @type {Object}
+     * @type {Chart.Legend}
      */
     legend : undefined,
    
@@ -84,7 +85,7 @@ Chart.ATTRS = {
     plotRange : undefined,
     /**
      * 数据图序列集合
-     * @type {Array}
+     * @type {Chart.Series}
      */
     series : undefined,
     /**
@@ -93,7 +94,39 @@ Chart.ATTRS = {
      */
     invert : false,
     /**
-     * 数据图序列默认的配置项
+     * 数据图序列默认的配置项集合
+     *  - 默认的配置规则为类型+Cfg：比如需要对线图进行集中配置时：
+     * <pre><code>
+     * seriesOptions: {
+     *    lineCfg:{
+     *       //设置为曲线
+     *       smooth : true,
+     *       //把线的宽度设为2
+     *       line:{
+     *          'stroke-width': 2
+     *       }
+     *    }
+     * }
+     * </code></pre>
+     *  - 也可以多个进行配置，把折线图和区域图写在一起
+     * <pre><code>
+     * seriesOptions: {
+     *    lineCfg:{
+     *       //设置为曲线
+     *       smooth : true,
+     *       //把线的宽度设为2
+     *       line:{
+     *          'stroke-width': 2
+     *       }
+     *    },
+     *    areaCfg:{
+     *       //设置为曲线
+     *       smooth : true,
+     *       //去掉marker
+     *       markers: null
+     *    }
+     * }
+     * </code></pre>
      * @type {Object}
      */
     seriesOptions : undefined,
@@ -109,17 +142,17 @@ Chart.ATTRS = {
     title : undefined,
     /**
      * 提示信息
-     * @type {Object}
+     * @type {Chart.Tooltip}
      */
     tooltip : undefined,
     /**
-     * x 轴坐标
+     * x 轴坐标 可以加入多个坐标轴 单个坐标轴配置项可见Chart.Axis
      * @type {Object|Array}
      */
     xAxis : undefined,
 
     /**
-     * Y 轴坐标
+     * Y 轴坐标 可以加入多个坐标轴 单个坐标轴配置项可见Chart.Axis
      * @type {Object|Array}
      */
     yAxis : undefined,
@@ -536,7 +569,7 @@ Util.augment(Chart,{
   /**
    * 获取x坐标轴
    * @param  {String} [seriesName] 数据序列的名称，如果为空，则返回第一个数据序列的x坐标轴
-   * @return {Chart.Series}  坐标轴
+   * @return {Chart.Axis}  坐标轴
    */
   getXAxis : function (name) {
     var _self = this,
@@ -551,7 +584,7 @@ Util.augment(Chart,{
   /**
    * 获取y坐标轴
    * @param  {String} [seriesName] 数据序列的名称，如果为空，则返回第一个数据序列的y坐标轴
-   * @return {Chart.Series}  坐标轴
+   * @return {Chart.Axis}  坐标轴
    */
   getYAxis : function (name) {
     var _self = this,

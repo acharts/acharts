@@ -1,5 +1,5 @@
 ;(function() {
-var achart_util_110_src_util_debug, achart_raphael_102_src_eve_debug, achart_date_100_index_debug, achart_util_110_index_debug, achart_raphael_102_src_core_debug, achart_raphael_102_src_svg_debug, achart_raphael_102_src_vml_debug, achart_canvas_112_src_canvasitem_debug, achart_plot_111_src_plotrange_debug, achart_actived_102_src_actived_debug, achart_actived_102_src_activedgroup_debug, achart_auto_103_index_debug, achart_series_107_src_stacked_debug, achart_theme_101_index_debug, achart_raphael_102_src_index_debug, achart_actived_102_index_debug, achart_raphael_102_index_debug, achart_canvas_112_src_raphealgroup_debug, achart_canvas_112_src_util_debug, achart_canvas_112_src_base_debug, achart_canvas_112_src_shape_debug, achart_canvas_112_src_container_debug, achart_canvas_112_src_group_debug, achart_canvas_112_src_canvas_debug, achart_canvas_112_index_debug, achart_plot_111_src_plotitem_debug, achart_plot_111_src_plotback_debug, achart_plot_111_index_debug, achart_legend_103_src_legenditem_debug, achart_tooltip_104_src_tooltip_debug, achart_axis_113_src_grid_debug, achart_labels_103_src_labels_debug, achart_labels_103_src_showlabels_debug, achart_markers_102_src_markers_debug, achart_flags_101_src_flag_debug, achart_candlesticks_101_src_candlestick_debug, achart_legend_103_src_legend_debug, achart_legend_103_src_uselegend_debug, achart_tooltip_104_index_debug, achart_labels_103_index_debug, achart_markers_102_index_debug, achart_flags_101_src_flags_debug, achart_candlesticks_101_src_candlesticks_debug, achart_legend_103_index_debug, achart_axis_113_src_abstract_debug, achart_axis_113_src_circle_debug, achart_series_107_src_base_debug, achart_series_107_src_cartesian_debug, achart_series_107_src_line_debug, achart_series_107_src_itemgroup_debug, achart_series_107_src_area_debug, achart_series_107_src_pie_debug, achart_flags_101_index_debug, achart_candlesticks_101_index_debug, achart_axis_113_src_base_debug, achart_axis_113_src_category_debug, achart_axis_113_src_number_debug, achart_axis_113_src_time_debug, achart_axis_113_src_timecategory_debug, achart_axis_113_src_numbercategory_debug, achart_axis_113_src_radius_debug, achart_series_107_src_column_debug, achart_axis_113_index_debug, achart_series_107_index_debug, achart_arearange_102_src_arearange_debug, achart_series_other_104_src_bubble_debug, achart_series_other_104_src_scatter_debug, achart_series_other_104_src_flag_debug, acharts_1020_src_seriesgroup_debug, achart_arearange_102_index_debug, achart_series_other_104_index_debug, acharts_1020_src_chart_debug, acharts_1020_acharts_debug;
+var achart_util_110_src_util_debug, achart_raphael_102_src_eve_debug, achart_date_100_index_debug, achart_util_110_index_debug, achart_raphael_102_src_core_debug, achart_raphael_102_src_svg_debug, achart_raphael_102_src_vml_debug, achart_canvas_114_src_canvasitem_debug, achart_plot_113_src_plotrange_debug, achart_actived_103_src_actived_debug, achart_actived_103_src_activedgroup_debug, achart_auto_103_index_debug, achart_series_1010_src_stacked_debug, achart_theme_101_index_debug, achart_raphael_102_src_index_debug, achart_actived_103_index_debug, achart_raphael_102_index_debug, achart_canvas_114_src_raphealgroup_debug, achart_canvas_114_src_util_debug, achart_canvas_114_src_base_debug, achart_canvas_114_src_shape_debug, achart_canvas_114_src_container_debug, achart_canvas_114_src_group_debug, achart_canvas_114_src_canvas_debug, achart_canvas_114_index_debug, achart_plot_113_src_plotitem_debug, achart_plot_113_src_plotback_debug, achart_plot_113_index_debug, achart_legend_104_src_legenditem_debug, achart_tooltip_107_src_tooltip_debug, achart_axis_114_src_grid_debug, achart_labels_104_src_labels_debug, achart_labels_104_src_showlabels_debug, achart_markers_102_src_markers_debug, achart_flags_103_src_flag_debug, achart_candlesticks_103_src_candlestick_debug, achart_legend_104_src_legend_debug, achart_legend_104_src_uselegend_debug, achart_tooltip_107_index_debug, achart_labels_104_index_debug, achart_markers_102_index_debug, achart_flags_103_src_flags_debug, achart_candlesticks_103_src_candlesticks_debug, achart_legend_104_index_debug, achart_axis_114_src_abstract_debug, achart_axis_114_src_circle_debug, achart_series_1010_src_base_debug, achart_series_1010_src_cartesian_debug, achart_series_1010_src_line_debug, achart_series_1010_src_itemgroup_debug, achart_series_1010_src_area_debug, achart_series_1010_src_pie_debug, achart_flags_103_index_debug, achart_candlesticks_103_index_debug, achart_axis_114_src_base_debug, achart_axis_114_src_category_debug, achart_axis_114_src_number_debug, achart_axis_114_src_time_debug, achart_axis_114_src_timecategory_debug, achart_axis_114_src_numbercategory_debug, achart_axis_114_src_radius_debug, achart_series_1010_src_column_debug, achart_axis_114_index_debug, achart_series_1010_index_debug, achart_arearange_102_src_arearange_debug, achart_series_other_104_src_bubble_debug, achart_series_other_104_src_scatter_debug, achart_series_other_104_src_flag_debug, acharts_1022_src_seriesgroup_debug, achart_arearange_102_index_debug, achart_series_other_104_index_debug, acharts_1022_src_chart_debug, acharts_1022_acharts_debug;
 achart_util_110_src_util_debug = function (exports) {
   var NAN = NaN, objectPrototype = Object.prototype, toString = objectPrototype.toString;
   //取小于当前值的
@@ -7087,7 +7087,7 @@ achart_raphael_102_src_vml_debug = function () {
       }
   }(window.Raphael);
 }();
-achart_canvas_112_src_canvasitem_debug = function (exports) {
+achart_canvas_114_src_canvasitem_debug = function (exports) {
   var Util = achart_util_110_index_debug;
   var Item = function () {
   };
@@ -7125,7 +7125,7 @@ achart_canvas_112_src_canvasitem_debug = function (exports) {
   exports = Item;
   return exports;
 }();
-achart_plot_111_src_plotrange_debug = function (exports) {
+achart_plot_113_src_plotrange_debug = function (exports) {
   var Util = achart_util_110_index_debug;
   function min(x, y) {
     return x > y ? y : x;
@@ -7198,7 +7198,7 @@ achart_plot_111_src_plotrange_debug = function (exports) {
   exports = PlotRange;
   return exports;
 }();
-achart_actived_102_src_actived_debug = function (exports) {
+achart_actived_103_src_actived_debug = function (exports) {
   var Util = achart_util_110_index_debug;
   var Actived = function () {
   };
@@ -7224,7 +7224,7 @@ achart_actived_102_src_actived_debug = function (exports) {
   exports = Actived;
   return exports;
 }();
-achart_actived_102_src_activedgroup_debug = function (exports) {
+achart_actived_103_src_activedgroup_debug = function (exports) {
   var Util = achart_util_110_index_debug;
   var Group = function () {
   };
@@ -7646,7 +7646,7 @@ achart_auto_103_index_debug = function (exports) {
   exports = Auto;
   return exports;
 }();
-achart_series_107_src_stacked_debug = function (exports) {
+achart_series_1010_src_stacked_debug = function (exports) {
   /**
    * @fileOverview 处理层叠的数据序列的扩展
    * @ignore
@@ -7654,7 +7654,7 @@ achart_series_107_src_stacked_debug = function (exports) {
   var Util = achart_util_110_index_debug;
   /**
    * @class Chart.Series.Stacked
-   * @protected
+   * @private
    * 此类是一个扩展，不应该直接实例化,主要用于区域图，柱状图层叠的场景
    *
    *  - <a href="http://spmjs.io/docs/achart-series/latest/api/stacked.html" target="_blank">文档</a>
@@ -8271,9 +8271,9 @@ achart_raphael_102_src_index_debug = function (exports) {
   exports = Raphael;
   return exports;
 }();
-achart_actived_102_index_debug = function (exports) {
-  var Actived = achart_actived_102_src_actived_debug;
-  Actived.Group = achart_actived_102_src_activedgroup_debug;
+achart_actived_103_index_debug = function (exports) {
+  var Actived = achart_actived_103_src_actived_debug;
+  Actived.Group = achart_actived_103_src_activedgroup_debug;
   exports = Actived;
   return exports;
 }();
@@ -8282,7 +8282,7 @@ achart_raphael_102_index_debug = function (exports) {
   exports = achartRaphael;
   return exports;
 }();
-achart_canvas_112_src_raphealgroup_debug = function () {
+achart_canvas_114_src_raphealgroup_debug = function () {
   var Util = achart_util_110_index_debug, R = achart_raphael_102_index_debug;
   R.fn.group = function () {
     var out = R._engine.group(this);
@@ -8390,7 +8390,7 @@ achart_canvas_112_src_raphealgroup_debug = function () {
     };
   }
 }();
-achart_canvas_112_src_util_debug = function (exports) {
+achart_canvas_114_src_util_debug = function (exports) {
   var Util = achart_util_110_index_debug;
   var Raphael = achart_raphael_102_index_debug, HANDLERS = {}, TIMES = {}, NAN = NaN, PRE_HAND = 'h', objectPrototype = Object.prototype, toString = objectPrototype.toString;
   function animTime(duration, fn, callback) {
@@ -8612,8 +8612,8 @@ achart_canvas_112_src_util_debug = function (exports) {
   exports = Util;
   return exports;
 }();
-achart_canvas_112_src_base_debug = function (exports) {
-  var Util = achart_canvas_112_src_util_debug;
+achart_canvas_114_src_base_debug = function (exports) {
+  var Util = achart_canvas_114_src_util_debug;
   var Base = function (cfg) {
     this.cfg = cfg;
     this._attrs = {
@@ -8802,8 +8802,8 @@ achart_canvas_112_src_base_debug = function (exports) {
   exports = Base;
   return exports;
 }();
-achart_canvas_112_src_shape_debug = function (exports) {
-  var Base = achart_canvas_112_src_base_debug, Item = achart_canvas_112_src_canvasitem_debug, Util = achart_util_110_index_debug;
+achart_canvas_114_src_shape_debug = function (exports) {
+  var Base = achart_canvas_114_src_base_debug, Item = achart_canvas_114_src_canvasitem_debug, Util = achart_util_110_index_debug;
   var Shape = function (cfg) {
     Shape.superclass.constructor.call(this, cfg);
   };
@@ -8914,9 +8914,9 @@ achart_canvas_112_src_shape_debug = function (exports) {
     Circle.superclass.constructor.call(this, cfg);
   };
   Circle.ATTRS = {
-    cx: {},
-    cy: {},
-    r: {}
+    cx: null,
+    cy: null,
+    r: null
   };
   Util.extend(Circle, Shape);
   Shape.Circle = Circle;
@@ -8924,10 +8924,10 @@ achart_canvas_112_src_shape_debug = function (exports) {
     Rect.superclass.constructor.call(this, cfg);
   };
   Rect.ATTRS = {
-    x: {},
-    y: {},
-    width: {},
-    height: {},
+    x: null,
+    y: null,
+    width: null,
+    height: null,
     r: { value: 0 }
   };
   Util.extend(Rect, Shape);
@@ -8936,27 +8936,27 @@ achart_canvas_112_src_shape_debug = function (exports) {
     Ellipse.superclass.constructor.call(this, cfg);
   };
   Ellipse.ATTRS = {
-    cx: {},
-    cy: {},
-    rx: {},
-    ry: {}
+    cx: null,
+    cy: null,
+    rx: null,
+    ry: null
   };
   Util.extend(Ellipse, Shape);
   Shape.Ellipse = Ellipse;
   var Path = function (cfg) {
     Path.superclass.constructor.call(this, cfg);
   };
-  Path.ATTRS = { path: {} };
+  Path.ATTRS = { path: null };
   Util.extend(Path, Shape);
   Shape.Path = Path;
   var Line = function (cfg) {
     Line.superclass.constructor.call(this, cfg);
   };
   Line.ATTRS = {
-    x1: {},
-    y1: {},
-    x2: {},
-    y2: {}
+    x1: null,
+    y1: null,
+    x2: null,
+    y2: null
   };
   Util.extend(Line, Path);
   Util.augment(Line, {
@@ -9044,11 +9044,11 @@ achart_canvas_112_src_shape_debug = function (exports) {
     Text.superclass.constructor.call(this, cfg);
   };
   Text.ATTRS = {
-    x: {},
-    y: {},
-    text: {},
-    'font': {},
-    'text-anchor': {}
+    x: null,
+    y: null,
+    text: null,
+    'font': null,
+    'text-anchor': null
   };
   Util.extend(Text, Shape);
   Shape.Text = Text;
@@ -9056,7 +9056,7 @@ achart_canvas_112_src_shape_debug = function (exports) {
     Label.superclass.constructor.call(this, cfg);
   };
   Util.extend(Label, Text);
-  Label.ATTRS = { rotate: {} };
+  Label.ATTRS = { rotate: null };
   Util.augment(Label, {
     parseElCfg: function (attrs) {
       attrs.type = 'text';
@@ -9074,8 +9074,8 @@ achart_canvas_112_src_shape_debug = function (exports) {
     symbol: { value: 'custom' },
     radius: { value: 5 },
     path: {},
-    x: {},
-    y: {}
+    x: null,
+    y: null
   };
   Marker.Symbols = {
     circle: function (x, y, r) {
@@ -9309,19 +9309,19 @@ achart_canvas_112_src_shape_debug = function (exports) {
     Image.superclass.constructor.call(this, cfg);
   };
   Image.ATTRS = {
-    src: {},
-    x: {},
-    y: {},
-    width: {},
-    height: {}
+    src: null,
+    x: null,
+    y: null,
+    width: null,
+    height: null
   };
   Util.extend(Image, Shape);
   Shape.Image = Image;
   exports = Shape;
   return exports;
 }();
-achart_canvas_112_src_container_debug = function (exports) {
-  var Shape = achart_canvas_112_src_shape_debug, Base = achart_canvas_112_src_base_debug, Util = achart_util_110_index_debug;
+achart_canvas_114_src_container_debug = function (exports) {
+  var Shape = achart_canvas_114_src_shape_debug, Base = achart_canvas_114_src_base_debug, Util = achart_util_110_index_debug;
   var Container = function (cfg) {
     Container.superclass.constructor.call(this, cfg);
   };
@@ -9472,9 +9472,9 @@ achart_canvas_112_src_container_debug = function (exports) {
   exports = Container;
   return exports;
 }();
-achart_canvas_112_src_group_debug = function (exports) {
-  var Container = achart_canvas_112_src_container_debug, Item = achart_canvas_112_src_canvasitem_debug, Util = achart_util_110_index_debug, Shape = achart_canvas_112_src_shape_debug;
-  achart_canvas_112_src_raphealgroup_debug;
+achart_canvas_114_src_group_debug = function (exports) {
+  var Container = achart_canvas_114_src_container_debug, Item = achart_canvas_114_src_canvasitem_debug, Util = achart_util_110_index_debug, Shape = achart_canvas_114_src_shape_debug;
+  achart_canvas_114_src_raphealgroup_debug;
   var Group = function (cfg) {
     Group.superclass.constructor.call(this, cfg);
   };
@@ -9587,8 +9587,8 @@ achart_canvas_112_src_group_debug = function (exports) {
   exports = Group;
   return exports;
 }();
-achart_canvas_112_src_canvas_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Group = achart_canvas_112_src_group_debug, Raphael = achart_raphael_102_index_debug, Container = achart_canvas_112_src_container_debug;
+achart_canvas_114_src_canvas_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Group = achart_canvas_114_src_group_debug, Raphael = achart_raphael_102_index_debug, Container = achart_canvas_114_src_container_debug;
   var Canvas = function (cfg) {
     Canvas.superclass.constructor.call(this, cfg);
   };
@@ -9652,15 +9652,15 @@ achart_canvas_112_src_canvas_debug = function (exports) {
   exports = Canvas;
   return exports;
 }();
-achart_canvas_112_index_debug = function (exports) {
-  var Canvas = achart_canvas_112_src_canvas_debug;
-  Canvas.Group = achart_canvas_112_src_group_debug;
-  Canvas.Shape = achart_canvas_112_src_shape_debug;
+achart_canvas_114_index_debug = function (exports) {
+  var Canvas = achart_canvas_114_src_canvas_debug;
+  Canvas.Group = achart_canvas_114_src_group_debug;
+  Canvas.Shape = achart_canvas_114_src_shape_debug;
   exports = Canvas;
   return exports;
 }();
-achart_plot_111_src_plotitem_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Canvas = achart_canvas_112_index_debug;
+achart_plot_113_src_plotitem_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Canvas = achart_canvas_114_index_debug;
   function initClassAttrs(c) {
     if (c._attrs || c == Canvas.Group) {
       return;
@@ -9732,8 +9732,8 @@ achart_plot_111_src_plotitem_debug = function (exports) {
   exports = Item;
   return exports;
 }();
-achart_plot_111_src_plotback_debug = function (exports) {
-  var Util = achart_util_110_index_debug, PlotItem = achart_plot_111_src_plotitem_debug, PlotRange = achart_plot_111_src_plotrange_debug;
+achart_plot_113_src_plotback_debug = function (exports) {
+  var Util = achart_util_110_index_debug, PlotItem = achart_plot_113_src_plotitem_debug, PlotRange = achart_plot_113_src_plotrange_debug;
   var PlotBack = function (cfg) {
     PlotBack.superclass.constructor.call(this, cfg);
   };
@@ -9831,16 +9831,16 @@ achart_plot_111_src_plotback_debug = function (exports) {
   exports = PlotBack;
   return exports;
 }();
-achart_plot_111_index_debug = function (exports) {
+achart_plot_113_index_debug = function (exports) {
   var Plot = {};
-  Plot.Item = achart_plot_111_src_plotitem_debug;
-  Plot.Back = achart_plot_111_src_plotback_debug;
-  Plot.Range = achart_plot_111_src_plotrange_debug;
+  Plot.Item = achart_plot_113_src_plotitem_debug;
+  Plot.Back = achart_plot_113_src_plotback_debug;
+  Plot.Range = achart_plot_113_src_plotrange_debug;
   exports = Plot;
   return exports;
 }();
-achart_legend_103_src_legenditem_debug = function (exports) {
-  var Util = achart_util_110_index_debug, PlotItem = achart_plot_111_index_debug.Item, MARKER_WIDTH = 20, ALIGN_Y = 7;
+achart_legend_104_src_legenditem_debug = function (exports) {
+  var Util = achart_util_110_index_debug, PlotItem = achart_plot_113_index_debug.Item, MARKER_WIDTH = 20, ALIGN_Y = 7;
   var LegendItem = function (cfg) {
     LegendItem.superclass.constructor.call(this, cfg);
   };
@@ -9956,8 +9956,8 @@ achart_legend_103_src_legenditem_debug = function (exports) {
   exports = LegendItem;
   return exports;
 }();
-achart_tooltip_104_src_tooltip_debug = function (exports) {
-  var PlotItem = achart_plot_111_index_debug.Item, Util = achart_util_110_index_debug, CLS_TITLE = 'ac-title', CLS_LIST = 'ac-list';
+achart_tooltip_107_src_tooltip_debug = function (exports) {
+  var PlotItem = achart_plot_113_index_debug.Item, Util = achart_util_110_index_debug, CLS_TITLE = 'ac-title', CLS_LIST = 'ac-list';
   var max = Math.max;
   function getElementsByClassName(dom, cls) {
     var els = dom.getElementsByTagName('*');
@@ -10203,7 +10203,7 @@ achart_tooltip_104_src_tooltip_debug = function (exports) {
           }, _self.get('duration'));
         }
         _self.move(x, y);
-        _self.moveCustom(x, y);
+        _self.moveCustom(x, y, after);
         if (crossShape) {
           if (after) {
             crossShape.attr('transform', 't' + endx + ' 0');
@@ -10220,8 +10220,11 @@ achart_tooltip_104_src_tooltip_debug = function (exports) {
         height: bbox.height
       });
     },
-    moveCustom: function (x, y) {
-      var _self = this, customDiv = _self.get('customDiv');
+    moveCustom: function (x, y, after) {
+      var _self = this, offset = _self.get('offset'), customDiv = _self.get('customDiv');
+      if (!after) {
+        x += offset * 2;
+      }
       if (customDiv && _self.get('customFollow')) {
         var pTop = parseFloat(Util.getStyle(customDiv, 'paddingTop')), bTop = parseFloat(Util.getStyle(customDiv, 'borderTopWidth')) || 0, pLeft = parseFloat(Util.getStyle(customDiv, 'paddingLeft')), bLeft = parseFloat(Util.getStyle(customDiv, 'borderLeftWidth')) || 0;
         customDiv.style.left = x - bLeft - pLeft + 'px';
@@ -10328,8 +10331,8 @@ achart_tooltip_104_src_tooltip_debug = function (exports) {
   exports = Tooltip;
   return exports;
 }();
-achart_axis_113_src_grid_debug = function (exports) {
-  var Item = achart_plot_111_index_debug.Item, Util = achart_util_110_index_debug, CLS_GRID = 'x-chart-grid';
+achart_axis_114_src_grid_debug = function (exports) {
+  var Item = achart_plot_113_index_debug.Item, Util = achart_util_110_index_debug, CLS_GRID = 'x-chart-grid';
   function ensure(attrName, self, defVal) {
     var item = self.get(attrName);
     if (!item) {
@@ -10588,8 +10591,8 @@ achart_axis_113_src_grid_debug = function (exports) {
   exports = Grid;
   return exports;
 }();
-achart_labels_103_src_labels_debug = function (exports) {
-  var Item = achart_plot_111_index_debug.Item, Util = achart_util_110_index_debug, CLS_LABELS = 'x-chart-labels';
+achart_labels_104_src_labels_debug = function (exports) {
+  var Item = achart_plot_113_index_debug.Item, Util = achart_util_110_index_debug, CLS_LABELS = 'x-chart-labels';
   var Labels = function (cfg) {
     Labels.superclass.constructor.call(this, cfg);
   };
@@ -10652,6 +10655,9 @@ achart_labels_103_src_labels_debug = function (exports) {
       }
       if (item.text == null) {
         item.text = '';
+      }
+      if (item.text === '' && Util.vml) {
+        item.text = ' ';
       }
       item.text = item.text.toString();
       item.x = (item.x || 0) + (label.x || 0);
@@ -10740,8 +10746,8 @@ achart_labels_103_src_labels_debug = function (exports) {
   exports = Labels;
   return exports;
 }();
-achart_labels_103_src_showlabels_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Labels = achart_labels_103_src_labels_debug;
+achart_labels_104_src_showlabels_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Labels = achart_labels_104_src_labels_debug;
   function removeLabel(label) {
     if (label.remove) {
       label.remove();
@@ -10807,7 +10813,7 @@ achart_labels_103_src_showlabels_debug = function (exports) {
   return exports;
 }();
 achart_markers_102_src_markers_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Group = achart_actived_102_index_debug.Group, PlotItem = achart_plot_111_index_debug.Item;
+  var Util = achart_util_110_index_debug, Group = achart_actived_103_index_debug.Group, PlotItem = achart_plot_113_index_debug.Item;
   var Markers = function (cfg) {
     Markers.superclass.constructor.call(this, cfg);
   };
@@ -10954,12 +10960,12 @@ achart_markers_102_src_markers_debug = function (exports) {
   exports = Markers;
   return exports;
 }();
-achart_flags_101_src_flag_debug = function (exports) {
+achart_flags_103_src_flag_debug = function (exports) {
   /**
    * @fileOverview 图形标记，包含文本和连接线
    * @ignoreig
    */
-  var Util = achart_util_110_index_debug, Item = achart_plot_111_index_debug.Item;
+  var Util = achart_util_110_index_debug, Item = achart_plot_113_index_debug.Item;
   /**
    * @class Chart.Flags.Flag
    * 图形标记，包含文本和连接线
@@ -11172,15 +11178,16 @@ achart_flags_101_src_flag_debug = function (exports) {
   exports = Flag;
   return exports;
 }();
-achart_candlesticks_101_src_candlestick_debug = function (exports) {
+achart_candlesticks_103_src_candlestick_debug = function (exports) {
   /**
    * @fileOverview 股票k线图 单个节点
    * @ignoreig
    */
-  var Util = achart_util_110_index_debug, Item = achart_plot_111_index_debug.Item;
+  var Util = achart_util_110_index_debug, Item = achart_plot_113_index_debug.Item;
   /**
-   * @class Chart.Group.Flag
+   * @class Chart.Candlesticks.Candlestick
    * 图形标记，包含文本和连接线
+   * @extends Chart.Plot.Item
    */
   var Candlestick = function (cfg) {
     Candlestick.superclass.constructor.call(this, cfg);
@@ -11270,8 +11277,8 @@ achart_candlesticks_101_src_candlestick_debug = function (exports) {
   exports = Candlestick;
   return exports;
 }();
-achart_legend_103_src_legend_debug = function (exports) {
-  var Util = achart_util_110_index_debug, PlotItem = achart_plot_111_index_debug.Item, Item = achart_legend_103_src_legenditem_debug, LINE_HEIGHT = 15, PADDING = 5;
+achart_legend_104_src_legend_debug = function (exports) {
+  var Util = achart_util_110_index_debug, PlotItem = achart_plot_113_index_debug.Item, Item = achart_legend_104_src_legenditem_debug, LINE_HEIGHT = 15, PADDING = 5;
   var Legend = function (cfg) {
     Legend.superclass.constructor.call(this, cfg);
   };
@@ -11538,8 +11545,8 @@ achart_legend_103_src_legend_debug = function (exports) {
   exports = Legend;
   return exports;
 }();
-achart_legend_103_src_uselegend_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Legend = achart_legend_103_src_legend_debug;
+achart_legend_104_src_uselegend_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Legend = achart_legend_104_src_legend_debug;
   var UseLegend = function () {
   };
   UseLegend.ATTRS = {
@@ -11608,14 +11615,14 @@ achart_legend_103_src_uselegend_debug = function (exports) {
   exports = UseLegend;
   return exports;
 }();
-achart_tooltip_104_index_debug = function (exports) {
-  var achartTooltip = achart_tooltip_104_src_tooltip_debug;
+achart_tooltip_107_index_debug = function (exports) {
+  var achartTooltip = achart_tooltip_107_src_tooltip_debug;
   exports = achartTooltip;
   return exports;
 }();
-achart_labels_103_index_debug = function (exports) {
-  var achartLabels = achart_labels_103_src_labels_debug;
-  achartLabels.ShowLabels = achart_labels_103_src_showlabels_debug;
+achart_labels_104_index_debug = function (exports) {
+  var achartLabels = achart_labels_104_src_labels_debug;
+  achartLabels.ShowLabels = achart_labels_104_src_showlabels_debug;
   exports = achartLabels;
   return exports;
 }();
@@ -11624,8 +11631,8 @@ achart_markers_102_index_debug = function (exports) {
   exports = achartMarkers;
   return exports;
 }();
-achart_flags_101_src_flags_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Flag = achart_flags_101_src_flag_debug, Group = achart_actived_102_index_debug.Group, PlotItem = achart_plot_111_index_debug.Item;
+achart_flags_103_src_flags_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Flag = achart_flags_103_src_flag_debug, Group = achart_actived_103_index_debug.Group, PlotItem = achart_plot_113_index_debug.Item;
   var Flags = function (cfg) {
     Flags.superclass.constructor.call(this, cfg);
   };
@@ -11751,8 +11758,8 @@ achart_flags_101_src_flags_debug = function (exports) {
   exports = Flags;
   return exports;
 }();
-achart_candlesticks_101_src_candlesticks_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Candlestick = achart_candlesticks_101_src_candlestick_debug, Group = achart_actived_102_index_debug.Group, PlotItem = achart_plot_111_index_debug.Item;
+achart_candlesticks_103_src_candlesticks_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Candlestick = achart_candlesticks_103_src_candlestick_debug, Group = achart_actived_103_index_debug.Group, PlotItem = achart_plot_113_index_debug.Item;
   var Candlesticks = function (cfg) {
     Candlesticks.superclass.constructor.call(this, cfg);
   };
@@ -11832,15 +11839,15 @@ achart_candlesticks_101_src_candlesticks_debug = function (exports) {
   exports = Candlesticks;
   return exports;
 }();
-achart_legend_103_index_debug = function (exports) {
-  var Legend = achart_legend_103_src_legend_debug;
-  Legend.Item = achart_legend_103_src_legenditem_debug;
-  Legend.UseLegend = achart_legend_103_src_uselegend_debug;
+achart_legend_104_index_debug = function (exports) {
+  var Legend = achart_legend_104_src_legend_debug;
+  Legend.Item = achart_legend_104_src_legenditem_debug;
+  Legend.UseLegend = achart_legend_104_src_uselegend_debug;
   exports = Legend;
   return exports;
 }();
-achart_axis_113_src_abstract_debug = function (exports) {
-  var Item = achart_plot_111_index_debug.Item, Grid = achart_axis_113_src_grid_debug, Util = achart_util_110_index_debug, ShowLabels = achart_labels_103_index_debug.ShowLabels, CLS_AXIS = 'x-chart-axis';
+achart_axis_114_src_abstract_debug = function (exports) {
+  var Item = achart_plot_113_index_debug.Item, Grid = achart_axis_114_src_grid_debug, Util = achart_util_110_index_debug, ShowLabels = achart_labels_104_index_debug.ShowLabels, CLS_AXIS = 'x-chart-axis';
   var Abstract = function (cfg) {
     Abstract.superclass.constructor.call(this, cfg);
   };
@@ -12012,8 +12019,8 @@ achart_axis_113_src_abstract_debug = function (exports) {
   exports = Abstract;
   return exports;
 }();
-achart_axis_113_src_circle_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Abstract = achart_axis_113_src_abstract_debug;
+achart_axis_114_src_circle_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Abstract = achart_axis_114_src_abstract_debug;
   var RAD = Math.PI / 180;
   function getPoint(self, r, angle) {
     var center = self.getCenter(), rst = {};
@@ -12180,8 +12187,8 @@ achart_axis_113_src_circle_debug = function (exports) {
   exports = Circle;
   return exports;
 }();
-achart_series_107_src_base_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Item = achart_plot_111_index_debug.Item, ShowLabels = achart_labels_103_index_debug.ShowLabels, Actived = achart_actived_102_index_debug, Markers = achart_markers_102_index_debug;
+achart_series_1010_src_base_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Item = achart_plot_113_index_debug.Item, ShowLabels = achart_labels_104_index_debug.ShowLabels, Actived = achart_actived_103_index_debug, Markers = achart_markers_102_index_debug;
   var Series = function (cfg) {
     Series.superclass.constructor.call(this, cfg);
   };
@@ -12488,8 +12495,8 @@ achart_series_107_src_base_debug = function (exports) {
   exports = Series;
   return exports;
 }();
-achart_series_107_src_cartesian_debug = function (exports) {
-  var BaseSeries = achart_series_107_src_base_debug, Util = achart_util_110_index_debug;
+achart_series_1010_src_cartesian_debug = function (exports) {
+  var BaseSeries = achart_series_1010_src_base_debug, Util = achart_util_110_index_debug;
   function date2number(value) {
     if (Util.isNumber(value)) {
       return value;
@@ -12614,9 +12621,9 @@ achart_series_107_src_cartesian_debug = function (exports) {
         return pointsCache[type];
       }
       if (type == 'xAxis' && (pointStart != null && !(xAxis.get('type') == 'time' && pointStart == 0)) && _self.get('pointInterval')) {
-        var pointInterval = _self.get('pointInterval');
+        var pointInterval = _self.get('pointInterval'), pointCount = data.length - 1 == 0 ? 1 : data.length - 1;
         rst.push(pointStart);
-        rst.push(pointStart + (data.length - 1) * pointInterval);
+        rst.push(pointStart + pointCount * pointInterval);
       } else {
         var xField = _self.get('xField'), yField = _self.get('yField');
         Util.each(data, function (item) {
@@ -12675,8 +12682,8 @@ achart_series_107_src_cartesian_debug = function (exports) {
   exports = Cartesian;
   return exports;
 }();
-achart_series_107_src_line_debug = function (exports) {
-  var Cartesian = achart_series_107_src_cartesian_debug, Util = achart_util_110_index_debug;
+achart_series_1010_src_line_debug = function (exports) {
+  var Cartesian = achart_series_1010_src_cartesian_debug, Util = achart_util_110_index_debug;
   function trySet(obj, name, value) {
     if (obj && !obj[name]) {
       obj[name] = value;
@@ -12743,6 +12750,13 @@ achart_series_107_src_line_debug = function (exports) {
         after();
       } else {
         if (_self.isInCircle()) {
+          var circle = _self.getCircle(), center = circle.getCenter(), baseValue = _self.getBaseValue();
+          var initPoints = [];
+          Util.each(points, function (point) {
+            var item = Util.mix({ value: baseValue }, center);
+            initPoints.push(item);
+          });
+          _self.drawInner(initPoints);
           lineShape = _self._createLine(path);
           _self.circleAnimate(points, lineShape);
           after();
@@ -12753,11 +12767,11 @@ achart_series_107_src_line_debug = function (exports) {
       _self.drawTracker(points);
       function drawLine() {
         path = _self.points2path(points);
+        _self.drawInner(points);
         lineShape = _self._createLine(path);
         Util.each(points, function (point) {
           _self._drawPoint(point);
         });
-        _self.drawInner(points);
       }
       function after() {
         callback && callback();
@@ -12772,7 +12786,6 @@ achart_series_107_src_line_debug = function (exports) {
       });
       path = _self.points2path(initPoints);
       lineShape.attr('path', path);
-      _self.drawInner(initPoints);
       _self.repaint();
     },
     drawInner: function (points) {
@@ -12871,8 +12884,8 @@ achart_series_107_src_line_debug = function (exports) {
   exports = Line;
   return exports;
 }();
-achart_series_107_src_itemgroup_debug = function (exports) {
-  var Base = achart_series_107_src_base_debug, Util = achart_util_110_index_debug;
+achart_series_1010_src_itemgroup_debug = function (exports) {
+  var Base = achart_series_1010_src_base_debug, Util = achart_util_110_index_debug;
   function removeLabel(label) {
     if (label.remove) {
       label.remove();
@@ -13058,8 +13071,8 @@ achart_series_107_src_itemgroup_debug = function (exports) {
   exports = Group;
   return exports;
 }();
-achart_series_107_src_area_debug = function (exports) {
-  var Line = achart_series_107_src_line_debug, Util = achart_util_110_index_debug, Stacked = achart_series_107_src_stacked_debug, REGEX_MOVE = /^M.*(M).*$/;
+achart_series_1010_src_area_debug = function (exports) {
+  var Line = achart_series_1010_src_line_debug, Util = achart_util_110_index_debug, Stacked = achart_series_1010_src_stacked_debug, REGEX_MOVE = /^M.*(M).*$/;
   function trySet(obj, name, value) {
     if (obj && !obj[name]) {
       obj[name] = value;
@@ -13259,8 +13272,8 @@ achart_series_107_src_area_debug = function (exports) {
   exports = Area;
   return exports;
 }();
-achart_series_107_src_pie_debug = function (exports) {
-  var ItemGroup = achart_series_107_src_itemgroup_debug, ActiveGroup = achart_actived_102_index_debug.Group, Util = achart_util_110_index_debug, Legend = achart_legend_103_index_debug, Base = achart_series_107_src_base_debug;
+achart_series_1010_src_pie_debug = function (exports) {
+  var ItemGroup = achart_series_1010_src_itemgroup_debug, ActiveGroup = achart_actived_103_index_debug.Group, Util = achart_util_110_index_debug, Legend = achart_legend_104_index_debug, Base = achart_series_1010_src_base_debug;
   function ensureX(self, x) {
     if (Util.isNumber(x)) {
       return x;
@@ -13365,6 +13378,7 @@ achart_series_107_src_pie_debug = function (exports) {
     labelLine: true,
     item: { 'stroke': '#fff' },
     visibleCache: {},
+    borderCircle: null,
     cancelSelect: true,
     xField: 'name',
     stickyTracking: false,
@@ -13392,6 +13406,9 @@ achart_series_107_src_pie_debug = function (exports) {
       } else {
         after();
       }
+      if (_self.get('borderCircle')) {
+        _self.drawBorderCircle();
+      }
       if (_self.get('labelsGroup')) {
         _self.processLabels(points);
         _self.get('labelsGroup').toFront();
@@ -13403,6 +13420,28 @@ achart_series_107_src_pie_debug = function (exports) {
       }
       if (!this.get('legedGroup')) {
         this.renderLegend();
+      }
+    },
+    drawBorderCircle: function () {
+      var _self = this;
+      var center = _self.getCenter();
+      var borderCircle = _self.get('borderCircle');
+      var distance = borderCircle.distance || 10;
+      var radius = _self.get('radius');
+      var innerRadius = _self.get('innerRadius');
+      var cfg = Util.mix({
+          cx: center.x,
+          cy: center.y,
+          r: radius + distance
+        }, borderCircle);
+      _self.addShape('circle', cfg);
+      if (innerRadius && innerRadius - distance > 0) {
+        var cfg = Util.mix({
+            cx: center.x,
+            cy: center.y,
+            r: innerRadius - distance
+          }, borderCircle);
+        _self.addShape('circle', cfg);
       }
     },
     changeShapes: function (points, animate) {
@@ -13918,18 +13957,18 @@ achart_series_107_src_pie_debug = function (exports) {
   exports = Pie;
   return exports;
 }();
-achart_flags_101_index_debug = function (exports) {
-  var achartFlags = achart_flags_101_src_flags_debug;
+achart_flags_103_index_debug = function (exports) {
+  var achartFlags = achart_flags_103_src_flags_debug;
   exports = achartFlags;
   return exports;
 }();
-achart_candlesticks_101_index_debug = function (exports) {
-  var achartCandlesticks = achart_candlesticks_101_src_candlesticks_debug;
+achart_candlesticks_103_index_debug = function (exports) {
+  var achartCandlesticks = achart_candlesticks_103_src_candlesticks_debug;
   exports = achartCandlesticks;
   return exports;
 }();
-achart_axis_113_src_base_debug = function (exports) {
-  var Abstract = achart_axis_113_src_abstract_debug, Util = achart_util_110_index_debug, CLS_AXIS = 'x-chart-axis';
+achart_axis_114_src_base_debug = function (exports) {
+  var Abstract = achart_axis_114_src_abstract_debug, Util = achart_util_110_index_debug, CLS_AXIS = 'x-chart-axis';
   function isBetween(x, x1, x2) {
     if (x1 > x2) {
       var temp = x2;
@@ -14345,8 +14384,8 @@ achart_axis_113_src_base_debug = function (exports) {
   exports = Axis;
   return exports;
 }();
-achart_axis_113_src_category_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Axis = achart_axis_113_src_base_debug;
+achart_axis_114_src_category_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Axis = achart_axis_114_src_base_debug;
   function Category(cfg) {
     Category.superclass.constructor.call(this, cfg);
   }
@@ -14448,8 +14487,8 @@ achart_axis_113_src_category_debug = function (exports) {
   exports = Category;
   return exports;
 }();
-achart_axis_113_src_number_debug = function (exports) {
-  var Axis = achart_axis_113_src_base_debug, Util = achart_util_110_index_debug, abbrs = [
+achart_axis_114_src_number_debug = function (exports) {
+  var Axis = achart_axis_114_src_base_debug, Util = achart_util_110_index_debug, abbrs = [
       'k',
       'm',
       'g',
@@ -14649,8 +14688,8 @@ achart_axis_113_src_number_debug = function (exports) {
   exports = NumberAxis;
   return exports;
 }();
-achart_axis_113_src_time_debug = function (exports) {
-  var Util = achart_util_110_index_debug, NAixs = achart_axis_113_src_number_debug;
+achart_axis_114_src_time_debug = function (exports) {
+  var Util = achart_util_110_index_debug, NAixs = achart_axis_114_src_number_debug;
   function parseTime(d) {
     if (d instanceof Date) {
       return d.getTime();
@@ -14691,8 +14730,8 @@ achart_axis_113_src_time_debug = function (exports) {
   exports = Time;
   return exports;
 }();
-achart_axis_113_src_timecategory_debug = function (exports) {
-  var Util = achart_util_110_index_debug, CAxis = achart_axis_113_src_category_debug;
+achart_axis_114_src_timecategory_debug = function (exports) {
+  var Util = achart_util_110_index_debug, CAxis = achart_axis_114_src_category_debug;
   var TimeCategory = function (cfg) {
     TimeCategory.superclass.constructor.call(this, cfg);
   };
@@ -14704,8 +14743,8 @@ achart_axis_113_src_timecategory_debug = function (exports) {
   exports = TimeCategory;
   return exports;
 }();
-achart_axis_113_src_numbercategory_debug = function (exports) {
-  var Util = achart_util_110_index_debug, CAxis = achart_axis_113_src_category_debug;
+achart_axis_114_src_numbercategory_debug = function (exports) {
+  var Util = achart_util_110_index_debug, CAxis = achart_axis_114_src_category_debug;
   var NumberCategory = function (cfg) {
     NumberCategory.superclass.constructor.call(this, cfg);
   };
@@ -14717,8 +14756,8 @@ achart_axis_113_src_numbercategory_debug = function (exports) {
   exports = NumberCategory;
   return exports;
 }();
-achart_axis_113_src_radius_debug = function (exports) {
-  var Util = achart_util_110_index_debug, NumberAxis = achart_axis_113_src_number_debug;
+achart_axis_114_src_radius_debug = function (exports) {
+  var Util = achart_util_110_index_debug, NumberAxis = achart_axis_114_src_number_debug;
   var Radius = function (cfg) {
     Radius.superclass.constructor.call(this, cfg);
   };
@@ -14765,8 +14804,8 @@ achart_axis_113_src_radius_debug = function (exports) {
   exports = Radius;
   return exports;
 }();
-achart_series_107_src_column_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Cartesian = achart_series_107_src_cartesian_debug, ActiveGroup = achart_actived_102_index_debug.Group, Stacked = achart_series_107_src_stacked_debug, Group = achart_series_107_src_itemgroup_debug;
+achart_series_1010_src_column_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Cartesian = achart_series_1010_src_cartesian_debug, ActiveGroup = achart_actived_103_index_debug.Group, Stacked = achart_series_1010_src_stacked_debug, Group = achart_series_1010_src_itemgroup_debug;
   function highlight(c, percent) {
     var color = Raphael.color(c), l = color.l * (1 + percent);
     return Raphael.hsl2rgb(color.h, color.s, l).hex;
@@ -14846,6 +14885,7 @@ achart_series_107_src_column_debug = function (exports) {
     stackPadding: 1,
     animate: true,
     duration: 1000,
+    columnActive: true,
     item: {
       'stroke': 'none',
       'stroke-width': 1,
@@ -14973,12 +15013,14 @@ achart_series_107_src_column_debug = function (exports) {
     },
     setItemActived: function (item, actived) {
       var _self = this, color = item.getCfgAttr('attrs').fill;
-      if (actived) {
-        item.attr('fill', highlight(color, 0.2));
-        item.set('actived', true);
-      } else {
-        item.attr('fill', color);
-        item.set('actived', false);
+      if (_self.get('columnActive')) {
+        if (actived) {
+          item.attr('fill', highlight(color, 0.2));
+          item.set('actived', true);
+        } else {
+          item.attr('fill', color);
+          item.set('actived', false);
+        }
       }
     },
     setItemSelected: function (item, selected) {
@@ -15063,33 +15105,33 @@ achart_series_107_src_column_debug = function (exports) {
   exports = Column;
   return exports;
 }();
-achart_axis_113_index_debug = function (exports) {
-  var Axis = achart_axis_113_src_base_debug;
-  Axis.Category = achart_axis_113_src_category_debug;
-  Axis.Number = achart_axis_113_src_number_debug;
-  Axis.Time = achart_axis_113_src_time_debug;
-  Axis.TimeCategory = achart_axis_113_src_timecategory_debug;
-  Axis.NumberCategory = achart_axis_113_src_numbercategory_debug;
+achart_axis_114_index_debug = function (exports) {
+  var Axis = achart_axis_114_src_base_debug;
+  Axis.Category = achart_axis_114_src_category_debug;
+  Axis.Number = achart_axis_114_src_number_debug;
+  Axis.Time = achart_axis_114_src_time_debug;
+  Axis.TimeCategory = achart_axis_114_src_timecategory_debug;
+  Axis.NumberCategory = achart_axis_114_src_numbercategory_debug;
   Axis.Auto = achart_auto_103_index_debug;
-  Axis.Circle = achart_axis_113_src_circle_debug;
-  Axis.Radius = achart_axis_113_src_radius_debug;
+  Axis.Circle = achart_axis_114_src_circle_debug;
+  Axis.Radius = achart_axis_114_src_radius_debug;
   exports = Axis;
   return exports;
 }();
-achart_series_107_index_debug = function (exports) {
-  var Series = achart_series_107_src_base_debug;
-  Series.Cartesian = achart_series_107_src_cartesian_debug;
-  Series.Line = achart_series_107_src_line_debug;
-  Series.Column = achart_series_107_src_column_debug;
-  Series.Area = achart_series_107_src_area_debug;
-  Series.Pie = achart_series_107_src_pie_debug;
-  Series.Stacked = achart_series_107_src_stacked_debug;
-  Series.ItemGroup = achart_series_107_src_itemgroup_debug;
+achart_series_1010_index_debug = function (exports) {
+  var Series = achart_series_1010_src_base_debug;
+  Series.Cartesian = achart_series_1010_src_cartesian_debug;
+  Series.Line = achart_series_1010_src_line_debug;
+  Series.Column = achart_series_1010_src_column_debug;
+  Series.Area = achart_series_1010_src_area_debug;
+  Series.Pie = achart_series_1010_src_pie_debug;
+  Series.Stacked = achart_series_1010_src_stacked_debug;
+  Series.ItemGroup = achart_series_1010_src_itemgroup_debug;
   exports = Series;
   return exports;
 }();
 achart_arearange_102_src_arearange_debug = function (exports) {
-  var Series = achart_series_107_index_debug, Util = achart_util_110_index_debug;
+  var Series = achart_series_1010_index_debug, Util = achart_util_110_index_debug;
   var Arearange = function (cfg) {
     Arearange.superclass.constructor.call(this, cfg);
   };
@@ -15352,7 +15394,7 @@ achart_series_other_104_src_bubble_debug = function (exports) {
    * @fileOverview 气泡图
    * @ignore
    */
-  var Cartesian = achart_series_107_index_debug.Cartesian, ActiveGroup = achart_actived_102_index_debug.Group, Util = achart_util_110_index_debug;
+  var Cartesian = achart_series_1010_index_debug.Cartesian, ActiveGroup = achart_actived_103_index_debug.Group, Util = achart_util_110_index_debug;
   /**
    * @class Chart.Series.Bubble
    * 冒泡图
@@ -15551,7 +15593,7 @@ achart_series_other_104_src_scatter_debug = function (exports) {
    * @fileOverview 散列图,用于标示点的分步
    * @ignore
    */
-  var Util = achart_util_110_index_debug, Cartesian = achart_series_107_index_debug.Cartesian, ActiveGroup = achart_actived_102_index_debug.Group;
+  var Util = achart_util_110_index_debug, Cartesian = achart_series_1010_index_debug.Cartesian, ActiveGroup = achart_actived_103_index_debug.Group;
   function trySet(obj, name, value) {
     if (obj && !obj[name]) {
       obj[name] = value;
@@ -15644,7 +15686,7 @@ achart_series_other_104_src_flag_debug = function (exports) {
    * @line图的tag
    *
    * */
-  var Cartesian = achart_series_107_index_debug.Cartesian, Flags = achart_flags_101_index_debug, Util = achart_util_110_index_debug;
+  var Cartesian = achart_series_1010_index_debug.Cartesian, Flags = achart_flags_103_index_debug, Util = achart_util_110_index_debug;
   /**
    * @class Chart.Series.Flag
    * 图列上面的标识
@@ -15815,8 +15857,8 @@ achart_series_other_104_src_flag_debug = function (exports) {
   exports = Flag;
   return exports;
 }();
-acharts_1020_src_seriesgroup_debug = function (exports) {
-  var Util = achart_util_110_index_debug, ActivedGroup = achart_actived_102_index_debug.Group, PlotItem = achart_plot_111_index_debug.Item, Legend = achart_legend_103_index_debug, Tooltip = achart_tooltip_104_index_debug, Axis = achart_axis_113_index_debug, Series = achart_series_107_index_debug;
+acharts_1022_src_seriesgroup_debug = function (exports) {
+  var Util = achart_util_110_index_debug, ActivedGroup = achart_actived_103_index_debug.Group, PlotItem = achart_plot_113_index_debug.Item, Legend = achart_legend_104_index_debug, Tooltip = achart_tooltip_107_index_debug, Axis = achart_axis_114_index_debug, Series = achart_series_1010_index_debug;
   function min(x, y) {
     return x > y ? y : x;
   }
@@ -16093,13 +16135,13 @@ acharts_1020_src_seriesgroup_debug = function (exports) {
     _showTooltip: function (title, point, items) {
       var _self = this, tooltip = _self.get('tipGroup'), prePoint = _self.get('prePoint');
       if (!prePoint || (prePoint.x != point.x || prePoint.y != point.y) || point.name != prePoint.name) {
+        tooltip.setTitle(title);
+        tooltip.setItems(items);
         tooltip.setPosition(point.x, point.y);
         _self.set('prePoint', point);
         if (!tooltip.get('visible')) {
           tooltip.show();
         }
-        tooltip.setTitle(title);
-        tooltip.setItems(items);
       }
     },
     _hideTip: function () {
@@ -16514,15 +16556,15 @@ achart_arearange_102_index_debug = function (exports) {
   return exports;
 }();
 achart_series_other_104_index_debug = function (exports) {
-  var Series = achart_series_107_index_debug;
+  var Series = achart_series_1010_index_debug;
   Series.Bubble = achart_series_other_104_src_bubble_debug;
   Series.Scatter = achart_series_other_104_src_scatter_debug;
   Series.Flag = achart_series_other_104_src_flag_debug;
   exports = Series;
   return exports;
 }();
-acharts_1020_src_chart_debug = function (exports) {
-  var Util = achart_util_110_index_debug, Canvas = achart_canvas_112_index_debug, PlotBack = achart_plot_111_index_debug.Back, SeriesGroup = acharts_1020_src_seriesgroup_debug, Theme = achart_theme_101_index_debug;
+acharts_1022_src_chart_debug = function (exports) {
+  var Util = achart_util_110_index_debug, Canvas = achart_canvas_114_index_debug, PlotBack = achart_plot_113_index_debug.Back, SeriesGroup = acharts_1022_src_seriesgroup_debug, Theme = achart_theme_101_index_debug;
   var Chart = function (cfg) {
     this._attrs = Util.mix({}, Chart.ATTRS, cfg);
     this.events = {};
@@ -16778,21 +16820,21 @@ acharts_1020_src_chart_debug = function (exports) {
   exports = Chart;
   return exports;
 }();
-acharts_1020_acharts_debug = function (exports) {
-  var acharts = acharts_1020_src_chart_debug;
+acharts_1022_acharts_debug = function (exports) {
+  var acharts = acharts_1022_src_chart_debug;
   acharts.Util = achart_util_110_index_debug;
-  acharts.Canvas = achart_canvas_112_index_debug;
-  acharts.Plot = achart_plot_111_index_debug;
-  acharts.Actived = achart_actived_102_index_debug;
+  acharts.Canvas = achart_canvas_114_index_debug;
+  acharts.Plot = achart_plot_113_index_debug;
+  acharts.Actived = achart_actived_103_index_debug;
   acharts.Date = achart_date_100_index_debug;
   acharts.Theme = achart_theme_101_index_debug;
-  acharts.Series = achart_series_107_index_debug;
+  acharts.Series = achart_series_1010_index_debug;
   acharts.Series.Arearange = achart_arearange_102_index_debug;
-  acharts.Legend = achart_legend_103_index_debug;
-  acharts.Flags = achart_flags_101_index_debug;
-  acharts.Candlesticks = achart_candlesticks_101_index_debug;
-  acharts.Axis = achart_axis_113_index_debug;
-  acharts.Tooltip = achart_tooltip_104_index_debug;
+  acharts.Legend = achart_legend_104_index_debug;
+  acharts.Flags = achart_flags_103_index_debug;
+  acharts.Candlesticks = achart_candlesticks_103_index_debug;
+  acharts.Axis = achart_axis_114_index_debug;
+  acharts.Tooltip = achart_tooltip_107_index_debug;
   achart_series_other_104_index_debug;
   window.Chart = acharts;
   window.AChart = acharts;

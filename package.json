@@ -1,6 +1,6 @@
 {
   "name": "acharts",
-  "version": "1.0.20",
+  "version": "1.0.23",
   "description": "",
   "keywords": [
     "charts",
@@ -26,7 +26,7 @@
       "achart-axis": "~1.1.3",
       "achart-series": "~1.0.7",
       "achart-series-other": "~1.0.4",
-      "achart-tooltip": "~1.0.3",
+      "achart-tooltip": "~1.0.5",
       "achart-actived": "~1.0.2",
       "achart-plot": "~1.1.1",
       "achart-theme": "~1.0.1",
