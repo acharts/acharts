@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>显示连接线的树</title>
+   
+  <link href="http://g.alicdn.com/bui/bui/1.1.15/css/bs3/dpl.css" rel="stylesheet">
+  <link href="http://g.alicdn.com/bui/bui/1.1.15/css/bs3/bui.css" rel="stylesheet">
+</head>
+<body>
+  <div class="demo-content">
+    <div class="row">
+      <div class="span8 offset3">
+        <div id="t1">
+          
+        </div>
+      </div>
+    </div>
+    <script src="http://g.tbcdn.cn/fi/bui/jquery-1.8.1.min.js"></script>
+    <script src="http://g.alicdn.com/bui/seajs/2.3.0/sea.js"></script>
+    <script src="http://g.alicdn.com/bui/bui/1.1.15/config.js" debug="true"></script>
+    <script type="text/javascript">
+      BUI.use('bui/tree',function (Tree) {
+        var menu = new Tree.TreeMenu({
+          render : '#t1',
+          elCls : 'bui-side-menu',  // BUI默认未提供树形菜单的样式，可以自己覆写样式或者传入选项的模板
+          itemCls : 'bui-menu-item',
+          expandAnimate : true,
+          showIcons : false,
+          dirTpl : '<li class="menu-second"><div class="bui-menu-title"><s></s><span class="bui-menu-title-text">{text} </span></div></li>',
+          leafTpl : '<li class="menu-leaf"><a href="javascript: void(0);"><em>{text} {def}</em></a></li>',
+          nodes : [
+            {
+              text: 'Achart',
+            dataType: 'object',
+            desc: '指定图表的宽度',
+            children: [
+              {
+                text: 'width',
+              dataType: 'number',
+              desc: '指定图表的宽度'
+              },
+              {
+                text: 'height',
+              dataType: 'number',
+              desc: '指定图表的高度'
+              },
+              {
+                text: 'legend',
+                dataType: 'object',
+              desc: '用图标展示各个序列',
+              children: [
+                {
+                  text: 'spacingX',
+                  dataType: 'number',
+                  def: 5,
+                  desc: '排布时子项之间x间距'
+                }
+              ]
+              }
+            ]
+            }
+          ]
+
+        });
+
+        menu.render();
+      });
+    </script>
+  </div>
+</body>
+</html>

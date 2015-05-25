@@ -399,13 +399,13 @@ Util.augment(Group,{
       tooltip = _self.get('tipGroup'),
       prePoint = _self.get('prePoint');
     if(!prePoint || (prePoint.x != point.x || prePoint.y != point.y) || point.name != prePoint.name){
-      tooltip.setTitle(title);
-      tooltip.setItems(items);
       tooltip.setPosition(point.x,point.y);
       _self.set('prePoint',point);
       if(!tooltip.get('visible')){
         tooltip.show();
       }
+      tooltip.setTitle(title);
+      tooltip.setItems(items); 
     }
   },
   //隐藏tip
