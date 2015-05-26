@@ -257,6 +257,10 @@ Util.augment(Group,{
           series.clearActivedItem && series.clearActivedItem();
         });
         //ev 不存在或者 ev.toElement不在canvas内部
+        //火狐等浏览器用ev.relatedTarget替换ev.toElement
+        if(ev && ev.relatedTarget){
+          ev.toElement = ev.relatedTarget
+        }
         if(!ev || !(Util.contains(canvasNode,ev.toElement) || (canvasNode === ev.toElement)) ){
           _self._hideTip();
         }
