@@ -54,3 +54,6 @@
 2. Change the animation of some series,like line,area,bubble and so on.
 3. add the configuration of ticks count.
 
+## 1.0.28
+1. legend adaptive support
+2. fixed bug of highlight
