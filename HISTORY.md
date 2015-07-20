@@ -57,3 +57,10 @@
 ## 1.0.28
 1. legend adaptive support
 2. fixed bug of highlight
+
+## 1.0.29
+1. default to smooth protect
+
+## 1.0.30
+1. add a option for smooth protect
+`smoothProtect: true` means open the smooth protect, default to close
