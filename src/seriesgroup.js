@@ -130,7 +130,6 @@ Util.augment(Group,{
     var _self = this;
     Group.superclass.renderUI.call(_self);
     //_self._renderTracer();
-    
 
     _self._renderSeries();
 
