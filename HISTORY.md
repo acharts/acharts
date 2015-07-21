@@ -64,3 +64,8 @@
 ## 1.0.30
 1. add a option for smooth protect
 `smoothProtect: true` means open the smooth protect, default to close
+
+## 1.0.31
+1. a new type of charts are added
+named funnel charts;
+
