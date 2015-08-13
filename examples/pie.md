@@ -13,7 +13,7 @@
 seajs.use('acharts', function(Achart) {
         var chart = new AChart({
           id : 'c1',
-          
+
           width : 950,
           height : 500,
           title : {
@@ -57,7 +57,7 @@ seajs.use('acharts', function(Achart) {
               ]
           }]
         });
- 
+
         chart.render();
 });
 ````
@@ -73,17 +73,17 @@ seajs.use('acharts', function(Achart) {
 seajs.use('acharts', function(Achart) {
         var chart = new AChart({
           id : 'c2',
-          
+
           width : 950,
           height : 500,
           plotCfg : {
             margin : [50,50,100]
- 
+
           },
           title : {
             text : '饼图'
           },
- 
+
           tooltip : {
             pointRenderer : function(point){
               return (point.percent * 100).toFixed(2)+ '%';
@@ -95,10 +95,10 @@ seajs.use('acharts', function(Achart) {
                 labels : {
                   distance : 40,
                   label : {
- 
+
                   },
                   renderer : function(value,item){
- 
+
                       return value + ' ' + (item.point.percent * 100).toFixed(2)  + '%';
                   }
                 }
@@ -134,7 +134,7 @@ seajs.use('acharts', function(Achart) {
               ]
           }]
         });
- 
+
         chart.render();
 });
 ````
@@ -150,14 +150,14 @@ seajs.use('acharts', function(Achart) {
 seajs.use('acharts', function(Achart) {
         var chart = new AChart({
           id : 'c3',
-          
+
           width : 950,
           height : 500,
           title : {
             text : '浏览器分布图'
           },
           legend : null ,//不显示图例
- 
+
           tooltip : {
             pointRenderer : function(point){
               return (point.percent * 100).toFixed(2)+ '%';
@@ -188,7 +188,7 @@ seajs.use('acharts', function(Achart) {
               ]
           }]
         });
- 
+
         chart.render();
 });
 ````
@@ -204,7 +204,7 @@ seajs.use('acharts', function(Achart) {
 seajs.use('acharts', function(Achart) {
         var chart = new AChart({
           id : 'c4',
-          
+
           width : 950,
           height : 500,
           title : {
@@ -224,7 +224,7 @@ seajs.use('acharts', function(Achart) {
                 }
               },
               innerSize : '60%' //内部的圆，留作空白
- 
+
             }
           },
           tooltip : {
@@ -249,7 +249,7 @@ seajs.use('acharts', function(Achart) {
               ]
           }]
         });
- 
+
         chart.render();
 });
 ````
@@ -265,7 +265,7 @@ seajs.use('acharts', function(Achart) {
 seajs.use('acharts', function(Achart) {
         var chart = new AChart({
           id : 'c5',
-          
+
           width : 950,
           height : 500,
           title : {
@@ -284,8 +284,8 @@ seajs.use('acharts', function(Achart) {
                   return value + ' ' + (item.point.percent * 100).toFixed(2)  + '%';
                 }
               }
- 
- 
+
+
             }
           },
           tooltip : {
@@ -306,7 +306,7 @@ seajs.use('acharts', function(Achart) {
               ]
           }]
         });
- 
+
         chart.render();
 });
 ````
@@ -321,17 +321,17 @@ seajs.use('acharts', function(Achart) {
 seajs.use('acharts', function(Achart) {
         var chart = new AChart({
           id : 'c6',
-          
+
           width : 950,
           height : 500,
           plotCfg : {
             margin : [50,50,100]
- 
+
           },
           title : {
             text : '饼图'
           },
- 
+
           tooltip : {
             pointRenderer : function(point){
               return (point.percent * 100).toFixed(2)+ '%';
@@ -343,10 +343,10 @@ seajs.use('acharts', function(Achart) {
                 labels : {
                   distance : 40,
                   label : {
- 
+
                   },
                   renderer : function(value,item){
- 
+
                       return value + ' ' + (item.point.percent * 100).toFixed(2)  + '%';
                   }
                 }
@@ -382,7 +382,7 @@ seajs.use('acharts', function(Achart) {
               ]
           }]
         });
- 
+
         chart.render();
 });
 ````
@@ -403,12 +403,12 @@ seajs.use('acharts', function(Achart) {
           height : 500,
           plotCfg : {
             margin : [50,50,100]
- 
+
           },
           title : {
             text : '饼图'
           },
- 
+
           tooltip : {
             shared : true,
             pointRenderer : function(point){
@@ -422,10 +422,10 @@ seajs.use('acharts', function(Achart) {
                 labels : {
                   distance : 40,
                   label : {
- 
+
                   },
                   renderer : function(value,item){
- 
+
                       return value + ' ' + (item.point.percent * 100).toFixed(2)  + '%';
                   }
                 }
@@ -461,7 +461,7 @@ seajs.use('acharts', function(Achart) {
               ]
           }]
         });
- 
+
         chart.render();
 
 });
@@ -479,7 +479,7 @@ seajs.use('acharts', function(Achart) {
 
         var chart = new AChart({
           id : 'c8',
-          
+
           width : 950,
           height : 500,
           legend : null ,//不显示图例
@@ -489,19 +489,19 @@ seajs.use('acharts', function(Achart) {
               allowPointSelect : true,
               labelHeight : 60, //label 的高度，用于布局
               labelLine : false, //不显示连接线
- 
+
               labels : {
                 distance : 40, //文本距离圆的距离
                 custom : true, //自定义标签
                 renderer : function(value,item){
-                    return'<span class="title">' + value + '</span><br><span style="color:'+item.point.color+'">' + (item.point.percent * 100).toFixed(2)  + '%</span>'; 
+                    return'<span class="title">' + value + '</span><br><span style="color:'+item.point.color+'">' + (item.point.percent * 100).toFixed(2)  + '%</span>';
                 }
               },
               innerSize : '60%' //内部的圆，留作空白
- 
+
             }
           },
-          
+
           series : [{
               type: 'pie',
               name: 'Browser share',
@@ -519,7 +519,7 @@ seajs.use('acharts', function(Achart) {
               ]
           }]
         });
- 
+
         chart.render();
 });
 ````
@@ -533,7 +533,7 @@ seajs.use('acharts', function(Achart) {
 
 ````javascript
 seajs.use('acharts', function(Achart) {
- 
+
         var colors = [ '#ff6600','#b01111','#ac5724','#572d8a','#333333','#7bab12','#c25e5e','#a6c96a','#133960','#2586e7'],
         categories = ['MSIE', 'Firefox', 'Chrome', 'Safari', 'Opera'],
         name = 'Browser brands',
@@ -585,13 +585,13 @@ seajs.use('acharts', function(Achart) {
                     color: colors[4]
                 }
             }];
- 
- 
+
+
             // Build the data arrays
             var browserData = [];
             var versionsData = [];
             for (var i = 0; i < data.length; i++) {
- 
+
                 // add browser data
                 browserData.push({
                     name: categories[i],
@@ -600,7 +600,7 @@ seajs.use('acharts', function(Achart) {
                       fill: data[i].color
                     }
                 });
- 
+
                 // add version data
                 for (var j = 0; j < data[i].drilldown.data.length; j++) {
                     var brightness = 0.2 - (j / data[i].drilldown.data.length) / 5 ;
@@ -613,19 +613,19 @@ seajs.use('acharts', function(Achart) {
                     });
                 }
             }
- 
+
         var chart = new AChart({
           id : 'c9',
           width : 950,
           height : 500,
           plotCfg : {
             margin : [50,50,100]
- 
+
           },
           title : {
             text : '饼图'
           },
- 
+
           tooltip : {
             shared : true,
             pointRenderer : function(point){
@@ -635,7 +635,7 @@ seajs.use('acharts', function(Achart) {
           seriesOptions : {
               pieCfg : {
                 allowPointSelect : true //允许选中
- 
+
               }
           },
           legend : null,
@@ -655,7 +655,7 @@ seajs.use('acharts', function(Achart) {
                   name: 'Versions',
                   labels : {
                     label : {
- 
+
                     },
                     renderer : function(value,item){
                       return value + ' ' + (item.point.percent * 100).toFixed(2)  + '%';
@@ -665,10 +665,10 @@ seajs.use('acharts', function(Achart) {
                   size: '80%',
                   innerSize: '60%'
                 }
- 
+
           ]
         });
- 
+
         chart.render();
 });
 ````
@@ -732,7 +732,7 @@ seajs.use('acharts', function(Achart) {
           ]
       }]
     });
- 
+
     chart.render();
 });
 ````
@@ -781,7 +781,7 @@ seajs.use('acharts', function(Achart) {
       {
           type: 'pie',
           name: 'middle',
-          radius : 80, 
+          radius : 80,
           innerRadius : 60,
           startAngle :  -144,//360 * 30% / 2 + 90
           endAngle : 226,
@@ -803,7 +803,7 @@ seajs.use('acharts', function(Achart) {
           ]
       }]
     });
- 
+
     chart.render();
 });
 ````
@@ -863,7 +863,7 @@ seajs.use('acharts', function(Achart) {
           innerRadius : 60,
           color: 'rgb(85, 194, 187)',
           data: [
-            
+
             {name : '',y : 70,attrs : {fill : '#fff'},placeHolder : true},
             {name : 'middle',   y : 30,attrs : {fill : 'rgb(85, 194, 187)'}}
           ]
@@ -875,13 +875,13 @@ seajs.use('acharts', function(Achart) {
           color : 'rgb(161, 45, 45)',
           innerRadius : 40,
           data: [
-            
+
             {name : '',y : 50,attrs : {fill : '#fff'},placeHolder : true},
             {name : 'inner',   y : 50,attrs : {fill : 'rgb(161, 45, 45)'}}
           ]
       }]
     });
- 
+
     chart.render();
 });
 ````
@@ -897,7 +897,7 @@ seajs.use('acharts', function(Achart) {
 seajs.use('acharts', function(Achart) {
         var chart = new AChart({
           id : 'c13',
-          
+
           width : 950,
           height : 500,
           title : {
@@ -927,7 +927,11 @@ seajs.use('acharts', function(Achart) {
               type: 'pie',
               name: 'Browser share',
               legend : {
-                align : 'bottom'
+                align : 'bottom',
+                formatter: function(text,point){
+                  var _self = this;
+                  return text + ' ' + point.value + '万(' + (point.percent * 100).toFixed(2)  + '%)';
+                }
               },
               data: [
                 ['Firefox',   45.0],
@@ -944,7 +948,7 @@ seajs.use('acharts', function(Achart) {
               ]
           }]
         });
- 
+
         chart.render();
 });
 ````
@@ -1055,7 +1059,7 @@ seajs.use('acharts', function(AChart) {
           },]
         });
 
-        
+
 
         chart.render();
 
