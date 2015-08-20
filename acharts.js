@@ -10,6 +10,7 @@ acharts.Theme = require('achart-theme');
 
 acharts.Series = require('achart-series');
 acharts.Series.Arearange = require('achart-arearange');
+acharts.Series.Funnel = require('achart-funnel');
 
 acharts.Legend = require('achart-legend');
 
