@@ -33,12 +33,8 @@
       "achart-date": "~1.0.0",
       "achart-flags": "~1.0.1",
       "achart-candlesticks": "~1.0.1",
-<<<<<<< HEAD
-      "achart-arearange": "~1.0.1"
-=======
       "achart-arearange": "~1.0.1",
       "achart-funnel": "~1.0.0"
->>>>>>> 95ef55981114e8e11106d410f5815a894629080a
     },
     "devDependencies": {
       "expect.js": "0.3.1",
@@ -53,10 +49,6 @@
     "tests": "tests/chart-spec.js"
   },
   "dependencies": {
-<<<<<<< HEAD
     "spm": "~3.4.3"
-=======
-    "spm": "~3.4.4"
->>>>>>> 95ef55981114e8e11106d410f5815a894629080a
   }
 }
