@@ -1,6 +1,6 @@
 {
   "name": "acharts",
-  "version": "1.0.30",
+  "version": "1.0.34",
   "description": "",
   "keywords": [
     "charts",
@@ -31,9 +31,9 @@
       "achart-plot": "~1.1.1",
       "achart-theme": "~1.0.1",
       "achart-date": "~1.0.0",
-      "achart-flags" : "~1.0.1",
-      "achart-candlesticks" : "~1.0.1",
-      "achart-arearange" : "~1.0.1"
+      "achart-flags": "~1.0.1",
+      "achart-candlesticks": "~1.0.1",
+      "achart-arearange": "~1.0.1"
     },
     "devDependencies": {
       "expect.js": "0.3.1",
@@ -46,6 +46,8 @@
     },
     "buildArgs": "--include standalone",
     "tests": "tests/chart-spec.js"
-
+  },
+  "dependencies": {
+    "spm": "~3.4.3"
   }
 }

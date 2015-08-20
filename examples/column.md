@@ -56,12 +56,13 @@ seajs.use('acharts', function(Achart) {
             }
           },
           yAxis : {
-            min : 0
+            min : 0,
+            reverse: true
           },
           seriesOptions : { //设置多个序列共同的属性
-            /*columnCfg : { //公共的样式在此配置
- 
-            }*/
+            columnCfg : { //公共的样式在此配置
+              reverse: true 
+            }
           },
           tooltip : {
             valueSuffix : '￥'
