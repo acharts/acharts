@@ -69,3 +69,6 @@
 1. a new type of charts are added
 named funnel charts;
 
+## 1.0.34
+1. add yAxis reverse of column
+
