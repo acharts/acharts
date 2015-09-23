@@ -72,3 +72,7 @@ named funnel charts;
 ## 1.0.34
 1. add yAxis reverse of column
 
+## 1.0.35
+1. fixed calculation of xAxis tick which type was tim
+e
+
