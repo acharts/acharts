@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+</head>
+<body>
+<script>
+    function retunHome() {
+        location.href = "/dcpconsole.daily.cainiao-inc.net";
+    }
+</script>
+<div id="main"> <!--main div start-->
+    <div style="overflow: hidden;">
+        <div class="work-guide-line" style="float:left;">
+            <a href="http://dcpconsole.daily.cainiao-inc.net/">工作台首页</a>
+            >
+            <a href="javascript:retunHome())">运营工具</a>
+            >
+            <a href="javascript:void(0)">AE</a>
+            >
+            <a href="javascript:void(0)">单日物流订单履行</a>
+        </div>
+    </div>
+    <style>
+        .pie-container {
+            position: absolute;
+            visibility: hidden;
+            border: 1px solid #efefef;
+            background-color: white;
+            opacity: .9;
+            padding: 5px;
+
+            transition: top 200ms, left 200ms;
+            -moz-transition: top 200ms, left 200ms; /* Firefox 4 */
+            -webkit-transition: top 200ms, left 200ms; /* Safari 和 Chrome */
+            -o-transition: top 200ms, left 200ms;
+        }
+
+    </style>
+
+    <!--搜索区域开始-->
+    <div class="work-monitoring-search margin-t20">
+        <div class="work-monitoring-search-content">
+            <div class="row">
+
+                <div class="control-group span6">
+                    <label class="control-label"> <font color="#FF0000">*</font>服务商品:</label>
+
+                    <div class="controls">
+                        <select id="service_item_id" class="input-normal" name="service_item_id">
+                            <option value="0">请选择</option>
+                            <option value="5000000000010">AE物流普通线上发货(3PL)</option>
+                            <option value="5000000011398">AE敢用敢赔仓配服务(4PL)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group span6">
+                    <label class="control-label"> <font color="#FF0000">*</font>配CP名称：</label>
+
+                    <div class="controls">
+                        <select id="delievery_cp" class="input-normal" name="deliveryCpResid">
+                            <option value="0">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group span6">
+                    <label class="control-label"><font color="#FF0000">*</font>仓CP名称：</label>
+
+                    <div class="controls">
+                        <select id="trans_store_cp" name="transStoreCpResid">
+                            <option value="0">请选择</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="detail-section">
+        <div id="can">
+
+        </div>
+    </div>
+    <div style="display:none">
+        <div id="pie" class="pie-container">
+            <span>细节分步图</span>
+
+            <div id="c2"></div>
+        </div>
+    </div>
+    <!--<script type="text/javascript" src="http://g.tbcdn.cn/bui/acharts/1.0.32/acharts.js"></script>-->
+    <script src="acharts.js"></script>
+    <script src="http://g.tbcdn.cn/fi/bui/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var data = [];
+            var data1 = [];
+            var data2 = [];
+            //间隔刷新图表
+             setInterval(function() {
+                 fake();  // 模拟从服务器拉去数据  []
+                 if(chart) {
+                     chart.changeData([data,data1,data2],true);
+                 }
+             }, 3000);
+
+            var time = (new Date()).getTime();
+
+            fake();
+
+            function fake() {
+                data = [];
+                data1 = [];
+                data2 = [];
+                time = (new Date()).getTime();
+                for (var i = 0; i < 10; i++) {
+
+                    data.push([time + i * 1000, Math.random() * 100 + 10]);
+                    data1.push([time + i * 1000, Math.random() * 100 + 100]);
+                    data2.push([time + i * 1000, Math.random() * 50 + 20]);
+                }
+            }
+
+            var chart = new AChart({
+                theme: AChart.Theme.Smooth1,
+                id: 'can',
+                width: 950,
+                height: 400,
+                xAxis: {//格式化时间
+                    type: 'time',
+                    tickInterval: 3600,
+                    formatter: function (value) {
+                        return AChart.Date.format(new Date(value), 'yyyy-mm-dd hh:mm:ss');
+                    }
+                },
+                tooltip: {
+                    shared: true,
+                    custom: true,
+                    html: '#pie'
+                },
+                seriesOptions: {
+                    columnCfg: {
+                        stackType: 'normal'
+                    }
+                },
+                series: [
+                    {
+                        name: '股票',
+                        data: data
+                    }
+                     ,
+                     {
+                         name: '期权',
+                         data: data1
+                     },
+                     {
+                         name: '证券',
+                         data: data2
+                     }
+                ]
+            });
+
+            chart.render();
+
+            var pieChart = new AChart({
+                id: 'c2',
+                theme: Chart.Theme.Smooth1,
+                plotCfg: {
+                    margin: 0
+                },
+                width: 400,
+                height: 400,
+
+                legend: null,//不显示图例
+                seriesOptions: { //设置多个序列共同的属性
+                    pieCfg: {
+                        labels: {
+                            distance: 10,
+                            label: {
+                                //文本信息可以在此配置
+                            },
+                            renderer: function (value, item) { //格式化文本
+                                return value + ' ' + (item.point.percent * 100).toFixed(2) + '%';
+                            }
+                        }
+                    }
+                },
+                tooltip: null,
+                series: [{
+                    type: 'pie',
+                    size: '40%',
+                    animate: false,
+                    name: 'percent'
+                }]
+            });
+
+            pieChart.render();
+            var pie = pieChart.getSeries()[0];
+            var handler = null;
+
+            chart.on('tooltipchange', function (ev) {
+                var items = ev.items,
+                        dataToolTip = [];
+
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    dataToolTip.push([item.name, item.value]);
+                }
+
+                clearTimeout(handler);
+                handler = setTimeout(function () { //避免频繁更改
+                    pie.changeData(dataToolTip, true);
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
