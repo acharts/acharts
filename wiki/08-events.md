@@ -20,7 +20,7 @@
 * beforepaint
 * afterpaint
 
-### Seires事件
+### Series事件
 
 #### 通用事件
 
